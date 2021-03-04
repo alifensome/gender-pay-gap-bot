@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alifensome/gender-pay-gap-bot#readme",
   "dependencies": {
-    "read-excel-file": "^5.0.0"
+    "read-excel-file": "^5.0.0",
+    "xlsx": "^0.16.9"
   }
 }
