@@ -1,0 +1,22 @@
+{
+  "name": "gender-pay-gap-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alifensome/gender-pay-gap-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alifensome/gender-pay-gap-bot/issues"
+  },
+  "homepage": "https://github.com/alifensome/gender-pay-gap-bot#readme",
+  "dependencies": {
+    "read-excel-file": "^5.0.0"
+  }
+}
