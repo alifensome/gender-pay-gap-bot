@@ -25,8 +25,23 @@ const twitterClient = new TwitterClient({
 
 //  console.log(data)
 
-const user = await twitterClient.accountsAndUsers.usersLookup({user_id:"1367415164795039747"})
-console.log(user) 
+const user = await twitterClient.accountsAndUsers.usersLookup({ user_id: "36364300" })
+console.log(user)
+
+// const t = await twitterClient.tweets.search({ q: "international women's day", user_id: "1367415164795039747" })
+// console.log(t)
+
+//       id: 1368603396748542000,
+// id_str:  '1368603396748541954',
+
+// This replies to the tweet. This could work
+// const result = await twitterClient.tweets.statusesUpdate({ in_reply_to_status_id: "1368603396748541954", status: "Look at this!", auto_populate_reply_metadata: true })
+// console.log(result)
+
+// const result = await twitterClient.tweets.statusesUpdate({
+//   attachment_url: "https://twitter.com/PayGapApp/status/1368264962263707651", status: "Look at this!!!", auto_populate_reply_metadata: true,
+// })
+// console.log(result)
 
 // const iwdTweets =  await twitterClient.tweets.search({ q : "international women's day ", count:1, })
 // console.log(iwdTweets)
