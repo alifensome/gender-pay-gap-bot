@@ -174,7 +174,7 @@ function getCopy(companyData) {
     if (isPositiveGpg) {
         return `In this organisation, women's mean hourly pay is ${mostRecent}% lower than men's`
     } else {
-        return `In this organisation, women's mean hourly pay is ${mostRecent}% higher than men's`
+        return `In this organisation, women's mean hourly pay is ${-1 * mostRecent}% higher than men's`
     }
 }
 
