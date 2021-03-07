@@ -2,7 +2,7 @@ import Twit from "twit"
 import dotEnv from "dotenv"
 import { createRequire } from "module"; // Bring in the ability to create the 'require' method
 import { getMostRecentGPG } from "../utils.js"
-import { write } from "../utils/write.js";
+import { writeJsonFile } from "../utils/write.js";
 
 dotEnv.config()
 const require = createRequire(import.meta.url); // construct the require method
@@ -33,7 +33,7 @@ debugPrint(follows)
 
 var stream = T.stream('statuses/filter', { follow: follows });
 
-stream.on('tweet', function (tweet) {
+stream.on('tweet', async (tweet) => {
     console.log("Stream received")
     let time = new Date().toISOString()
     console.log(`Tweet detected: ${time} @${tweet.user.screen_name} - ${tweet.text}`);
@@ -59,7 +59,7 @@ stream.on('tweet', function (tweet) {
     if (!company) {
         const errMessage = `"Could not find company data for: ${twitterUserId}`
         console.log(errMessage)
-        unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: errMessage })
+        unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: errMessage, time })
         return writeUnsuccessfulTweets()
     }
 
@@ -69,7 +69,7 @@ stream.on('tweet', function (tweet) {
     quoteTweet(T, tweetStatus, tweet).then(() => {
         console.log("Successful tweet @", tweet.user.name)
         // Save that we have posted
-        successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name })
+        successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, time })
 
     }).then(() => {
         return writeSuccessfulTweets()
@@ -77,7 +77,7 @@ stream.on('tweet', function (tweet) {
         console.log("Error while tweeting @", tweet.user.name)
         console.log(err)
         // Record errors
-        unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: `Error while tweeting: ${err.message}`, })
+        unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: `Error while tweeting: ${err.message}`, time })
         return writeUnsuccessfulTweets()
     })
 });
@@ -144,12 +144,12 @@ function checkHaveNotPosted(twitterId, successfulTweets) {
 
 async function writeSuccessfulTweets() {
     const filePath = "./data/tweets/successful-tweets.json"
-    await write(filePath, successfulTweets)
+    await writeJsonFile(filePath, successfulTweets)
 }
 
 async function writeUnsuccessfulTweets() {
     const filePath = "./data/tweets/unsuccessful-tweets.json"
-    await write(filePath, unsuccessfulTweets)
+    await writeJsonFile(filePath, unsuccessfulTweets)
 }
 
 function getCompanyDataByTwitterId(twitterId, companies) {
