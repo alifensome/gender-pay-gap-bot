@@ -5,6 +5,7 @@ import { getMostRecentGPG } from "../utils.js"
 import { writeJsonFile } from "../utils/write.js";
 
 dotEnv.config()
+
 const require = createRequire(import.meta.url); // construct the require method
 let companyDataProd = require("../data/twitterAccountData/twitterUserData-prod.json")
 const companyDataTest = require("../data/twitterAccountData/twitterUserData-test.json")
@@ -66,20 +67,19 @@ stream.on('tweet', async (tweet) => {
     // get words for post
     const tweetStatus = getCopy(company)
 
-    quoteTweet(T, tweetStatus, tweet).then(() => {
+    try {
+        await quoteTweet(T, tweetStatus, tweet)
         console.log("Successful tweet @", tweet.user.name)
-        // Save that we have posted
+        // Save that we have posted successfully
         successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, time })
-
-    }).then(() => {
-        return writeSuccessfulTweets()
-    }).catch((err) => {
+        await writeSuccessfulTweets()
+    } catch (err) {
         console.log("Error while tweeting @", tweet.user.name)
         console.log(err)
         // Record errors
         unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: `Error while tweeting: ${err.message}`, time })
-        return writeUnsuccessfulTweets()
-    })
+        await writeUnsuccessfulTweets()
+    }
 });
 
 function quoteTweet(T, status, tweet) {
