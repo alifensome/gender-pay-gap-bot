@@ -1,8 +1,9 @@
 import Twit from "twit"
 import dotEnv from "dotenv"
 import { createRequire } from "module"; // Bring in the ability to create the 'require' method
-import fs from "fs"
 import { getMostRecentGPG } from "../utils.js"
+import { write } from "../utils/write.js";
+
 dotEnv.config()
 const require = createRequire(import.meta.url); // construct the require method
 let companyDataProd = require("../data/twitterAccountData/twitterUserData-prod.json")
@@ -139,16 +140,6 @@ function checkHaveNotPosted(twitterId, successfulTweets) {
         }
     }
     return true
-}
-
-function write(filePath, data) {
-    return new Promise((resolve) => {
-        const stream = fs.createWriteStream(filePath, { flags: 'w' });
-        return stream.write(JSON.stringify(data), () => {
-            console.log(`Wrote file: ${filePath}`);
-            resolve()
-        });
-    })
 }
 
 async function writeSuccessfulTweets() {
