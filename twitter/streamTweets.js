@@ -155,7 +155,7 @@ async function writeUnsuccessfulTweets() {
 function getCompanyDataByTwitterId(twitterId, companies) {
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index];
-        if (c.twitter_id == twitterId) {
+        if (c.twitter_id_str == twitterId) {
             return c
         }
     }
@@ -182,7 +182,7 @@ function getFollowsFromData(companies) {
     const twitterIds = []
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index]
-        twitterIds.push(`${c.twitter_id}`)
+        twitterIds.push(c.twitter_id_str)
     }
     return twitterIds
 }

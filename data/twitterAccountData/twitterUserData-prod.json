@@ -120,30 +120,6 @@
         "gpg_2017_2018": null
     },
     {
-        "twitter_id_str": "784262011",
-        "twitter_id": 784262011,
-        "twitter_name": "Autism Initiatives",
-        "twitter_screen_name": "AutismInit",
-        "companyName": "AUTISM INITIATIVES (UK)",
-        "companyNumber": 2436777,
-        "gpg_2020_2021": "3.1",
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": null
-    },
-    {
-        "twitter_id_str": "759141902",
-        "twitter_id": 759141902,
-        "twitter_name": "Autism Together",
-        "twitter_screen_name": "autism_together",
-        "companyName": "AUTISM TOGETHER",
-        "companyNumber": 2658268,
-        "gpg_2020_2021": "2.2",
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": null
-    },
-    {
         "twitter_id_str": "153386946",
         "twitter_id": 153386946,
         "twitter_name": "BAE Systems",
@@ -318,7 +294,7 @@
         "twitter_screen_name": "CadenceInnova",
         "companyName": "CADENCE INNOVA LTD",
         "companyNumber": 10594707,
-        "gpg_2020_2021": "6.0",
+        "gpg_2020_2021": "-6.0",
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
@@ -414,8 +390,8 @@
         "twitter_screen_name": "ChichesterDC",
         "companyName": "Chichester District Council",
         "companyNumber": null,
-        "gpg_2020_2021": "2.7",
-        "gpg_2019_2020": "1.90",
+        "gpg_2020_2021": "-2.7",
+        "gpg_2019_2020": "-1.90",
         "gpg_2018_2019": 5.6,
         "gpg_2017_2018": 3.6
     },
@@ -726,9 +702,9 @@
         "twitter_screen_name": "HaltonHousing",
         "companyName": "HALTON HOUSING",
         "companyNumber": "RS007744",
-        "gpg_2020_2021": "5.7",
-        "gpg_2019_2020": "1.00",
-        "gpg_2018_2019": "14.70",
+        "gpg_2020_2021": "-5.7",
+        "gpg_2019_2020": "-1.00",
+        "gpg_2018_2019": "-14.70",
         "gpg_2017_2018": null
     },
     {
@@ -978,7 +954,7 @@
         "twitter_screen_name": "Johnson_Matthey",
         "companyName": "JOHNSON MATTHEY PLC",
         "companyNumber": 33774,
-        "gpg_2020_2021": "1.1",
+        "gpg_2020_2021": "-1.1",
         "gpg_2019_2020": 3.8,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
@@ -990,10 +966,10 @@
         "twitter_screen_name": "kentfirerescue",
         "companyName": "Kent Fire & Rescue Service",
         "companyNumber": null,
-        "gpg_2020_2021": "5.1",
-        "gpg_2019_2020": "3.90",
-        "gpg_2018_2019": "2.40",
-        "gpg_2017_2018": "1.00"
+        "gpg_2020_2021": "-5.1",
+        "gpg_2019_2020": "-3.90",
+        "gpg_2018_2019": "-2.40",
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "21753295",
@@ -1098,8 +1074,8 @@
         "twitter_screen_name": "LilianFaithfull",
         "companyName": "LILIAN FAITHFULL CARE",
         "companyNumber": 6461263,
-        "gpg_2020_2021": "11.7",
-        "gpg_2019_2020": "10.30",
+        "gpg_2020_2021": "-11.7",
+        "gpg_2019_2020": "-10.30",
         "gpg_2018_2019": 11.1,
         "gpg_2017_2018": null
     },
@@ -1242,8 +1218,8 @@
         "twitter_screen_name": "MHM_Info",
         "companyName": "MENTAL HEALTH MATTERS",
         "companyNumber": 1786914,
-        "gpg_2020_2021": "1",
-        "gpg_2019_2020": "4.00",
+        "gpg_2020_2021": "-1",
+        "gpg_2019_2020": "-4.00",
         "gpg_2018_2019": 0.2,
         "gpg_2017_2018": 5
     },
@@ -1350,7 +1326,7 @@
         "twitter_screen_name": "NPGLondon",
         "companyName": "National Portrait Gallery",
         "companyNumber": null,
-        "gpg_2020_2021": "2.3",
+        "gpg_2020_2021": "-2.3",
         "gpg_2019_2020": 0.4,
         "gpg_2018_2019": 7.4,
         "gpg_2017_2018": 8.3
@@ -1650,10 +1626,10 @@
         "twitter_screen_name": "RedcarCleveland",
         "companyName": "Redcar & Cleveland Borough Council",
         "companyNumber": null,
-        "gpg_2020_2021": "3.0",
-        "gpg_2019_2020": "2.60",
-        "gpg_2018_2019": "2.80",
-        "gpg_2017_2018": "0.80"
+        "gpg_2020_2021": "-3.0",
+        "gpg_2019_2020": "-2.60",
+        "gpg_2018_2019": "-2.80",
+        "gpg_2017_2018": "-0.80"
     },
     {
         "twitter_id_str": "98631626",
@@ -1854,10 +1830,10 @@
         "twitter_screen_name": "hilda_beastoxf",
         "companyName": "ST HILDA'S COLLEGE OXFORD",
         "companyNumber": "RC000598",
-        "gpg_2020_2021": "3.8",
-        "gpg_2019_2020": "5.10",
-        "gpg_2018_2019": "10.40",
-        "gpg_2017_2018": "6.70"
+        "gpg_2020_2021": "-3.8",
+        "gpg_2019_2020": "-5.10",
+        "gpg_2018_2019": "-10.40",
+        "gpg_2017_2018": "-6.70"
     },
     {
         "twitter_id_str": "23447839",
@@ -2034,8 +2010,8 @@
         "twitter_screen_name": "SPFSchools",
         "companyName": "THE STEPHEN PERSE FOUNDATION",
         "companyNumber": 6113565,
-        "gpg_2020_2021": "3.3",
-        "gpg_2019_2020": "3.70",
+        "gpg_2020_2021": "-3.3",
+        "gpg_2019_2020": "-3.70",
         "gpg_2018_2019": 1.7,
         "gpg_2017_2018": 5
     },
@@ -2226,7 +2202,7 @@
         "twitter_screen_name": "West_Suffolk",
         "companyName": "West Suffolk Council",
         "companyNumber": null,
-        "gpg_2020_2021": "0.6",
+        "gpg_2020_2021": "-0.6",
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
@@ -2323,9 +2299,9 @@
         "companyName": "ABBEYCROFT LEISURE",
         "companyNumber": 5207019,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "11.20",
-        "gpg_2018_2019": "10.40",
-        "gpg_2017_2018": "5.40"
+        "gpg_2019_2020": "-11.20",
+        "gpg_2018_2019": "-10.40",
+        "gpg_2017_2018": "-5.40"
     },
     {
         "twitter_id_str": "531892451",
@@ -2431,7 +2407,7 @@
         "companyName": "ACTIVE LUTON",
         "companyNumber": 5458934,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "9.00",
+        "gpg_2019_2020": "-9.00",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -2647,7 +2623,7 @@
         "companyName": "APEX PRIME CARE LTD",
         "companyNumber": 4296566,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.20",
+        "gpg_2019_2020": "-2.20",
         "gpg_2018_2019": 0.5,
         "gpg_2017_2018": 1.7
     },
@@ -2719,9 +2695,9 @@
         "companyName": "ASD LIMITED",
         "companyNumber": 1370600,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.40",
-        "gpg_2018_2019": "12.70",
-        "gpg_2017_2018": "10.60"
+        "gpg_2019_2020": "-8.40",
+        "gpg_2018_2019": "-12.70",
+        "gpg_2017_2018": "-10.60"
     },
     {
         "twitter_id_str": "1304355372",
@@ -2731,7 +2707,7 @@
         "companyName": "Ashfield District Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.40",
+        "gpg_2019_2020": "-0.40",
         "gpg_2018_2019": 0.5,
         "gpg_2017_2018": 1.7
     },
@@ -2743,7 +2719,7 @@
         "companyName": "ASHGATE HOSPICECARE",
         "companyNumber": 2263980,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.00",
+        "gpg_2019_2020": "-3.00",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -2755,7 +2731,7 @@
         "companyName": "ASPENS CHARITIES",
         "companyNumber": 10342980,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.30",
+        "gpg_2019_2020": "-2.30",
         "gpg_2018_2019": 1.2,
         "gpg_2017_2018": null
     },
@@ -2781,7 +2757,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.8,
         "gpg_2018_2019": 0.8,
-        "gpg_2017_2018": "0.40"
+        "gpg_2017_2018": "-0.40"
     },
     {
         "twitter_id_str": "102323621",
@@ -2826,10 +2802,10 @@
         "twitter_screen_name": "AutismInit",
         "companyName": "Autism Initiatives (UK)",
         "companyNumber": 2436777,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.60",
-        "gpg_2018_2019": "4.30",
-        "gpg_2017_2018": "2.80"
+        "gpg_2020_2021": "-3.1",
+        "gpg_2019_2020": "-2.60",
+        "gpg_2018_2019": "-4.30",
+        "gpg_2017_2018": "-2.80"
     },
     {
         "twitter_id_str": "759141902",
@@ -2838,10 +2814,10 @@
         "twitter_screen_name": "autism_together",
         "companyName": "Autism Together",
         "companyNumber": 2658268,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.00",
-        "gpg_2018_2019": "2.90",
-        "gpg_2017_2018": "0.70"
+        "gpg_2020_2021": "-2.2",
+        "gpg_2019_2020": "-2.00",
+        "gpg_2018_2019": "-2.90",
+        "gpg_2017_2018": "-0.70"
     },
     {
         "twitter_id_str": "180086152",
@@ -2853,7 +2829,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 12,
         "gpg_2018_2019": 13.2,
-        "gpg_2017_2018": "8.50"
+        "gpg_2017_2018": "-8.50"
     },
     {
         "twitter_id_str": "2327152038",
@@ -2948,7 +2924,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 1.2,
-        "gpg_2018_2019": "0.50",
+        "gpg_2018_2019": "-0.50",
         "gpg_2017_2018": 4.8
     },
     {
@@ -3115,9 +3091,9 @@
         "companyName": "Basingstoke & Deane Borough Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.20",
-        "gpg_2018_2019": "1.30",
-        "gpg_2017_2018": "2.20"
+        "gpg_2019_2020": "-3.20",
+        "gpg_2018_2019": "-1.30",
+        "gpg_2017_2018": "-2.20"
     },
     {
         "twitter_id_str": "102949421",
@@ -3213,7 +3189,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 1.6,
         "gpg_2018_2019": 0.1,
-        "gpg_2017_2018": "2.10"
+        "gpg_2017_2018": "-2.10"
     },
     {
         "twitter_id_str": "2799539883",
@@ -3223,7 +3199,7 @@
         "companyName": "BH LIVE",
         "companyNumber": 7092112,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.10",
+        "gpg_2019_2020": "-8.10",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -3283,8 +3259,8 @@
         "companyName": "Blackpool Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.90",
-        "gpg_2018_2019": "1.00",
+        "gpg_2019_2020": "-0.90",
+        "gpg_2018_2019": "-1.00",
         "gpg_2017_2018": 0.7
     },
     {
@@ -3571,9 +3547,9 @@
         "companyName": "Brentwood Borough Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.7",
-        "gpg_2018_2019": "6.10",
-        "gpg_2017_2018": "3.80"
+        "gpg_2019_2020": "-8.7",
+        "gpg_2018_2019": "-6.10",
+        "gpg_2017_2018": "-3.80"
     },
     {
         "twitter_id_str": "26039771",
@@ -3643,9 +3619,9 @@
         "companyName": "Brighton & Hove City Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "5.80",
-        "gpg_2018_2019": "7.30",
-        "gpg_2017_2018": "6.00"
+        "gpg_2019_2020": "-5.80",
+        "gpg_2018_2019": "-7.30",
+        "gpg_2017_2018": "-6.00"
     },
     {
         "twitter_id_str": "266094415",
@@ -3717,7 +3693,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.2,
         "gpg_2018_2019": 2.7,
-        "gpg_2017_2018": "2.40"
+        "gpg_2017_2018": "-2.40"
     },
     {
         "twitter_id_str": "155519704",
@@ -3751,9 +3727,9 @@
         "companyName": "Broxbourne Borough Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "12.80",
-        "gpg_2018_2019": "10.90",
-        "gpg_2017_2018": "7.90"
+        "gpg_2019_2020": "-12.80",
+        "gpg_2018_2019": "-10.90",
+        "gpg_2017_2018": "-7.90"
     },
     {
         "twitter_id_str": "46377850",
@@ -3835,7 +3811,7 @@
         "companyName": "Burnley Borough Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.20",
+        "gpg_2019_2020": "-0.20",
         "gpg_2018_2019": 4.7,
         "gpg_2017_2018": 2.3
     },
@@ -3907,7 +3883,7 @@
         "companyName": "CALDERDALE AND HUDDERSFIELD SOLUTIONS LTD",
         "companyNumber": 11258001,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.80",
+        "gpg_2019_2020": "-2.80",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -3967,7 +3943,7 @@
         "companyName": "CANAL & RIVER TRUST",
         "companyNumber": 7807276,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.90",
+        "gpg_2019_2020": "-3.90",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -4101,7 +4077,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 2.5,
         "gpg_2018_2019": 0.6,
-        "gpg_2017_2018": "2.00"
+        "gpg_2017_2018": "-2.00"
     },
     {
         "twitter_id_str": "26498835",
@@ -4291,9 +4267,9 @@
         "companyName": "CHELSEA FC FOUNDATION",
         "companyNumber": 6858117,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "10.40",
-        "gpg_2018_2019": "40.40",
-        "gpg_2017_2018": "24.00"
+        "gpg_2019_2020": "-10.40",
+        "gpg_2018_2019": "-40.40",
+        "gpg_2017_2018": "-24.00"
     },
     {
         "twitter_id_str": "179876593",
@@ -4399,9 +4375,9 @@
         "companyName": "Circadian Trust",
         "companyNumber": 5384234,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.90",
-        "gpg_2018_2019": "2.50",
-        "gpg_2017_2018": "9.70"
+        "gpg_2019_2020": "-3.90",
+        "gpg_2018_2019": "-2.50",
+        "gpg_2017_2018": "-9.70"
     },
     {
         "twitter_id_str": "80374332",
@@ -4507,7 +4483,7 @@
         "companyName": "City of London Police",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.50",
+        "gpg_2019_2020": "-1.50",
         "gpg_2018_2019": 2.6,
         "gpg_2017_2018": 2.7
     },
@@ -4569,7 +4545,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 3.2,
         "gpg_2018_2019": 1.6,
-        "gpg_2017_2018": "1.00"
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "1011961219652169729",
@@ -4579,9 +4555,9 @@
         "companyName": "Cobrey Farms",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.30",
-        "gpg_2018_2019": "2.20",
-        "gpg_2017_2018": "1.30"
+        "gpg_2019_2020": "-1.30",
+        "gpg_2018_2019": "-2.20",
+        "gpg_2017_2018": "-1.30"
     },
     {
         "twitter_id_str": "15468247",
@@ -4663,7 +4639,7 @@
         "companyName": "CORE EDUCATION TRUST",
         "companyNumber": 7949154,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "12.10",
+        "gpg_2019_2020": "-12.10",
         "gpg_2018_2019": 18.2,
         "gpg_2017_2018": null
     },
@@ -4689,7 +4665,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 16.7,
         "gpg_2018_2019": 19,
-        "gpg_2017_2018": "6.10"
+        "gpg_2017_2018": "-6.10"
     },
     {
         "twitter_id_str": "123202793",
@@ -5047,7 +5023,7 @@
         "companyName": "DOROTHY HOUSE",
         "companyNumber": 1360961,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.40",
+        "gpg_2019_2020": "-2.40",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -5635,9 +5611,9 @@
         "companyName": "Exeter City Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "5.30",
-        "gpg_2018_2019": "2.30",
-        "gpg_2017_2018": "0.80"
+        "gpg_2019_2020": "-5.30",
+        "gpg_2018_2019": "-2.30",
+        "gpg_2017_2018": "-0.80"
     },
     {
         "twitter_id_str": "75587012",
@@ -5708,8 +5684,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.3,
-        "gpg_2018_2019": "2.80",
-        "gpg_2017_2018": "1.10"
+        "gpg_2018_2019": "-2.80",
+        "gpg_2017_2018": "-1.10"
     },
     {
         "twitter_id_str": "104467342",
@@ -5769,7 +5745,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.2,
         "gpg_2018_2019": 1.4,
-        "gpg_2017_2018": "0.20"
+        "gpg_2017_2018": "-0.20"
     },
     {
         "twitter_id_str": "60024268",
@@ -5815,9 +5791,9 @@
         "companyName": "Food Standards Agency",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.00",
-        "gpg_2018_2019": "9.30",
-        "gpg_2017_2018": "9.40"
+        "gpg_2019_2020": "-8.00",
+        "gpg_2018_2019": "-9.30",
+        "gpg_2017_2018": "-9.40"
     },
     {
         "twitter_id_str": "2896533591",
@@ -5887,7 +5863,7 @@
         "companyName": "FUSION LIFESTYLE",
         "companyNumber": 5324416,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "16.00",
+        "gpg_2019_2020": "-16.00",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -6067,8 +6043,8 @@
         "companyName": "Government Legal Department",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.60",
-        "gpg_2018_2019": "0.20",
+        "gpg_2019_2020": "-0.60",
+        "gpg_2018_2019": "-0.20",
         "gpg_2017_2018": 0.4
     },
     {
@@ -6127,7 +6103,7 @@
         "companyName": "Greater Manchester Combined Authority",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.70",
+        "gpg_2019_2020": "-2.70",
         "gpg_2018_2019": 1.9,
         "gpg_2017_2018": null
     },
@@ -6283,9 +6259,9 @@
         "companyName": "Hambleton District Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "5.90",
-        "gpg_2018_2019": "5.80",
-        "gpg_2017_2018": "7.70"
+        "gpg_2019_2020": "-5.90",
+        "gpg_2018_2019": "-5.80",
+        "gpg_2017_2018": "-7.70"
     },
     {
         "twitter_id_str": "56658524",
@@ -6391,9 +6367,9 @@
         "companyName": "Harrogate Borough Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.90",
-        "gpg_2018_2019": "0.90",
-        "gpg_2017_2018": "0.50"
+        "gpg_2019_2020": "-1.90",
+        "gpg_2018_2019": "-0.90",
+        "gpg_2017_2018": "-0.50"
     },
     {
         "twitter_id_str": "82900368",
@@ -6535,9 +6511,9 @@
         "companyName": "Hertfordshire County Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.80",
-        "gpg_2018_2019": "2.90",
-        "gpg_2017_2018": "0.90"
+        "gpg_2019_2020": "-2.80",
+        "gpg_2018_2019": "-2.90",
+        "gpg_2017_2018": "-0.90"
     },
     {
         "twitter_id_str": "1436769703",
@@ -6607,7 +6583,7 @@
         "companyName": "Hollybank Trust",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.30",
+        "gpg_2019_2020": "-1.30",
         "gpg_2018_2019": 1.4,
         "gpg_2017_2018": 2.7
     },
@@ -6739,8 +6715,8 @@
         "companyName": "HSS HIRE GROUP PLC",
         "companyNumber": 9378067,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.0",
-        "gpg_2018_2019": "1.0",
+        "gpg_2019_2020": "-1.0",
+        "gpg_2018_2019": "-1.0",
         "gpg_2017_2018": null
     },
     {
@@ -6823,7 +6799,7 @@
         "companyName": "HYPEROPTIC LTD",
         "companyNumber": 7222543,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "61.60",
+        "gpg_2019_2020": "-61.60",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -6871,7 +6847,7 @@
         "companyName": "INTEGRATED CARE 24",
         "companyNumber": 3193182,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "9.10",
+        "gpg_2019_2020": -"9.10",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -6883,7 +6859,7 @@
         "companyName": "INTERFACE EUROPE LTD.",
         "companyNumber": 309779,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "4.90",
+        "gpg_2019_2020": "-4.90",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -7161,7 +7137,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 31.7,
         "gpg_2018_2019": 31.5,
-        "gpg_2017_2018": "0.60"
+        "gpg_2017_2018": "-0.60"
     },
     {
         "twitter_id_str": "409859956",
@@ -7279,7 +7255,7 @@
         "companyName": "Lancashire Fire and Rescue Service",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.60",
+        "gpg_2019_2020": "-2.60",
         "gpg_2018_2019": 3.2,
         "gpg_2017_2018": 4.4
     },
@@ -7711,7 +7687,7 @@
         "companyName": "London Fire Brigade",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.40",
+        "gpg_2019_2020": "-8.40",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -7759,9 +7735,9 @@
         "companyName": "Loreto College",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "4.20",
-        "gpg_2018_2019": "3.80",
-        "gpg_2017_2018": "3.80"
+        "gpg_2019_2020": "-4.20",
+        "gpg_2018_2019": "-3.80",
+        "gpg_2017_2018": "-3.80"
     },
     {
         "twitter_id_str": "71490029",
@@ -7976,8 +7952,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.4,
-        "gpg_2018_2019": "2.40",
-        "gpg_2017_2018": "1.20"
+        "gpg_2018_2019": "-2.40",
+        "gpg_2017_2018": "-1.20"
     },
     {
         "twitter_id_str": "558629497",
@@ -8263,7 +8239,7 @@
         "companyName": "Milkwood Care Ltd",
         "companyNumber": 3729130,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "4.30",
+        "gpg_2019_2020": "-4.30",
         "gpg_2018_2019": 4.9,
         "gpg_2017_2018": 2.9
     },
@@ -8276,8 +8252,8 @@
         "companyNumber": 833987,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 4,
-        "gpg_2018_2019": "4.60",
-        "gpg_2017_2018": "3.90"
+        "gpg_2018_2019": "-4.60",
+        "gpg_2017_2018": "-3.90"
     },
     {
         "twitter_id_str": "148361201",
@@ -8515,9 +8491,9 @@
         "companyName": "National Museums Of Scotland",
         "companyNumber": 11130,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "8.00",
-        "gpg_2018_2019": "4.80",
-        "gpg_2017_2018": "4.50"
+        "gpg_2019_2020": "-8.00",
+        "gpg_2018_2019": "-4.80",
+        "gpg_2017_2018": "-4.50"
     },
     {
         "twitter_id_str": "601109181",
@@ -8683,9 +8659,9 @@
         "companyName": "North Devon Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.3",
-        "gpg_2018_2019": "5.40",
-        "gpg_2017_2018": "2.40"
+        "gpg_2019_2020": "-3.3",
+        "gpg_2018_2019": "-5.40",
+        "gpg_2017_2018": "-2.40"
     },
     {
         "twitter_id_str": "266539349",
@@ -8708,8 +8684,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 3.6,
-        "gpg_2018_2019": "0.20",
-        "gpg_2017_2018": "0.10"
+        "gpg_2018_2019": "-0.20",
+        "gpg_2017_2018": "-0.10"
     },
     {
         "twitter_id_str": "23959494",
@@ -9201,7 +9177,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.7,
         "gpg_2018_2019": 0.6,
-        "gpg_2017_2018": "5.20"
+        "gpg_2017_2018": "-5.20"
     },
     {
         "twitter_id_str": "1192023391022260234",
@@ -9271,7 +9247,7 @@
         "companyName": "PENUMBRA",
         "companyNumber": "SC091542",
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.00",
+        "gpg_2019_2020": "-2.00",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -9343,7 +9319,7 @@
         "companyName": "PILGRIMS HOSPICES IN EAST KENT",
         "companyNumber": 2000560,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "6.0",
+        "gpg_2019_2020": "-6.0",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -9441,7 +9417,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 26,
         "gpg_2018_2019": 25.7,
-        "gpg_2017_2018": "9.40"
+        "gpg_2017_2018": "-9.40"
     },
     {
         "twitter_id_str": "161986055",
@@ -9523,9 +9499,9 @@
         "companyName": "PRINCESS ALICE HOSPICE",
         "companyNumber": 1599796,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.1",
-        "gpg_2018_2019": "4.10",
-        "gpg_2017_2018": "0.50"
+        "gpg_2019_2020": "-1.1",
+        "gpg_2018_2019": "-4.10",
+        "gpg_2017_2018": "-0.50"
     },
     {
         "twitter_id_str": "115350017",
@@ -9547,9 +9523,9 @@
         "companyName": "Q CARE LIMITED",
         "companyNumber": 2881343,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "21.10",
+        "gpg_2019_2020": "-21.10",
         "gpg_2018_2019": 12.3,
-        "gpg_2017_2018": "1.10"
+        "gpg_2017_2018": "-1.10"
     },
     {
         "twitter_id_str": "801705490099171328",
@@ -9585,7 +9561,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.9,
         "gpg_2018_2019": 1,
-        "gpg_2017_2018": "3.20"
+        "gpg_2017_2018": "-3.20"
     },
     {
         "twitter_id_str": "19401276",
@@ -9679,7 +9655,7 @@
         "companyName": "REDWINGS HORSE SANCTUARY",
         "companyNumber": 3524502,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "6.70",
+        "gpg_2019_2020": "-6.70",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -9739,8 +9715,8 @@
         "companyName": "RENTOKIL INITIAL UK LTD",
         "companyNumber": 301044,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "3.00",
-        "gpg_2018_2019": "2.00",
+        "gpg_2019_2020": "-3.00",
+        "gpg_2018_2019": "-2.00",
         "gpg_2017_2018": 0
     },
     {
@@ -9752,7 +9728,7 @@
         "companyNumber": 201528,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0,
-        "gpg_2018_2019": "4.80",
+        "gpg_2018_2019": "-4.80",
         "gpg_2017_2018": null
     },
     {
@@ -10520,7 +10496,7 @@
         "companyNumber": "BR000490",
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.7,
-        "gpg_2018_2019": "0.70",
+        "gpg_2018_2019": "-0.70",
         "gpg_2017_2018": 1.6
     },
     {
@@ -10603,9 +10579,9 @@
         "companyName": "South Cambridgeshire District Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "6.60",
-        "gpg_2018_2019": "5.90",
-        "gpg_2017_2018": "4.90"
+        "gpg_2019_2020": "-6.60",
+        "gpg_2018_2019": "-5.90",
+        "gpg_2017_2018": "-4.90"
     },
     {
         "twitter_id_str": "421014471",
@@ -10627,7 +10603,7 @@
         "companyName": "SOUTH DOWNS LEISURE",
         "companyNumber": 9204269,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "11.50",
+        "gpg_2019_2020": "-11.50",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -10915,7 +10891,7 @@
         "companyName": "ST JOHN'S SCHOOL & COLLEGE",
         "companyNumber": 3303549,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.00",
+        "gpg_2019_2020": "-1.00",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -10965,7 +10941,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 16.9,
         "gpg_2018_2019": 16.4,
-        "gpg_2017_2018": "14.30"
+        "gpg_2017_2018": "-14.30"
     },
     {
         "twitter_id_str": "64396228",
@@ -11023,9 +10999,9 @@
         "companyName": "Stanmore House School",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.30",
-        "gpg_2018_2019": "28.00",
-        "gpg_2017_2018": "23.20"
+        "gpg_2019_2020": "-1.30",
+        "gpg_2018_2019": "-28.00",
+        "gpg_2017_2018": "-23.20"
     },
     {
         "twitter_id_str": "291803364",
@@ -11455,9 +11431,9 @@
         "companyName": "TEES ACTIVE LTD",
         "companyNumber": "IP29699R",
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "10.90",
-        "gpg_2018_2019": "5.00",
-        "gpg_2017_2018": "4.50"
+        "gpg_2019_2020": "-10.90",
+        "gpg_2018_2019": "-5.00",
+        "gpg_2017_2018": "-4.50"
     },
     {
         "twitter_id_str": "20065487",
@@ -11479,9 +11455,9 @@
         "companyName": "Teignbridge District Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "7.60",
+        "gpg_2019_2020": "-7.60",
         "gpg_2018_2019": 4.4,
-        "gpg_2017_2018": "8.20"
+        "gpg_2017_2018": "-8.20"
     },
     {
         "twitter_id_str": "54501820",
@@ -11539,7 +11515,7 @@
         "companyName": "THAMES REACH CHARITY",
         "companyNumber": 10098652,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.90",
+        "gpg_2019_2020": "-1.90",
         "gpg_2018_2019": 2.7,
         "gpg_2017_2018": null
     },
@@ -11611,7 +11587,7 @@
         "companyName": "THE BRANDON TRUST",
         "companyNumber": 2365487,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.60",
+        "gpg_2019_2020": "-2.60",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -11744,8 +11720,8 @@
         "companyNumber": 2334589,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0,
-        "gpg_2018_2019": "0.70",
-        "gpg_2017_2018": "2.50"
+        "gpg_2018_2019": "-0.70",
+        "gpg_2017_2018": "-2.50"
     },
     {
         "twitter_id_str": "2647307118",
@@ -11887,7 +11863,7 @@
         "companyName": "THE KING'S SCHOOL, ELY",
         "companyNumber": 2440509,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.60",
+        "gpg_2019_2020": "-0.60",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -11899,8 +11875,8 @@
         "companyName": "The Labour Party",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "4.70",
-        "gpg_2018_2019": "3.00",
+        "gpg_2019_2020": "-4.70",
+        "gpg_2018_2019": "-3.00",
         "gpg_2017_2018": 2.5
     },
     {
@@ -11995,9 +11971,9 @@
         "companyName": "The National Farmers' Union",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "2.40",
-        "gpg_2018_2019": "3.10",
-        "gpg_2017_2018": "4.20"
+        "gpg_2019_2020": "-2.40",
+        "gpg_2018_2019": "-3.10",
+        "gpg_2017_2018": "-4.20"
     },
     {
         "twitter_id_str": "137645230",
@@ -12247,9 +12223,9 @@
         "companyName": "The Royal Masonic School for Girls",
         "companyNumber": 1339867,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.60",
-        "gpg_2018_2019": "2.00",
-        "gpg_2017_2018": "4.00"
+        "gpg_2019_2020": "-0.60",
+        "gpg_2018_2019": "-2.00",
+        "gpg_2017_2018": "-4.00"
     },
     {
         "twitter_id_str": "2966254751",
@@ -13233,7 +13209,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0.2,
         "gpg_2018_2019": 7.5,
-        "gpg_2017_2018": "1.20"
+        "gpg_2017_2018": "-1.20"
     },
     {
         "twitter_id_str": "4338754336",
@@ -13651,7 +13627,7 @@
         "companyName": "WHITE ROSE UK LTD",
         "companyNumber": 6560948,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "0.80",
+        "gpg_2019_2020": "-0.80",
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -13700,8 +13676,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": 0,
-        "gpg_2018_2019": "2.60",
-        "gpg_2017_2018": "2.10"
+        "gpg_2018_2019": "-2.60",
+        "gpg_2017_2018": "-2.10"
     },
     {
         "twitter_id_str": "339931361",
@@ -13855,9 +13831,9 @@
         "companyName": "Worcester City Council",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "1.20",
-        "gpg_2018_2019": "7.70",
-        "gpg_2017_2018": "10.40"
+        "gpg_2019_2020": "-1.20",
+        "gpg_2018_2019": "-7.70",
+        "gpg_2017_2018": "-10.40"
     },
     {
         "twitter_id_str": "3674039602",
@@ -14023,9 +13999,9 @@
         "companyName": "YPO",
         "companyNumber": null,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": "5.10",
-        "gpg_2018_2019": "4.70",
-        "gpg_2017_2018": "2.80"
+        "gpg_2019_2020": "-5.10",
+        "gpg_2018_2019": "-4.70",
+        "gpg_2017_2018": "-2.80"
     },
     {
         "twitter_id_str": "1092469022749265921",
@@ -14096,7 +14072,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
+        "gpg_2018_2019": "-1.00",
         "gpg_2017_2018": 4.7
     },
     {
@@ -14156,8 +14132,8 @@
         "companyNumber": 5458934,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "8.00",
-        "gpg_2017_2018": "8.40"
+        "gpg_2018_2019": "-8.00",
+        "gpg_2017_2018": "-8.40"
     },
     {
         "twitter_id_str": "93837626",
@@ -14168,8 +14144,8 @@
         "companyNumber": 3072216,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "6.50",
-        "gpg_2017_2018": "7.90"
+        "gpg_2018_2019": "-6.50",
+        "gpg_2017_2018": "-7.90"
     },
     {
         "twitter_id_str": "1193349044",
@@ -14240,8 +14216,8 @@
         "companyNumber": "SC287991",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.10",
-        "gpg_2017_2018": "1.30"
+        "gpg_2018_2019": "-1.10",
+        "gpg_2017_2018": "-1.30"
     },
     {
         "twitter_id_str": "57333022",
@@ -14276,8 +14252,8 @@
         "companyNumber": 1763579,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.30",
-        "gpg_2017_2018": "4.70"
+        "gpg_2018_2019": "-4.30",
+        "gpg_2017_2018": "-4.70"
     },
     {
         "twitter_id_str": "158411944",
@@ -14480,7 +14456,7 @@
         "companyNumber": 2263980,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "6.70",
+        "gpg_2018_2019": "-6.70",
         "gpg_2017_2018": 0.5
     },
     {
@@ -14624,8 +14600,8 @@
         "companyNumber": 2506982,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "8.00",
-        "gpg_2017_2018": "18.20"
+        "gpg_2018_2019": "-8.00",
+        "gpg_2017_2018": "-18.20"
     },
     {
         "twitter_id_str": "1637705142",
@@ -14744,7 +14720,7 @@
         "companyNumber": 6014862,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.00",
+        "gpg_2018_2019": "-3.00",
         "gpg_2017_2018": 2.1
     },
     {
@@ -14816,8 +14792,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "17.00",
-        "gpg_2017_2018": "5.0"
+        "gpg_2018_2019": "-17.00",
+        "gpg_2017_2018": "-5.0"
     },
     {
         "twitter_id_str": "73398908",
@@ -14840,8 +14816,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.30",
-        "gpg_2017_2018": "1.00"
+        "gpg_2018_2019": "-1.30",
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "20505533",
@@ -14948,8 +14924,8 @@
         "companyNumber": 7092112,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "5.70",
-        "gpg_2017_2018": "8.00"
+        "gpg_2018_2019": "-5.70",
+        "gpg_2017_2018": "-8.00"
     },
     {
         "twitter_id_str": "2515752703",
@@ -15164,7 +15140,7 @@
         "companyNumber": 2235994,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.40",
+        "gpg_2018_2019": "-0.40",
         "gpg_2017_2018": 2.8
     },
     {
@@ -15524,8 +15500,8 @@
         "companyNumber": 7807276,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "2.60",
-        "gpg_2017_2018": "3.60"
+        "gpg_2018_2019": "-2.60",
+        "gpg_2017_2018": "-3.60"
     },
     {
         "twitter_id_str": "867901747",
@@ -15633,7 +15609,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0.1,
-        "gpg_2017_2018": "0.70"
+        "gpg_2017_2018": "-0.70"
     },
     {
         "twitter_id_str": "44088315",
@@ -15692,8 +15668,8 @@
         "companyNumber": 9519616,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "6.80",
-        "gpg_2017_2018": "4.30"
+        "gpg_2018_2019": "-6.80",
+        "gpg_2017_2018": "-4.30"
     },
     {
         "twitter_id_str": "822914395",
@@ -15860,7 +15836,7 @@
         "companyNumber": 2189556,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.60",
+        "gpg_2018_2019": "-1.60",
         "gpg_2017_2018": 3.7
     },
     {
@@ -15896,8 +15872,8 @@
         "companyNumber": 1555444,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.00",
-        "gpg_2017_2018": "9.00"
+        "gpg_2018_2019": "-4.00",
+        "gpg_2017_2018": "-9.00"
     },
     {
         "twitter_id_str": "3652574836",
@@ -16077,7 +16053,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 22.5,
-        "gpg_2017_2018": "1.70"
+        "gpg_2017_2018": "-1.70"
     },
     {
         "twitter_id_str": "1625765664",
@@ -16124,8 +16100,8 @@
         "companyNumber": 6251078,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.10",
-        "gpg_2017_2018": "2.30"
+        "gpg_2018_2019": "-4.10",
+        "gpg_2017_2018": "-2.30"
     },
     {
         "twitter_id_str": "425696495",
@@ -16317,7 +16293,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0.6,
-        "gpg_2017_2018": "1.00"
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "61727838",
@@ -16364,7 +16340,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
+        "gpg_2018_2019": "-1.00",
         "gpg_2017_2018": 1
     },
     {
@@ -16400,8 +16376,8 @@
         "companyNumber": 2142070,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "42.00",
-        "gpg_2017_2018": "28.90"
+        "gpg_2018_2019": "-42.00",
+        "gpg_2017_2018": "-28.90"
     },
     {
         "twitter_id_str": "973228842419654656",
@@ -16437,7 +16413,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 11.2,
-        "gpg_2017_2018": "3.40"
+        "gpg_2017_2018": "-3.40"
     },
     {
         "twitter_id_str": "811216548102897664",
@@ -16521,7 +16497,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 6,
-        "gpg_2017_2018": "1.40"
+        "gpg_2017_2018": "-1.40"
     },
     {
         "twitter_id_str": "25360410",
@@ -16580,8 +16556,8 @@
         "companyNumber": 732993,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.00",
-        "gpg_2017_2018": "3.00"
+        "gpg_2018_2019": "-4.00",
+        "gpg_2017_2018": "-3.00"
     },
     {
         "twitter_id_str": "69967067",
@@ -16604,8 +16580,8 @@
         "companyNumber": 6126794,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "21.70",
-        "gpg_2017_2018": "37.20"
+        "gpg_2018_2019": "-21.70",
+        "gpg_2017_2018": "-37.20"
     },
     {
         "twitter_id_str": "1322370938",
@@ -16640,7 +16616,7 @@
         "companyNumber": 1490333,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "5.10",
+        "gpg_2018_2019": "-5.10",
         "gpg_2017_2018": 3.8
     },
     {
@@ -16700,8 +16676,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.00",
-        "gpg_2017_2018": "2.90"
+        "gpg_2018_2019": "-3.00",
+        "gpg_2017_2018": "-2.90"
     },
     {
         "twitter_id_str": "20776714",
@@ -16808,8 +16784,8 @@
         "companyNumber": "SC116745",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
-        "gpg_2017_2018": "2.30"
+        "gpg_2018_2019": "-1.00",
+        "gpg_2017_2018": "-2.30"
     },
     {
         "twitter_id_str": "20096207",
@@ -16868,8 +16844,8 @@
         "companyNumber": "SC278976",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "5.20",
-        "gpg_2017_2018": "2.20"
+        "gpg_2018_2019": "-5.20",
+        "gpg_2017_2018": "-2.20"
     },
     {
         "twitter_id_str": "2481912758",
@@ -16880,8 +16856,8 @@
         "companyNumber": 7054337,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "2.40",
-        "gpg_2017_2018": "2.30"
+        "gpg_2018_2019": "-2.40",
+        "gpg_2017_2018": "-2.30"
     },
     {
         "twitter_id_str": "3115678678",
@@ -16905,7 +16881,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 3.9,
-        "gpg_2017_2018": "0.90"
+        "gpg_2017_2018": "-0.90"
     },
     {
         "twitter_id_str": "455130598",
@@ -16917,7 +16893,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 1,
-        "gpg_2017_2018": "2.80"
+        "gpg_2017_2018": "-2.80"
     },
     {
         "twitter_id_str": "1047116231269068800",
@@ -16940,7 +16916,7 @@
         "companyNumber": 492761,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "7.20",
+        "gpg_2018_2019": "-7.20",
         "gpg_2017_2018": null
     },
     {
@@ -17240,8 +17216,8 @@
         "companyNumber": 5324416,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "16.00",
-        "gpg_2017_2018": "16.00"
+        "gpg_2018_2019": "-16.00",
+        "gpg_2017_2018": "-16.00"
     },
     {
         "twitter_id_str": "418133642",
@@ -17264,8 +17240,8 @@
         "companyNumber": 4829670,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
-        "gpg_2017_2018": "4.10"
+        "gpg_2018_2019": "-1.00",
+        "gpg_2017_2018": "-4.10"
     },
     {
         "twitter_id_str": "53104401",
@@ -17276,8 +17252,8 @@
         "companyNumber": 3685477,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "26.90",
-        "gpg_2017_2018": "15.00"
+        "gpg_2018_2019": "-26.90",
+        "gpg_2017_2018": "-15.00"
     },
     {
         "twitter_id_str": "360506737",
@@ -17289,7 +17265,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 1,
-        "gpg_2017_2018": "4.90"
+        "gpg_2017_2018": "-4.90"
     },
     {
         "twitter_id_str": "94070471",
@@ -17312,8 +17288,8 @@
         "companyNumber": 6365402,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "6.00",
-        "gpg_2017_2018": "15.00"
+        "gpg_2018_2019": "-6.00",
+        "gpg_2017_2018": "-15.00"
     },
     {
         "twitter_id_str": "1149354662832824321",
@@ -17372,7 +17348,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.00",
+        "gpg_2018_2019": "-3.00",
         "gpg_2017_2018": 0.2
     },
     {
@@ -17480,7 +17456,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "12.70",
+        "gpg_2018_2019": "-12.70",
         "gpg_2017_2018": 1.4
     },
     {
@@ -17528,8 +17504,8 @@
         "companyNumber": "IP27793R",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "9.30",
-        "gpg_2017_2018": "11.90"
+        "gpg_2018_2019": "-9.30",
+        "gpg_2017_2018": "-11.90"
     },
     {
         "twitter_id_str": "763364586",
@@ -17588,7 +17564,7 @@
         "companyNumber": 4212532,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "7.70",
+        "gpg_2018_2019": "-7.70",
         "gpg_2017_2018": null
     },
     {
@@ -17816,8 +17792,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "8.00",
-        "gpg_2017_2018": "4.80"
+        "gpg_2018_2019": "-8.00",
+        "gpg_2017_2018": "-4.80"
     },
     {
         "twitter_id_str": "26218396",
@@ -17984,7 +17960,7 @@
         "companyNumber": 7222543,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "49.30",
+        "gpg_2018_2019": "-49.30",
         "gpg_2017_2018": null
     },
     {
@@ -18008,7 +17984,7 @@
         "companyNumber": 2699682,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "5.00",
+        "gpg_2018_2019": "-5.00",
         "gpg_2017_2018": null
     },
     {
@@ -18020,7 +17996,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.40",
+        "gpg_2018_2019": "-1.40",
         "gpg_2017_2018": 2
     },
     {
@@ -18141,7 +18117,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 2,
-        "gpg_2017_2018": "1.00"
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "1049689817225850881",
@@ -18176,8 +18152,8 @@
         "companyNumber": "SC223197",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.80",
-        "gpg_2017_2018": "4.00"
+        "gpg_2018_2019": "-4.80",
+        "gpg_2017_2018": "-4.00"
     },
     {
         "twitter_id_str": "255470657",
@@ -18357,7 +18333,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0.2,
-        "gpg_2017_2018": "4.80"
+        "gpg_2017_2018": "-4.80"
     },
     {
         "twitter_id_str": "2458606440",
@@ -18404,8 +18380,8 @@
         "companyNumber": 2749906,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "13.50",
-        "gpg_2017_2018": "3.60"
+        "gpg_2018_2019": "-13.50",
+        "gpg_2017_2018": "-3.60"
     },
     {
         "twitter_id_str": "1121693036336099328",
@@ -18572,8 +18548,8 @@
         "companyNumber": 8329324,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.00",
-        "gpg_2017_2018": "5.30"
+        "gpg_2018_2019": "-3.00",
+        "gpg_2017_2018": "-5.30"
     },
     {
         "twitter_id_str": "21390452",
@@ -18740,7 +18716,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
+        "gpg_2018_2019": "-1.00",
         "gpg_2017_2018": 0.5
     },
     {
@@ -18764,7 +18740,7 @@
         "companyNumber": 5538830,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "24.60",
+        "gpg_2018_2019": "-24.60",
         "gpg_2017_2018": null
     },
     {
@@ -18860,8 +18836,8 @@
         "companyNumber": 5847807,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "7.60",
-        "gpg_2017_2018": "3.60"
+        "gpg_2018_2019": "-7.60",
+        "gpg_2017_2018": "-3.60"
     },
     {
         "twitter_id_str": "120116382",
@@ -19917,7 +19893,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 9,
-        "gpg_2017_2018": "1.40"
+        "gpg_2017_2018": "-1.40"
     },
     {
         "twitter_id_str": "3198002879",
@@ -19940,7 +19916,7 @@
         "companyNumber": 1818255,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.20",
+        "gpg_2018_2019": "-1.20",
         "gpg_2017_2018": 7.5
     },
     {
@@ -19952,7 +19928,7 @@
         "companyNumber": "SC398095",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.60",
+        "gpg_2018_2019": "-1.60",
         "gpg_2017_2018": 0
     },
     {
@@ -19964,8 +19940,8 @@
         "companyNumber": 2861966,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.60",
-        "gpg_2017_2018": "1.20"
+        "gpg_2018_2019": "-0.60",
+        "gpg_2017_2018": "-1.20"
     },
     {
         "twitter_id_str": "1317091147991420929",
@@ -20048,7 +20024,7 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.70",
+        "gpg_2018_2019": "-0.70",
         "gpg_2017_2018": 0.1
     },
     {
@@ -20300,7 +20276,7 @@
         "companyNumber": 2000560,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.80",
+        "gpg_2018_2019": "-4.80",
         "gpg_2017_2018": 1.9
     },
     {
@@ -20384,8 +20360,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.90",
-        "gpg_2017_2018": "1.50"
+        "gpg_2018_2019": "-0.90",
+        "gpg_2017_2018": "-1.50"
     },
     {
         "twitter_id_str": "161986055",
@@ -20456,8 +20432,8 @@
         "companyNumber": 214077,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.00",
-        "gpg_2017_2018": "15.00"
+        "gpg_2018_2019": "-4.00",
+        "gpg_2017_2018": "-15.00"
     },
     {
         "twitter_id_str": "19981192",
@@ -20529,7 +20505,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 2.9,
-        "gpg_2017_2018": "2.90"
+        "gpg_2017_2018": "-2.90"
     },
     {
         "twitter_id_str": "166556892",
@@ -20600,8 +20576,8 @@
         "companyNumber": 3524502,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "6.30",
-        "gpg_2017_2018": "5.30"
+        "gpg_2018_2019": "-6.30",
+        "gpg_2017_2018": "-5.30"
     },
     {
         "twitter_id_str": "20158431",
@@ -20625,7 +20601,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0,
-        "gpg_2017_2018": "2.00"
+        "gpg_2017_2018": "-2.00"
     },
     {
         "twitter_id_str": "586863899",
@@ -20708,8 +20684,8 @@
         "companyNumber": 1402643,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "2.70",
-        "gpg_2017_2018": "6.40"
+        "gpg_2018_2019": "-2.70",
+        "gpg_2017_2018": "-6.40"
     },
     {
         "twitter_id_str": "3144163307",
@@ -20768,7 +20744,7 @@
         "companyNumber": "RC000434",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
+        "gpg_2018_2019": "-1.00",
         "gpg_2017_2018": 8.3
     },
     {
@@ -20864,7 +20840,7 @@
         "companyNumber": "RC000503",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.10",
+        "gpg_2018_2019": "-3.10",
         "gpg_2017_2018": 0.7
     },
     {
@@ -20984,8 +20960,8 @@
         "companyNumber": 1367828,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "24.70",
-        "gpg_2017_2018": "21.60"
+        "gpg_2018_2019": "-24.70",
+        "gpg_2017_2018": "-21.60"
     },
     {
         "twitter_id_str": "1175031524837789698",
@@ -21116,8 +21092,8 @@
         "companyNumber": 4216714,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "3.00",
-        "gpg_2017_2018": "4.00"
+        "gpg_2018_2019": "-3.00",
+        "gpg_2017_2018": "-4.00"
     },
     {
         "twitter_id_str": "20224838",
@@ -21165,7 +21141,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 3.3,
-        "gpg_2017_2018": "1.50"
+        "gpg_2017_2018": "-1.50"
     },
     {
         "twitter_id_str": "81087583",
@@ -21405,7 +21381,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 7.1,
-        "gpg_2017_2018": "3.80"
+        "gpg_2017_2018": "-3.80"
     },
     {
         "twitter_id_str": "188886565",
@@ -21452,8 +21428,8 @@
         "companyNumber": 9204269,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "8.50",
-        "gpg_2017_2018": "6.00"
+        "gpg_2018_2019": "-8.50",
+        "gpg_2017_2018": "-6.00"
     },
     {
         "twitter_id_str": "29690793",
@@ -21464,8 +21440,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "11.00",
-        "gpg_2017_2018": "7.90"
+        "gpg_2018_2019": "-11.00",
+        "gpg_2017_2018": "-7.90"
     },
     {
         "twitter_id_str": "21113661",
@@ -21536,8 +21512,8 @@
         "companyNumber": "SC350981",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "14.50",
-        "gpg_2017_2018": "12.80"
+        "gpg_2018_2019": "-14.50",
+        "gpg_2017_2018": "-12.80"
     },
     {
         "twitter_id_str": "92484050",
@@ -21908,8 +21884,8 @@
         "companyNumber": 8931490,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.50",
-        "gpg_2017_2018": "2.30"
+        "gpg_2018_2019": "-1.50",
+        "gpg_2017_2018": "-2.30"
     },
     {
         "twitter_id_str": "20089560",
@@ -22004,8 +21980,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "5.50",
-        "gpg_2017_2018": "0.20"
+        "gpg_2018_2019": "-5.50",
+        "gpg_2017_2018": "-0.20"
     },
     {
         "twitter_id_str": "703666198",
@@ -22112,7 +22088,7 @@
         "companyNumber": "SC105634",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.90",
+        "gpg_2018_2019": "-0.90",
         "gpg_2017_2018": 2.7
     },
     {
@@ -22208,7 +22184,7 @@
         "companyNumber": 2365487,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "2.70",
+        "gpg_2018_2019": "-2.70",
         "gpg_2017_2018": 1.2
     },
     {
@@ -22244,8 +22220,8 @@
         "companyNumber": 3023588,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.00",
-        "gpg_2017_2018": "5.70"
+        "gpg_2018_2019": "-1.00",
+        "gpg_2017_2018": "-5.70"
     },
     {
         "twitter_id_str": "1007350874",
@@ -22328,8 +22304,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "10.40",
-        "gpg_2017_2018": "6.40"
+        "gpg_2018_2019": "-10.40",
+        "gpg_2017_2018": "-6.40"
     },
     {
         "twitter_id_str": "90931333",
@@ -22449,7 +22425,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 8.4,
-        "gpg_2017_2018": "2.80"
+        "gpg_2017_2018": "-2.80"
     },
     {
         "twitter_id_str": "917021534",
@@ -22520,7 +22496,7 @@
         "companyNumber": 2404983,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "2.20",
+        "gpg_2018_2019": "-2.20",
         "gpg_2017_2018": null
     },
     {
@@ -22749,7 +22725,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 2.2,
-        "gpg_2017_2018": "1.10"
+        "gpg_2017_2018": "-1.10"
     },
     {
         "twitter_id_str": "2827514410",
@@ -23313,7 +23289,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0.3,
-        "gpg_2017_2018": "1.60"
+        "gpg_2017_2018": "-1.60"
     },
     {
         "twitter_id_str": "849255294140112898",
@@ -23456,8 +23432,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "8.60",
-        "gpg_2017_2018": "10.00"
+        "gpg_2018_2019": "-8.60",
+        "gpg_2017_2018": "-10.00"
     },
     {
         "twitter_id_str": "19910826",
@@ -23516,8 +23492,8 @@
         "companyNumber": 135767,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "4.00",
-        "gpg_2017_2018": "0.80"
+        "gpg_2018_2019": "-4.00",
+        "gpg_2017_2018": "-0.80"
     },
     {
         "twitter_id_str": "90217446",
@@ -23792,8 +23768,8 @@
         "companyNumber": null,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "1.80",
-        "gpg_2017_2018": "2.30"
+        "gpg_2018_2019": "-1.80",
+        "gpg_2017_2018": "-2.30"
     },
     {
         "twitter_id_str": "18134929",
@@ -23924,8 +23900,8 @@
         "companyNumber": 6560948,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.70",
-        "gpg_2017_2018": "1.00"
+        "gpg_2018_2019": "-0.70",
+        "gpg_2017_2018": "-1.00"
     },
     {
         "twitter_id_str": "2771736989",
@@ -24009,7 +23985,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 4,
-        "gpg_2017_2018": "5.00"
+        "gpg_2017_2018": "-5.00"
     },
     {
         "twitter_id_str": "1111200550979358720",
@@ -24044,8 +24020,8 @@
         "companyNumber": "OC334359",
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "0.90",
-        "gpg_2017_2018": "5.20"
+        "gpg_2018_2019": "-0.90",
+        "gpg_2017_2018": "-5.20"
     },
     {
         "twitter_id_str": "2873528385",
@@ -24141,7 +24117,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 0,
-        "gpg_2017_2018": "11.30"
+        "gpg_2017_2018": "-11.30"
     },
     {
         "twitter_id_str": "14086764",
@@ -24248,8 +24224,8 @@
         "companyNumber": 3853734,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
-        "gpg_2018_2019": "7.00",
-        "gpg_2017_2018": "6.00"
+        "gpg_2018_2019": "-7.00",
+        "gpg_2017_2018": "-6.00"
     },
     {
         "twitter_id_str": "81328440",
@@ -24369,7 +24345,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "37.40"
+        "gpg_2017_2018": "-37.40"
     },
     {
         "twitter_id_str": "377258449",
@@ -24453,7 +24429,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "0.40"
+        "gpg_2017_2018": "-0.40"
     },
     {
         "twitter_id_str": "30912137",
@@ -24633,7 +24609,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "0.60"
+        "gpg_2017_2018": "-0.60"
     },
     {
         "twitter_id_str": "17632129",
@@ -24645,7 +24621,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "20.00"
+        "gpg_2017_2018": "-20.00"
     },
     {
         "twitter_id_str": "247772295",
@@ -24753,7 +24729,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "16.00"
+        "gpg_2017_2018": "-16.00"
     },
     {
         "twitter_id_str": "44439590",
@@ -24765,7 +24741,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "5.70"
+        "gpg_2017_2018": "-5.70"
     },
     {
         "twitter_id_str": "60907090",
@@ -25077,7 +25053,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "2.40"
+        "gpg_2017_2018": "-2.40"
     },
     {
         "twitter_id_str": "271913804",
@@ -25221,7 +25197,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "6.90"
+        "gpg_2017_2018": "-6.90"
     },
     {
         "twitter_id_str": "365482932",
@@ -25317,7 +25293,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "3.30"
+        "gpg_2017_2018": "-3.30"
     },
     {
         "twitter_id_str": "4899144405",
@@ -25389,7 +25365,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
-        "gpg_2017_2018": "14.20"
+        "gpg_2017_2018": "-14.20"
     },
     {
         "twitter_id_str": "38673476",
@@ -25606,5 +25582,70 @@
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
         "gpg_2017_2018": 27.9
+    },
+    {
+        "twitter_id": 309695357,
+        "twitter_id_str": "309695357",
+        "twitter_screen_name": "AcornInsurance",
+        "companyName": "ACORN INSURANCE AND FINANCIAL SERVICES LIMITED",
+        "companyNumber": 1636368,
+        "gpg_2020_2021": 14.6,
+        "gpg_2019_2020": 17.1,
+        "gpg_2018_2019": 9,
+        "gpg_2017_2018": 3.4
+    },
+    {
+        "twitter_screen_name": "AldiUK",
+        "twitter_id": 28596803,
+        "twitter_id_str": "28596803",
+        "companyName": "ALDI STORES LIMITED",
+        "companyNumber": 2321869,
+        "gpg_2020_2021": 10.3,
+        "gpg_2019_2020": 10.8,
+        "gpg_2018_2019": 9.7,
+        "gpg_2017_2018": 11.5
+    },
+    {
+        "twitter_screen_name": "AmexUK",
+        "twitter_id_str": "118988056",
+        "twitter_id": 118988056,
+        "companyName": "AMERICAN EXPRESS SERVICES EUROPE LIMITED",
+        "companyNumber": 1833139,
+        "gpg_2020_2021": 16.4,
+        "gpg_2019_2020": 16.4,
+        "gpg_2018_2019": 12.7,
+        "gpg_2017_2018": 13.9
+    },
+    {
+        "twitter_screen_name": "EasternAirways",
+        "twitter_id_str": "22023679",
+        "twitter_id": 22023679,
+        "companyName": "EASTERN AIRWAYS (UK) LIMITED",
+        "companyNumber": 3468489,
+        "gpg_2020_2021": 49,
+        "gpg_2019_2020": 48.1,
+        "gpg_2018_2019": 49.8,
+        "gpg_2017_2018": 46.4
+    },
+    {
+        "twitter_screen_name": "Ryanair",
+        "twitter_id_str": "1542862735",
+        "twitter_id": 1542862735,
+        "companyName": "Ryanair ltd",
+        "companyNumber": null,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 62.2,
+        "gpg_2017_2018": 67
+    },
+    {
+        "twitter_screen_name": "UKEnterprise",
+        "twitter_id_str": "1612401392",
+        "companyName": "ENTERPRISE RENT-A-CAR UK LIMITED",
+        "companyNumber": 2946689,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 17.8,
+        "gpg_2018_2019": 21.4,
+        "gpg_2017_2018": 21.6
     }
 ]
