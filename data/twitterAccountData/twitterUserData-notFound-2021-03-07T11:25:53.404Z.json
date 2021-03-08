@@ -584,14 +584,6 @@
         "gpg_2017_2018": null
     },
     {
-        "companyName": "BBC STUDIOS PRODUCTIONS LIMITED",
-        "companyNumber": 9463829,
-        "gpg_2020_2021": 13.5,
-        "gpg_2019_2020": 15.4,
-        "gpg_2018_2019": 15.4,
-        "gpg_2017_2018": null
-    },
-    {
         "companyName": "BDO SERVICES LIMITED",
         "companyNumber": 7020023,
         "gpg_2020_2021": 16.1,
@@ -1014,14 +1006,6 @@
         "gpg_2019_2020": 9.4,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
-    },
-    {
-        "companyName": "Channel Four Television Corporation",
-        "companyNumber": null,
-        "gpg_2020_2021": 21.5,
-        "gpg_2019_2020": 23.3,
-        "gpg_2018_2019": 22.6,
-        "gpg_2017_2018": 28.6
     },
     {
         "companyName": "CHARLES STANLEY & CO. LIMITED",
@@ -22000,14 +21984,6 @@
         "gpg_2017_2018": 4.9
     },
     {
-        "companyName": "KWIK-FIT (GB) LIMITED",
-        "companyNumber": 1009184,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 14.9,
-        "gpg_2018_2019": 12,
-        "gpg_2017_2018": "4.50"
-    },
-    {
         "companyName": "KYOCERA DOCUMENT SOLUTIONS (U.K.) LIMITED",
         "companyNumber": 2150688,
         "gpg_2020_2021": null,
@@ -22110,14 +22086,6 @@
         "gpg_2019_2020": 7.8,
         "gpg_2018_2019": 12.3,
         "gpg_2017_2018": 6.6
-    },
-    {
-        "companyName": "LAKELAND LIMITED",
-        "companyNumber": 809688,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 25.9,
-        "gpg_2018_2019": 33.2,
-        "gpg_2017_2018": 35.4
     },
     {
         "companyName": "LAKETHORNE LIMITED",
@@ -22790,14 +22758,6 @@
         "gpg_2019_2020": 2.3,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
-    },
-    {
-        "companyName": "LINKEDIN TECHNOLOGY UK LIMITED",
-        "companyNumber": 6441873,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 24,
-        "gpg_2018_2019": 28,
-        "gpg_2017_2018": 27.2
     },
     {
         "companyName": "Linklaters Business Services",
@@ -24296,14 +24256,6 @@
         "gpg_2017_2018": "10.20"
     },
     {
-        "companyName": "MERCEDES-BENZ CARS UK LIMITED",
-        "companyNumber": 2448457,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 22.1,
-        "gpg_2018_2019": 20.3,
-        "gpg_2017_2018": 20.1
-    },
-    {
         "companyName": "MERCEDES-BENZ FINANCIAL SERVICES UK LIMITED",
         "companyNumber": 2472364,
         "gpg_2020_2021": null,
@@ -25470,14 +25422,6 @@
         "gpg_2019_2020": 18.8,
         "gpg_2018_2019": 23,
         "gpg_2017_2018": 17.4
-    },
-    {
-        "companyName": "NATIONAL EXPRESS LIMITED",
-        "companyNumber": 232767,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 26,
-        "gpg_2018_2019": 25.7,
-        "gpg_2017_2018": 16
     },
     {
         "companyName": "NATIONAL FOUNDATION FOR EDUCATIONAL RESEARCH IN ENGLAND AND WALES(THE)",
@@ -27404,14 +27348,6 @@
         "companyNumber": "BR020534",
         "gpg_2020_2021": null,
         "gpg_2019_2020": 4.4,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": null
-    },
-    {
-        "companyName": "PANASONIC UK, A BRANCH OF PANASONIC MARKETING EUROPE GMBH",
-        "companyNumber": "FC030039",
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 41.3,
         "gpg_2018_2019": null,
         "gpg_2017_2018": null
     },
@@ -66376,14 +66312,6 @@
         "gpg_2017_2018": 28.7
     },
     {
-        "companyName": "Panasonic UK, A Branch Of Panasonic Marketing Europe Gmbh",
-        "companyNumber": "FC030039",
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": 39.4,
-        "gpg_2017_2018": 38.3
-    },
-    {
         "companyName": "PANDORA JEWELLERY UK LIMITED",
         "companyNumber": 6654012,
         "gpg_2020_2021": null,
@@ -68312,28 +68240,12 @@
         "gpg_2017_2018": 31.3
     },
     {
-        "companyName": "PURE GYM LIMITED",
-        "companyNumber": 6690189,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": 13.1,
-        "gpg_2017_2018": 18
-    },
-    {
         "companyName": "PURE RESOURCING SOLUTIONS LTD",
         "companyNumber": 4497007,
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 19.4,
         "gpg_2017_2018": 30.8
-    },
-    {
-        "companyName": "PURPLEBRICKS GROUP  PLC",
-        "companyNumber": 8047368,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": 33.1,
-        "gpg_2017_2018": null
     },
     {
         "companyName": "PUTTINGYOUFIRST LTD",

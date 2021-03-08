@@ -25838,4 +25838,213 @@
         "gpg_2018_2019": 21.7,
         "gpg_2017_2018": 22.3
     },
+    {
+        "twitter_screen_name": "bbcstudios",
+        "twitter_id_str": "728154884676034560",
+        "twitter_id": 728154884676034560,
+        "companyName": "BBC STUDIOS PRODUCTIONS LIMITED",
+        "companyNumber": 9463829,
+        "gpg_2020_2021": 13.5,
+        "gpg_2019_2020": 15.4,
+        "gpg_2018_2019": 15.4,
+        "gpg_2017_2018": null
+    },
+    {
+        "twitter_screen_name": "channel4",
+        "twitter_id_str": "183585551",
+        "twitter_id": 183585551,
+        "companyName": "Channel Four Television Corporation",
+        "companyNumber": null,
+        "gpg_2020_2021": 21.5,
+        "gpg_2019_2020": 23.3,
+        "gpg_2018_2019": 22.6,
+        "gpg_2017_2018": 28.6
+    },
+    {
+        "twitter_id_str": "110647540",
+        "twitter_id": 110647540,
+        "twitter_name": "BandQ",
+        "companyName": "B&Q LIMITED",
+        "companyNumber": 973387,
+        "gpg_2020_2021": 9.5,
+        "gpg_2019_2020": 7.8,
+        "gpg_2018_2019": null,
+        "gpg_2017_2018": null
+    },
+    {
+        "twitter_screen_name": "Kwik_Fit",
+        "twitter_id_str": "91354158",
+        "twitter_id": 91354158,
+        "companyName": "KWIK-FIT (GB) LIMITED",
+        "companyNumber": 1009184,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 14.9,
+        "gpg_2018_2019": 12,
+        "gpg_2017_2018": "-4.50"
+    },
+    {
+        "twitter_screen_name": "lakelanduk",
+        "twitter_id_str": "500909004",
+        "twitter_id": 500909004,
+        "companyName": "LAKELAND LIMITED",
+        "companyNumber": 809688,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 25.9,
+        "gpg_2018_2019": 33.2,
+        "gpg_2017_2018": 35.4
+    },
+    {
+        "twitter_screen_name": "LinkedIn",
+        "twitter_id_str": "13058772",
+        "twitter_id": 13058772,
+        "companyName": "LINKEDIN TECHNOLOGY UK LIMITED",
+        "companyNumber": 6441873,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 24,
+        "gpg_2018_2019": 28,
+        "gpg_2017_2018": 27.2
+    },
+    {
+        "twitter_id_str": "14353202",
+        "twitter_id": 14353202,
+        "twitter_name": "FCDOGovUK",
+        "companyName": "Department for International Development",
+        "companyNumber": null,
+        "gpg_2020_2021": 5.9,
+        "gpg_2019_2020": 7.2,
+        "gpg_2018_2019": 6.9,
+        "gpg_2017_2018": 8.5
+    },
+    {
+        "twitter_id_str": "274569960",
+        "twitter_id": 274569960,
+        "twitter_name": "DWP",
+        "companyName": "Department for Work And Pensions",
+        "companyNumber": null,
+        "gpg_2020_2021": 5.4,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": null,
+        "gpg_2017_2018": null
+    },
+    {
+        "twitter_id_str": "50069007",
+        "twitter_id": 50069007,
+        "twitter_name": "DefraGovUK",
+        "companyName": "Department, for Environment, Food and Rural Affairs",
+        "companyNumber": null,
+        "gpg_2020_2021": 7.2,
+        "gpg_2019_2020": 8.4,
+        "gpg_2018_2019": 9.8,
+        "gpg_2017_2018": 11.5
+    },
+    {
+        "twitter_id_str": "18332190",
+        "twitter_id": 18332190,
+        "twitter_name": "British_Airways",
+        "companyName": "BRITISH AIRWAYS HOLIDAYS LIMITED",
+        "companyNumber": 554278,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 13.9,
+        "gpg_2017_2018": 18
+    },
+    {
+        "twitter_id_str": "66985285",
+        "twitter_id": 66985285,
+        "twitter_name": "MonsoonUK",
+        "companyName": "MONSOON ACCESSORIZE LIMITED",
+        "companyNumber": 1098034,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 50.8,
+        "gpg_2017_2018": 47.3
+    },
+    {
+        "twitter_screen_name": "MercedesBenzUK",
+        "twitter_id_str": "15531225",
+        "twitter_id": 15531225,
+        "companyName": "MERCEDES-BENZ CARS UK LIMITED",
+        "companyNumber": 2448457,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 22.1,
+        "gpg_2018_2019": 20.3,
+        "gpg_2017_2018": 20.1
+    },
+    {
+        "twitter_screen_name": "nationalExpress",
+        "twitter_id_str": "15848241",
+        "twitter_id": 15848241,
+        "companyName": "NATIONAL EXPRESS LIMITED",
+        "companyNumber": 232767,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 26,
+        "gpg_2018_2019": 25.7,
+        "gpg_2017_2018": 16
+    },
+    {
+        "twitter_screen_name": "panasonicUk",
+        "twitter_id_str": "197081982",
+        "twitter_id": 197081982,
+        "companyName": "Panasonic UK, A Branch Of Panasonic Marketing Europe Gmbh",
+        "companyNumber": "FC030039",
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 41.3,
+        "gpg_2018_2019": 39.4,
+        "gpg_2017_2018": 38.3
+    },
+    {
+        "twitter_screen_name": "purplebricksuk",
+        "twitter_id_str": "621162709",
+        "twitter_id": 621162709,
+        "companyName": "PURPLEBRICKS GROUP  PLC",
+        "companyNumber": 8047368,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 33.1,
+        "gpg_2017_2018": null
+    },
+    {
+        "twitter_screen_name": "puregym",
+        "twitter_id_str": "53349365",
+        "twitter_id": 53349365,
+        "companyName": "PURE GYM LIMITED",
+        "companyNumber": 6690189,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 13.1,
+        "gpg_2017_2018": 18
+    },
+    {
+        "twitter_id_str": "19854887",
+        "twitter_id": 19854887,
+        "twitter_name": "TheBodyShopUK",
+        "companyName": "THE BODY SHOP INTERNATIONAL LIMITED",
+        "companyNumber": 1284170,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 43.4,
+        "gpg_2017_2018": 50.9
+    },
+    {
+        "twitter_id_str": "19338359",
+        "twitter_id": 19338359,
+        "twitter_name": "primevideouk",
+        "companyName": "AMAZON VIDEO LIMITED",
+        "companyNumber": 6528297,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": null,
+        "gpg_2017_2018": 40.1
+    },
+    {
+        "companyName": "CHANNEL 5 BROADCASTING LIMITED",
+        "companyNumber": 3147640,
+        "twitter_id_str": "20427376",
+        "twitter_id": 20427376,
+        "twitter_name": "channel5_tv",
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 15.3,
+        "gpg_2018_2019": 14.6,
+        "gpg_2017_2018": "-2.90"
+    }
 ]
