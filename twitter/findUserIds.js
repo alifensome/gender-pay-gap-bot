@@ -66,12 +66,4 @@ function printPotentialUsers(users) {
 }
 
 export { findUserByName }
-// const iwdTweets =  await twitterClient.tweets.search({ q : "international women's day ", count:1, })
-// console.log(iwdTweets)
 
-
-// TODO restrict search boundaries
-// TODO look through tweets for userId
-// TODO if found then tweet otherwise continue
-// TODO record the last tweet max_id
-// TODO search again

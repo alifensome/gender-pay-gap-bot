@@ -1,6 +1,6 @@
 import Twit from "twit"
 import dotEnv from "dotenv"
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+import { createRequire } from "module";
 import { getMostRecentGPG } from "../utils.js"
 import { writeJsonFile } from "../utils/write.js";
 
@@ -36,8 +36,10 @@ var stream = T.stream('statuses/filter', { follow: follows });
 
 stream.on('tweet', async (tweet) => {
     const twitterUserId = tweet.user.id_str
+    let time = new Date().toISOString()
     try {
         console.log("Stream received")
+        console.log("Successful tweet @", tweet.user.name)
 
         const isRetweet = tweet.text.startsWith("RT")
         if (isRetweet) {
@@ -45,8 +47,6 @@ stream.on('tweet', async (tweet) => {
             return
         }
 
-        let time = new Date().toISOString()
-        console.log(`Tweet detected: ${time} @${tweet.user.screen_name} - ${tweet.text}`);
         debugPrint(tweet)
         // Check tweet contains words
         const isRelevantTweet = checkTweetContainsWord(tweet.text)
@@ -73,10 +73,9 @@ stream.on('tweet', async (tweet) => {
         }
 
         // get words for post
-        const tweetStatus = getCopy(company)
+        const tweetStatus = getCopy(company, tweet.user.screen_name)
 
         await quoteTweet(T, tweetStatus, tweet)
-        console.log("Successful tweet @", tweet.user.name)
         // Save that we have posted successfully
         successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, time })
         await writeSuccessfulTweets()
@@ -174,7 +173,7 @@ function getCompanyDataByTwitterId(twitterId, companies) {
     return null
 }
 
-function getCopy(companyData) {
+function getCopy(companyData, twitterScreenName) {
     const mostRecentGPG = getMostRecentGPG(companyData)
     let mostRecent = 0
     if (typeof mostRecentGPG == "string") {
@@ -182,11 +181,12 @@ function getCopy(companyData) {
     } else {
         mostRecent = mostRecentGPG
     }
+    const randomNumber = Math.random() * Math.floor(100)
     const isPositiveGpg = mostRecent > 0.0
     if (isPositiveGpg) {
-        return `In this organisation, women's mean hourly pay is ${mostRecent}% lower than men's`
+        return `In this organisation, women's mean hourly pay is ${mostRecent}% lower than men's. @${twitterScreenName} ${randomNumber > 60 ? "#InternationalWomensDay" : ""} `
     } else {
-        return `In this organisation, women's mean hourly pay is ${-1 * mostRecent}% higher than men's`
+        return `In this organisation, women's mean hourly pay is ${-1 * mostRecent}% higher than men's @${twitterScreenName} `
     }
 }
 
