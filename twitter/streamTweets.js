@@ -35,8 +35,16 @@ debugPrint(follows)
 var stream = T.stream('statuses/filter', { follow: follows });
 
 stream.on('tweet', async (tweet) => {
+    const twitterUserId = tweet.user.id_str
     try {
         console.log("Stream received")
+
+        const isRetweet = tweet.text.startsWith("RT")
+        if (isRetweet) {
+            console.log("Ignoring retweet")
+            return
+        }
+
         let time = new Date().toISOString()
         console.log(`Tweet detected: ${time} @${tweet.user.screen_name} - ${tweet.text}`);
         debugPrint(tweet)
@@ -49,7 +57,6 @@ stream.on('tweet', async (tweet) => {
 
         // Check we haven't already posted
         debugPrint(tweet.user)
-        const twitterUserId = tweet.user.id_str
         const newPost = checkHaveNotPosted(twitterUserId, successfulTweets)
         if (!newPost) {
             console.log("Duplicate tweet")
@@ -73,6 +80,7 @@ stream.on('tweet', async (tweet) => {
         // Save that we have posted successfully
         successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, time })
         await writeSuccessfulTweets()
+        console.log("Successful tweets total: ", successfulTweets.length)
     } catch (err) {
         console.log(err)
         console.log("Error while tweeting @", tweet.user.name)
@@ -111,14 +119,18 @@ function reTweet(T, tweetId, tweet, quoted_status) {
 
 
 const words = [
+    "IWD2021",
     "#IWD2021",
+    "INTERNATIONALWOMENSDAY",
     "#INTERNATIONALWOMENSDAY",
     "#CHOOSETOCHALLENGE",
     "INTERNATIONAL WOMENS DAY",
     "INTERNATIONAL WOMEN'S DAY",
+    "INTERNATIONAL WOMEN’S DAY",
     "WOMENS DAY",
     "WOMENSDAY",
     "WOMEN'S DAY",
+    "WOMEN’S DAY"
 ]
 
 function checkTweetContainsWord(tweet) {
