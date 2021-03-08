@@ -3,6 +3,7 @@ import dotEnv from "dotenv"
 import { createRequire } from "module";
 import { getMostRecentGPG } from "../utils.js"
 import { writeJsonFile } from "../utils/write.js";
+import { getCompanyDataByTwitterId } from "./getCompanyDataByTwitterId";
 
 dotEnv.config()
 
@@ -161,16 +162,6 @@ async function writeSuccessfulTweets() {
 async function writeUnsuccessfulTweets() {
     const filePath = "./data/tweets/unsuccessful-tweets.json"
     await writeJsonFile(filePath, unsuccessfulTweets)
-}
-
-function getCompanyDataByTwitterId(twitterId, companies) {
-    for (let index = 0; index < companies.length; index++) {
-        const c = companies[index];
-        if (c.twitter_id_str == twitterId) {
-            return c
-        }
-    }
-    return null
 }
 
 function getCopy(companyData, twitterScreenName) {

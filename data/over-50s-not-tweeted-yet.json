@@ -1,0 +1,48 @@
+[
+    {
+        "twitter_screen_name": "Ryanair",
+        "twitter_id_str": "1542862735",
+        "twitter_id": 1542862735,
+        "companyName": "Ryanair ltd",
+        "companyNumber": null,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 62.2,
+        "gpg_2017_2018": 67
+    },
+    {
+        "twitter_id_str": "34586969",
+        "twitter_id": 34586969,
+        "twitter_name": "Karen Millen",
+        "twitter_screen_name": "KarenMillen",
+        "companyName": "KAREN MILLEN FASHIONS LIMITED",
+        "companyNumber": 6822177,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 53,
+        "gpg_2017_2018": 50
+    },
+    {
+        "twitter_id_str": "31407388",
+        "twitter_id": 31407388,
+        "twitter_name": "mothercare",
+        "twitter_screen_name": "mothercareuk",
+        "companyName": "MOTHERCARE PLC.",
+        "companyNumber": 1950509,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": 51.3,
+        "gpg_2018_2019": 43.3,
+        "gpg_2017_2018": 40.6
+    },
+    {
+        "twitter_id_str": "66985285",
+        "twitter_id": 66985285,
+        "twitter_name": "MonsoonUK",
+        "companyName": "MONSOON ACCESSORIZE LIMITED",
+        "companyNumber": 1098034,
+        "gpg_2020_2021": null,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 50.8,
+        "gpg_2017_2018": 47.3
+    }
+]

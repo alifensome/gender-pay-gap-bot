@@ -832,18 +832,6 @@
         "twitter_id": 467368287,
         "twitter_name": "HSBC",
         "twitter_screen_name": "HSBC",
-        "companyName": "HSBC BANK PLC",
-        "companyNumber": 14259,
-        "gpg_2020_2021": 54.4,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": null
-    },
-    {
-        "twitter_id_str": "467368287",
-        "twitter_id": 467368287,
-        "twitter_name": "HSBC",
-        "twitter_screen_name": "HSBC",
         "companyName": "HSBC UK BANK PLC",
         "companyNumber": 9928412,
         "gpg_2020_2021": 32.9,
@@ -6012,18 +6000,6 @@
         "gpg_2017_2018": null
     },
     {
-        "twitter_id_str": "253167239",
-        "twitter_id": 253167239,
-        "twitter_name": "Goldman Sachs",
-        "twitter_screen_name": "GoldmanSachs",
-        "companyName": "GOLDMAN SACHS INTERNATIONAL",
-        "companyNumber": 2263951,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": 53.2,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": null
-    },
-    {
         "twitter_id_str": "1359030265",
         "twitter_id": 1359030265,
         "twitter_name": "Gonville & Caius College",
@@ -6690,7 +6666,7 @@
         "twitter_screen_name": "HSBC",
         "companyName": "HSBC Bank PLC",
         "companyNumber": 14259,
-        "gpg_2020_2021": null,
+        "gpg_2020_2021": 54.4,
         "gpg_2019_2020": 55.1,
         "gpg_2018_2019": 61,
         "gpg_2017_2018": 59
@@ -17292,18 +17268,6 @@
         "gpg_2017_2018": "-15.00"
     },
     {
-        "twitter_id_str": "1149354662832824321",
-        "twitter_id": 1149354662832824300,
-        "twitter_name": "GENERALI",
-        "twitter_screen_name": "Jaykiluu",
-        "companyName": "GENERALI",
-        "companyNumber": "BR001185",
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": 50.6,
-        "gpg_2017_2018": null
-    },
-    {
         "twitter_id_str": "169859513",
         "twitter_id": 169859513,
         "twitter_name": "George Watson's College",
@@ -17419,7 +17383,7 @@
         "companyName": "Goldman Sachs International",
         "companyNumber": 2263951,
         "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
+        "gpg_2019_2020": 53.2,
         "gpg_2018_2019": 50.6,
         "gpg_2017_2018": 55.6
     },
@@ -18981,7 +18945,7 @@
         "gpg_2020_2021": null,
         "gpg_2019_2020": null,
         "gpg_2018_2019": 79.2,
-        "gpg_2017_2018": null
+        "gpg_2017_2018": 37.8
     },
     {
         "twitter_id_str": "22028340",
@@ -24837,18 +24801,6 @@
         "gpg_2019_2020": null,
         "gpg_2018_2019": null,
         "gpg_2017_2018": 18
-    },
-    {
-        "twitter_id_str": "558797310",
-        "twitter_id": 558797310,
-        "twitter_name": "Manchester United",
-        "twitter_screen_name": "ManUtd",
-        "companyName": "MANCHESTER UNITED LIMITED",
-        "companyNumber": 2570509,
-        "gpg_2020_2021": null,
-        "gpg_2019_2020": null,
-        "gpg_2018_2019": null,
-        "gpg_2017_2018": 37.8
     },
     {
         "twitter_id_str": "41417002",
