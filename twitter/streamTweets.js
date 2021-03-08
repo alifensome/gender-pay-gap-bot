@@ -35,47 +35,47 @@ debugPrint(follows)
 var stream = T.stream('statuses/filter', { follow: follows });
 
 stream.on('tweet', async (tweet) => {
-    console.log("Stream received")
-    let time = new Date().toISOString()
-    console.log(`Tweet detected: ${time} @${tweet.user.screen_name} - ${tweet.text}`);
-    debugPrint(tweet)
-    // Check tweet contains words
-    const isRelevantTweet = checkTweetContainsWord(tweet.text)
-    if (!isRelevantTweet) {
-        console.log("Irrelevant tweet")
-        return
-    }
-
-    // Check we haven't already posted
-    debugPrint(tweet.user)
-    const twitterUserId = tweet.user.id_str
-    const newPost = checkHaveNotPosted(twitterUserId, successfulTweets)
-    if (!newPost) {
-        console.log("Duplicate tweet")
-        return
-    }
-
-    // Get the company from data by twitter Id
-    const company = getCompanyDataByTwitterId(twitterUserId, companyData)
-    if (!company) {
-        const errMessage = `"Could not find company data for: ${twitterUserId}`
-        console.log(errMessage)
-        unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: errMessage, time })
-        return writeUnsuccessfulTweets()
-    }
-
-    // get words for post
-    const tweetStatus = getCopy(company)
-
     try {
+        console.log("Stream received")
+        let time = new Date().toISOString()
+        console.log(`Tweet detected: ${time} @${tweet.user.screen_name} - ${tweet.text}`);
+        debugPrint(tweet)
+        // Check tweet contains words
+        const isRelevantTweet = checkTweetContainsWord(tweet.text)
+        if (!isRelevantTweet) {
+            console.log("Irrelevant tweet")
+            return
+        }
+
+        // Check we haven't already posted
+        debugPrint(tweet.user)
+        const twitterUserId = tweet.user.id_str
+        const newPost = checkHaveNotPosted(twitterUserId, successfulTweets)
+        if (!newPost) {
+            console.log("Duplicate tweet")
+            return
+        }
+
+        // Get the company from data by twitter Id
+        const company = getCompanyDataByTwitterId(twitterUserId, companyData)
+        if (!company) {
+            const errMessage = `"Could not find company data for: ${twitterUserId}`
+            console.log(errMessage)
+            unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: errMessage, time })
+            return writeUnsuccessfulTweets()
+        }
+
+        // get words for post
+        const tweetStatus = getCopy(company)
+
         await quoteTweet(T, tweetStatus, tweet)
         console.log("Successful tweet @", tweet.user.name)
         // Save that we have posted successfully
         successfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, time })
         await writeSuccessfulTweets()
     } catch (err) {
-        console.log("Error while tweeting @", tweet.user.name)
         console.log(err)
+        console.log("Error while tweeting @", tweet.user.name)
         // Record errors
         unsuccessfulTweets.push({ twitter_id: twitterUserId, twitter_screen_name: tweet.user.screen_name, error: `Error while tweeting: ${err.message}`, time })
         await writeUnsuccessfulTweets()
