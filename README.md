@@ -1,7 +1,7 @@
 ![Banner](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/banner.jpeg?raw=true)
 # gender-pay-gap-bot
 
-A bot to tweet the gender pay gap at companies who tweet about international women's day.
+A bot to tweet the gender pay gap of a company, at companies who tweet about international women's day.
 
 You can [see the bot in action here](https://twitter.com/PayGapApp) for such gold as this
 ![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/ubs.jpeg?raw=true)
@@ -29,3 +29,11 @@ Twitter data was join on from an API based on company name and location. We then
 
 This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 
+### TODO
+[ ] Join data on companyId and if company does not exist then on company name to lower
+[ ] Find a more reliable way of finding twitter accounts
+[ ] Clean the rest of the data
+[ ] Write data to a database
+[ ] Collect the twitter Id of the created tweet
+[ ] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
+[ ] Build a backup plan for when we get banned from twitter 😎
