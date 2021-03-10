@@ -38,3 +38,5 @@ This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 - [ ] Collect the twitter Id of the created tweet
 - [ ] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
 - [ ] Build a backup plan for when we get banned from twitter 😎
+- [ ] Make a data set with just companies and twitter accounts
+- [ ] Tidy up and reformat the data
