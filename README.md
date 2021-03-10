@@ -31,10 +31,10 @@ Twitter data was join on from an API based on company name and location. We then
 This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 
 ### TODO
-- [] Join data on companyId and if company does not exist then on company name to lower
-- [] Find a more reliable way of finding twitter accounts
-- [] Clean the rest of the data
-- [] Write data to a database
-- [] Collect the twitter Id of the created tweet
-- [] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
-- [] Build a backup plan for when we get banned from twitter 😎
+- [ ] Join data on companyId and if company does not exist then on company name to lower
+- [ ] Find a more reliable way of finding twitter accounts
+- [ ] Clean the rest of the data
+- [ ] Write data to a database
+- [ ] Collect the twitter Id of the created tweet
+- [ ] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
+- [ ] Build a backup plan for when we get banned from twitter 😎
