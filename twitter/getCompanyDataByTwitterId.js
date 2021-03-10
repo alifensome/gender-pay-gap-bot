@@ -8,13 +8,15 @@ export function getCompanyDataByTwitterId(twitterId, companies) {
     return null;
 }
 
-export function getCompanyDataByTwitterScreenName(twitterScreenName, companies) {
+export function getAllCompanyDataByTwitterScreenName(twitterScreenName, companies) {
+    const results = []
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index];
-        if (c.twitter_screen_name == twitterScreenName) {
-            return c;
+        const name = c.twitter_screen_name || c.twitter_name || ""
+        if (name.toLowerCase() == twitterScreenName.toLowerCase()) {
+            results.push(c)
         }
     }
-    return null;
+    return results;
 }
 
