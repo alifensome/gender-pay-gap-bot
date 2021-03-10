@@ -1,3 +1,4 @@
+![Banner](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/banner.jpeg?raw=true)
 # gender-pay-gap-bot
 
 A bot to tweet the gender pay gap at companies who tweet about international women's day.
