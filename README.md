@@ -3,7 +3,7 @@
 A bot to tweet the gender pay gap at companies who tweet about international women's day.
 
 You can [see the bot in action here](https://twitter.com/PayGapApp) for such gold as this
-![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/ubs.jpeg?raw=true)
+![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/ubs.jpeg?raw=true)
 
 ## Disclaimer
 This was hacked together the weekend before IWD so is very badly written, inefficient,  buggy with some minor data issues. The main focus was on gathering as much data as possible on UK companies with GPG (gender pay gap) data in order to generate the most tweets in one day.
@@ -16,7 +16,7 @@ This was hacked together the weekend before IWD so is very badly written, ineffi
 
 Output of the programme looks like this 
 
-![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/terminal.jpeg?raw=true)
+![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/terminal.jpeg?raw=true)
 
 ## Data
 Forming a data set linking [UK Gov gender pay gap data](https://gender-pay-gap.service.gov.uk/viewing/download) with twitter users was by far the hardest part of this hack. The data was downloaded on 2021-03-04 so will be out of date.
