@@ -1,5 +1,4 @@
-const fs = require('fs');
-const { spreadSheetToJson  } = require("./getData");
+import { spreadSheetToJson } from "./getData.js"
 
 writeAllData().then(() => console.log("Finished!!!"))
 
@@ -28,5 +27,5 @@ async function writeAllData() {
     await spreadSheetToJson(filePath_2017_2018, outputFilePath_2017_2018)
     console.log("Finished reading data from 2017_2018")
 
- 
+
 }

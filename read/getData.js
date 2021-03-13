@@ -1,8 +1,11 @@
 
-const fs = require('fs');
-const XLSX = require('xlsx');
+import { createWriteStream } from "fs"
+import { createRequire } from "module";
+const require = createRequire(import.meta.url); // construct the require method
 const readXlsxFile = require('read-excel-file/node');
-// File path.
+const XLSX = require('xlsx');
+
+
 function getData(filePath) {
     return new Promise((resolve) => {
         const data = [];
@@ -36,7 +39,7 @@ function spreadSheetToJson(filePath, outputFileName) {
             raw: true,
         });
 
-        const stream = fs.createWriteStream(outputFileName, { flags: 'w' });
+        const stream = createWriteStream(outputFileName, { flags: 'w' });
         stream.write(JSON.stringify(rows), resolve);
     });
 }
@@ -48,12 +51,40 @@ function parseDataFromJsonXlsx(jsonFile) {
             continue;
         }
         const row = jsonFile[index];
-        companyName = row.A;
-        companyNumber = row.C;
-        genderPayGap = row.E;
+        const companyName = row.A;
+        let companyNumber = parseCompanyNumber(row.C);
+        let genderPayGap = parseGpg(row.E);
         data.push({ companyName, companyNumber, genderPayGap });
     }
     return data
 }
 
-module.exports = { getData, spreadSheetToJson,parseDataFromJsonXlsx };
+// TODO refactor this to be cleaner :P 
+function parseCompanyNumber(companyNumber) {
+    if (typeof companyNumber == "number") {
+        if (companyNumber.toString().length == 7) {
+            return `0${companyNumber}`
+        }
+
+        if (companyNumber.toString().length == 6) {
+            return `00${companyNumber}`
+        }
+
+
+        if (companyNumber.toString().length == 5) {
+            return `000${companyNumber}`
+        }
+
+        return companyNumber.toString()
+    }
+    return companyNumber
+}
+
+function parseGpg(gpg) {
+    if (typeof gpg == "string") {
+        return parseFloat(gpg.replace("\t", ""))
+    }
+    return gpg
+}
+
+export { getData, spreadSheetToJson, parseDataFromJsonXlsx };

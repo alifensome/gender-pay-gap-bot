@@ -1,9 +1,12 @@
-const fs = require('fs');
+import { createRequire } from "module";
+import { writeJsonFile } from "../utils/write.js";
+import { parseDataFromJsonXlsx } from "./getData.js"
+const require = createRequire(import.meta.url); // construct the require method
+
 const json2021 = require("../data/gpg_2020_2021")
 const json2020 = require("../data/gpg_2019_2020")
 const json2019 = require("../data/gpg_2018_2019")
 const json2018 = require("../data/gpg_2017_2018")
-const { parseDataFromJsonXlsx } = require("./getData");
 
 getAllData().then(() => console.log("Finished!!!"))
 
@@ -33,17 +36,17 @@ async function getAllData() {
     console.log("Progress:", compete, "%")
     for (let index = 0; index < data_2020_2021.length; index++) {
         const company = data_2020_2021[index];
-        item_2020 = findByName(company.companyName, data_2019_2020)
-        item_2019 = findByName(company.companyName, data_2018_2019)
-        item_2018 = findByName(company.companyName, data_2017_2018)
+        const item_2020 = findCompany(company.companyName, company.companyNumber, data_2019_2020)
+        const item_2019 = findCompany(company.companyName, company.companyNumber, data_2018_2019)
+        const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
         combinedData.push({
             companyName: company.companyName,
             companyNumber: company.companyNumber,
             gpg_2020_2021: company.genderPayGap,
-            gpg_2019_2020: item_2020 ? item_2020.genderPayGap: null,
-            gpg_2018_2019: item_2019 ? item_2019.genderPayGap: null,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap: null,
+            gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,
+            gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
+            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
         })
     }
 
@@ -54,12 +57,12 @@ async function getAllData() {
     console.log("Progress:", compete, "%")
     for (let index = 0; index < data_2019_2020.length; index++) {
         const company = data_2019_2020[index];
-        isInCombinedData = findByName(company.companyName, combinedData)
+        const isInCombinedData = findCompany(company.companyName, company.companyNumber, combinedData)
         if (isInCombinedData) {
             continue;
         }
-        item_2019 = findByName(company.companyName, data_2018_2019)
-        item_2018 = findByName(company.companyName, data_2017_2018)
+        const item_2019 = findCompany(company.companyName, company.companyNumber, data_2018_2019)
+        const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
         combinedData.push({
             companyName: company.companyName,
@@ -76,11 +79,11 @@ async function getAllData() {
     console.log("Progress:", compete, "%")
     for (let index = 0; index < data_2018_2019.length; index++) {
         const company = data_2018_2019[index];
-        isInCombinedData = findByName(company.companyName, combinedData)
+        const isInCombinedData = findCompany(company.companyName, company.companyNumber, combinedData)
         if (isInCombinedData) {
             continue;
         }
-        item_2018 = findByName(company.companyName, data_2017_2018)
+        const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
         combinedData.push({
             companyName: company.companyName,
@@ -88,7 +91,7 @@ async function getAllData() {
             gpg_2020_2021: null,
             gpg_2019_2020: null,
             gpg_2018_2019: company.genderPayGap,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap: null,
+            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
         })
     }
 
@@ -97,7 +100,7 @@ async function getAllData() {
     console.log("Progress:", compete, "%")
     for (let index = 0; index < data_2017_2018.length; index++) {
         const company = data_2017_2018[index];
-        isInCombinedData = findByName(company.companyName, combinedData)
+        const isInCombinedData = findCompany(company.companyName, company.companyNumber, combinedData)
         if (isInCombinedData) {
             continue;
         }
@@ -112,14 +115,15 @@ async function getAllData() {
         })
     }
 
-    const json = JSON.stringify(combinedData);
-    fs.writeFile('./data/companies_GPG_Data.json', json, 'utf8', () => { console.log("Wrote file!") });
+    await writeJsonFile('./data/companies_GPG_Data.json', combinedData)
+    console.log("Wrote file!")
 }
 
-function findByName(name, list) {
+function findCompany(name, companyNumber, list) {
+    const upperCaseName = name.toUpperCase()
     for (let index = 0; index < list.length; index++) {
         const item = list[index];
-        if (item.companyName == name) {
+        if (item.companyName.toUpperCase() == upperCaseName || item.companyNumber == companyNumber) {
             return item
         }
     }
