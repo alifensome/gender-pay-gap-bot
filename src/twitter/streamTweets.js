@@ -1,17 +1,17 @@
 import Twit from "twit"
 import dotEnv from "dotenv"
-import { createRequire } from "module";
+import DataImporter from '../importData'
 import { getMostRecentGPG } from "../utils.js"
 import { writeJsonFile } from "../utils/write.js";
 import { getCompanyDataByTwitterId } from "./getCompanyDataByTwitterId";
+const dataImporter = new DataImporter()
 
 dotEnv.config()
 
-const require = createRequire(import.meta.url); // construct the require method
-let companyDataProd = require("../data/twitterAccountData/twitterUserData-prod.json")
-const companyDataTest = require("../data/twitterAccountData/twitterUserData-test.json")
-const successfulTweets = require("../data/tweets/successful-tweets.json")
-const unsuccessfulTweets = require("../data/tweets/unsuccessful-tweets.json")
+let companyDataProd = dataImporter.twitterUserDataProd()
+const companyDataTest = dataImporter.twitterUserDataTest()
+const successfulTweets = dataImporter.successfulTweets()
+const unsuccessfulTweets = dataImporter.unsuccessfulTweets()
 
 const isTest = process.argv[2] === "test" || process.argv[3] === "test"
 const companyData = isTest ? companyDataTest : companyDataProd;

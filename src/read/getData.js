@@ -1,6 +1,7 @@
 
 import { createWriteStream } from "fs"
-import { createRequire } from "module";
+import DataImporter from '../importData'
+const dataImporter = new DataImporter()
 const require = createRequire(import.meta.url); // construct the require method
 const readXlsxFile = require('read-excel-file/node');
 const XLSX = require('xlsx');

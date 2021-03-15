@@ -1,9 +1,9 @@
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+import DataImporter from '../importData'
 import { findUserByName } from "../twitter/findUserIds.js";
 import fs from "fs"
 import { wait } from "../utils/wait.js"
-const require = createRequire(import.meta.url); // construct the require method
-const companyData = require("../data/companies_GPG_Data.json") // use the require method
+const dataImporter = new DataImporter()
+const companyData = dataImporter.companiesGpgData()
 
 console.log("Starting...")
 

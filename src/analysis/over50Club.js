@@ -1,14 +1,14 @@
 import dotEnv from "dotenv"
-import { createRequire } from "module";
+import DataImporter from '../importData'
 import { getMostRecentGPG } from "../utils.js"
 import { writeJsonFile } from "../utils/write.js";
+const dataImporter = new DataImporter()
 
 
 
 dotEnv.config()
 
-const require = createRequire(import.meta.url); // construct the require method
-let companyDataProd = require("../data/twitterAccountData/twitterUserData-prod.json")
+let companyDataProd = dataImporter.twitterUserDataProd()
 
 const theBadOnes = []
 for (let index = 0; index < companyDataProd.length; index++) {

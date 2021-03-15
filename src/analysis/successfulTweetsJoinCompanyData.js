@@ -1,10 +1,10 @@
-import { createRequire } from "module";
+import DataImporter from '../importData'
+const dataImporter = new DataImporter()
 import { getAllCompanyDataByTwitterScreenName } from "../twitter/getCompanyDataByTwitterId.js";
 import { writeJsonFile } from "../utils/write.js"
 
-const require = createRequire(import.meta.url); // construct the require method
-const donkedData = require("../data/tweets/successful-tweets.json")
-const companies = require("../data/twitterAccountData/twitterUserData-prod.json")
+const donkedData = dataImporter.successfulTweets()
+const companies = dataImporter.twitterUserDataProd()
 console.log("Total Donks:", donkedData.length)
 
 const joinedData = []

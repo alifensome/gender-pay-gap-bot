@@ -1,7 +1,8 @@
-import { createRequire } from "module";
+import DataImporter from '../importData'
 
-const require = createRequire(import.meta.url);
-const allTimeLineTweets = require("../data/tweets/allTimeLineTweets.json")
+const dataImporter = new DataImporter()
+const allTimeLineTweets = dataImporter.allTimeLineTweets()
+
 const allQuotedStatusIds = []
 for (let index = 0; index < allTimeLineTweets.length; index++) {
     const tweet = allTimeLineTweets[index];

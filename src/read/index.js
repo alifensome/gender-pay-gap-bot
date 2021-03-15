@@ -1,7 +1,7 @@
-import { createRequire } from "module";
+import DataImporter from '../importData'
 import { writeJsonFile } from "../utils/write.js";
-import { parseDataFromJsonXlsx } from "./getData.js"
-const require = createRequire(import.meta.url); // construct the require method
+import { parseDataFromJsonXlsx } from "./getData.js.js"
+import require from "../importData/require"
 
 const json2021 = require("../data/gpg_2020_2021")
 const json2020 = require("../data/gpg_2019_2020")

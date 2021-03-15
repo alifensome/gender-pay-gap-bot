@@ -1,12 +1,13 @@
-import { createRequire } from "module";
-import { getMostRecentGPG } from "../utils.js"
+import { getMostRecentGPG } from "../../utils.js"
 import { getAllCompanyDataByTwitterScreenName } from "../twitter/getCompanyDataByTwitterId.js";
 import { writeJsonFile } from "../utils/write.js";
+import Data from "../importData/index.js"
 
-const require = createRequire(import.meta.url); // construct the require method
-const data = require("../data/companies_GPG_Data.json")
-const donkedData = require("../data/tweets/successful-tweets.json")
-const companyDataWithTwitter = require("../data/twitterAccountData/twitterUserData-prod.json")
+const dataImporter = new Data()
+
+const data = dataImporter.companiesGpgData()
+const donkedData = dataImporter.successfulTweets()
+const companyDataWithTwitter = dataImporter.twitterUserDataProd()
 
 const highValueNotTweeted = []
 for (let index = 0; index < data.length; index++) {

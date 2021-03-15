@@ -1,12 +1,11 @@
 import dotEnv from "dotenv"
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
-import fs from "fs"
+import DataImporter from '../importData'
 import { TwitterClient } from 'twitter-api-client';
 import { writeJsonFile } from "../utils/write.js";
+const dataImporter = new DataImporter()
 
 dotEnv.config()
-const require = createRequire(import.meta.url); // construct the require method
-let companyDataProd = require("../data/twitterAccountData/twitterUserData-prod.json")
+let companyDataProd = dataImporter.twitterUserDataProd()
 
 const twitterClient = new TwitterClient({
     apiKey: process.env.TWITTER_API_KEY,
