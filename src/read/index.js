@@ -1,4 +1,3 @@
-import DataImporter from '../importData'
 import { writeJsonFile } from "../utils/write.js";
 import { parseDataFromJsonXlsx } from "./getData.js.js"
 import require from "../importData/require"

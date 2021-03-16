@@ -1,0 +1,26 @@
+service: gender-pay-gap-bot-2
+frameworkVersion: '2'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+
+# you can overwrite defaults here
+#  stage: dev
+  region: eu-west-2
+package:
+ include:
+   - ./src/**
+   - node_modules/**
+ exclude:
+   - ./**
+
+functions:
+  getCompany:
+    handler: src/api/getCompanyHandler.getCompany
+    events:
+     - httpApi:
+         path: /company/{id}
+         method: get
