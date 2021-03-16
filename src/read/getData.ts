@@ -1,10 +1,7 @@
 
 import { createWriteStream } from "fs"
-import DataImporter from '../importData'
-const dataImporter = new DataImporter()
-const require = createRequire(import.meta.url); // construct the require method
-const readXlsxFile = require('read-excel-file/node');
-const XLSX = require('xlsx');
+import * as  readXlsxFile from 'read-excel-file/node';
+import * as  XLSX from 'xlsx';
 
 
 function getData(filePath) {
@@ -16,9 +13,9 @@ function getData(filePath) {
                     continue;
                 }
                 const row = rows[index];
-                companyName = row[0];
-                companyNumber = row[2];
-                genderPayGap = row[4];
+                let companyName = row[0];
+                let companyNumber = row[2];
+                let genderPayGap = row[4];
                 data.push({ companyName, companyNumber, genderPayGap });
             }
         }).then(() => {

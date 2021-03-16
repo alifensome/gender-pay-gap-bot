@@ -1,7 +1,7 @@
 import { TwitterClient } from 'twitter-api-client';
 import dotenv from "dotenv"
-import { isUkLocation } from '../utils/isUk.js';
-import { getTextMatch } from '../utils/textMatch.js';
+import { isUkLocation } from '../utils/isUk';
+import { getTextMatch } from '../utils/textMatch';
 
 dotenv.config()
 

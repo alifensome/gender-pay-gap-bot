@@ -11,15 +11,16 @@ provider:
 #  stage: dev
   region: eu-west-2
 package:
- include:
-   - ./src/**
-   - node_modules/**
- exclude:
-   - ./**
+  include:
+    - ./dist/**
+    - node_modules/**
+    - data/companies_GPG_Data.json
+  exclude:
+    - ./**
 
 functions:
   getCompany:
-    handler: src/api/getCompanyHandler.getCompany
+    handler: dist/api/getCompanyHandler.getCompany
     events:
      - httpApi:
          path: /company/{id}

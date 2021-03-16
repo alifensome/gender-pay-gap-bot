@@ -1,15 +1,15 @@
-const DataImporter = require("../importData")
+import DataImporter from "../importData"
 
-d = new DataImporter()
+const d = new DataImporter()
 
-exports.getCompany = async (event) => {
+const getCompany = async (event) => {
   const id = event.pathParameters.id
+  const company = (d.companiesGpgData() as any[]).find((c) => c.companyNumber == id)
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
+        company,
       },
       null,
       2
@@ -19,3 +19,5 @@ exports.getCompany = async (event) => {
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration
   // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
+
+export { getCompany }

@@ -1,7 +1,7 @@
 import dotEnv from "dotenv"
 import DataImporter from '../importData'
-import { getMostRecentGPG } from "../utils.js"
-import { writeJsonFile } from "../utils/write.js";
+import { getMostRecentGPG } from "../utils/getMostRecentGPG"
+import { writeJsonFile } from "../utils/write";
 const dataImporter = new DataImporter()
 
 

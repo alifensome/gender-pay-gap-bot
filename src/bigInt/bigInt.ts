@@ -1,4 +1,6 @@
 export default class BigInt {
+    Parts: number[]
+    Str: string
     constructor(intString) {
         this.Str = intString
         this.Parts = []

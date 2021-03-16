@@ -1,8 +1,8 @@
 import Twit from "twit"
 import dotEnv from "dotenv"
 import DataImporter from '../importData'
-import { getMostRecentGPG } from "../utils.js"
-import { writeJsonFile } from "../utils/write.js";
+import { getMostRecentGPG } from "../utils/getMostRecentGPG"
+import { writeJsonFile } from "../utils/write";
 import { getCompanyDataByTwitterId } from "./getCompanyDataByTwitterId";
 const dataImporter = new DataImporter()
 

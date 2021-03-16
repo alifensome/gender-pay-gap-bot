@@ -1,11 +1,12 @@
 import { writeJsonFile } from "../utils/write.js";
-import { parseDataFromJsonXlsx } from "./getData.js.js"
-import require from "../importData/require"
+import { parseDataFromJsonXlsx } from "./getData"
+import DataImporter from "../importData"
+const dataImporter = new DataImporter()
 
-const json2021 = require("../data/gpg_2020_2021")
-const json2020 = require("../data/gpg_2019_2020")
-const json2019 = require("../data/gpg_2018_2019")
-const json2018 = require("../data/gpg_2017_2018")
+const json2021 = dataImporter.gpg_2020_2021()
+const json2020 = dataImporter.gpg_2019_2020()
+const json2019 = dataImporter.gpg_2018_2019()
+const json2018 = dataImporter.gpg_2017_2018()
 
 getAllData().then(() => console.log("Finished!!!"))
 

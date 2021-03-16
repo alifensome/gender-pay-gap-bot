@@ -1,6 +1,6 @@
 import DataImporter from '../importData'
 import { getCompanyDataByTwitterId } from "../twitter/getCompanyDataByTwitterId.js";
-import { getMostRecentGPG } from "../utils.js";
+import { getMostRecentGPG } from "../utils/getMostRecentGPG";
 const dataImporter = new DataImporter()
 
 const donkedData = dataImporter.successfulTweetsWithCompanyData()

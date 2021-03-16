@@ -17,7 +17,7 @@ export async function getCompanyDeletedTweets(twitterIds) {
     for (let index = 0; index < listOfListTwitterIds.length; index++) {
         const listOfTwitterIds = listOfListTwitterIds[index];
         const ids = listOfTwitterIds.join(",")
-        const statuses = await twitterClient.tweets.statusesLookup({ id: ids, map: true })
+        const statuses = await twitterClient.tweets.statusesLookup({ id: ids, map: true }) as any
         for (const key in statuses.id) {
             const value = statuses.id[key]
             if (value == null) {
