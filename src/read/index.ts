@@ -1,6 +1,7 @@
 import { writeJsonFile } from "../utils/write.js";
 import { parseDataFromJsonXlsx } from "./getData"
 import DataImporter from "../importData"
+import { findCompany } from "../utils/findCompany";
 const dataImporter = new DataImporter()
 
 const json2021 = dataImporter.gpg_2020_2021()
@@ -119,13 +120,4 @@ async function getAllData() {
     console.log("Wrote file!")
 }
 
-function findCompany(name, companyNumber, list) {
-    const upperCaseName = name.toUpperCase()
-    for (let index = 0; index < list.length; index++) {
-        const item = list[index];
-        if (item.companyName.toUpperCase() == upperCaseName || item.companyNumber == companyNumber) {
-            return item
-        }
-    }
-    return null
-}
+

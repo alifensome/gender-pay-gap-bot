@@ -4,13 +4,13 @@ class DataImporter {
     readFile(path) {
         return JSON.parse(fs.readFileSync(path, 'utf8'));
     }
-    companiesGpgData() {
+    companiesGpgData(): CompanyDataItem[] {
         return this.readFile("./data/companies_GPG_Data.json")
     }
     successfulTweets() {
         return this.readFile("./data/tweets/successful-tweets.json")
     }
-    twitterUserDataProd() {
+    twitterUserDataProd(): TwitterDataWithCompany[] {
         return this.readFile("./data/twitterAccountData/twitterUserData-prod.json")
     }
     allTimeLineTweets() {
@@ -41,3 +41,25 @@ class DataImporter {
 }
 
 export default DataImporter
+
+export interface CompanyDataItem {
+    companyName: string
+    companyNumber: string
+    gpg_2020_2021?: number
+    gpg_2019_2020?: number
+    gpg_2018_2019?: number
+    gpg_2017_2018?: number
+}
+
+export interface TwitterDataWithCompany {
+    twitter_id_str: string;
+    twitter_id: number;
+    twitter_name: string;
+    twitter_screen_name: string;
+    companyName: string;
+    companyNumber?: number;
+    gpg_2020_2021?: number;
+    gpg_2019_2020?: number;
+    gpg_2018_2019?: number;
+    gpg_2017_2018?: number;
+}
