@@ -13,7 +13,7 @@ for (let index = 0; index < companiesData.length; index++) {
     if (twitterCompany) {
         joinedData.push({ ...c, hasTwitterData: true, twitterId: twitterCompany.twitter_id_str, twitterScreenName: twitterCompany.twitter_screen_name })
     } else {
-        joinedData.push(c)
+        joinedData.push({ ...c, hasTwitterData: false })
     }
 }
 

@@ -38,6 +38,9 @@ class DataImporter {
     gpg_2017_2018() {
         return this.readFile("./data/gpg_2017_2018.json")
     }
+    companyDataJoinedTweets(): CompanyDataJoinedTweetsItem[] {
+        return this.readFile("./data/companyDataJoinedWithTweets.json")
+    }
 }
 
 export default DataImporter
@@ -62,4 +65,17 @@ export interface TwitterDataWithCompany {
     gpg_2019_2020?: number;
     gpg_2018_2019?: number;
     gpg_2017_2018?: number;
+}
+
+export interface CompanyDataJoinedTweetsItem {
+    companyName: string
+    companyNumber?: string;
+    gpg_2020_2021?: number;
+    gpg_2019_2020?: number;
+    gpg_2018_2019?: number;
+    gpg_2017_2018?: number;
+    hasTwitterData: boolean
+    twitterId?: string
+    twitterScreenName?: string
+
 }

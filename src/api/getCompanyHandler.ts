@@ -1,23 +1,27 @@
 import DataImporter from "../importData"
+import { response } from "./response";
 
 const d = new DataImporter()
 
-const getCompany = async (event) => {
+const getCompanyByCompanyId = async (event) => {
   const id = event.pathParameters.id
-  const company = (d.companiesGpgData() as any[]).find((c) => c.companyNumber == id)
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        company,
-      },
-      null,
-      2
-    ),
-  };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  const tweets = d.companyDataJoinedTweets()
+  const company = tweets.find((c) => c.companyNumber == id)
+  return response(company)
 };
 
-export { getCompany }
+const getCompanyByTwitterId = async (event) => {
+  const id = event.pathParameters.id
+  const tweets = d.companyDataJoinedTweets()
+  const company = tweets.find((c) => c.twitterId == id)
+  return response(company)
+};
+
+const getCompanyByTwitterHandle = async (event) => {
+  const handle = event.pathParameters.handle
+  const tweets = d.companyDataJoinedTweets()
+  const company = tweets.find((c) => c?.twitterScreenName?.toLocaleUpperCase() == handle?.toLocaleUpperCase())
+  return response(company)
+};
+
+export { getCompanyByCompanyId, getCompanyByTwitterId, getCompanyByTwitterHandle }
