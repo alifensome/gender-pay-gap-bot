@@ -26,6 +26,9 @@ class DataImporter {
         return this.readFile("./data/tweets/unsuccessful-tweets.json")
     }
 
+    gpg_2021_2022() {
+        return this.readFile("./data/gpg_2021_2022.json")
+    }
     gpg_2020_2021() {
         return this.readFile("./data/gpg_2020_2021.json")
     }

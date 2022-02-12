@@ -1,8 +1,24 @@
 import { spreadSheetToJson } from "./getData.js"
 
-writeAllData().then(() => console.log("Finished!!!"))
+async function write2021_2022_data() {
+    await genericWriteData(2021)
+}
 
-async function writeAllData() {
+export async function genericWriteData(year: number) {
+    const startYear = year
+    const endYear = year + 1
+    const formattedYearGap = `${startYear}_${endYear}`
+    console.log(`Started reading data from ${formattedYearGap}`)
+    const filePath = `./data/UK Gender Pay Gap Data - ${startYear} to ${endYear}.xlsx`
+    const outputFilePath = `./data/gpg_${formattedYearGap}.json`
+    await spreadSheetToJson(filePath, outputFilePath)
+    console.log(`Finished reading data from ${formattedYearGap}`)
+}
+
+export async function writeAllData() {
+
+    await write2021_2022_data()
+
     console.log("Started reading data from 2020_2021")
     const filePath_2020_2021 = './data/UK Gender Pay Gap Data - 2020 to 2021.xlsx'
     const outputFilePath_2020_2021 = "./data/gpg_2020_2021.json"

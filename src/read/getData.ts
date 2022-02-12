@@ -1,28 +1,6 @@
 
 import { createWriteStream } from "fs"
-import * as  readXlsxFile from 'read-excel-file/node';
 import * as  XLSX from 'xlsx';
-
-
-function getData(filePath) {
-    return new Promise((resolve) => {
-        const data = [];
-        readXlsxFile(filePath).then((rows) => {
-            for (let index = 0; index < rows.length; index++) {
-                if (index == 0) {
-                    continue;
-                }
-                const row = rows[index];
-                let companyName = row[0];
-                let companyNumber = row[2];
-                let genderPayGap = row[4];
-                data.push({ companyName, companyNumber, genderPayGap });
-            }
-        }).then(() => {
-            return resolve(data);
-        });
-    });
-}
 
 function spreadSheetToJson(filePath, outputFileName) {
     return new Promise((resolve) => {
@@ -45,19 +23,19 @@ function spreadSheetToJson(filePath, outputFileName) {
 function parseDataFromJsonXlsx(jsonFile) {
     const data = [];
     for (let index = 0; index < jsonFile.length; index++) {
-        if (index == 0) {
+        if (index === 0) {
             continue;
         }
         const row = jsonFile[index];
         const companyName = row.A;
-        let companyNumber = parseCompanyNumber(row.C);
-        let genderPayGap = parseGpg(row.E);
+        const companyNumber = parseCompanyNumber(row.C);
+        const genderPayGap = parseGpg(row.E);
         data.push({ companyName, companyNumber, genderPayGap });
     }
     return data
 }
 
-// TODO refactor this to be cleaner :P 
+// TODO refactor this to be cleaner :P
 function parseCompanyNumber(companyNumber) {
     if (typeof companyNumber == "number") {
         if (companyNumber.toString().length == 7) {
@@ -85,4 +63,4 @@ function parseGpg(gpg) {
     return gpg
 }
 
-export { getData, spreadSheetToJson, parseDataFromJsonXlsx };
+export { spreadSheetToJson, parseDataFromJsonXlsx };
