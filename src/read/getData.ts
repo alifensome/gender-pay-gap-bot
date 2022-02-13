@@ -20,16 +20,17 @@ function spreadSheetToJson(filePath, outputFileName) {
     });
 }
 
-function parseDataFromJsonXlsx(jsonFile) {
+function parseDataFromJsonXlsx(jsonFile: any[]): any[] {
     const data = [];
+    const headerFields = getHeaderFields(jsonFile[0])
     for (let index = 0; index < jsonFile.length; index++) {
+        const row = jsonFile[index];
         if (index === 0) {
             continue;
         }
-        const row = jsonFile[index];
-        const companyName = row.A;
-        const companyNumber = parseCompanyNumber(row.C);
-        const genderPayGap = parseGpg(row.E);
+        const companyName = row[headerFields.EmployerNameField];
+        const companyNumber = parseCompanyNumber(row[headerFields.CompanyNumberField]);
+        const genderPayGap = parseGpg(row[headerFields.DiffMeanHourlyPercentField]);
         data.push({ companyName, companyNumber, genderPayGap });
     }
     return data
@@ -37,8 +38,8 @@ function parseDataFromJsonXlsx(jsonFile) {
 
 // TODO refactor this to be cleaner :P
 function parseCompanyNumber(companyNumber) {
-    if (typeof companyNumber == "number") {
-        if (companyNumber.toString().length == 7) {
+    if (typeof companyNumber === "number") {
+        if (companyNumber.toString().length === 7) {
             return `0${companyNumber}`
         }
 
@@ -60,7 +61,37 @@ function parseGpg(gpg) {
     if (typeof gpg == "string") {
         return parseFloat(gpg.replace("\t", ""))
     }
+    if (gpg > 1000 || gpg < -1000) {
+        throw new Error(`gpg out of bounds: ${gpg}`)
+    }
     return gpg
 }
 
 export { spreadSheetToJson, parseDataFromJsonXlsx };
+
+interface Fields { EmployerNameField: string, CompanyNumberField: string, DiffMeanHourlyPercentField: string }
+export function getHeaderFields(headerObject: any): Fields {
+    const fields: Fields = {
+        EmployerNameField: "",
+        CompanyNumberField: "",
+        DiffMeanHourlyPercentField: ""
+    }
+    for (const key in headerObject) {
+        if (headerObject.hasOwnProperty(key)) {
+            const value = headerObject[key]
+            if (value === "EmployerName") {
+                fields.EmployerNameField = key
+            }
+            if (value === "CompanyNumber") {
+                fields.CompanyNumberField = key
+            }
+            if (value === "DiffMeanHourlyPercent") {
+                fields.DiffMeanHourlyPercentField = key
+            }
+        }
+    }
+    if (!fields.CompanyNumberField || !fields.DiffMeanHourlyPercentField || !fields.EmployerNameField) {
+        throw new Error(`Could not find all fields in header, ${headerObject}`)
+    }
+    return fields
+}
