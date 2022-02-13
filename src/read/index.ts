@@ -68,15 +68,7 @@ async function getAllData() {
         const item_2019 = findCompany(company.companyName, company.companyNumber, data_2018_2019)
         const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
-        combinedData.push({
-            companyName: company.companyName,
-            companyNumber: company.companyNumber,
-            gpg_2021_2022: company.genderPayGap,
-            gpg_2020_2021: item_2021 ? item_2021.genderPayGap : null,
-            gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,
-            gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
-        })
+        combinedData.push(toCompanyGpgDataItem(company, item_2021, item_2020, item_2019, item_2018))
     }
 
     complete += numberOfItems2022
@@ -93,15 +85,8 @@ async function getAllData() {
         const item_2019 = findCompany(company.companyName, company.companyNumber, data_2018_2019)
         const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
-        combinedData.push({
-            companyName: company.companyName,
-            companyNumber: company.companyNumber,
-            gpg_2021_2022: null,
-            gpg_2020_2021: company.genderPayGap,
-            gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,
-            gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
-        })
+        combinedData.push(toCompanyGpgDataItem(null, company, item_2020, item_2019, item_2018))
+
     }
 
     complete += numberOfItems2021
@@ -116,14 +101,7 @@ async function getAllData() {
         const item_2019 = findCompany(company.companyName, company.companyNumber, data_2018_2019)
         const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
-        combinedData.push({
-            companyName: company.companyName,
-            companyNumber: company.companyNumber,
-            gpg_2020_2021: null,
-            gpg_2019_2020: company.genderPayGap,
-            gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
-        })
+        combinedData.push(toCompanyGpgDataItem(null, null, company, item_2019, item_2018))
     }
 
     complete += numberOfItems2020
@@ -138,14 +116,8 @@ async function getAllData() {
         }
         const item_2018 = findCompany(company.companyName, company.companyNumber, data_2017_2018)
 
-        combinedData.push({
-            companyName: company.companyName,
-            companyNumber: company.companyNumber,
-            gpg_2020_2021: null,
-            gpg_2019_2020: null,
-            gpg_2018_2019: company.genderPayGap,
-            gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
-        })
+        combinedData.push(toCompanyGpgDataItem(null, null, null, company, item_2018))
+
     }
 
     complete += numberOfItems2019
@@ -158,19 +130,60 @@ async function getAllData() {
             continue;
         }
 
-        combinedData.push({
-            companyName: company.companyName,
-            companyNumber: company.companyNumber,
-            gpg_2020_2021: null,
-            gpg_2019_2020: null,
-            gpg_2018_2019: null,
-            gpg_2017_2018: company.genderPayGap,
-        })
+        combinedData.push(toCompanyGpgDataItem(null, null, null, null, company))
     }
 
     await writeJsonFile('./data/companies_GPG_Data.json', combinedData)
     console.log("Wrote file!")
 }
+
+export interface Company {
+    companyName: string;
+    companyNumber: string;
+    genderPayGap: number;
+    medianGenderPayGap: number;
+}
+
+export interface AllYearsCompanyData {
+    companyName: string
+    companyNumber: string,
+    gpg_2021_2022: number | null,
+    gpg_2020_2021: number | null,
+    gpg_2019_2020: number | null,
+    gpg_2018_2019: number | null,
+    gpg_2017_2018: number | null,
+
+    medianGpg_2021_2022: number | null,
+    medianGpg_2020_2021: number | null,
+    medianGpg_2019_2020: number | null,
+    medianGpg_2018_2019: number | null,
+    medianGpg_2017_2018: number | null,
+}
+
+function toCompanyGpgDataItem(item_2022: Company | null, item_2021: Company | null, item_2020: Company | null, item_2019: Company | null, item_2018: Company | null): any {
+    const latestCompanyObject = getLatestCompanyEntry(item_2022, item_2021, item_2020, item_2019, item_2018)
+    return {
+        companyName: latestCompanyObject.companyName,
+        companyNumber: latestCompanyObject.companyNumber,
+        gpg_2021_2022: item_2022 ? item_2022.genderPayGap : null,
+        gpg_2020_2021: item_2021 ? item_2021.genderPayGap : null,
+        gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,
+        gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
+        gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
+
+        medianGpg_2021_2022: item_2022 ? item_2022.medianGenderPayGap : null,
+        medianGpg_2020_2021: item_2021 ? item_2021.medianGenderPayGap : null,
+        medianGpg_2019_2020: item_2020 ? item_2020.medianGenderPayGap : null,
+        medianGpg_2018_2019: item_2019 ? item_2019.medianGenderPayGap : null,
+        medianGpg_2017_2018: item_2018 ? item_2018.medianGenderPayGap : null,
+    };
+}
+
+
+function getLatestCompanyEntry(item_2022: Company | null, item_2021: Company | null, item_2020: Company | null, item_2019: Company | null, item_2018: Company | null): Company {
+    return item_2022 || item_2021 || item_2020 || item_2019 || item_2018
+}
+
 
 
 function printPercentageComplete(current: number, totalData: number) {

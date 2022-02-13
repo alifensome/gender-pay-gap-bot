@@ -2,7 +2,7 @@
 import { createWriteStream } from "fs"
 import * as  XLSX from 'xlsx';
 
-function spreadSheetToJson(filePath, outputFileName) {
+function spreadSheetToJson(filePath, outputFileName): Promise<Error | undefined> {
     return new Promise((resolve) => {
         const workbook = XLSX.read(filePath, { type: 'file' });
         const [firstSheetName] = workbook.SheetNames;
@@ -31,7 +31,9 @@ function parseDataFromJsonXlsx(jsonFile: any[]): any[] {
         const companyName = row[headerFields.EmployerNameField];
         const companyNumber = parseCompanyNumber(row[headerFields.CompanyNumberField]);
         const genderPayGap = parseGpg(row[headerFields.DiffMeanHourlyPercentField]);
-        data.push({ companyName, companyNumber, genderPayGap });
+        const medianGenderPayGap = parseGpg(row[headerFields.DiffMedianHourlyPercentField]);
+
+        data.push({ companyName, companyNumber, genderPayGap, medianGenderPayGap });
     }
     return data
 }
@@ -43,12 +45,12 @@ function parseCompanyNumber(companyNumber) {
             return `0${companyNumber}`
         }
 
-        if (companyNumber.toString().length == 6) {
+        if (companyNumber.toString().length === 6) {
             return `00${companyNumber}`
         }
 
 
-        if (companyNumber.toString().length == 5) {
+        if (companyNumber.toString().length === 5) {
             return `000${companyNumber}`
         }
 
@@ -58,7 +60,7 @@ function parseCompanyNumber(companyNumber) {
 }
 
 function parseGpg(gpg) {
-    if (typeof gpg == "string") {
+    if (typeof gpg === "string") {
         return parseFloat(gpg.replace("\t", ""))
     }
     if (gpg > 1000 || gpg < -1000) {
@@ -69,12 +71,19 @@ function parseGpg(gpg) {
 
 export { spreadSheetToJson, parseDataFromJsonXlsx };
 
-interface Fields { EmployerNameField: string, CompanyNumberField: string, DiffMeanHourlyPercentField: string }
+interface Fields {
+    EmployerNameField: string;
+    CompanyNumberField: string;
+    DiffMeanHourlyPercentField: string;
+    DiffMedianHourlyPercentField: string;
+}
+
 export function getHeaderFields(headerObject: any): Fields {
     const fields: Fields = {
         EmployerNameField: "",
         CompanyNumberField: "",
-        DiffMeanHourlyPercentField: ""
+        DiffMeanHourlyPercentField: "",
+        DiffMedianHourlyPercentField: ""
     }
     for (const key in headerObject) {
         if (headerObject.hasOwnProperty(key)) {
@@ -88,9 +97,12 @@ export function getHeaderFields(headerObject: any): Fields {
             if (value === "DiffMeanHourlyPercent") {
                 fields.DiffMeanHourlyPercentField = key
             }
+            if (value === "DiffMedianHourlyPercent") {
+                fields.DiffMedianHourlyPercentField = key
+            }
         }
     }
-    if (!fields.CompanyNumberField || !fields.DiffMeanHourlyPercentField || !fields.EmployerNameField) {
+    if (!fields.CompanyNumberField || !fields.DiffMeanHourlyPercentField || !fields.EmployerNameField || !fields.DiffMedianHourlyPercentField) {
         throw new Error(`Could not find all fields in header, ${headerObject}`)
     }
     return fields
