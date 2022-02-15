@@ -183,9 +183,23 @@ function toCompanyGpgDataItem(item_2022: Company | null, item_2021: Company | nu
 
 
 function getLatestCompanyEntry(item_2022: Company | null, item_2021: Company | null, item_2020: Company | null, item_2019: Company | null, item_2018: Company | null): Company {
-    return item_2022 || item_2021 || item_2020 || item_2019 || item_2018
+    const yearsOfCompany = [item_2022, item_2021, item_2020, item_2019, item_2018]
+
+    for (let index = 0; index < yearsOfCompany.length; index++) {
+        const element = yearsOfCompany[index];
+        if (isValidCompany(element)) {
+            return element
+        }
+    }
+    return item_2022
 }
 
+function isValidCompany(c: Company) {
+    if (!c || !c.companyNumber) {
+        return false
+    }
+    return true
+}
 
 
 function printPercentageComplete(current: number, totalData: number) {
