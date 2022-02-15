@@ -12,6 +12,7 @@ describe("parseDataFromJsonXlsx", () => {
             "companyName": "1825 FINANCIAL PLANNING AND ADVICE LIMITED",
             "companyNumber": "01447544",
             "genderPayGap": 44.5,
+            "medianGenderPayGap": 42.6,
         }]
         expect(result).toEqual(expectedResult)
     })
@@ -26,6 +27,7 @@ describe("parseDataFromJsonXlsx", () => {
             "companyName": "1825 FINANCIAL PLANNING AND ADVICE LIMITED",
             "companyNumber": "01447544",
             "genderPayGap": 44.5,
+            "medianGenderPayGap": 42.6,
         }]
         expect(result).toEqual(expectedResult)
     })
