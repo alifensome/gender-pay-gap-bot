@@ -142,6 +142,7 @@ export interface Company {
     companyNumber: string;
     genderPayGap: number;
     medianGenderPayGap: number;
+    sicCodes: string;
 }
 
 export interface AllYearsCompanyData {
@@ -165,6 +166,7 @@ function toCompanyGpgDataItem(item_2022: Company | null, item_2021: Company | nu
     return {
         companyName: latestCompanyObject.companyName,
         companyNumber: latestCompanyObject.companyNumber,
+        sicCodes: latestCompanyObject.sicCodes,
         gpg_2021_2022: item_2022 ? item_2022.genderPayGap : null,
         gpg_2020_2021: item_2021 ? item_2021.genderPayGap : null,
         gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,

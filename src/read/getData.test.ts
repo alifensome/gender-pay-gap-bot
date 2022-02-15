@@ -9,10 +9,11 @@ describe("parseDataFromJsonXlsx", () => {
         ]
         const result = parseDataFromJsonXlsx(data)
         const expectedResult = [{
-            "companyName": "1825 FINANCIAL PLANNING AND ADVICE LIMITED",
-            "companyNumber": "01447544",
-            "genderPayGap": 44.5,
-            "medianGenderPayGap": 42.6,
+            companyName: "1825 FINANCIAL PLANNING AND ADVICE LIMITED",
+            companyNumber: "01447544",
+            genderPayGap: 44.5,
+            sicCodes: "64999, 66190",
+            medianGenderPayGap: 42.6,
         }]
         expect(result).toEqual(expectedResult)
     })
@@ -28,6 +29,7 @@ describe("parseDataFromJsonXlsx", () => {
             "companyNumber": "01447544",
             "genderPayGap": 44.5,
             "medianGenderPayGap": 42.6,
+            "sicCodes": "64999, 66190",
         }]
         expect(result).toEqual(expectedResult)
     })
@@ -38,7 +40,7 @@ describe("getHeaderFields", () => {
         const headers = { B: "EmployerName", A: "Address", C: "CompanyNumber", D: "SicCodes", E: "DiffMeanHourlyPercent", F: "DiffMedianHourlyPercent", G: "DiffMeanBonusPercent", H: "DiffMedianBonusPercent", I: "MaleBonusPercent", J: "FemaleBonusPercent", K: "MaleLowerQuartile", L: "FemaleLowerQuartile", M: "MaleLowerMiddleQuartile", N: "FemaleLowerMiddleQuartile", O: "MaleUpperMiddleQuartile", P: "FemaleUpperMiddleQuartile", Q: "MaleTopQuartile", R: "FemaleTopQuartile", S: "CompanyLinkToGPGInfo" }
 
         const result = getHeaderFields(headers)
-        const expectedResult = { "EmployerNameField": "B", "CompanyNumberField": "C", DiffMeanHourlyPercentField: "E", "DiffMedianHourlyPercentField": "F", }
+        const expectedResult = { "EmployerNameField": "B", "CompanyNumberField": "C", DiffMeanHourlyPercentField: "E", "DiffMedianHourlyPercentField": "F", "SicCodesField": "D", }
         expect(result).toEqual(expectedResult)
     })
 })

@@ -32,10 +32,22 @@ function parseDataFromJsonXlsx(jsonFile: any[]): any[] {
         const companyNumber = parseCompanyNumber(row[headerFields.CompanyNumberField]);
         const genderPayGap = parseGpg(row[headerFields.DiffMeanHourlyPercentField]);
         const medianGenderPayGap = parseGpg(row[headerFields.DiffMedianHourlyPercentField]);
+        const sicCodes = parseString(row[headerFields.SicCodesField])
 
-        data.push({ companyName, companyNumber, genderPayGap, medianGenderPayGap });
+        data.push({ companyName, companyNumber, genderPayGap, medianGenderPayGap, sicCodes });
     }
     return data
+}
+
+function parseString(s: string | unknown): string {
+    if (!s) {
+        return ""
+    }
+    if (typeof s === "string") {
+        const result = s.replace(/\n/g, "")
+        return result
+    }
+    return `${s}`
 }
 
 // TODO refactor this to be cleaner :P
@@ -76,6 +88,8 @@ interface Fields {
     CompanyNumberField: string;
     DiffMeanHourlyPercentField: string;
     DiffMedianHourlyPercentField: string;
+    SicCodesField: string
+
 }
 
 export function getHeaderFields(headerObject: any): Fields {
@@ -83,7 +97,8 @@ export function getHeaderFields(headerObject: any): Fields {
         EmployerNameField: "",
         CompanyNumberField: "",
         DiffMeanHourlyPercentField: "",
-        DiffMedianHourlyPercentField: ""
+        DiffMedianHourlyPercentField: "",
+        SicCodesField: ""
     }
     for (const key in headerObject) {
         if (headerObject.hasOwnProperty(key)) {
@@ -100,9 +115,14 @@ export function getHeaderFields(headerObject: any): Fields {
             if (value === "DiffMedianHourlyPercent") {
                 fields.DiffMedianHourlyPercentField = key
             }
+            if (value === "SicCodes") {
+                fields.SicCodesField = key
+            }
         }
     }
-    if (!fields.CompanyNumberField || !fields.DiffMeanHourlyPercentField || !fields.EmployerNameField || !fields.DiffMedianHourlyPercentField) {
+    if (!fields.CompanyNumberField || !fields.DiffMeanHourlyPercentField ||
+        !fields.EmployerNameField || !fields.DiffMedianHourlyPercentField
+        || !fields.SicCodesField) {
         throw new Error(`Could not find all fields in header, ${headerObject}`)
     }
     return fields
