@@ -3,6 +3,7 @@ import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter, { TwitterDataWithCompany } from "../importData";
 import { debugPrint } from "../utils/debugPrint";
+import { debug } from "console";
 
 
 export class IncomingTweetListenerQueuer {
@@ -21,7 +22,7 @@ export class IncomingTweetListenerQueuer {
     listen() {
         const twitterData = this.dataImporter.twitterUserDataProd()
         const followers = this.getFollowsFromData(twitterData)
-        return this.twitterClient.startStreamingTweets(followers, this.handleIncomingTweet)
+        return this.twitterClient.startStreamingTweets(followers, (input) => this.handleIncomingTweet(input))
     }
 
     getFollowsFromData(companies: TwitterDataWithCompany[]) {
@@ -49,15 +50,13 @@ export class IncomingTweetListenerQueuer {
         // Check tweet contains words
         const isRelevantTweet = this.checkTweetContainsWord(input.fullTweetObject.text)
         if (!isRelevantTweet) {
-            console.log("Irrelevant tweet")
+            debugPrint("irrelevant tweet")
             return
         }
 
-        debugPrint(input.fullTweetObject.user)
-
         // Queue the message
         await this.sqsClient.queueMessage(input)
-        this.logger.info({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", user: input.user })
+        this.logger.info({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", screenName: input.screenName })
     }
 
     checkTweetContainsWord(tweet): boolean {

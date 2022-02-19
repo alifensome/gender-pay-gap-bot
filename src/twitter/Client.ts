@@ -1,6 +1,7 @@
 import Twit from "twit"
 import { Logger } from "tslog";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
+import { debugPrint } from "../utils/debugPrint";
 
 export class TwitterClient {
     twitPackage: Twit;
@@ -29,10 +30,11 @@ export class TwitterClient {
                 const text = tweet.text
                 const timeStamp = new Date().toISOString()
 
-                this.logger.info({
-                    message: "streaming started", eventType: "tweetReceived", twitterName: tweet.user.name,
+                debugPrint({
+                    message: "tweet detected",
+                    eventType: "tweetReceived",
+                    twitterName: tweet.user.name,
                     twitterUserId,
-                    user,
                     screenName,
                     isRetweet,
                     text,

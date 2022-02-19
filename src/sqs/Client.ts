@@ -1,5 +1,6 @@
 import { SQSClient as AwsSqsClient, SendMessageCommand, SendMessageCommandOutput } from "@aws-sdk/client-sqs";
 import { Logger } from "tslog";
+import { isDebugMode } from "../utils/debugPrint";
 
 export class SqsClient {
     awsSqsClient: AwsSqsClient
@@ -7,10 +8,13 @@ export class SqsClient {
     region = process.env.REGION;
     sqsUrl = process.env.SQS_QUEUE_URL
     logger: Logger
+    isDebugMode: boolean;
 
     constructor() {
         this.awsSqsClient = new AwsSqsClient({ region: this.region })
         this.logger = new Logger()
+        this.isDebugMode = isDebugMode()
+        this.delay = this.isDebugMode ? 0 : 600
     }
     async queueMessage(messageBody: any): Promise<SendMessageCommandOutput> {
         const params = {

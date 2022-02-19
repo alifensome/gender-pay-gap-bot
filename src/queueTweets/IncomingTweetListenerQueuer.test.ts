@@ -18,8 +18,7 @@ describe("IncomingTweetListenerQueuer", () => {
         it("should listen to twitter with a handler", async () => {
             await handler.listen()
             expect(mockTwitterClient.startStreamingTweets).toBeCalledTimes(1)
-            expect(mockTwitterClient.startStreamingTweets).toBeCalledWith(["1", "2"], handler.handleIncomingTweet)
-
+            expect(mockTwitterClient.startStreamingTweets.mock.calls[0][0]).toEqual(["1", "2"])
         })
     })
     describe("getFollowsFromData", () => {

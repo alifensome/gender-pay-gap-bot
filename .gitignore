@@ -4,3 +4,5 @@ logs.txt
 .serverless
 dist/**
 .vscode
+
+distBackUp/*

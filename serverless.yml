@@ -39,3 +39,42 @@ functions:
      - httpApi:
          path: /company/twitterHandle/{handle}
          method: get
+
+# V2 
+# TODO
+# SQS
+# EC2 + networking
+# IAM
+# Lambda function subscribing to SQS
+# - Only one lambda at a time
+# - Rate limited to 1 per minute
+
+
+resources:
+  Resources:
+    # SQS for queuing tweets.
+    TweetQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "TweetQueue"
+        MessageRetentionPeriod: 1209600 # 14 days retention.
+        RedrivePolicy:
+          deadLetterTargetArn: Fn::GetAtt: [ TweetQueueDeadLetter, Arn ]
+          maxReceiveCount: 3
+
+    TweetQueueDeadLetter:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "TweetQueueDeadLetter"
+        MessageRetentionPeriod: 1209600 # 14 days retention.
+
+# EC2 for Tweet listener and queuer
+    TweetListenerQueuer:
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: ami-0dd555eb7eb3b7c82 # Linux 2
+        # KeyName: yourSshKeyName # This needs to be created manually. CloudFormation does not allow it
+        InstanceType: t2.nano
+        # SubnetId: // your subnetId
+        # SecurityGroupIds:
+        #   - // your security group IDs
