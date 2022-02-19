@@ -42,6 +42,4 @@ export async function writeAllData() {
     const outputFilePath_2017_2018 = "./data/gpg_2017_2018.json"
     await spreadSheetToJson(filePath_2017_2018, outputFilePath_2017_2018)
     console.log("Finished reading data from 2017_2018")
-
-
 }

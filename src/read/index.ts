@@ -195,10 +195,7 @@ function getLatestCompanyEntry(item_2022: Company | null, item_2021: Company | n
 }
 
 function isValidCompany(c: Company) {
-    if (!c || !c.companyNumber) {
-        return false
-    }
-    return true
+    return !!c && !!c.companyNumber
 }
 
 

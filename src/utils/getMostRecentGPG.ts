@@ -1,4 +1,5 @@
 function getMostRecentGPG(data) {
+    // TODO update this
     if (data.gpg_2020_2021) {
         return data.gpg_2020_2021
     }

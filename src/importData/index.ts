@@ -51,10 +51,18 @@ export default DataImporter
 export interface CompanyDataItem {
     companyName: string
     companyNumber: string
+    gpg_2021_2022?: number
     gpg_2020_2021?: number
     gpg_2019_2020?: number
     gpg_2018_2019?: number
     gpg_2017_2018?: number
+    medianGpg_2021_2022?: number
+    medianGpg_2020_2021?: number
+    medianGpg_2019_2020?: number
+    medianGpg_2018_2019?: number
+    medianGpg_2017_2018?: number
+
+    "sicCodes": string;
 }
 
 export interface TwitterDataWithCompany {

@@ -8,7 +8,7 @@ const dataImporter = new DataImporter()
 
 dotEnv.config()
 
-let companyDataProd = dataImporter.twitterUserDataProd()
+const companyDataProd = dataImporter.twitterUserDataProd()
 const companyDataTest = dataImporter.twitterUserDataTest()
 const successfulTweets = dataImporter.successfulTweets()
 const unsuccessfulTweets = dataImporter.unsuccessfulTweets()
@@ -22,7 +22,7 @@ if (isTest) {
     console.log("Starting in PROD mode...")
 }
 
-var T = new Twit({
+const T = new Twit({
     consumer_key: process.env.TWITTER_API_KEY,
     consumer_secret: process.env.TWITTER_API_SECRET,
     access_token: process.env.TWITTER_ACCESS_TOKEN,
@@ -33,11 +33,11 @@ var T = new Twit({
 const follows = getFollowsFromData(companyData)
 debugPrint(follows)
 
-var stream = T.stream('statuses/filter', { follow: follows });
+const stream = T.stream('statuses/filter', { follow: follows });
 
 stream.on('tweet', async (tweet) => {
     const twitterUserId = tweet.user.id_str
-    let time = new Date().toISOString()
+    const time = new Date().toISOString()
     try {
         console.log("Stream received")
         console.log("Successful tweet @", tweet.user.name)
