@@ -1,5 +1,9 @@
-function getMostRecentGPG(data) {
-    // TODO update this
+import { CompanyDataItem } from "../importData"
+
+function getMostRecentGPG(data: CompanyDataItem) {
+    if (data.gpg_2021_2022) {
+        return data.gpg_2021_2022
+    }
     if (data.gpg_2020_2021) {
         return data.gpg_2020_2021
     }

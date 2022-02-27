@@ -1,4 +1,4 @@
-import DataImporter, { TwitterDataWithCompany } from '../importData'
+import DataImporter, { TwitterData } from '../importData'
 import { findCompany } from '../utils/findCompany'
 import { writeJsonFile } from '../utils/write'
 
@@ -9,7 +9,7 @@ const twitterData = dataImporter.twitterUserDataProd()
 const joinedData = []
 for (let index = 0; index < companiesData.length; index++) {
     const c = companiesData[index];
-    const twitterCompany = findCompany(c.companyName, c.companyNumber, twitterData) as TwitterDataWithCompany
+    const twitterCompany = findCompany(c.companyName, c.companyNumber, twitterData) as TwitterData
     if (twitterCompany) {
         joinedData.push({ ...c, hasTwitterData: true, twitterId: twitterCompany.twitter_id_str, twitterScreenName: twitterCompany.twitter_screen_name })
     } else {

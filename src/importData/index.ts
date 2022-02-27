@@ -10,7 +10,7 @@ class DataImporter {
     successfulTweets() {
         return this.readFile("./data/tweets/successful-tweets.json")
     }
-    twitterUserDataProd(): TwitterDataWithCompany[] {
+    twitterUserDataProd(): TwitterData[] {
         return this.readFile("./data/twitterAccountData/twitterUserData-prod.json")
     }
     twitterUserDataTest() {
@@ -65,17 +65,13 @@ export interface CompanyDataItem {
     "sicCodes": string;
 }
 
-export interface TwitterDataWithCompany {
+export interface TwitterData {
     twitter_id_str: string;
     twitter_id: number;
     twitter_name: string;
     twitter_screen_name: string;
     companyName: string;
-    companyNumber?: number;
-    gpg_2020_2021?: number;
-    gpg_2019_2020?: number;
-    gpg_2018_2019?: number;
-    gpg_2017_2018?: number;
+    companyNumber?: string | null;
 }
 
 export interface CompanyDataJoinedTweetsItem {

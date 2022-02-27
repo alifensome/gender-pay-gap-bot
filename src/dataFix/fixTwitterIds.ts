@@ -5,7 +5,7 @@ import { writeJsonFile } from "../utils/write.js";
 const dataImporter = new DataImporter()
 
 dotEnv.config()
-let companyDataProd = dataImporter.twitterUserDataProd()
+const companyDataProd = dataImporter.twitterUserDataProd()
 
 const twitterClient = new TwitterClient({
     apiKey: process.env.TWITTER_API_KEY,
@@ -20,7 +20,7 @@ async function run() {
     let numberOfErrors = 0
     const newCompanyData = []
     for (let index = 0; index < companyDataProd.length; index++) {
-        if (index % 100 == 0) {
+        if (index % 100 === 0) {
             console.log(`${(index / companyDataProd.length) * 100}%`)
         }
         const row = companyDataProd[index];

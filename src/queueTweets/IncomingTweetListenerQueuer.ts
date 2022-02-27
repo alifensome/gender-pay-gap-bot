@@ -1,9 +1,8 @@
 import { TwitterClient } from "../twitter/Client";
 import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
-import DataImporter, { TwitterDataWithCompany } from "../importData";
+import DataImporter, { TwitterData } from "../importData";
 import { debugPrint } from "../utils/debugPrint";
-import { debug } from "console";
 
 
 export class IncomingTweetListenerQueuer {
@@ -25,7 +24,7 @@ export class IncomingTweetListenerQueuer {
         return this.twitterClient.startStreamingTweets(followers, (input) => this.handleIncomingTweet(input))
     }
 
-    getFollowsFromData(companies: TwitterDataWithCompany[]) {
+    getFollowsFromData(companies: TwitterData[]) {
         const twitterIds = []
         for (let index = 0; index < companies.length; index++) {
             const c = companies[index]
