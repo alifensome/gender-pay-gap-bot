@@ -10,7 +10,7 @@ console.log("Total Donks:", donkedData.length)
 const negativeGpg = []
 for (let index = 0; index < donkedData.length; index++) {
     const d = donkedData[index];
-    const gpg = getMostRecentGPG(d)
+    const gpg = getMostRecentGPG(d) as any
     if (typeof gpg == "string" && gpg.includes("-")) {
         negativeGpg.push(d)
     }
@@ -23,7 +23,7 @@ let companyWithHighestGpg = null
 let highestGpg = 0
 for (let index = 0; index < donkedData.length; index++) {
     const d = donkedData[index];
-    const gpg = getMostRecentGPG(d)
+    const gpg = getMostRecentGPG(d) as any
     if (typeof gpg == "string" && gpg.includes("-")) {
         continue
     }

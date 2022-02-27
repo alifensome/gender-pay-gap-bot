@@ -13,7 +13,7 @@ let companyDataProd = dataImporter.twitterUserDataProd()
 const theBadOnes = []
 for (let index = 0; index < companyDataProd.length; index++) {
     const company = companyDataProd[index];
-    const mostRecentGPG = getMostRecentGPG(company)
+    const mostRecentGPG = getMostRecentGPG(company as any)
     if (typeof mostRecentGPG == "string") {
         continue
     }
