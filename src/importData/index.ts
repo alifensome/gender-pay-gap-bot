@@ -13,14 +13,14 @@ class DataImporter {
     twitterUserDataProd(): TwitterDataWithCompany[] {
         return this.readFile("./data/twitterAccountData/twitterUserData-prod.json")
     }
+    twitterUserDataTest() {
+        return this.readFile("./data/twitterAccountData/twitterUserData-test.json")
+    }
     allTimeLineTweets() {
         return this.readFile("./data/tweets/allTimeLineTweets.json")
     }
     successfulTweetsWithCompanyData() {
         return this.readFile("./data/tweets/successfulTweetsWithCompanyData.json")
-    }
-    twitterUserDataTest() {
-        return this.readFile("./data/twitterAccountData/twitterUserData-test.json")
     }
     unsuccessfulTweets() {
         return this.readFile("./data/tweets/unsuccessful-tweets.json")
