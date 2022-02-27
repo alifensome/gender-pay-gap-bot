@@ -1,6 +1,7 @@
 
 import { createWriteStream } from "fs"
 import * as  XLSX from 'xlsx';
+import { parseCompanyNumber, parseGpg } from "./parse";
 
 function spreadSheetToJson(filePath, outputFileName): Promise<Error | undefined> {
     return new Promise((resolve) => {
@@ -48,37 +49,6 @@ function parseString(s: string | unknown): string {
         return result
     }
     return `${s}`
-}
-
-// TODO refactor this to be cleaner :P
-function parseCompanyNumber(companyNumber) {
-    if (typeof companyNumber === "number") {
-        if (companyNumber.toString().length === 7) {
-            return `0${companyNumber}`
-        }
-
-        if (companyNumber.toString().length === 6) {
-            return `00${companyNumber}`
-        }
-
-
-        if (companyNumber.toString().length === 5) {
-            return `000${companyNumber}`
-        }
-
-        return companyNumber.toString()
-    }
-    return companyNumber
-}
-
-function parseGpg(gpg) {
-    if (typeof gpg === "string") {
-        return parseFloat(gpg.replace("\t", ""))
-    }
-    if (gpg > 1000 || gpg < -1000) {
-        throw new Error(`gpg out of bounds: ${gpg}`)
-    }
-    return gpg
 }
 
 export { spreadSheetToJson, parseDataFromJsonXlsx };

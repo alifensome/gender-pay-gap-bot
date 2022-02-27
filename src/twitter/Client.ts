@@ -65,9 +65,11 @@ export class TwitterClient {
         });
     }
 
-    quoteTweet(status, tweet) {
+    quoteTweet(status, screenName: string, // tweet.user.screen_name
+        tweetId: string // tweet.id_str
+    ) {
         return new Promise((resolve, reject) => {
-            const attachmentUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`
+            const attachmentUrl = `https://twitter.com/${screenName}/status/${tweetId}`
             const body = { status, attachment_url: attachmentUrl, auto_populate_reply_metadata: true }
             this.twitPackage.post('statuses/update', body, (err) => {
                 if (err) { return reject(err) }

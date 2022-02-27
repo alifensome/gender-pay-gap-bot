@@ -4,11 +4,22 @@
 git clone https://github.com/alifensome/gender-pay-gap-bot.git
 cd gender-pay-gap-bot
 git pull
+ 
+# AWS cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
 # Get secrets
+aws s3 cp s3://alifensome-general-bucket/gpga/.env .env
+
+# Setup NPM 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
 
 # Install dependencies and build 
 npm i
-npm run build
 
 # Start the listener
+npm run start:listener

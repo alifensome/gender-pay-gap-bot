@@ -23,7 +23,7 @@ Output of the programme looks like this
 ## Data
 Forming a data set linking [UK Gov gender pay gap data](https://gender-pay-gap.service.gov.uk/viewing/download) with twitter users was by far the hardest part of this hack. The data was downloaded on 2021-03-04 so will be out of date.
 ### Combined GPG data
-The GPG data was combined into one file `data/companies_GPG_Data.json`. This will only be as up
+The GPG data was combined into one file `data/companies_GPG_Data.json`. This will only be as up to date as the UK Gov GPG data as the deadline is April so more data is submitted then.
 
 ### Joining twitter data
 Twitter data was join on from an API based on company name and location. We then manually checked those linked were correct and added in some more manually gathered data.
