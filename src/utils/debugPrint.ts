@@ -9,5 +9,5 @@ export function debugPrint(msg: string | object) {
 }
 
 export function isDebugMode(): boolean {
-    return !!process.env.DEBUG || process.argv[2] === "debug";
+    return !!process.env.DEBUG || process.argv[2] === "debug" || process.argv[2] === "test" || process.argv[1] === "test";
 }
