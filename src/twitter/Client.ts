@@ -59,7 +59,6 @@ export class TwitterClient {
                     eventType: "errorHandlingTweet",
                     errMessage: err.message,
                     tweet,
-                    err
                 })
             }
         });

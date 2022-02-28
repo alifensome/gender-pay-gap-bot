@@ -28,7 +28,7 @@ export class SqsClient {
             this.logger.info({ message: `Success, message sent. MessageID: ${data.MessageId}`, messageId: data.MessageId, eventType: "errorSendingMessage" });
             return data; // For unit tests.
         } catch (err) {
-            this.logger.error({ err, errorMessage: `Error while sending data: ${err.message}`, messageBody });
+            this.logger.error({ errorMessage: `Error while sending data: ${err.message}`, messageBody });
             throw err
         }
     }
