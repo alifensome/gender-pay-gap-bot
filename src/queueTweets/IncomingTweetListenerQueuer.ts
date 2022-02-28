@@ -87,8 +87,10 @@ export interface HandleIncomingTweetInput {
 
 
 export const relevantWords = [
-    "IWD2021",
-    "#IWD2021",
+    "IWD2022",
+    "#IWD2022",
+    "#IWD22",
+    "#IWD",
     "INTERNATIONALWOMENSDAY",
     "#INTERNATIONALWOMENSDAY",
     "#CHOOSETOCHALLENGE",
