@@ -16,10 +16,10 @@ package:
     - data/companyDataJoinedWithTweets.json
     - data/twitterAccountData/twitterUserData-prod.json
     - data/twitterAccountData/twitterUserData-test.json
+    - node_modules/**
 
   exclude:
     - ./**
-    - node_modules/**
 
 functions:
   getCompanyByCompanyId:
@@ -94,6 +94,15 @@ resources:
           - sg-88aeb6e5
         IamInstanceProfile: 
           Ref: ListenerEC2Profile
+        # TODO this
+        # UserData:
+        # 'Fn::Base64': !Sub |
+        #   #!/bin/bash -x
+            # echo "Running boot up sequence!"
+            # cd gender-pay-gap-bot
+            # git pull
+            # aws s3 cp s3://alifensome-general-bucket/gpga/.env .env
+            # npm run start:listener test >> ~/appLogs/logs.txt
 
     # Profile
     ListenerEC2Profile:
@@ -127,6 +136,7 @@ resources:
                     - logs:CreateLogGroup
                     - logs:CreateLogStream
                     - logs:PutLogEvents
+                    - logs:DescribeLogStreams
                   Resource:
                     - 'Fn::Join':
                       - ':'
@@ -135,6 +145,7 @@ resources:
                         - Ref: 'AWS::Region'
                         - Ref: 'AWS::AccountId'
                         - 'log-group:/aws/ec2/*:*:*'
+                    - "arn:aws:logs:eu-west-2:402504474878:log-group:/var/log/*:*:*"
                 - Effect: Allow
                   Action:
                     - ec2:CreateNetworkInterface
