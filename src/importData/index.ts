@@ -83,5 +83,4 @@ export interface CompanyDataJoinedTweetsItem {
     hasTwitterData: boolean
     twitterId?: string
     twitterScreenName?: string
-
 }

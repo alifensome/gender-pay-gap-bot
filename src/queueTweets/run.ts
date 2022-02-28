@@ -14,7 +14,6 @@ const logger = new Logger()
 
 const handler = new IncomingTweetListenerQueuer(twitterClient, sqsClient, dataImporter, logger)
 
-handler.listen()
-// TODO local config / handler here
-// TODO Infra
-// SET .ENV after making infra
+const isTest = process.argv[2] === "test" || process.argv[3] === "test"
+
+handler.listen(isTest)

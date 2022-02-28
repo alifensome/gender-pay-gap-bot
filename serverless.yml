@@ -46,6 +46,13 @@ functions:
   tweetGpg:
     handler: dist/tweetGPG/handler.handler
     role: TweetSqsProcessorRole
+    environment:
+      TWITTER_API_KEY: ${env:TWITTER_API_KEY}
+      TWITTER_API_SECRET: ${env:TWITTER_API_SECRET}
+      TWITTER_ACCESS_TOKEN: ${env:TWITTER_ACCESS_TOKEN}
+      TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
+      TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
+      TWITTER_USER_ID: ${env:TWITTER_USER_ID}
     events:
       - sqs:
           arn:

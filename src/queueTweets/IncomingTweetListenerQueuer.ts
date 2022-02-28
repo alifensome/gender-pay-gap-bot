@@ -18,8 +18,11 @@ export class IncomingTweetListenerQueuer {
         this.logger = logger
     }
 
-    listen() {
-        const twitterData = this.dataImporter.twitterUserDataProd()
+    listen(isTest?: boolean) {
+        if (isTest) {
+            this.logger.info({ message: "running in debug mode!" })
+        }
+        const twitterData = isTest ? this.dataImporter.twitterUserDataTest() : this.dataImporter.twitterUserDataProd()
         const followers = this.getFollowsFromData(twitterData)
         return this.twitterClient.startStreamingTweets(followers, (input) => this.handleIncomingTweet(input))
     }
