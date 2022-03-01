@@ -23,3 +23,12 @@ npm i
 
 # Start the listener
 npm run start:listener
+
+
+# Provision the Systemd stuff
+# https://tecadmin.net/run-shell-script-as-systemd-service/
+sudo nano /lib/systemd/system/shellscript.service 
+sudo systemctl daemon-reload 
+sudo systemctl enable shellscript.service 
+sudo systemctl start shellscript.service 
+sudo systemctl status shellscript.service -l
