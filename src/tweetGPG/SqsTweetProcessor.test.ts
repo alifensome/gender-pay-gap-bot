@@ -9,7 +9,7 @@ describe("SqsTweetProcessor", () => {
     }
     const processor = new SqsTweetProcessor(mockTwitterClient as any, mockRepo as any)
     it("should process tweets", async () => {
-        const input = { tweetId: "123", twitterUserId: "u123" }
+        const input = { tweetId: "123", twitterUserId: "u123", screenName: "" }
         await processor.process(input)
         expect(mockRepo.getGpgForTwitterId).toBeCalledWith(input.twitterUserId)
         const expectedCopy = "In this organisation, women's median hourly pay is 52.2% lower than men's."

@@ -15,19 +15,19 @@ export class SqsTweetProcessor {
         this.repository = repo
     }
 
-    async process({ twitterUserId, tweetId }) {
+    async process({ twitterUserId, tweetId, screenName }) {
         try {
-            this.logger.info(JSON.stringify({ message: "processing sqs record", eventType: "processingRecord", twitterUserId, tweetId }))
+            this.logger.info(JSON.stringify({ message: "processing sqs record", eventType: "processingRecord", twitterUserId, tweetId, screenName }))
             const data = this.repository.getGpgForTwitterId(twitterUserId)
             if (!data || !data.companyData) {
-                this.logger.error(JSON.stringify({ message: "error finding company", eventType: "errorGettingCompany", tweetId, twitterUserId, errorSendingTweet: 1 }))
-                throw new Error("could not find company. TwitterUserId: " + twitterUserId)
+                this.logger.error(JSON.stringify({ message: "error finding company", eventType: "errorGettingCompany", tweetId, twitterUserId, errorSendingTweet: 1, screenName }))
+                throw new Error(`could not find company. TwitterUserId: ${twitterUserId}, ${screenName}`)
             }
             const copy = this.getCopy(data.companyData)
             await this.twitterClient.quoteTweet(copy, data.twitterData.twitter_screen_name, tweetId)
-            this.logger.info(JSON.stringify({ message: "sent tweet", eventType: "sentTweet", tweetId, twitterUserId, screenName: data.twitterData.twitter_screen_name, companyName: data.companyData.companyName, successfullySentTweet: 1 }))
+            this.logger.info(JSON.stringify({ message: "sent tweet", eventType: "sentTweet", tweetId, twitterUserId, screenName, companyName: data.companyData.companyName, successfullySentTweet: 1 }))
         } catch (error) {
-            this.logger.error(JSON.stringify({ message: "error sending tweet", eventType: "errorSendingTweet", tweetId, twitterUserId, errorSendingTweet: 1 }))
+            this.logger.error(JSON.stringify({ message: "error sending tweet", eventType: "errorSendingTweet", tweetId, twitterUserId, errorSendingTweet: 1, screenName }))
             throw error
         }
     }

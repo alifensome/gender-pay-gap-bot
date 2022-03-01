@@ -3,18 +3,20 @@ import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter, { TwitterData } from "../importData";
 import { debugPrint } from "../utils/debugPrint";
+import { Repository } from "../importData/Repository";
 
 
 export class IncomingTweetListenerQueuer {
-
     twitterClient: TwitterClient
     sqsClient: SqsClient
     logger: Logger;
     dataImporter: DataImporter
-    constructor(twitterClient, sqsClient, dataImporter, logger) {
+    repository: Repository
+    constructor(twitterClient, sqsClient, dataImporter, repository, logger) {
         this.twitterClient = twitterClient
         this.sqsClient = sqsClient
         this.dataImporter = dataImporter
+        this.repository = repository
         this.logger = logger
     }
 
@@ -57,6 +59,11 @@ export class IncomingTweetListenerQueuer {
             return
         }
 
+        const data = this.repository.getGpgForTwitterId(input.twitterUserId)
+        if (!data || !data.companyData) {
+            debugPrint("is a reply to our account by someone else")
+            return
+        }
         // Queue the message
         await this.sqsClient.queueMessage(input)
         this.logger.info(JSON.stringify({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", screenName: input.screenName }))

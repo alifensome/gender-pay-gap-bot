@@ -14,7 +14,7 @@ export async function handler(event, context) {
         const record = event.Records[index];
         const { body } = record;
         const parsedBody = JSON.parse(body) as HandleIncomingTweetInput
-        const input = { twitterUserId: parsedBody.twitterUserId, tweetId: parsedBody.tweetId }
+        const input = { twitterUserId: parsedBody.twitterUserId, tweetId: parsedBody.tweetId, screenName: parsedBody.screenName }
         await processor.process(input)
     }
     return {};

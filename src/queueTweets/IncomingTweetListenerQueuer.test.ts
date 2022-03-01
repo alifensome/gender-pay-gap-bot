@@ -13,7 +13,10 @@ describe("IncomingTweetListenerQueuer", () => {
     const mockDataImporter = {
         twitterUserDataProd: jest.fn().mockReturnValue(twitterData)
     }
-    const handler = new IncomingTweetListenerQueuer(mockTwitterClient, mockSqsClient, mockDataImporter, new Logger())
+    const mockRepository = {
+        getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: {} })
+    }
+    const handler = new IncomingTweetListenerQueuer(mockTwitterClient, mockSqsClient, mockDataImporter, mockRepository, new Logger())
     describe("listen", () => {
         it("should listen to twitter with a handler", async () => {
             await handler.listen()

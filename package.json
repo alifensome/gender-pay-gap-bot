@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "deploy": "npm run build && serverless deploy",
+    "deploy": "npm run build && npm run test && serverless deploy",
     "start:listener": "npm run build  && node dist/queueTweets/run.js"
   },
   "repository": {
