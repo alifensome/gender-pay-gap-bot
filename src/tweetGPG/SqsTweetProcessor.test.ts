@@ -5,7 +5,7 @@ describe("SqsTweetProcessor", () => {
         quoteTweet: jest.fn()
     }
     const mockRepo = {
-        getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: { medianGpg_2021_2022: 52.2 }, twitterData: { twitter_screen_name: "name" } })
+        getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: { medianGpg_2021_2022: 52.2, companyNumber: "321" }, twitterData: { twitter_screen_name: "name" } })
     }
     const processor = new SqsTweetProcessor(mockTwitterClient as any, mockRepo as any)
     it("should process tweets", async () => {

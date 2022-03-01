@@ -1,8 +1,11 @@
-export function findCompany<T>(name, companyNumber, list: T[]): T | null {
-    const upperCaseName = name.toUpperCase();
+export function findCompany<T>(name: string, companyNumber: string | null, list: T[]): T | null {
+    const upperCaseName = name?.toUpperCase();
     for (let index = 0; index < list.length; index++) {
         const item = list[index] as any;
-        if (item.companyName?.toUpperCase() === upperCaseName || item.companyNumber === companyNumber) {
+        if (companyNumber !== null && item.companyNumber !== null && item.companyNumber === companyNumber) {
+            return item
+        }
+        if (upperCaseName !== "" && item.companyName?.toUpperCase() && item.companyName?.toUpperCase() === upperCaseName) {
             return item;
         }
     }

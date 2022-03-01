@@ -1,8 +1,14 @@
 import { Repository } from "./Repository"
 
 const twitterDataItem1 = {
-    twitter_id_str: "123", "companyName": "JOHNSON CONTROLS BUILDING EFFICIENCY UK LIMITED",
-    "companyNumber": "08993483",
+    twitter_id_str: "123",
+    companyName: "JOHNSON CONTROLS BUILDING EFFICIENCY UK LIMITED",
+    companyNumber: "08993483",
+}
+const twitterDataItem2 = {
+    twitter_id_str: "789",
+    companyName: "NAME",
+    companyNumber: null
 }
 const companyDataItem1 = {
     "companyName": "JOHNSON CONTROLS BUILDING EFFICIENCY UK LIMITED",
@@ -19,10 +25,20 @@ const companyDataItem1 = {
     "medianGpg_2018_2019": 21.3,
     "medianGpg_2017_2018": 20.5
 }
+const companyDataItemNoNumber = {
+    "companyName": "NAME",
+    "companyNumber": null,
+    "sicCodes": "companyDataItemNoNumber",
+}
+const companyDataItemNoName = {
+    "companyName": "",
+    "companyNumber": "123",
+    "sicCodes": "companyDataItemNoName",
+}
 describe("Repository", () => {
     const mockDataImporter = {
-        twitterUserDataProd: jest.fn().mockReturnValue([twitterDataItem1, { twitter_id_str: "456" }]),
-        companiesGpgData: jest.fn().mockReturnValue([companyDataItem1,])
+        twitterUserDataProd: jest.fn().mockReturnValue([twitterDataItem1, { twitter_id_str: "456" }, twitterDataItem2]),
+        companiesGpgData: jest.fn().mockReturnValue([companyDataItem1, companyDataItemNoNumber, companyDataItemNoName])
     }
     const repo = new Repository(mockDataImporter as any)
     describe("getCompanyByTwitterId", () => {
@@ -39,6 +55,25 @@ describe("Repository", () => {
         it("should get the full company for the twitterId", () => {
             const result = repo.getGpgForTwitterId("123")
             expect(result).toEqual({ companyData: companyDataItem1, twitterData: twitterDataItem1 })
+        })
+        it("should get the full company for the twitterId even with no companyId", () => {
+            const result = repo.getGpgForTwitterId("789")
+            expect(result).toEqual({ companyData: companyDataItemNoNumber, twitterData: twitterDataItem2 })
+        })
+    })
+
+    describe("getCompanyByNumber", () => {
+        it("should get the company by name", () => {
+            const result = repo.getCompanyByNumber("name", "companyNumber")
+            expect(result).toEqual(companyDataItemNoNumber)
+        })
+        it("should get the company by companyNumber", () => {
+            const result = repo.getCompanyByNumber(null, "123")
+            expect(result).toEqual(companyDataItemNoName)
+        })
+        it("should get nothing for nulls", () => {
+            const result = repo.getCompanyByNumber(null, null)
+            expect(result).toEqual(null)
         })
     })
 })

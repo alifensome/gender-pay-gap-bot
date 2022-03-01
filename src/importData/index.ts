@@ -50,7 +50,7 @@ export default DataImporter
 
 export interface CompanyDataItem {
     companyName: string
-    companyNumber: string
+    companyNumber: string | null // Company Number can be null for some government bodies, health and education.
     sicCodes: string
     gpg_2021_2022?: number
     gpg_2020_2021?: number

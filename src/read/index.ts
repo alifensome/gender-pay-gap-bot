@@ -133,6 +133,24 @@ async function getAllData() {
         combinedData.push(toCompanyGpgDataItem(null, null, null, null, company))
     }
 
+    // Add test data.
+    combinedData.push({
+        "isTestData": true,
+        "companyName": "AliFensome",
+        "companyNumber": "00000000",
+        "sicCodes": "",
+        "gpg_2021_2022": 22.2,
+        "gpg_2020_2021": 21.3,
+        "gpg_2019_2020": null,
+        "gpg_2018_2019": 19.4,
+        "gpg_2017_2018": 18.8,
+        "medianGpg_2021_2022": 69,
+        "medianGpg_2020_2021": 12.7,
+        "medianGpg_2019_2020": null,
+        "medianGpg_2018_2019": 12.7,
+        "medianGpg_2017_2018": 12
+    })
+
     await writeJsonFile('./data/companies_GPG_Data.json', combinedData)
     console.log("Wrote file!")
 }
@@ -191,11 +209,11 @@ function getLatestCompanyEntry(item_2022: Company | null, item_2021: Company | n
             return element
         }
     }
-    return item_2022
+    throw new Error(`there are no valid items for: ${JSON.stringify(yearsOfCompany)}`)
 }
 
 function isValidCompany(c: Company) {
-    return !!c && !!c.companyNumber
+    return !!c && !!c.companyName
 }
 
 

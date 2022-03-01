@@ -1,4 +1,5 @@
 import DataImporter, { TwitterData, CompanyDataItem } from ".";
+import { findCompany } from '../utils/findCompany'
 
 export class Repository {
     dataImporter: DataImporter;
@@ -38,14 +39,8 @@ export class Repository {
     }
 
     getCompanyByNumber(name: string, companyNumber: string): CompanyDataItem | null {
-        const upperCaseName = name.toUpperCase();
-        for (let index = 0; index < this.companiesGpgData.length; index++) {
-            const item = this.companiesGpgData[index];
-            if (item.companyName?.toUpperCase() === upperCaseName || item.companyNumber === companyNumber) {
-                return item;
-            }
-        }
-        return null;
+        const upperCaseName = name?.toUpperCase();
+        return findCompany(upperCaseName, companyNumber, this.companiesGpgData);
     }
 
 

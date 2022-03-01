@@ -19,6 +19,10 @@ export class SqsTweetProcessor {
         try {
             this.logger.info({ message: "processing sqs record", eventType: "processingRecord", twitterUserId, tweetId })
             const data = this.repository.getGpgForTwitterId(twitterUserId)
+            if (!data || data.companyData.companyNumber == null) {
+                this.logger.error({ message: "error finding company", eventType: "errorGettingCompany", tweetId, twitterUserId, errorSendingTweet: 1 })
+                throw new Error("could not find company")
+            }
             const copy = this.getCopy(data.companyData)
             await this.twitterClient.quoteTweet(copy, data.twitterData.twitter_screen_name, tweetId)
             this.logger.info({ message: "sent tweet", eventType: "sentTweet", tweetId, twitterUserId, screenName: data.twitterData.twitter_screen_name, companyName: data.companyData.companyName, successfullySentTweet: 1 })
