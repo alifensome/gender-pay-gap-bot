@@ -19,7 +19,7 @@ export class TwitterClient {
 
     async startStreamingTweets(following: string[], handleTweet: (input: HandleIncomingTweetInput) => Promise<void>): Promise<void> {
         const stream = this.twitPackage.stream('statuses/filter', { follow: following });
-        this.logger.info({ message: "streaming started", eventType: "streamingStarted" })
+        this.logger.info(JSON.stringify({ message: "streaming started", eventType: "streamingStarted" }))
 
         stream.on('tweet', async (tweet) => {
             try {
@@ -54,12 +54,12 @@ export class TwitterClient {
 
 
             } catch (err) {
-                this.logger.error({
+                this.logger.error(JSON.stringify({
                     message: "Error while handling incoming tweeting",
                     eventType: "errorHandlingTweet",
                     errMessage: err.message,
                     tweet,
-                })
+                }))
             }
         });
     }

@@ -43,6 +43,11 @@ export class Repository {
         return findCompany(upperCaseName, companyNumber, this.companiesGpgData);
     }
 
+    getTwitterUserByCompanyData(name: string, companyNumber: string): TwitterData | null {
+        const upperCaseName = name?.toUpperCase();
+        return findCompany(upperCaseName, companyNumber, this.twitterUserData);
+    }
+
 
     private checkSetData() {
         if (!this.twitterUserData) {

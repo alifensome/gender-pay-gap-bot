@@ -21,7 +21,7 @@ export class IncomingTweetListenerQueuer {
     listen(isTest?: boolean) {
         const twitterData = this.dataImporter.twitterUserDataProd()
         if (isTest) {
-            this.logger.info({ message: "running in debug mode!" })
+            this.logger.info(JSON.stringify({ message: "running in debug mode!" }))
             twitterData.push(this.dataImporter.twitterUserDataTest()[0])
         }
         const followers = this.getFollowsFromData(twitterData)
@@ -38,7 +38,7 @@ export class IncomingTweetListenerQueuer {
             throw new Error("No twitter Ids!")
         }
         if (twitterIds.length > 4000) {
-            this.logger.error({ message: "too many twitter IDs to watch!" })
+            this.logger.error(JSON.stringify({ message: "too many twitter IDs to watch!" }))
         }
         return twitterIds
     }
@@ -46,7 +46,7 @@ export class IncomingTweetListenerQueuer {
     async handleIncomingTweet(input: HandleIncomingTweetInput) {
 
         if (input.isRetweet) {
-            this.logger.info({ message: "Ignoring retweet", eventType: "ignoringRetweet" })
+            this.logger.info(JSON.stringify({ message: "Ignoring retweet", eventType: "ignoringRetweet" }))
             return
         }
 
@@ -59,7 +59,7 @@ export class IncomingTweetListenerQueuer {
 
         // Queue the message
         await this.sqsClient.queueMessage(input)
-        this.logger.info({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", screenName: input.screenName })
+        this.logger.info(JSON.stringify({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", screenName: input.screenName }))
     }
 
     checkTweetContainsWord(tweet): boolean {
@@ -101,7 +101,8 @@ export const relevantWords = [
     "WOMENS DAY",
     "WOMENSDAY",
     "WOMEN'S DAY",
-    "WOMEN’S DAY"
+    "WOMEN’S DAY",
+    "BREAKTHEBIAS"
 ]
 
 
