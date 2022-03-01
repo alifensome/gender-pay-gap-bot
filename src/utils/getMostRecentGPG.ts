@@ -1,6 +1,6 @@
 import { CompanyDataItem } from "../importData"
 
-function getMostRecentGPG(data: CompanyDataItem) {
+export function getMostRecentGPG(data: CompanyDataItem) {
     if (data.gpg_2021_2022) {
         return data.gpg_2021_2022
     }
@@ -19,4 +19,21 @@ function getMostRecentGPG(data: CompanyDataItem) {
     return null
 }
 
-export { getMostRecentGPG }
+export function getMostRecentMedianGPG(data: CompanyDataItem) {
+    if (data.medianGpg_2021_2022) {
+        return data.medianGpg_2021_2022
+    }
+    if (data.medianGpg_2020_2021) {
+        return data.medianGpg_2020_2021
+    }
+    if (data.medianGpg_2019_2020) {
+        return data.medianGpg_2019_2020
+    }
+    if (data.medianGpg_2018_2019) {
+        return data.medianGpg_2018_2019
+    }
+    if (data.medianGpg_2017_2018) {
+        return data.medianGpg_2017_2018
+    }
+    return null
+}

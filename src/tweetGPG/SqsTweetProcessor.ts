@@ -2,7 +2,7 @@ import { Logger } from "tslog";
 import { CompanyDataItem } from "../importData";
 import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
-import { getMostRecentGPG } from "../utils/getMostRecentGPG";
+import { getMostRecentMedianGPG } from "../utils/getMostRecentGPG";
 
 export class SqsTweetProcessor {
     twitterClient: TwitterClient;
@@ -30,7 +30,7 @@ export class SqsTweetProcessor {
     }
 
     getCopy(companyData: CompanyDataItem): string {
-        const mostRecentGPG = getMostRecentGPG(companyData)
+        const mostRecentGPG = getMostRecentMedianGPG(companyData)
         let mostRecent = 0
         if (typeof mostRecentGPG === "string") {
             mostRecent = parseFloat(mostRecentGPG)
@@ -39,9 +39,9 @@ export class SqsTweetProcessor {
         }
         const isPositiveGpg = mostRecent > 0.0
         if (isPositiveGpg) {
-            return `In this organisation, women's mean hourly pay is ${mostRecent}% lower than men's.`
+            return `In this organisation, women's median hourly pay is ${mostRecent}% lower than men's.`
         } else {
-            return `In this organisation, women's mean hourly pay is ${-1 * mostRecent}% higher than men's `
+            return `In this organisation, women's median hourly pay is ${-1 * mostRecent}% higher than men's `
         }
     }
 }
