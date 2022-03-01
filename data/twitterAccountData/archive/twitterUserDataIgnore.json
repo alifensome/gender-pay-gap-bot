@@ -6,5 +6,13 @@
         "twitter_screen_name": "Accenture",
         "companyName": "ACCENTURE (UK) LIMITED",
         "companyNumber": "04757301"
+    },
+    {
+        "twitter_id_str": "23782371",
+        "twitter_id": 23782371,
+        "twitter_name": "North East Derbyshire District Council",
+        "twitter_screen_name": "nedDC",
+        "companyName": "North East Derbyshire District Council",
+        "companyNumber": null
     }
 ]

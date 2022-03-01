@@ -944,14 +944,6 @@
         "companyNumber": null
     },
     {
-        "twitter_id_str": "23782371",
-        "twitter_id": 23782371,
-        "twitter_name": "North East Derbyshire District Council",
-        "twitter_screen_name": "nedDC",
-        "companyName": "North East Derbyshire District Council",
-        "companyNumber": null
-    },
-    {
         "twitter_id_str": "21778006",
         "twitter_id": 21778006,
         "twitter_name": "North Somerset Council #StayHomeSaveLives",
@@ -2436,7 +2428,7 @@
         "twitter_id": 342764819,
         "twitter_name": "Bromford",
         "twitter_screen_name": "Bromford",
-        "companyName": "Bromford Housing Association Limited",
+        "companyName": "Bromford Housing Group Limited",
         "companyNumber": "IP29996R"
     },
     {
@@ -2733,7 +2725,7 @@
         "twitter_name": "Caterham School",
         "twitter_screen_name": "Caterham_School",
         "companyName": "Caterham School",
-        "companyNumber": null
+        "companyNumber": "05410420"
     },
     {
         "twitter_id_str": "953222666978320384",
@@ -4661,7 +4653,7 @@
         "twitter_name": "Joseph Rowntree Foundation",
         "twitter_screen_name": "jrf_uk",
         "companyName": "Joseph Rowntree Foundation",
-        "companyNumber": "RC210169"
+        "companyNumber": "12132713"
     },
     {
         "twitter_id_str": "76906502",
@@ -5013,7 +5005,7 @@
         "twitter_name": "Lighthouse Schools Partnership",
         "twitter_screen_name": "Lighthouse_MAT",
         "companyName": "Lighthouse Schools Partnership",
-        "companyNumber": null
+        "companyNumber": "07662102"
     },
     {
         "twitter_id_str": "21291711",
@@ -5509,7 +5501,7 @@
         "twitter_name": "Mindtree",
         "twitter_screen_name": "Mindtree_Ltd",
         "companyName": "MINDTREE LIMITED",
-        "companyNumber": "FC023141"
+        "companyNumber": "BR006016"
     },
     {
         "twitter_id_str": "1180589764300410880",
@@ -10536,14 +10528,6 @@
         "companyNumber": null
     },
     {
-        "twitter_id_str": "312690506",
-        "twitter_id": 312690506,
-        "twitter_name": "Choice Support",
-        "twitter_screen_name": "Choice_Support",
-        "companyName": "Choice Support",
-        "companyNumber": "02189556"
-    },
-    {
         "twitter_id_str": "82017281",
         "twitter_id": 82017281,
         "twitter_name": "chokdee",
@@ -12232,14 +12216,6 @@
         "companyNumber": "08176019"
     },
     {
-        "twitter_id_str": "21665905",
-        "twitter_id": 21665905,
-        "twitter_name": "Kent Union",
-        "twitter_screen_name": "KentUnion",
-        "companyName": "Kent Union",
-        "companyNumber": null
-    },
-    {
         "twitter_id_str": "157460841",
         "twitter_id": 157460841,
         "twitter_name": "Kesgrave High School",
@@ -13380,6 +13356,7 @@
         "twitter_id": 18004623,
         "twitter_name": "Pembrokeshire County",
         "twitter_screen_name": "Pembrokeshire",
+        "companyName": "Pembrokeshire County Council",
         "companyNumber": null
     },
     {
@@ -14652,7 +14629,7 @@
         "twitter_name": "Tech Mahindra",
         "twitter_screen_name": "tech_mahindra",
         "companyName": "TECH MAHINDRA LIMITED",
-        "companyNumber": "FC018895"
+        "companyNumber": "BR012190"
     },
     {
         "twitter_id_str": "23789956",

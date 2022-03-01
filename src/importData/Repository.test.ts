@@ -41,13 +41,13 @@ describe("Repository", () => {
         companiesGpgData: jest.fn().mockReturnValue([companyDataItem1, companyDataItemNoNumber, companyDataItemNoName])
     }
     const repo = new Repository(mockDataImporter as any)
-    describe("getCompanyByTwitterId", () => {
+    describe("getTwitterUserByTwitterId", () => {
         it("should get company by twitterId", () => {
-            const result = repo.getCompanyByTwitterId("123")
+            const result = repo.getTwitterUserByTwitterId("123")
             expect(result).toEqual(twitterDataItem1)
         })
         it("should return null if they don't exist", () => {
-            const result = repo.getCompanyByTwitterId("890")
+            const result = repo.getTwitterUserByTwitterId("890")
             expect(result).toEqual(null)
         })
     })
@@ -64,15 +64,15 @@ describe("Repository", () => {
 
     describe("getCompanyByNumber", () => {
         it("should get the company by name", () => {
-            const result = repo.getCompanyByNumber("name", "companyNumber")
+            const result = repo.getCompany("name", "companyNumber")
             expect(result).toEqual(companyDataItemNoNumber)
         })
         it("should get the company by companyNumber", () => {
-            const result = repo.getCompanyByNumber(null, "123")
+            const result = repo.getCompany(null, "123")
             expect(result).toEqual(companyDataItemNoName)
         })
         it("should get nothing for nulls", () => {
-            const result = repo.getCompanyByNumber(null, null)
+            const result = repo.getCompany(null, null)
             expect(result).toEqual(null)
         })
     })
