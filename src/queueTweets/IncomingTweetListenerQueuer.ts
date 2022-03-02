@@ -61,7 +61,7 @@ export class IncomingTweetListenerQueuer {
 
         const data = this.repository.getGpgForTwitterId(input.twitterUserId)
         if (!data || !data.companyData) {
-            this.logger.info(JSON.stringify({ message: "could not find twitter user, ignoring.", twitterUserId: input.twitterUserId, eventType: "couldNotGetUserIgnoring" }))
+            this.logger.info(JSON.stringify({ message: "could not find twitter user, ignoring.", twitterUserId: input.twitterUserId, screenName: input.screenName, eventType: "couldNotGetUserIgnoring" }))
             return
         }
         // Queue the message
