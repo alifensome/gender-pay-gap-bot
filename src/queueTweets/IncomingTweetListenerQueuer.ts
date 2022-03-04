@@ -2,7 +2,7 @@ import { TwitterClient } from "../twitter/Client";
 import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter, { TwitterData } from "../importData";
-import { debugPrint } from "../utils/debugPrint";
+import { debugPrint } from "../utils/debug";
 import { Repository } from "../importData/Repository";
 
 

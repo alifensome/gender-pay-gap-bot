@@ -7,6 +7,9 @@ class DataImporter {
     companiesGpgData(): CompanyDataItem[] {
         return this.readFile("./data/companies_GPG_Data.json")
     }
+    companiesGpgDataTest(): CompanyDataItem[] {
+        return this.readFile("./data/companies_GPG_Data-test.json")
+    }
     successfulTweets() {
         return this.readFile("./data/tweets/successful-tweets.json")
     }

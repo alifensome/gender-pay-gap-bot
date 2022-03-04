@@ -1,4 +1,5 @@
 import DataImporter, { TwitterData, CompanyDataItem } from ".";
+import { isDebugMode } from "../utils/debug";
 import { findCompany } from '../utils/findCompany'
 
 export class Repository {
@@ -13,6 +14,10 @@ export class Repository {
     setData() {
         this.twitterUserData = this.dataImporter.twitterUserDataProd()
         this.companiesGpgData = this.dataImporter.companiesGpgData()
+        if (isDebugMode()) {
+            this.twitterUserData.push(this.dataImporter.twitterUserDataTest()[0])
+            this.companiesGpgData.push(this.dataImporter.companiesGpgDataTest()[0])
+        }
     }
 
     getTwitterUserByTwitterId(twitterId: string): TwitterData | null {
@@ -50,7 +55,7 @@ export class Repository {
 
 
     private checkSetData() {
-        if (!this.twitterUserData) {
+        if (!this.twitterUserData || !this.companiesGpgData) {
             this.setData();
         }
     }

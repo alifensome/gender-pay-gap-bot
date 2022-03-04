@@ -5,6 +5,7 @@ import { TwitterClient } from "../twitter/Client"
 import { IncomingTweetListenerQueuer } from "./IncomingTweetListenerQueuer"
 import DataImporter from "../importData"
 import { Repository } from "../importData/Repository"
+import { isDebugMode } from "../utils/debug"
 
 dotEnv.config()
 
@@ -16,6 +17,6 @@ const logger = new Logger()
 
 const handler = new IncomingTweetListenerQueuer(twitterClient, sqsClient, dataImporter, repository, logger)
 
-const isTest = process.argv[2] === "test" || process.argv[3] === "test"
+const isTest = isDebugMode()
 
 handler.listen(isTest)

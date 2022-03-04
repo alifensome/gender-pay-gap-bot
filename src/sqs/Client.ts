@@ -1,6 +1,6 @@
 import { SQSClient as AwsSqsClient, SendMessageCommand, SendMessageCommandOutput } from "@aws-sdk/client-sqs";
 import { Logger } from "tslog";
-import { isDebugMode } from "../utils/debugPrint";
+import { isDebugMode } from "../utils/debug";
 
 export class SqsClient {
     awsSqsClient: AwsSqsClient

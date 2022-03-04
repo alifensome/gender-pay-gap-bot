@@ -4,6 +4,7 @@ import DataImporter from '../importData'
 import { getMostRecentGPG } from "../utils/getMostRecentGPG"
 import { writeJsonFile } from "../utils/write";
 import { getCompanyDataByTwitterId } from "./getCompanyDataByTwitterId";
+import { isDebugMode } from "../utils/debug";
 const dataImporter = new DataImporter()
 
 dotEnv.config()
@@ -13,7 +14,7 @@ const companyDataTest = dataImporter.twitterUserDataTest()
 const successfulTweets = dataImporter.successfulTweets()
 const unsuccessfulTweets = dataImporter.unsuccessfulTweets()
 
-const isTest = process.argv[2] === "test" || process.argv[3] === "test"
+const isTest = isDebugMode()
 const companyData = isTest ? companyDataTest : companyDataProd;
 if (isTest) {
     console.log("Starting in TEST mode...")

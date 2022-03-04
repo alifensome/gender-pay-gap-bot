@@ -1,7 +1,7 @@
 import Twit from "twit"
 import { Logger } from "tslog";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
-import { debugPrint } from "../utils/debugPrint";
+import { debugPrint } from "../utils/debug";
 
 export class TwitterClient {
     twitPackage: Twit;

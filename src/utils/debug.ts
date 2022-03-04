@@ -8,6 +8,7 @@ export function debugPrint(msg: string | object) {
     }
 }
 
-export function isDebugMode(): boolean {
-    return !!process.env.DEBUG || process.argv[2] === "debug" || process.argv[2] === "test" || process.argv[1] === "test";
+export function isDebugMode(processOverride?: Partial<NodeJS.Process>): boolean {
+    const p = !!processOverride ? processOverride : process
+    return !!p.env.DEBUG || p.argv.includes("debug") || p.argv.includes("test");
 }
