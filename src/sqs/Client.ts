@@ -25,7 +25,7 @@ export class SqsClient {
 
         try {
             const data = await this.awsSqsClient.send(new SendMessageCommand(params));
-            this.logger.info(JSON.stringify({ message: `Success, message sent. MessageID: ${data.MessageId}`, messageId: data.MessageId, eventType: "errorSendingMessage" }));
+            this.logger.info(JSON.stringify({ message: `Success, message sent. MessageID: ${data.MessageId}`, messageId: data.MessageId, eventType: "successSendingMessage" }));
             return data; // For unit tests.
         } catch (err) {
             this.logger.error(JSON.stringify({ errorMessage: `Error while sending data: ${err.message}`, messageBody }));
