@@ -8,7 +8,12 @@ You can [see the bot in action here](https://twitter.com/PayGapApp) for such gol
 ![Twitter-bot Tweet at UBS](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/ubs.jpeg?raw=true)
 
 ## Disclaimer
-This was hacked together the weekend before IWD so is very badly written, inefficient,  buggy with some minor data issues. The main focus was on gathering as much data as possible on UK companies with GPG (gender pay gap) data in order to generate the most tweets in one day.
+This was originally hacked together the weekend before IWD so is very badly written, inefficient,  buggy with some minor data issues. The main focus was on gathering as much data as possible on UK companies with GPG (gender pay gap) data in order to generate the most tweets in one day. I am currently upgrading and fixing these issues.
+
+### Architecture 
+As of 2022 this is running on AWS serverless
+![Architecture](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/GPGA.drawio.png?raw=true)
+
 
 ## Run
  To run:
