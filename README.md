@@ -11,7 +11,7 @@ You can [see the bot in action here](https://twitter.com/PayGapApp) for such gol
 This was originally hacked together the weekend before IWD so is very badly written, inefficient,  buggy with some minor data issues. The main focus was on gathering as much data as possible on UK companies with GPG (gender pay gap) data in order to generate the most tweets in one day. I am currently upgrading and fixing these issues.
 
 ### Architecture 
-As of 2022 this is running on AWS serverless
+As of 2022 this is running on AWS and deployed with serverless
 ![Architecture](https://github.com/alifensome/gender-pay-gap-bot/blob/main/images/GPGA.drawio.png?raw=true)
 
 
@@ -36,12 +36,12 @@ Twitter data was join on from an API based on company name and location. We then
 This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 
 ### TODO
-- [ ] Join data on companyId and if company does not exist then on company name to lower
+- [/] Join data on companyId and if company does not exist then on company name to lower
 - [ ] Find a more reliable way of finding twitter accounts
 - [ ] Clean the rest of the data
 - [ ] Write data to a database
 - [ ] Collect the twitter Id of the created tweet
 - [ ] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
 - [ ] Build a backup plan for when we get banned from twitter 😎
-- [ ] Make a data set with just companies and twitter accounts
-- [ ] Tidy up and reformat the data
+- [/] Make a data set with just companies and twitter accounts
+- [/] Tidy up and reformat the data

@@ -44,6 +44,7 @@ export class Repository {
     }
 
     getCompany(name: string, companyNumber: string): CompanyDataItem | null {
+        this.checkSetData()
         const upperCaseName = name?.toUpperCase();
         return findCompany(upperCaseName, companyNumber, this.companiesGpgData);
     }
