@@ -7,7 +7,10 @@ import { SqsTweetProcessor } from "./SqsTweetProcessor";
 const dataImporter = new DataImporter()
 const twitterClient = new TwitterClient()
 const repo = new Repository(dataImporter)
-const processor = new SqsTweetProcessor(twitterClient, repo)
+const envMinGpg = process.env.MIN_GPG
+const minGpg = parseMinGpg(envMinGpg);
+const processor = new SqsTweetProcessor(twitterClient, repo, minGpg)
+
 
 export async function handler(event, context) {
     for (let index = 0; index < event.Records.length; index++) {
@@ -18,4 +21,17 @@ export async function handler(event, context) {
         await processor.process(input)
     }
     return {};
+}
+
+function parseMinGpg(minGpgFromEnv: string | undefined): number | null {
+    try {
+        let parsedMinGpg = null;
+        if (minGpgFromEnv) {
+            parsedMinGpg = parseFloat(minGpgFromEnv);
+        }
+        return parsedMinGpg;
+    } catch (error) {
+        console.log(error)
+        return null
+    }
 }

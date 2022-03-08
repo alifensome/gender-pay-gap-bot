@@ -8,11 +8,13 @@ export class SqsTweetProcessor {
     twitterClient: TwitterClient;
     logger: Logger;
     repository: Repository;
+    minGPG: number | null;
 
-    constructor(twitterClient: TwitterClient, repo: Repository) {
+    constructor(twitterClient: TwitterClient, repo: Repository, minGPG: number | null) {
         this.twitterClient = twitterClient
         this.logger = new Logger({ name: "SqsTweetProcessor" })
         this.repository = repo
+        this.minGPG = minGPG
     }
 
     async process({ twitterUserId, tweetId, screenName }) {
@@ -23,6 +25,13 @@ export class SqsTweetProcessor {
                 this.logger.error(JSON.stringify({ message: "error finding company", eventType: "errorGettingCompany", tweetId, twitterUserId, errorSendingTweet: 1, screenName }))
                 throw new Error(`could not find company. TwitterUserId: ${twitterUserId}, ${screenName}`)
             }
+
+            const mostRecentGPG = getMostRecentMedianGPG(data.companyData)
+            if (this.minGPG !== null && mostRecentGPG < this.minGPG) {
+                this.logger.info(JSON.stringify({ message: "skipped", eventType: "skipTweet", tweetId, twitterUserId, screenName, companyName: data.companyData.companyName, tempSkip: 1 }))
+                throw new Error("SKIP for now.")
+            }
+
             const copy = this.getCopy(data.companyData)
             await this.twitterClient.quoteTweet(copy, data.twitterData.twitter_screen_name, tweetId)
             this.logger.info(JSON.stringify({ message: "sent tweet", eventType: "sentTweet", tweetId, twitterUserId, screenName, companyName: data.companyData.companyName, successfullySentTweet: 1 }))

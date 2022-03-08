@@ -1,0 +1,11 @@
+[
+    {
+        "message": "sent tweet",
+        "eventType": "sentTweet",
+        "tweetId": "1501167079248039939",
+        "twitterUserId": "179876593",
+        "screenName": "CheltCollege",
+        "companyName": "Cheltenham College",
+        "successfullySentTweet": 1
+    }
+]

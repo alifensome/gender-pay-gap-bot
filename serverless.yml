@@ -54,6 +54,7 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
       TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
       TWITTER_USER_ID: ${env:TWITTER_USER_ID}
+      MIN_GPG: "10"
     events:
       - sqs:
           arn:
