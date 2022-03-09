@@ -39,6 +39,14 @@ describe("IncomingTweetListenerQueuer", () => {
             const result = handler.checkTweetContainsWord("some text... WOMEN’S DAY ")
             expect(result).toBe(true)
         })
+        it("should ignore apostrophes", () => {
+            let result = handler.checkTweetContainsWord("some text ' '’ '’... women’s history month            ")
+            expect(result).toBe(true)
+            result = handler.checkTweetContainsWord("some text ' '’ '’... women's history month            ")
+            expect(result).toBe(true)
+            result = handler.checkTweetContainsWord("some text ' '’ '’... womens history month            ")
+            expect(result).toBe(true)
+        })
     })
     describe("handleIncomingTweet", () => {
         it("should take an incoming tweet and queue it", async () => {

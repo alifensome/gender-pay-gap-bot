@@ -4,6 +4,7 @@ import { SqsClient } from "../sqs/Client";
 import DataImporter, { TwitterData } from "../importData";
 import { debugPrint } from "../utils/debug";
 import { Repository } from "../importData/Repository";
+import { replaceMultiple } from "../utils/replace";
 
 
 export class IncomingTweetListenerQueuer {
@@ -69,8 +70,9 @@ export class IncomingTweetListenerQueuer {
         this.logger.info(JSON.stringify({ "message": `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`, eventType: "successfulQueue", screenName: input.screenName }))
     }
 
-    checkTweetContainsWord(tweet): boolean {
-        const upperCaseTweet = tweet.toUpperCase()
+    checkTweetContainsWord(tweet: string): boolean {
+        const replacements = [{ find: "'", replace: "" }, { find: "’", replace: "" }]
+        const upperCaseTweet = replaceMultiple(tweet.toUpperCase(), replacements)
         for (let index = 0; index < relevantWords.length; index++) {
             const word = relevantWords[index];
             if (upperCaseTweet.includes(word)) {
@@ -103,13 +105,19 @@ export const relevantWords = [
     "#INTERNATIONALWOMENSDAY",
     "#CHOOSETOCHALLENGE",
     "INTERNATIONAL WOMENS DAY",
-    "INTERNATIONAL WOMEN'S DAY",
-    "INTERNATIONAL WOMEN’S DAY",
+    "INTERNATIONAL WOMENS DAY",
+    "INTERNATIONAL WOMENS DAY",
     "WOMENS DAY",
     "WOMENSDAY",
-    "WOMEN'S DAY",
-    "WOMEN’S DAY",
-    "BREAKTHEBIAS"
+    "WOMENS DAY",
+    "WOMENS DAY",
+    "BREAKTHEBIAS",
+    "WOMENS HISTORY MONTH",
+    "WOMENS MONTH",
+    "WOMANS MONTH",
+    "WOMANS HISTORY MONTH",
+    "INTERNATIONAL WOMENS MONTH",
+    "WOMENS WEEK",
 ]
 
 

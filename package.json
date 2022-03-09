@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "npm run build && jest",
     "deploy": "npm run build && npm run test && serverless deploy",
     "start:listener": "npm run build  && node dist/queueTweets/run.js"
   },
