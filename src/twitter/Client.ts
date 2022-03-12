@@ -2,10 +2,12 @@ import Twit from "twit"
 import { Logger } from "tslog";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { debugPrint } from "../utils/debug";
+import { TwitterClient as TwitterApiClient } from 'twitter-api-client';
 
 export class TwitterClient {
     twitPackage: Twit;
     logger: Logger
+    twitterApiClient: TwitterApiClient;
 
     constructor() {
         this.twitPackage = new Twit({
@@ -14,6 +16,13 @@ export class TwitterClient {
             access_token: process.env.TWITTER_ACCESS_TOKEN,
             access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
         });
+        this.twitterApiClient = new TwitterApiClient({
+            apiKey: process.env.TWITTER_API_KEY,
+            apiSecret: process.env.TWITTER_API_SECRET,
+            accessToken: process.env.TWITTER_ACCESS_TOKEN,
+            accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+        });
+
         this.logger = new Logger({ name: TwitterClient.name });
     }
 
@@ -93,5 +102,14 @@ export class TwitterClient {
                 return resolve({ status: 'Tweet sent' })
             })
         })
+    }
+
+    async getUserByScreenName(screenName: string): Promise<any> {
+        const user = await this.twitterApiClient.accountsAndUsers.usersLookup({ screen_name: screenName })
+        return user
+    }
+    async getUserTweetsByScreenName(screenName: string): Promise<any> {
+        const user = await this.twitterApiClient.tweets.statusesUserTimeline({ screen_name: screenName })
+        return user
     }
 }
