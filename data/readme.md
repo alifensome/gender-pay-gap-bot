@@ -4,3 +4,9 @@
 3. Build project `nom run build`
 4. Run the write data `npm run ./dist/src/read/index.js`
 5. Format the json file
+
+# Cloudwatch insights queries
+```
+filter @message like /successfullySentTweet/ 
+    | stats count(*) as sentCount
+```
