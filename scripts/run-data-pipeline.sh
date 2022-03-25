@@ -11,10 +11,10 @@ echo "Testing"
 npm run test
 
 echo "Writing from spreadsheets to JSON..."
-node ./dist/read/runWriteAllData.js
+node --unhandled-rejections=strict ./dist/read/runWriteAllData.js
 
 echo "Combining compay data..."
-node ./dist/read/index.js
+node --unhandled-rejections=strict ./dist/read/index.js
 
 
 echo "Formatting Json"
@@ -23,6 +23,8 @@ cp data/companies_GPG_Data_temp.json data/companies_GPG_Data.json
 rm data/companies_GPG_Data_temp.json
 
 echo "combining twitter data and company data..."
-node dist/analysis/joinTweetsToCompanyData.js
+node --unhandled-rejections=strict dist/analysis/joinTweetsToCompanyData.js
+
+npm run test
 
 echo "Finished."

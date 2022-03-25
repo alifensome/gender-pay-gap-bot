@@ -1,5 +1,5 @@
 import { writeJsonFile } from "../utils/write.js";
-import { parseDataFromJsonXlsx } from "./getData"
+import { parseDataFromJson } from "./parseDataFromCompany"
 import DataImporter from "../importData"
 import { findCompany } from "../utils/findCompany";
 const dataImporter = new DataImporter()
@@ -15,23 +15,23 @@ getAllData().then(() => console.log("Finished!!!"))
 async function getAllData() {
 
     console.log("Started reading data from 2021_2022")
-    const data_2021_2022 = await parseDataFromJsonXlsx(json2022)
+    const data_2021_2022 = await parseDataFromJson(json2022)
     console.log("Finished reading data from 2021_2022")
 
     console.log("Started reading data from 2020_2021")
-    const data_2020_2021 = await parseDataFromJsonXlsx(json2021)
+    const data_2020_2021 = await parseDataFromJson(json2021)
     console.log("Finished reading data from 2020_2021")
 
     console.log("Started reading data from 2019_2020")
-    const data_2019_2020 = await parseDataFromJsonXlsx(json2020)
+    const data_2019_2020 = await parseDataFromJson(json2020)
     console.log("Finished reading data from 2019_2020")
 
     console.log("Started reading data from 2018_2019")
-    const data_2018_2019 = await parseDataFromJsonXlsx(json2019)
+    const data_2018_2019 = await parseDataFromJson(json2019)
     console.log("Finished reading data from 2018_2019")
 
     console.log("Started reading data from 2017_2018")
-    const data_2017_2018 = await parseDataFromJsonXlsx(json2018)
+    const data_2017_2018 = await parseDataFromJson(json2018)
     console.log("Finished reading data from 2017_2018")
 
 
