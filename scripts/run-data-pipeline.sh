@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Running data extraction pipeline..."
 
 set -e
