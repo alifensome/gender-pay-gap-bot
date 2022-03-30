@@ -10,6 +10,8 @@ npm run build
 echo "Testing"
 npm run test
 
+./scripts/download-GPG-data.sh
+
 echo "Writing from spreadsheets to JSON..."
 node --unhandled-rejections=strict ./dist/read/runWriteAllData.js
 

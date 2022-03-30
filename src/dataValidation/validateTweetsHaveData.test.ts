@@ -5,7 +5,7 @@ const importer = new DataImporter()
 const repo = new Repository(importer)
 repo.setData()
 
-it("should have valid tweet data", () => {
+it("All twitter data should have a valid company", () => {
     const brokenTwitterCompanyIds = []
     for (let index = 0; index < repo.twitterUserData.length; index++) {
         const twitterUser = repo.twitterUserData[index];

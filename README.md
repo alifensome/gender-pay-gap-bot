@@ -45,3 +45,13 @@ This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 - [ ] Build a backup plan for when we get banned from twitter 😎
 - [X] Make a data set with just companies and twitter accounts
 - [X] Tidy up and reformat the data
+
+
+## Twitter Matching Improvements
+### Problems
+- We get duplicate companies sometime with different GPG data but same location.
+- Companies house => company website => crawl for twitter url
+
+### Manual Data Gathering
+- Search twitter with group: 1
+- no twitter profile: 1
