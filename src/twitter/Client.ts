@@ -3,24 +3,26 @@ import { Logger } from "tslog";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { debugPrint } from "../utils/debug";
 import { TwitterClient as TwitterApiClient } from 'twitter-api-client';
+import { TwitterCredentialGetter } from "./TwitterCredentialGetter";
 
 export class TwitterClient {
     twitPackage: Twit;
     logger: Logger
     twitterApiClient: TwitterApiClient;
 
-    constructor() {
+    constructor(isTest = false) {
+        const credentials = new TwitterCredentialGetter().getCredentials(isTest)
         this.twitPackage = new Twit({
-            consumer_key: process.env.TWITTER_API_KEY,
-            consumer_secret: process.env.TWITTER_API_SECRET,
-            access_token: process.env.TWITTER_ACCESS_TOKEN,
-            access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+            consumer_key: credentials.consumerKey,
+            consumer_secret: credentials.consumerSecret,
+            access_token: credentials.accessToken,
+            access_token_secret: credentials.accessTokenSecret,
         });
         this.twitterApiClient = new TwitterApiClient({
-            apiKey: process.env.TWITTER_API_KEY,
-            apiSecret: process.env.TWITTER_API_SECRET,
-            accessToken: process.env.TWITTER_ACCESS_TOKEN,
-            accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+            apiKey: credentials.consumerKey,
+            apiSecret: credentials.consumerSecret,
+            accessToken: credentials.accessToken,
+            accessTokenSecret: credentials.accessTokenSecret,
         });
 
         this.logger = new Logger({ name: TwitterClient.name });

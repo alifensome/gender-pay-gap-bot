@@ -10,6 +10,10 @@ provider:
 # you can overwrite defaults here
 #  stage: dev
   region: eu-west-2
+
+custom:
+  gpgDataTableName: GpgData # Ref with ${self:custom.gpgDataTableName}
+
 package:
   include:
     - ./dist/**
@@ -54,7 +58,7 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
       TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
       TWITTER_USER_ID: ${env:TWITTER_USER_ID}
-      MIN_GPG: "10"
+      # MIN_GPG: "10"
     events:
       - sqs:
           arn:
@@ -63,6 +67,29 @@ functions:
               - Arn
           batchSize: 1
           maximumBatchingWindow: 60
+
+  tweetAllGpgTask:
+    handler: dist/tweetAllGpgTask/handler.handler
+    role: TweetAllGpgTaskRole
+    environment:
+      TABLE_NAME: ${self:custom.gpgDataTableName}
+      IS_TEST: true
+      # Prod account
+      TWITTER_API_KEY: ${env:TWITTER_API_KEY}
+      TWITTER_API_SECRET: ${env:TWITTER_API_SECRET}
+      TWITTER_ACCESS_TOKEN: ${env:TWITTER_ACCESS_TOKEN}
+      TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
+      TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
+      # Test account
+      TWITTER_READ_ACCOUNT_API_KEY: ${env:TWITTER_READ_ACCOUNT_API_KEY}
+      TWITTER_READ_ACCOUNT_API_SECRET: ${env:TWITTER_READ_ACCOUNT_API_SECRET}
+      TWITTER_READ_ACCOUNT_ACCESS_TOKEN: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN}
+      TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET}
+      TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
+    events:
+      - schedule:
+          rate: rate(1 minute)
+          enabled: false
 
 resources:
   Resources:
@@ -96,15 +123,6 @@ resources:
           - sg-88aeb6e5
         IamInstanceProfile: 
           Ref: ListenerEC2Profile
-        # TODO this
-        # UserData:
-        # 'Fn::Base64': !Sub |
-        #   #!/bin/bash -x
-            # echo "Running boot up sequence!"
-            # cd gender-pay-gap-bot
-            # git pull
-            # aws s3 cp s3://alifensome-general-bucket/gpga/.env .env
-            # npm run start:listener test >> ~/appLogs/logs.txt
 
     # Profile
     ListenerEC2Profile:
@@ -207,3 +225,64 @@ resources:
                   Resource:
                     - 
                       Fn::GetAtt: [ TweetQueue, Arn ]
+
+    TweetAllGpgTaskRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: TweetAllGpgTaskRole
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: TweetAllGpgTaskRolePolicyName
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - 'Fn::Join':
+                      - ':'
+                      -
+                        - 'arn:aws:logs'
+                        - Ref: 'AWS::Region'
+                        - Ref: 'AWS::AccountId'
+                        - 'log-group:/aws/lambda/*:*:*'
+                # DynamoDB
+                - Effect: Allow
+                  Action:
+                    - dynamodb:DescribeTable
+                    - dynamodb:Query
+                    - dynamodb:Scan
+                    - dynamodb:GetItem
+                    - dynamodb:PutItem
+                    - dynamodb:UpdateItem
+                    - dynamodb:DeleteItem
+                  Resource:
+                    - "Fn::GetAtt": [ GpgData, Arn ]                        
+
+    GpgData:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.gpgDataTableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: pk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk # Partition key is hash. The data is physically stored by this.
+            KeyType: HASH
+          - AttributeName: id # Id uniquely identifies within the partition. Range can be queried for greater than. 
+            KeyType: RANGE                
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

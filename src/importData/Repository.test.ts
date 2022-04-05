@@ -76,4 +76,57 @@ describe("Repository", () => {
             expect(result).toEqual(null)
         })
     })
+
+    describe("getNextCompanyWithData", () => {
+        const getNextCompanyWithDataMockDataImporter = {
+            twitterUserDataProd: jest.fn().mockReturnValue([twitterDataItem1, { twitter_id_str: "456" }, twitterDataItem2]),
+            companiesGpgData: jest.fn().mockReturnValue(
+                [{
+                    "companyName": "A",
+                    "companyNumber": "01",
+                    "gpg_2021_2022": 1,
+                    "gpg_2020_2021": 26.4,
+                    "medianGpg_2021_2022": 1.5,
+                    "medianGpg_2020_2021": 28,
+                },
+                {
+                    "companyName": "B",
+                    "companyNumber": "02",
+                    "gpg_2021_2022": 2,
+                    "gpg_2020_2021": 2.1,
+                    "medianGpg_2021_2022": 2.5,
+                    "medianGpg_2020_2021": 2.4,
+                },
+                {
+                    "companyName": "C",
+                    "companyNumber": "03",
+                    "gpg_2021_2022": null,
+                    "gpg_2020_2021": 2.1,
+                    "medianGpg_2021_2022": null,
+                    "medianGpg_2020_2021": 2.4,
+                },
+                {
+                    "companyName": "D",
+                    "companyNumber": "04",
+                    "gpg_2021_2022": 4,
+                    "gpg_2020_2021": 4.1,
+                    "medianGpg_2021_2022": 4.5,
+                    "medianGpg_2020_2021": 4.4,
+                }
+                ])
+        }
+        const getNextCompanyWithDataRepo = new Repository(getNextCompanyWithDataMockDataImporter as any)
+        it("should Get next company with data", () => {
+            const result = getNextCompanyWithDataRepo.getNextCompanyWithData("B", "02")
+            expect(result).toEqual({
+                "companyName": "D",
+                "companyNumber": "04",
+                "gpg_2021_2022": 4,
+                "gpg_2020_2021": 4.1,
+                "medianGpg_2021_2022": 4.5,
+                "medianGpg_2020_2021": 4.4,
+            })
+
+        })
+    })
 })

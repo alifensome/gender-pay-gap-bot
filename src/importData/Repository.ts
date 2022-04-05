@@ -1,8 +1,9 @@
 import DataImporter, { TwitterData, CompanyDataItem } from ".";
 import { isDebugMode } from "../utils/debug";
-import { findCompany } from '../utils/findCompany'
+import { findCompany, findCompanyWithIndex } from '../utils/findCompany'
 
 export class Repository {
+
     dataImporter: DataImporter;
     twitterUserData: TwitterData[];
     companiesGpgData: CompanyDataItem[];
@@ -54,8 +55,28 @@ export class Repository {
         return findCompany(upperCaseName, companyNumber, this.twitterUserData);
     }
 
+    getNextCompanyWithData(name: string, companyNumber: string | null): CompanyDataItem | null {
+        this.checkSetData()
+        const current = findCompanyWithIndex(name, companyNumber, this.companiesGpgData)
+        if (!current) {
+            throw new Error(`could not find current company for name: ${name}, number:${companyNumber}`)
+        }
+        let nextIndex = current.index + 1
+        while (true) {
+            if (nextIndex > this.companiesGpgData.length) {
+                return null
+            }
+            const nextCompany = this.companiesGpgData[nextIndex]
+            if (nextCompany && nextCompany.medianGpg_2021_2022 !== null && nextCompany.medianGpg_2020_2021 !== null) {
+                return nextCompany
+            }
+            nextIndex++
+        }
 
-    private checkSetData() {
+    }
+
+
+    checkSetData() {
         if (!this.twitterUserData || !this.companiesGpgData) {
             this.setData();
         }

@@ -1,4 +1,4 @@
-import { findCompany } from "./findCompany"
+import { findCompany, findCompanyWithIndex } from "./findCompany"
 const companies = [
     {
         companyName: "1",
@@ -42,17 +42,15 @@ describe("findCompany", () => {
 })
 
 
+describe("findCompanyWithIndex", () => {
+    it("should get the company by companyNumber and return index", () => {
+        const result = findCompanyWithIndex(null, "c1", companies)
+        expect(result).toEqual({ item: companies[0], index: 0 })
+    })
+    it("should return null id not exists", () => {
+        const result = findCompanyWithIndex(null, "not here", companies)
+        expect(result).toEqual(null)
+    })
+})
 
-// export function findCompany<T>(name: string, companyNumber: string | null, list: T[]): T | null {
-//     const upperCaseName = name?.toUpperCase();
-//     for (let index = 0; index < list.length; index++) {
-//         const item = list[index] as any;
-//         if (companyNumber !== null && item.companyNumber !== null && item.companyNumber === companyNumber) {
-//             return item
-//         }
-//         if (upperCaseName !== "" && item.companyName?.toUpperCase() && item.companyName?.toUpperCase() === upperCaseName) {
-//             return item;
-//         }
-//     }
-//     return null;
-// }
+

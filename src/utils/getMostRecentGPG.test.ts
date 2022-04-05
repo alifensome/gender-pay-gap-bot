@@ -9,8 +9,8 @@ describe("isNumber", () => {
         ["0", true],
         [-50, true],
         ["-50", true]
-    ])("should return if is a number or not", (number, expectedResult) => {
-        const result = isNumber(number)
+    ])("should return if is a number or not", (numberOrUndefined, expectedResult) => {
+        const result = isNumber(numberOrUndefined)
         expect(result).toBe(expectedResult)
     })
 })
