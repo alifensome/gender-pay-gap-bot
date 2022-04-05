@@ -73,7 +73,7 @@ functions:
     role: TweetAllGpgTaskRole
     environment:
       TABLE_NAME: ${self:custom.gpgDataTableName}
-      IS_TEST: true
+      IS_TEST: false
       # Prod account
       TWITTER_API_KEY: ${env:TWITTER_API_KEY}
       TWITTER_API_SECRET: ${env:TWITTER_API_SECRET}
@@ -89,7 +89,7 @@ functions:
     events:
       - schedule:
           rate: rate(1 minute)
-          enabled: false
+          enabled: true
 
 resources:
   Resources:
