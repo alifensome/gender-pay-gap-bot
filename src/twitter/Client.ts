@@ -114,4 +114,93 @@ export class TwitterClient {
         const user = await this.twitterApiClient.tweets.statusesUserTimeline({ screen_name: screenName })
         return user
     }
+
+    async postMediaUpload(base64File: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.twitPackage.post('media/upload', { media_data: base64File }, (mediaUploadErr, mediaUploadData, mediaUploadResponse) => {
+                if (mediaUploadErr) {
+                    this.logger.error(JSON.stringify({ message: "error creating media upload", eventType: "errorTweeting" }))
+                    return reject(mediaUploadErr)
+                }
+                return resolve(mediaUploadData)
+            })
+        }
+        )
+    }
+    async postMediaMetaDataCreate(mediaIdStr: string, altText: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } }
+            this.twitPackage.post('media/metadata/create', metaParams, (mediaMetadataErr, mediaMetadataData, mediaMetadataResponse) => {
+                if (mediaMetadataErr) {
+                    this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: mediaMetadataErr.message }))
+                    return reject(mediaMetadataErr)
+                }
+                return resolve(mediaMetadataData)
+            }
+            )
+        })
+    }
+
+    async postStatusWithMedia(statusText: string, mediaIdStrList: string[]): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const params = { status: statusText, media_ids: mediaIdStrList }
+
+            this.twitPackage.post('statuses/update', params, (statusUpdateErr, statusUpdateData, statusUpdateResponse) => {
+                if (statusUpdateErr) {
+                    this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: statusUpdateErr.message }))
+                    return reject(statusUpdateErr)
+                }
+                return resolve(statusUpdateData)
+            })
+        })
+    }
+
+    async tweetWithFile(base64File: string, companyName: string, statusText): Promise<void> {
+        const mediaUploadData = await this.postMediaUpload(base64File)
+
+        const mediaIdStr = mediaUploadData.media_id_string
+        const altText = `Gender pay gap data graph ${companyName}`
+
+        await this.postMediaMetaDataCreate(mediaIdStr, altText)
+
+        await this.postStatusWithMedia(statusText, [mediaIdStr])
+    }
+
+    // async tweetWithFile(base64File: string, companyName: string, statusText): Promise<void> {
+    //     return new Promise((resolve, reject) => {
+
+    //         // first we must post the media to Twitter
+    //         this.twitPackage.post('media/upload', { media_data: base64File }, (mediaUploadErr, mediaUploadData, mediaUploadResponse) => {
+    //             if (mediaUploadErr) {
+    //                 this.logger.error(JSON.stringify({ message: "error creating media upload", eventType: "errorTweeting" }))
+    //                 return reject(mediaUploadErr)
+    //             }
+    //             // now we can assign alt text to the media, for use by screen readers and
+    //             // other text-based presentations and interpreters
+    //             const mediaIdStr = mediaUploadData.media_id_string
+    //             const altText = `Gender pay gap data graph ${companyName}`
+    //             const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } }
+
+    //             this.twitPackage.post('media/metadata/create', metaParams, (mediaMetadataErr, mediaMetadataData, mediaMetadataResponse) => {
+    //                 if (mediaMetadataErr) {
+    //                     this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: mediaMetadataErr.message }))
+    //                     return reject(mediaMetadataErr)
+    //                 }
+    //                 if (!mediaMetadataErr) {
+    //                     // now we can reference the media and post a tweet (media will attach to the tweet)
+    //                     const params = { status: statusText, media_ids: [mediaIdStr] }
+
+    //                     this.twitPackage.post('statuses/update', params, (statusUpdateErr, statusUpdateData, statusUpdateResponse) => {
+    //                         if (statusUpdateErr) {
+    //                             this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: statusUpdateErr.message }))
+    //                             return reject(statusUpdateErr)
+    //                         }
+    //                         console.log(statusUpdateData)
+    //                         return resolve()
+    //                     })
+    //                 }
+    //             })
+    //         })
+    //     })
+    // }
 }

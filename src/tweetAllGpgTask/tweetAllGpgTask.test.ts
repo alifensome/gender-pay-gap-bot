@@ -1,14 +1,15 @@
+import { mockCompanyDataItem, mockGraphData } from "../unitTestHelpers/mockData"
 import { TweetAllGpgTask } from "./tweetAllGpgTask"
 
 describe("TweetAllGpgTask", () => {
     const mockTwitterClient = {
-        postTweet: jest.fn()
+        postTweet: jest.fn(),
+        tweetWithFile: jest.fn()
     }
     const mockRepo = {
-        getNextCompanyWithData: jest.fn().mockReturnValue({ medianGpg_2021_2022: 52.2, medianGpg_2020_2021: 42.2, companyNumber: "321", companyName: "Company Name Ltd 2" })
+        getNextCompanyWithData: jest.fn().mockReturnValue(mockCompanyDataItem)
     }
-    const processor = new TweetAllGpgTask(mockTwitterClient as any, mockRepo as any, false, "tableName")
-    processor.dynamoDbClient = {
+    const mockDynamoDbClient = {
         getItem: jest.fn().mockResolvedValue({ data: { companyName: "Company Name Ltd 1", companyNumber: "123" } }),
         putItem: jest.fn(),
         dynamoDB: jest.fn() as any,
@@ -16,15 +17,20 @@ describe("TweetAllGpgTask", () => {
         unmarshallList: jest.fn(),
         tableName: "tableName"
     }
+    const mockGraphPlotter = {
+        generateGraphAsBase64: jest.fn().mockResolvedValue("base64String")
+    }
+    const processor = new TweetAllGpgTask(mockTwitterClient as any, mockRepo as any, false, mockDynamoDbClient, mockGraphPlotter as any)
+    processor.logger = { info: jest.fn() } as any
     describe("sendNextTweet", () => {
-
         it("should send the next tweet", async () => {
             await processor.sendNextTweet()
             expect(mockRepo.getNextCompanyWithData).toBeCalledWith("Company Name Ltd 1", "123")
-            const expectedCopy = "At Company Name Ltd 2, women's median hourly pay is 52.2% lower than men's, an increase of 10 percentage points since the previous year"
-            expect(mockTwitterClient.postTweet).toBeCalledWith(expectedCopy)
-            expect(processor.dynamoDbClient.getItem).toBeCalledWith({ "id": "lastCompanyTweet", "pk": "lastCompanyTweet" })
-            expect(processor.dynamoDbClient.putItem).toBeCalledWith({
+            const expectedCopy = "At Company Name Ltd 2, women's median hourly pay is 52.1% lower than men's, an increase of 10 percentage points since the previous year"
+            expect(mockTwitterClient.tweetWithFile).toBeCalledWith("base64String", "Company Name Ltd 2", expectedCopy)
+            expect(mockGraphPlotter.generateGraphAsBase64).toBeCalledWith(mockGraphData)
+            expect(mockDynamoDbClient.getItem).toBeCalledWith({ "id": "lastCompanyTweet", "pk": "lastCompanyTweet" })
+            expect(mockDynamoDbClient.putItem).toBeCalledWith({
                 id: "lastCompanyTweet",
                 pk: "lastCompanyTweet",
                 data: {

@@ -1,6 +1,5 @@
 import { daysSinceBeginningOfYear, findDailyGpg, findPercentageGpgRange } from "./FindDailyGpg"
 const d = new Date(2022, 2, 13, 1, 2, 3)
-console.log(d.toISOString())
 describe("findDailyGpg", () => {
     it("should get the companies with a GPG for that day", () => {
         findDailyGpg(d)

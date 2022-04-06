@@ -3,6 +3,8 @@ import { Logger } from "tslog";
 import DynamoDbClient from "../dynamodb/Client";
 import { CompanyDataItem } from "../importData";
 import { Repository } from "../importData/Repository";
+import { gpgToData } from "../plotGraph/gpgToData";
+import GraphPlotter from "../plotGraph/plot";
 import { TwitterClient } from "../twitter/Client";
 
 export class TweetAllGpgTask {
@@ -13,14 +15,16 @@ export class TweetAllGpgTask {
     minGPG: number | null;
     isTest: boolean;
     now: string;
+    graphPlotter: GraphPlotter;
 
-    constructor(twitterClient: TwitterClient, repo: Repository, isTest, tableName: string) {
+    constructor(twitterClient: TwitterClient, repo: Repository, isTest, dynamoDbClient: DynamoDbClient, graphPlotter: GraphPlotter) {
         this.twitterClient = twitterClient
         this.logger = new Logger({ name: "TweetAllGpgTask" })
         this.repository = repo
         this.isTest = isTest
-        this.dynamoDbClient = new DynamoDbClient(tableName)
+        this.dynamoDbClient = dynamoDbClient
         this.now = new Date().toISOString()
+        this.graphPlotter = graphPlotter
     }
 
     async getDynamoDbLastItem(): Promise<DynamoDbLastItem> {
@@ -64,7 +68,9 @@ export class TweetAllGpgTask {
                 return { isFinished: true }
             }
             const tweetCopy = this.getCopy(nextCompany)
-            await this.twitterClient.postTweet(tweetCopy)
+            const graphData = gpgToData(nextCompany)
+            const imageBase64 = await this.graphPlotter.generateGraphAsBase64(graphData)
+            await this.twitterClient.tweetWithFile(imageBase64, nextCompany.companyName, tweetCopy)
             await this.updateDynamoDbLastItem({ companyName: nextCompany.companyName, companyNumber: nextCompany.companyNumber })
             this.logger.info(JSON.stringify({ message: "successful post from task.", eventType: "successfulPost", companyName: nextCompany.companyName, companyNumber: nextCompany.companyNumber }))
         } catch (error) {
@@ -77,7 +83,7 @@ export class TweetAllGpgTask {
         }
     }
 
-    findNextCompanyOrFirst(companyName, companyNumber) {
+    findNextCompanyOrFirst(companyName, companyNumber): CompanyDataItem {
         if (companyName) {
             return this.repository.getNextCompanyWithData(companyName, companyNumber)
         } else {
