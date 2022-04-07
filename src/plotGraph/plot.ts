@@ -1,5 +1,6 @@
 import * as fs from 'fs'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
+import { registerFont } from 'canvas'
 import { BubbleDataPoint, ChartConfiguration, ChartTypeRegistry, ScatterDataPoint } from 'chart.js';
 
 export default class GraphPlotter {
@@ -17,6 +18,7 @@ export default class GraphPlotter {
     }
 
     async generateGraphAsBase64({ medianData, meanData }: GraphData) {
+        registerFont('assets/fonts/DejaVuSans.ttf', { family: 'DejaVu Sans' });
 
         const configuration: ChartConfiguration<keyof ChartTypeRegistry, (number | ScatterDataPoint | BubbleDataPoint)[], unknown> = {
             type: "line",// "line",   // for line chart

@@ -55,3 +55,6 @@ This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 ### Manual Data Gathering
 - Search twitter with group: 1
 - no twitter profile: 1
+
+## Canvas Lambda Layer
+Deploy with this https://github.com/jwerre/node-canvas-lambda
