@@ -3,6 +3,7 @@ import { Logger } from "tslog";
 import DynamoDbClient from "../dynamodb/Client";
 import { CompanyDataItem } from "../importData";
 import { Repository } from "../importData/Repository";
+import { LambdaClient } from "../lambdaClient/LambdaClient";
 import { gpgToData } from "../plotGraph/gpgToData";
 import GraphPlotter from "../plotGraph/plot";
 import { TwitterClient } from "../twitter/Client";
@@ -15,16 +16,16 @@ export class TweetAllGpgTask {
     minGPG: number | null;
     isTest: boolean;
     now: string;
-    graphPlotter: GraphPlotter;
+    lambdaClient: LambdaClient;
 
-    constructor(twitterClient: TwitterClient, repo: Repository, isTest, dynamoDbClient: DynamoDbClient, graphPlotter: GraphPlotter) {
+    constructor(twitterClient: TwitterClient, repo: Repository, isTest, dynamoDbClient: DynamoDbClient, lambdaClient: LambdaClient) {
         this.twitterClient = twitterClient
         this.logger = new Logger({ name: "TweetAllGpgTask" })
         this.repository = repo
         this.isTest = isTest
         this.dynamoDbClient = dynamoDbClient
         this.now = new Date().toISOString()
-        this.graphPlotter = graphPlotter
+        this.lambdaClient = lambdaClient
     }
 
     async getDynamoDbLastItem(): Promise<DynamoDbLastItem> {
@@ -69,7 +70,7 @@ export class TweetAllGpgTask {
             }
             const tweetCopy = this.getCopy(nextCompany)
             const graphData = gpgToData(nextCompany)
-            const imageBase64 = await this.graphPlotter.generateGraphAsBase64(graphData)
+            const imageBase64 = await this.lambdaClient.triggerPlot5YearGraph(graphData)
             await this.twitterClient.tweetWithFile(imageBase64, nextCompany.companyName, tweetCopy)
             await this.updateDynamoDbLastItem({ companyName: nextCompany.companyName, companyNumber: nextCompany.companyNumber })
             this.logger.info(JSON.stringify({ message: "successful post from task.", eventType: "successfulPost", companyName: nextCompany.companyName, companyNumber: nextCompany.companyNumber }))

@@ -17,10 +17,10 @@ describe("TweetAllGpgTask", () => {
         unmarshallList: jest.fn(),
         tableName: "tableName"
     }
-    const mockGraphPlotter = {
-        generateGraphAsBase64: jest.fn().mockResolvedValue("base64String")
+    const mockLambdaClient = {
+        triggerPlot5YearGraph: jest.fn().mockResolvedValue("base64String")
     }
-    const processor = new TweetAllGpgTask(mockTwitterClient as any, mockRepo as any, false, mockDynamoDbClient, mockGraphPlotter as any)
+    const processor = new TweetAllGpgTask(mockTwitterClient as any, mockRepo as any, false, mockDynamoDbClient, mockLambdaClient as any)
     processor.logger = { info: jest.fn() } as any
     describe("sendNextTweet", () => {
         it("should send the next tweet", async () => {
@@ -28,7 +28,7 @@ describe("TweetAllGpgTask", () => {
             expect(mockRepo.getNextCompanyWithData).toBeCalledWith("Company Name Ltd 1", "123")
             const expectedCopy = "At Company Name Ltd 2, women's median hourly pay is 52.1% lower than men's, an increase of 10 percentage points since the previous year"
             expect(mockTwitterClient.tweetWithFile).toBeCalledWith("base64String", "Company Name Ltd 2", expectedCopy)
-            expect(mockGraphPlotter.generateGraphAsBase64).toBeCalledWith(mockGraphData)
+            expect(mockLambdaClient.triggerPlot5YearGraph).toBeCalledWith(mockGraphData)
             expect(mockDynamoDbClient.getItem).toBeCalledWith({ "id": "lastCompanyTweet", "pk": "lastCompanyTweet" })
             expect(mockDynamoDbClient.putItem).toBeCalledWith({
                 id: "lastCompanyTweet",
