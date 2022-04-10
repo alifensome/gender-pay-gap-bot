@@ -61,7 +61,7 @@ export default class GraphPlotter {
                     y: {
                         title: {
                             display: true,
-                            text: ["Gender Pay Gap - Positive indicates men earing more", "%"]
+                            text: ["Gender Pay Gap - Positive indicates men earning more", "%"]
                         },
                         suggestedMin: 0,
                     },
