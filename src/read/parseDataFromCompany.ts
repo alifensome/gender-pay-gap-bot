@@ -24,7 +24,8 @@ export function parseDataFromJson(jsonFile: CompanyDataCsvItem[]): SingleYearCom
         if (!companyName && !companyNumber) {
             continue
         }
-        data.push({ companyName, companyNumber, genderPayGap, medianGenderPayGap, sicCodes });
+        const size = row.EmployerSize
+        data.push({ companyName, companyNumber, genderPayGap, medianGenderPayGap, sicCodes, size });
     }
     return data
 }
@@ -32,6 +33,7 @@ export function parseDataFromJson(jsonFile: CompanyDataCsvItem[]): SingleYearCom
 export interface SingleYearCompanyDataItem {
     companyName: string
     companyNumber: string | null // Company Number can be null for some government bodies, health and education.
+    size: string
     sicCodes: string
     genderPayGap: number
     medianGenderPayGap: number

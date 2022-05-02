@@ -69,6 +69,7 @@ describe("parseDataFromJson", () => {
             genderPayGap: 18,
             medianGenderPayGap: 16,
             sicCodes: "85200,85310",
+            size: "Less than 250",
         },
         {
             companyName: "1LIFE MANAGEMENT SOLUTIONS LIMITED",
@@ -76,6 +77,7 @@ describe("parseDataFromJson", () => {
             genderPayGap: 6.1,
             medianGenderPayGap: -35.3,
             sicCodes: "93110,93130,93290",
+            size: "Less than 250",
         },
         ]
         expect(result).toEqual(expectedResult)

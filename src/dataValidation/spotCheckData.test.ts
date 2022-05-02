@@ -16,7 +16,8 @@ const ryanAir = {
     medianGpg_2020_2021: 68.6,
     medianGpg_2019_2020: null,
     medianGpg_2018_2019: 64.4,
-    medianGpg_2017_2018: 71.8
+    medianGpg_2017_2018: 71.8,
+    size: "1000 to 4999",
 }
 const jamesFisherNuclearLimited = {
     companyName: "JAMES FISHER NUCLEAR LIMITED",
@@ -31,7 +32,8 @@ const jamesFisherNuclearLimited = {
     medianGpg_2020_2021: 21.6,
     medianGpg_2019_2020: null,
     medianGpg_2018_2019: 35.3,
-    medianGpg_2017_2018: 38.3
+    medianGpg_2017_2018: 38.3,
+    size: "250 to 499",
 }
 
 const dorsetHealthcareNhsFoundationTrust = {
@@ -47,7 +49,8 @@ const dorsetHealthcareNhsFoundationTrust = {
     medianGpg_2020_2021: 8,
     medianGpg_2019_2020: null,
     medianGpg_2018_2019: 6.5,
-    medianGpg_2017_2018: 6.6
+    medianGpg_2017_2018: 6.6,
+    size: "5000 to 19,999",
 }
 
 const doncasterMetropolitanBoroughCouncil = {
@@ -63,7 +66,8 @@ const doncasterMetropolitanBoroughCouncil = {
     medianGpg_2020_2021: 16,
     medianGpg_2019_2020: 16.9,
     medianGpg_2018_2019: 16.5,
-    medianGpg_2017_2018: 21.1
+    medianGpg_2017_2018: 21.1,
+    size: "5000 to 19,999",
 }
 
 describe("spot check data", () => {

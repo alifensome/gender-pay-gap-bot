@@ -140,6 +140,7 @@ async function getAllData() {
 export interface Company {
     companyName: string;
     companyNumber: string;
+    size: string;
     genderPayGap: number;
     medianGenderPayGap: number;
     sicCodes: string;
@@ -166,6 +167,7 @@ function toCompanyGpgDataItem(item_2022: Company | null, item_2021: Company | nu
     return {
         companyName: latestCompanyObject.companyName,
         companyNumber: latestCompanyObject.companyNumber,
+        size: latestCompanyObject.size,
         sicCodes: latestCompanyObject.sicCodes,
         gpg_2021_2022: item_2022 ? item_2022.genderPayGap : null,
         gpg_2020_2021: item_2021 ? item_2021.genderPayGap : null,
