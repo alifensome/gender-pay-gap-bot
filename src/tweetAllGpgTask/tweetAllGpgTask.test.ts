@@ -1,3 +1,4 @@
+import { CompanySize } from "../importData"
 import { mockCompanyDataItem, mockGraphData } from "../unitTestHelpers/mockData"
 import { TweetAllGpgTask } from "./tweetAllGpgTask"
 
@@ -7,10 +8,10 @@ describe("TweetAllGpgTask", () => {
         tweetWithFile: jest.fn()
     }
     const mockRepo = {
-        getNextCompanyWithData: jest.fn().mockReturnValue(mockCompanyDataItem)
+        getNextMatchingCompanyWithData: jest.fn().mockReturnValue(mockCompanyDataItem)
     }
     const mockDynamoDbClient = {
-        getItem: jest.fn().mockResolvedValue({ data: { companyName: "Company Name Ltd 1", companyNumber: "123" } }),
+        getItem: jest.fn().mockResolvedValue({ data: { companyName: "Company Name Ltd 1", companyNumber: "123", size: CompanySize.From5000To19999 } }),
         putItem: jest.fn(),
         dynamoDB: jest.fn() as any,
         query: jest.fn().mockResolvedValue([]),
@@ -25,7 +26,7 @@ describe("TweetAllGpgTask", () => {
     describe("sendNextTweet", () => {
         it("should send the next tweet", async () => {
             await processor.sendNextTweet()
-            expect(mockRepo.getNextCompanyWithData).toBeCalledWith("Company Name Ltd 1", "123")
+            expect(mockRepo.getNextMatchingCompanyWithData).toBeCalledWith("Company Name Ltd 1", "123", expect.any(Function))
             const expectedCopy = "At Company Name Ltd 2, women's median hourly pay is 52.1% lower than men's, an increase of 10 percentage points since the previous year"
             expect(mockTwitterClient.tweetWithFile).toBeCalledWith("base64String", "Company Name Ltd 2", expectedCopy)
             expect(mockLambdaClient.triggerPlot5YearGraph).toBeCalledWith(mockGraphData)
@@ -53,8 +54,23 @@ describe("TweetAllGpgTask", () => {
         })
         it("should women's pay is higher", () => {
             const copy = processor.getCopy({ medianGpg_2021_2022: -20, medianGpg_2020_2021: -10, companyName: "Company Name LTD" } as any)
-            const expectedCopy = "At Company Name LTD, women's median hourly pay is 20% higher than men's, a decrease of 10 percentage points since the previous year"
+            const expectedCopy = "At Company Name LTD, women's median hourly pay is 20% higher than men's, an increase of 10 percentage points since the previous year"
             expect(copy).toBe(expectedCopy)
+        })
+    })
+
+    describe("matchLargeCompany", () => {
+        it("should return true for companies over the size of 5000 with a gender paygap for at least two years", () => {
+            const result = processor.matchLargeCompany({ medianGpg_2021_2022: 0, medianGpg_2020_2021: 10, companyName: "Company Name LTD", size: CompanySize.From5000To19999 } as any)
+            expect(result).toBe(true)
+        })
+        it("should return false for companies under the size of 5000", () => {
+            const result = processor.matchLargeCompany({ medianGpg_2021_2022: 0, medianGpg_2020_2021: 10, companyName: "Company Name LTD", size: CompanySize.From1000To4999 } as any)
+            expect(result).toBe(false)
+        })
+        it("should return false for companies over the size of 5000 but without gender paygap for at least two years", () => {
+            const result = processor.matchLargeCompany({ medianGpg_2021_2022: 0, medianGpg_2020_2021: null, companyName: "Company Name LTD", size: CompanySize.From5000To19999 } as any)
+            expect(result).toBe(false)
         })
     })
 })

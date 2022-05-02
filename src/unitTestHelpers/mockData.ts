@@ -1,4 +1,4 @@
-import { CompanyDataItem } from "../importData";
+import { CompanyDataItem, CompanySize } from "../importData";
 import { GraphData } from "../plotGraph/plot";
 
 export const mockCompanyDataItem: CompanyDataItem = {
@@ -15,7 +15,7 @@ export const mockCompanyDataItem: CompanyDataItem = {
     gpg_2019_2020: 31.5,
     gpg_2018_2019: 21.5,
     gpg_2017_2018: 11.5,
-
+    size: CompanySize.From1000To4999
 }
 
 export const mockGraphData: GraphData = {

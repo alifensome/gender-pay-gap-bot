@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { TwitterData, CompanyDataJoinedTweetsItem, CompanySize, CompanyDataItem } from './types';
 
 class DataImporter {
     readFile(path) {
@@ -51,39 +52,4 @@ class DataImporter {
 
 export default DataImporter
 
-export interface CompanyDataItem {
-    companyName: string
-    companyNumber: string | null // Company Number can be null for some government bodies, health and education.
-    sicCodes: string
-    gpg_2021_2022?: number
-    gpg_2020_2021?: number
-    gpg_2019_2020?: number
-    gpg_2018_2019?: number
-    gpg_2017_2018?: number
-    medianGpg_2021_2022?: number
-    medianGpg_2020_2021?: number
-    medianGpg_2019_2020?: number
-    medianGpg_2018_2019?: number
-    medianGpg_2017_2018?: number
-}
-
-export interface TwitterData {
-    twitter_id_str: string;
-    twitter_id: number;
-    twitter_name: string;
-    twitter_screen_name: string;
-    companyName: string;
-    companyNumber?: string | null;
-}
-
-export interface CompanyDataJoinedTweetsItem {
-    companyName: string
-    companyNumber?: string;
-    gpg_2020_2021?: number;
-    gpg_2019_2020?: number;
-    gpg_2018_2019?: number;
-    gpg_2017_2018?: number;
-    hasTwitterData: boolean
-    twitterId?: string
-    twitterScreenName?: string
-}
+export * from "./types"

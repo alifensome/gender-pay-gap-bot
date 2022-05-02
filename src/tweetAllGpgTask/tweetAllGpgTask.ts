@@ -5,8 +5,8 @@ import { CompanyDataItem } from "../importData";
 import { Repository } from "../importData/Repository";
 import { LambdaClient } from "../lambdaClient/LambdaClient";
 import { gpgToData } from "../plotGraph/gpgToData";
-import GraphPlotter from "../plotGraph/plot";
 import { TwitterClient } from "../twitter/Client";
+import { companySizeCategoryToMinSize } from "../utils/companySizeUtils";
 
 export class TweetAllGpgTask {
     twitterClient: TwitterClient;
@@ -86,7 +86,7 @@ export class TweetAllGpgTask {
 
     findNextCompanyOrFirst(companyName, companyNumber): CompanyDataItem {
         if (companyName) {
-            return this.repository.getNextCompanyWithData(companyName, companyNumber)
+            return this.repository.getNextMatchingCompanyWithData(companyName, companyNumber, this.matchLargeCompany)
         } else {
             this.repository.checkSetData()
             return this.repository.companiesGpgData[0]
@@ -100,9 +100,9 @@ export class TweetAllGpgTask {
 
         const difference = companyData.medianGpg_2021_2022 - companyData.medianGpg_2020_2021
         const roundedDifference = Number((difference).toFixed(1));
-        const differenceCopy = this.getDifferenceCopy(roundedDifference)
 
-        const isPositiveGpg = companyData.medianGpg_2021_2022 > 0.0
+        const isPositiveGpg = companyData.medianGpg_2021_2022 >= 0.0
+        const differenceCopy = this.getDifferenceCopy(roundedDifference, isPositiveGpg)
         if (companyData.medianGpg_2021_2022 === 0.0) {
             return `At ${companyData.companyName}, men's and women's median hourly pay is equal, ${differenceCopy}`
         }
@@ -113,14 +113,24 @@ export class TweetAllGpgTask {
         }
     }
 
-    getDifferenceCopy(difference: number): string {
+    getDifferenceCopy(difference: number, isPositiveGpg: boolean): string {
         if (difference > 0.0) {
             return `an increase of ${difference} percentage points since the previous year`
         } else if (difference < 0.0) {
-            return `a decrease of ${-1 * difference} percentage points since the previous year`
+            return `${isPositiveGpg ? "a decrease" : "an increase"} of ${-1 * difference} percentage points since the previous year`
         } else if (difference === 0.0) {
             return `this is the same as the previous year`
         }
+    }
+
+    matchLargeCompany(company: CompanyDataItem): boolean {
+        if (companySizeCategoryToMinSize(company.size) < 5000) {
+            return false
+        }
+        if (company && company.medianGpg_2021_2022 !== null && company.medianGpg_2020_2021 !== null) {
+            return true
+        }
+        return false
     }
 }
 

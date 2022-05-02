@@ -1,3 +1,4 @@
+import { CompanySize } from '../importData'
 import { gpgToData } from './gpgToData'
 describe("gpgToData", () => {
     it("should parse the company to a data item", () => {
@@ -15,6 +16,7 @@ describe("gpgToData", () => {
             medianGpg_2019_2020: 8,
             medianGpg_2018_2019: 9,
             medianGpg_2017_2018: 10,
+            size: CompanySize.From250To499
         }
         const result = gpgToData(company)
         const expectedResult = {
@@ -38,6 +40,7 @@ describe("gpgToData", () => {
             medianGpg_2019_2020: 8,
             medianGpg_2018_2019: 9,
             medianGpg_2017_2018: 10,
+            size: CompanySize.From250To499
         }
         const result = gpgToData(company)
         const expectedResult = {
@@ -61,6 +64,7 @@ describe("gpgToData", () => {
             medianGpg_2019_2020: 8,
             medianGpg_2018_2019: 9,
             medianGpg_2017_2018: 10,
+            size: CompanySize.From250To499
         }
         const result = gpgToData(company)
         const expectedResult = {

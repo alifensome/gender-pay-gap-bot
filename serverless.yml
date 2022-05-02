@@ -24,20 +24,6 @@ package:
     - ./**  
   include:
     - ./dist/**
-	
-# layers:
-#   CanvasDependencyLayer:
-#     path: ./
-#     package:
-#       exclude:
-#         - ./**
-#       include:
-#         - ./dist/**
-#         - data/twitterAccountData/twitterUserData-prod.json
-#         - data/twitterAccountData/twitterUserData-test.json
-#         - data/companies_GPG_Data.json
-#         - node_modules/**
-#         - package.json
 
 functions:
   getCompanyByCompanyId:
@@ -129,7 +115,7 @@ functions:
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
     events:
       - schedule:
-          rate: rate(15 minutes)
+          rate: cron(00 09,12 * * *)
           enabled: true
     package:
       include:
@@ -137,9 +123,7 @@ functions:
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
         - data/companies_GPG_Data.json
-        - node_modules/**            
-    # layers:
-    #   - arn:aws:lambda:eu-west-2:402504474878:layer:NodeCanvas:1
+        - node_modules/**
 
   plotGpg5YearGraph:
     handler: dist/plotGpg5YearGraph/handler.handler
@@ -158,10 +142,7 @@ functions:
         - node_modules/**
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
-      # include:
-      #   - invite_slack/**
-      # - { Ref: CanvasDependencyLayerLambdaLayer }                 
+        - data/companies_GPG_Data.json    
 
 resources:
   Resources:

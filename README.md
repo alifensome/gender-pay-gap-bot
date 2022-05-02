@@ -42,10 +42,14 @@ This data set is in `data/twitterAccountData/twitterUserData-prod.json`
 - [ ] Write data to a database
 - [ ] Collect the twitter Id of the created tweet
 - [ ] Check through the tweets for removed attachment_url to see if the company has deleted their tweet
-- [ ] Build a backup plan for when we get banned from twitter 😎
+- [X] Build a backup plan for when we get banned from twitter 😎
 - [X] Make a data set with just companies and twitter accounts
 - [X] Tidy up and reformat the data
 
+#### Tweet All GPG Task
+- [ ] Process the next years data
+- [ ] Extend the graphs for those
+- [ ] Reset the water mark if that makes sense 
 
 ## Twitter Matching Improvements
 ### Problems

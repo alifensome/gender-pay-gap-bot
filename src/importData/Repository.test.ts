@@ -1,4 +1,6 @@
+import { companySizeCategoryToMinSize } from "../utils/companySizeUtils"
 import { Repository } from "./Repository"
+import { CompanyDataItem, CompanySize } from "./types"
 
 const twitterDataItem1 = {
     twitter_id_str: "123",
@@ -126,7 +128,75 @@ describe("Repository", () => {
                 "medianGpg_2021_2022": 4.5,
                 "medianGpg_2020_2021": 4.4,
             })
+        })
 
+        describe("getNextMatchingCompanyWithData", () => {
+            const mockDataImporter = {
+                twitterUserDataProd: jest.fn().mockReturnValue([twitterDataItem1, { twitter_id_str: "456" }, twitterDataItem2]),
+                companiesGpgData: jest.fn().mockReturnValue(
+                    [{
+                        "companyName": "A",
+                        "companyNumber": "01",
+                        "gpg_2021_2022": 1,
+                        "gpg_2020_2021": 26.4,
+                        "medianGpg_2021_2022": 1.5,
+                        "medianGpg_2020_2021": 28,
+                        size: CompanySize.From250To499
+                    },
+                    {
+                        "companyName": "B",
+                        "companyNumber": "02",
+                        "gpg_2021_2022": 2,
+                        "gpg_2020_2021": 2.1,
+                        "medianGpg_2021_2022": 2.5,
+                        "medianGpg_2020_2021": 2.4,
+                        size: CompanySize.From250To499
+                    },
+                    {
+                        "companyName": "C",
+                        "companyNumber": "03",
+                        "gpg_2021_2022": null,
+                        "gpg_2020_2021": 2.1,
+                        "medianGpg_2021_2022": null,
+                        "medianGpg_2020_2021": 2.4,
+                        size: CompanySize.From250To499
+                    },
+                    {
+                        "companyName": "D",
+                        "companyNumber": "04",
+                        "gpg_2021_2022": 4,
+                        "gpg_2020_2021": 4.1,
+                        "medianGpg_2021_2022": 4.5,
+                        "medianGpg_2020_2021": 4.4,
+                        size: CompanySize.From1000To4999
+                    }
+                    ])
+            }
+            const getNextMatchingCompanyWithDataRepo = new Repository(mockDataImporter as any)
+
+            it("should match a company", () => {
+                const matcher = (c: CompanyDataItem) => {
+                    return companySizeCategoryToMinSize(c.size) >= 1000
+                }
+                const result = getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData("B", "02", matcher)
+                const expectedResult = {
+                    companyName: "D",
+                    companyNumber: "04",
+                    gpg_2021_2022: 4,
+                    gpg_2020_2021: 4.1,
+                    medianGpg_2021_2022: 4.5,
+                    medianGpg_2020_2021: 4.4,
+                    size: CompanySize.From1000To4999
+                }
+                expect(result).toEqual(expectedResult)
+            })
+            it("should return null if theres no matches", () => {
+                const matcher = (c: CompanyDataItem) => {
+                    return companySizeCategoryToMinSize(c.size) >= 100000
+                }
+                const result = getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData("B", "02", matcher)
+                expect(result).toBe(null)
+            })
         })
     })
 })
