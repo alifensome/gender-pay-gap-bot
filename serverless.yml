@@ -115,7 +115,7 @@ functions:
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
     events:
       - schedule:
-          rate: cron(00 09,12 * * *)
+          rate: cron(00 09,13 * * ? *)
           enabled: true
     package:
       include:
