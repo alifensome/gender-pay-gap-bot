@@ -1,19 +1,19 @@
 import { CompanyDataItem } from "../importData"
 
 export function getMostRecentGPG(data: CompanyDataItem) {
-    if (data.gpg_2021_2022) {
+    if (isNumber(data.gpg_2021_2022)) {
         return data.gpg_2021_2022
     }
-    if (data.gpg_2020_2021) {
+    if (isNumber(data.gpg_2020_2021)) {
         return data.gpg_2020_2021
     }
-    if (data.gpg_2019_2020) {
+    if (isNumber(data.gpg_2019_2020)) {
         return data.gpg_2019_2020
     }
-    if (data.gpg_2018_2019) {
+    if (isNumber(data.gpg_2018_2019)) {
         return data.gpg_2018_2019
     }
-    if (data.gpg_2017_2018) {
+    if (isNumber(data.gpg_2017_2018)) {
         return data.gpg_2017_2018
     }
     return null
@@ -27,7 +27,17 @@ export function isNumber(n: any): boolean {
         let parsedStringNumber = parseFloat(n)
         return isNumber(parsedStringNumber)
     }
-    return true
+    if (typeof n === "number" || typeof n === "bigint") {
+        if (isSpecialNotANunber(n)) {
+            return false
+        }
+        return true
+    }
+    return false
+}
+
+function isSpecialNotANunber(n: number | bigint) {
+    return n != n
 }
 
 export function getMostRecentMedianGPG(data: CompanyDataItem) {

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { TwitterData, CompanyDataJoinedTweetsItem, CompanySize, CompanyDataItem } from './types';
+import { TwitterData, CompanyDataJoinedTweetsItem, CompanyDataItem } from './types';
 
 class DataImporter {
     readFile(path) {

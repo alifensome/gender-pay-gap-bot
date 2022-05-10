@@ -10,3 +10,5 @@ distBackUp/*
 private
 private/**
 invoke/response.json
+
+coverage
