@@ -2,6 +2,11 @@ import { writeJsonFile } from "../utils/write.js";
 import { parseDataFromJson } from "./parseDataFromCompany";
 import DataImporter from "../importData";
 import { findCompany } from "../utils/findCompany";
+import {
+  CompanyDataMultiYearItem,
+  CompanyDataSingleYearItem,
+  CompanySize,
+} from "../types.js";
 const dataImporter = new DataImporter();
 
 const json2022 = dataImporter.gpg_2021_2022();
@@ -211,31 +216,13 @@ export interface Company {
   sicCodes: string;
 }
 
-export interface AllYearsCompanyData {
-  companyName: string;
-  companyNumber: string;
-  gpg_2021_2022: number | null;
-  gpg_2020_2021: number | null;
-  gpg_2019_2020: number | null;
-  gpg_2018_2019: number | null;
-  gpg_2017_2018: number | null;
-
-  medianGpg_2021_2022: number | null;
-  medianGpg_2020_2021: number | null;
-  medianGpg_2019_2020: number | null;
-  medianGpg_2018_2019: number | null;
-  medianGpg_2017_2018: number | null;
-  size: string;
-  sicCodes: string;
-}
-
 function toCompanyGpgDataItem(
   item_2022: Company | null,
   item_2021: Company | null,
   item_2020: Company | null,
   item_2019: Company | null,
   item_2018: Company | null
-): AllYearsCompanyData {
+): CompanyDataMultiYearItem {
   const latestCompanyObject = getLatestCompanyEntry(
     item_2022,
     item_2021,
@@ -246,20 +233,30 @@ function toCompanyGpgDataItem(
   return {
     companyName: latestCompanyObject.companyName,
     companyNumber: latestCompanyObject.companyNumber,
-    size: latestCompanyObject.size,
+    size: latestCompanyObject.size as CompanySize, // TODO parse this better!
     sicCodes: latestCompanyObject.sicCodes,
-    gpg_2021_2022: item_2022 ? item_2022.genderPayGap : null,
-    gpg_2020_2021: item_2021 ? item_2021.genderPayGap : null,
-    gpg_2019_2020: item_2020 ? item_2020.genderPayGap : null,
-    gpg_2018_2019: item_2019 ? item_2019.genderPayGap : null,
-    gpg_2017_2018: item_2018 ? item_2018.genderPayGap : null,
 
-    medianGpg_2021_2022: item_2022 ? item_2022.medianGenderPayGap : null,
-    medianGpg_2020_2021: item_2021 ? item_2021.medianGenderPayGap : null,
-    medianGpg_2019_2020: item_2020 ? item_2020.medianGenderPayGap : null,
-    medianGpg_2018_2019: item_2019 ? item_2019.medianGenderPayGap : null,
-    medianGpg_2017_2018: item_2018 ? item_2018.medianGenderPayGap : null,
+    data2021To2022: toCompanyDataSingleYearItem(item_2022),
+    data2020To2021: toCompanyDataSingleYearItem(item_2021),
+    data2019To2020: toCompanyDataSingleYearItem(item_2020),
+    data2018To2019: toCompanyDataSingleYearItem(item_2019),
+    data2017To2018: toCompanyDataSingleYearItem(item_2018),
   };
+}
+
+function toCompanyDataSingleYearItem(
+  company: Company
+): CompanyDataSingleYearItem | null {
+  if (!company.genderPayGap && !company.medianGenderPayGap) {
+    return null;
+  }
+  if (company.genderPayGap && company.medianGenderPayGap) {
+    return {
+      meanGpg: company.genderPayGap,
+      medianGpg: company.medianGenderPayGap,
+    };
+  }
+  throw new Error(`wrong fields present: ${JSON.stringify(company)}`);
 }
 
 function getLatestCompanyEntry(
