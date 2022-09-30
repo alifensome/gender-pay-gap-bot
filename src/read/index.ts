@@ -7,6 +7,10 @@ import {
   CompanyDataSingleYearItem,
   CompanySize,
 } from "../types.js";
+import { isNumber } from "../utils/getMostRecentGPG.js";
+
+// TODO unit test these read data functions!
+
 const dataImporter = new DataImporter();
 
 const json2022 = dataImporter.gpg_2021_2022();
@@ -247,10 +251,13 @@ function toCompanyGpgDataItem(
 function toCompanyDataSingleYearItem(
   company: Company
 ): CompanyDataSingleYearItem | null {
-  if (!company.genderPayGap && !company.medianGenderPayGap) {
+  if (
+    !isNumber(company?.genderPayGap) &&
+    !isNumber(company?.medianGenderPayGap)
+  ) {
     return null;
   }
-  if (company.genderPayGap && company.medianGenderPayGap) {
+  if (isNumber(company.genderPayGap) && isNumber(company.medianGenderPayGap)) {
     return {
       meanGpg: company.genderPayGap,
       medianGpg: company.medianGenderPayGap,
