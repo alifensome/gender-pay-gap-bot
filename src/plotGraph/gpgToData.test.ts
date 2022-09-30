@@ -1,76 +1,140 @@
-import { CompanySize } from '../importData'
-import { gpgToData } from './gpgToData'
+import { CompanyDataMultiYearItem, CompanySize } from "../types";
+import { gpgToData } from "./gpgToData";
 describe("gpgToData", () => {
-    it("should parse the company to a data item", () => {
-        const company = {
-            companyName: "companyName",
-            sicCodes: "",
-            companyNumber: null,
-            gpg_2021_2022: 1,
-            gpg_2020_2021: 2,
-            gpg_2019_2020: 3,
-            gpg_2018_2019: 4,
-            gpg_2017_2018: 5,
-            medianGpg_2021_2022: 6,
-            medianGpg_2020_2021: 7,
-            medianGpg_2019_2020: 8,
-            medianGpg_2018_2019: 9,
-            medianGpg_2017_2018: 10,
-            size: CompanySize.From250To499
-        }
-        const result = gpgToData(company)
-        const expectedResult = {
-            medianData: [{ x: 2017, y: 10 }, { x: 2018, y: 9 }, { x: 2019, y: 8 }, { x: 2020, y: 7 }, { x: 2021, y: 6 }],
-            meanData: [{ x: 2017, y: 5 }, { x: 2018, y: 4 }, { x: 2019, y: 3 }, { x: 2020, y: 2 }, { x: 2021, y: 1 }],
-        }
-        expect(result).toEqual(expectedResult)
-    })
-    it("should parse not include null years", () => {
-        const company = {
-            companyName: "companyName",
-            sicCodes: "",
-            companyNumber: null,
-            gpg_2021_2022: 1,
-            gpg_2020_2021: 2,
-            gpg_2019_2020: 3,
-            gpg_2018_2019: null,
-            gpg_2017_2018: 5,
-            medianGpg_2021_2022: 6,
-            medianGpg_2020_2021: null,
-            medianGpg_2019_2020: 8,
-            medianGpg_2018_2019: 9,
-            medianGpg_2017_2018: 10,
-            size: CompanySize.From250To499
-        }
-        const result = gpgToData(company)
-        const expectedResult = {
-            medianData: [{ x: 2017, y: 10 }, { x: 2018, y: 9 }, { x: 2019, y: 8 }, { x: 2021, y: 6 }],
-            meanData: [{ x: 2017, y: 5 }, { x: 2019, y: 3 }, { x: 2020, y: 2 }, { x: 2021, y: 1 }],
-        }
-        expect(result).toEqual(expectedResult)
-    })
-    it("should parse the company to a data item even when 0", () => {
-        const company = {
-            companyName: "companyName",
-            sicCodes: "",
-            companyNumber: null,
-            gpg_2021_2022: 1,
-            gpg_2020_2021: 2,
-            gpg_2019_2020: 3,
-            gpg_2018_2019: 0,
-            gpg_2017_2018: 5,
-            medianGpg_2021_2022: 0,
-            medianGpg_2020_2021: 7,
-            medianGpg_2019_2020: 8,
-            medianGpg_2018_2019: 9,
-            medianGpg_2017_2018: 10,
-            size: CompanySize.From250To499
-        }
-        const result = gpgToData(company)
-        const expectedResult = {
-            medianData: [{ x: 2017, y: 10 }, { x: 2018, y: 9 }, { x: 2019, y: 8 }, { x: 2020, y: 7 }, { x: 2021, y: 0 }],
-            meanData: [{ x: 2017, y: 5 }, { x: 2018, y: 0 }, { x: 2019, y: 3 }, { x: 2020, y: 2 }, { x: 2021, y: 1 }],
-        }
-        expect(result).toEqual(expectedResult)
-    })
-})
+  it("should parse the company to a data item", () => {
+    const company: CompanyDataMultiYearItem = {
+      companyName: "companyName",
+      sicCodes: "",
+      companyNumber: null,
+      data2021To2022: {
+        medianGpg: 6,
+        meanGpg: 1,
+      },
+      data2020To2021: {
+        meanGpg: 2,
+        medianGpg: 7,
+      },
+      data2019To2020: {
+        medianGpg: 8,
+        meanGpg: 3,
+      },
+      data2018To2019: {
+        meanGpg: 4,
+        medianGpg: 9,
+      },
+      data2017To2018: {
+        meanGpg: 5,
+        medianGpg: 10,
+      },
+      size: CompanySize.From250To499,
+    };
+    const result = gpgToData(company);
+    const expectedResult = {
+      medianData: [
+        { x: 2017, y: 10 },
+        { x: 2018, y: 9 },
+        { x: 2019, y: 8 },
+        { x: 2020, y: 7 },
+        { x: 2021, y: 6 },
+      ],
+      meanData: [
+        { x: 2017, y: 5 },
+        { x: 2018, y: 4 },
+        { x: 2019, y: 3 },
+        { x: 2020, y: 2 },
+        { x: 2021, y: 1 },
+      ],
+    };
+    expect(result).toEqual(expectedResult);
+  });
+  it("should parse not include null years", () => {
+    const company: CompanyDataMultiYearItem = {
+      companyName: "companyName",
+      sicCodes: "",
+      companyNumber: null,
+      data2021To2022: {
+        medianGpg: 6,
+        meanGpg: 1,
+      },
+      data2020To2021: {
+        meanGpg: 2,
+        medianGpg: null,
+      },
+      data2019To2020: {
+        medianGpg: 8,
+        meanGpg: 3,
+      },
+      data2018To2019: {
+        meanGpg: null,
+        medianGpg: 9,
+      },
+      data2017To2018: {
+        meanGpg: 5,
+        medianGpg: 10,
+      },
+      size: CompanySize.From250To499,
+    };
+    const result = gpgToData(company);
+    const expectedResult = {
+      medianData: [
+        { x: 2017, y: 10 },
+        { x: 2018, y: 9 },
+        { x: 2019, y: 8 },
+        { x: 2021, y: 6 },
+      ],
+      meanData: [
+        { x: 2017, y: 5 },
+        { x: 2019, y: 3 },
+        { x: 2020, y: 2 },
+        { x: 2021, y: 1 },
+      ],
+    };
+    expect(result).toEqual(expectedResult);
+  });
+  it("should parse the company to a data item even when 0", () => {
+    const company: CompanyDataMultiYearItem = {
+      companyName: "companyName",
+      sicCodes: "",
+      companyNumber: null,
+      data2021To2022: {
+        medianGpg: 0,
+        meanGpg: 1,
+      },
+      data2020To2021: {
+        meanGpg: 2,
+        medianGpg: 7,
+      },
+      data2019To2020: {
+        medianGpg: 8,
+        meanGpg: 3,
+      },
+      data2018To2019: {
+        meanGpg: 0,
+        medianGpg: 9,
+      },
+      data2017To2018: {
+        meanGpg: 5,
+        medianGpg: 10,
+      },
+      size: CompanySize.From250To499,
+    };
+    const result = gpgToData(company);
+    const expectedResult = {
+      medianData: [
+        { x: 2017, y: 10 },
+        { x: 2018, y: 9 },
+        { x: 2019, y: 8 },
+        { x: 2020, y: 7 },
+        { x: 2021, y: 0 },
+      ],
+      meanData: [
+        { x: 2017, y: 5 },
+        { x: 2018, y: 0 },
+        { x: 2019, y: 3 },
+        { x: 2020, y: 2 },
+        { x: 2021, y: 1 },
+      ],
+    };
+    expect(result).toEqual(expectedResult);
+  });
+});
