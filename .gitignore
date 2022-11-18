@@ -2,7 +2,7 @@ node_modules
 .env
 logs.txt
 .serverless
-dist/**
+# dist/**
 .vscode
 
 distBackUp/*
@@ -12,3 +12,5 @@ private/**
 invoke/response.json
 
 coverage
+
+DS_Store
