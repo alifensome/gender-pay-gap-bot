@@ -144,4 +144,7 @@ export const relevantWords = [
   "GIRL BOSS",
   "GIRLBOSS",
   "EQUALITY",
+  "INTERNATIONALMENSDAY",
+  "IMD",
+  "MENSDAY"
 ];
