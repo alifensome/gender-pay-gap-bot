@@ -52,12 +52,10 @@ export class IncomingTweetListenerQueuer {
 
   async handleIncomingTweet(input: HandleIncomingTweetInput) {
     if (input.isRetweet) {
-      this.logger.info(
-        JSON.stringify({
+      debugPrint({
           message: "Ignoring retweet",
           eventType: "ignoringRetweet",
         })
-      );
       return;
     }
 
