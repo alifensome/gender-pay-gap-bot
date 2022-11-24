@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const IncomingTweetListenerQueuer_1 = require("./IncomingTweetListenerQueuer");
+const relevantWords_1 = require("./relevantWords");
 const tslog_1 = require("tslog");
 const twitterData = [{ twitter_id_str: "1" }, { twitter_id_str: "2" }];
 describe("IncomingTweetListenerQueuer", () => {
@@ -17,20 +18,23 @@ describe("IncomingTweetListenerQueuer", () => {
         startStreamingTweets: jest.fn(),
     };
     const mockSqsClient = {
-        queueMessage: jest.fn()
+        queueMessage: jest.fn(),
     };
     const mockDataImporter = {
-        twitterUserDataProd: jest.fn().mockReturnValue(twitterData)
+        twitterUserDataProd: jest.fn().mockReturnValue(twitterData),
     };
     const mockRepository = {
-        getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: {} })
+        getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: {} }),
     };
     const handler = new IncomingTweetListenerQueuer_1.IncomingTweetListenerQueuer(mockTwitterClient, mockSqsClient, mockDataImporter, mockRepository, new tslog_1.Logger());
     describe("listen", () => {
         it("should listen to twitter with a handler", () => __awaiter(void 0, void 0, void 0, function* () {
             yield handler.listen();
             expect(mockTwitterClient.startStreamingTweets).toBeCalledTimes(1);
-            expect(mockTwitterClient.startStreamingTweets.mock.calls[0][0]).toEqual(["1", "2"]);
+            expect(mockTwitterClient.startStreamingTweets.mock.calls[0][0]).toEqual([
+                "1",
+                "2",
+            ]);
         }));
     });
     describe("getFollowsFromData", () => {
@@ -56,6 +60,11 @@ describe("IncomingTweetListenerQueuer", () => {
             result = handler.checkTweetContainsWord("some text ' '’ '’... womens history month            ");
             expect(result).toBe(true);
         });
+        it("should not pick up random url stuff", () => {
+            const text = "Can you help us find missing 11-year-old Nathan. Last seen in the Windsor Crescent area of Bridlington around 16:00… https://t.co/IMdCa5mfa1";
+            let result = handler.checkTweetContainsWord(text);
+            expect(result).toBe(false);
+        });
     });
     describe("handleIncomingTweet", () => {
         it("should take an incoming tweet and queue it", () => __awaiter(void 0, void 0, void 0, function* () {
@@ -67,7 +76,7 @@ describe("IncomingTweetListenerQueuer", () => {
                 isRetweet: false,
                 text: "text",
                 timeStamp: "timeStamp",
-                fullTweetObject: { text: IncomingTweetListenerQueuer_1.relevantWords[0] }
+                fullTweetObject: { text: relevantWords_1.relevantWords[0].phrase },
             };
             yield handler.handleIncomingTweet(input);
             expect(mockSqsClient.queueMessage).toBeCalledWith(input);

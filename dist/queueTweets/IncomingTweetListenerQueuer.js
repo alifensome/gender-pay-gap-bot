@@ -9,9 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.relevantWords = exports.IncomingTweetListenerQueuer = void 0;
+exports.IncomingTweetListenerQueuer = void 0;
 const debug_1 = require("../utils/debug");
 const replace_1 = require("../utils/replace");
+const relevantWords_1 = require("./relevantWords");
 class IncomingTweetListenerQueuer {
     constructor(twitterClient, sqsClient, dataImporter, repository, logger) {
         this.twitterClient = twitterClient;
@@ -78,14 +79,35 @@ class IncomingTweetListenerQueuer {
         });
     }
     checkTweetContainsWord(tweet) {
-        const replacements = [
-            { find: "'", replace: "" },
-            { find: "’", replace: "" },
-        ];
-        const upperCaseTweet = (0, replace_1.replaceMultiple)(tweet.toUpperCase(), replacements);
-        for (let index = 0; index < exports.relevantWords.length; index++) {
-            const word = exports.relevantWords[index];
-            if (upperCaseTweet.includes(word)) {
+        const upperCaseTweet = uppercaseAndReplace(tweet);
+        const tweetedWords = upperCaseTweet.split(/[ ,]+/);
+        for (let index = 0; index < relevantWords_1.relevantWords.length; index++) {
+            const relevantWord = relevantWords_1.relevantWords[index];
+            if (relevantWord.requiresExact) {
+                const result = this.checkContainsExactWord(tweetedWords, relevantWord.phrase);
+                if (result) {
+                    return true;
+                }
+            }
+            else {
+                const result = this.checkContainsPhrase(upperCaseTweet, relevantWord.phrase);
+                if (result) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    checkContainsPhrase(upperCaseTweet, relivenatPhrase) {
+        if (upperCaseTweet.includes(relivenatPhrase)) {
+            return true;
+        }
+        return false;
+    }
+    checkContainsExactWord(tweetedWords, relivenatPhrase) {
+        for (let index = 0; index < tweetedWords.length; index++) {
+            const tweetedWord = tweetedWords[index];
+            if (tweetedWord === relivenatPhrase) {
                 return true;
             }
         }
@@ -93,32 +115,13 @@ class IncomingTweetListenerQueuer {
     }
 }
 exports.IncomingTweetListenerQueuer = IncomingTweetListenerQueuer;
-exports.relevantWords = [
-    "IWD2023",
-    "IWD2022",
-    "#IWD2022",
-    "#IWD23",
-    "#IWD22",
-    "#IWD",
-    "INTERNATIONALWOMENSDAY",
-    "#INTERNATIONALWOMENSDAY",
-    "#CHOOSETOCHALLENGE",
-    "INTERNATIONAL WOMENS DAY",
-    "INTERNATIONAL WOMENS MONTH",
-    "WOMENSDAY",
-    "WOMENS DAY",
-    "BREAKTHEBIAS",
-    "WOMENS HISTORY MONTH",
-    "WOMANS HISTORY MONTH",
-    "WOMENS MONTH",
-    "WOMANS MONTH",
-    "WOMENS WEEK",
-    "GENDER PAY GAP",
-    "GIRL BOSS",
-    "GIRLBOSS",
-    "EQUALITY",
-    "INTERNATIONALMENSDAY",
-    "IMD",
-    "MENSDAY"
-];
+function uppercaseAndReplace(tweet) {
+    const replacements = [
+        { find: "'", replace: "" },
+        { find: "’", replace: "" },
+        { find: "#", replace: "" },
+    ];
+    const upperCaseTweet = (0, replace_1.replaceMultiple)(tweet.toUpperCase(), replacements);
+    return upperCaseTweet;
+}
 //# sourceMappingURL=IncomingTweetListenerQueuer.js.map

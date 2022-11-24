@@ -8,12 +8,13 @@ const Client_1 = require("../sqs/Client");
 const tslog_1 = require("tslog");
 const Client_2 = require("../twitter/Client");
 const IncomingTweetListenerQueuer_1 = require("./IncomingTweetListenerQueuer");
+const relevantWords_1 = require("./relevantWords");
 const importData_1 = __importDefault(require("../importData"));
 const Repository_1 = require("../importData/Repository");
 const debug_1 = require("../utils/debug");
 const logger = new tslog_1.Logger();
 logger.info(JSON.stringify({
-    message: `starting listener. Listening for words: ${JSON.stringify(IncomingTweetListenerQueuer_1.relevantWords)}`,
+    message: `starting listener. Listening for words: ${JSON.stringify(relevantWords_1.relevantWords)}`,
     eventType: "startingListener",
 }));
 dotenv_1.default.config();

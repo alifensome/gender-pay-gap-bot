@@ -37,9 +37,14 @@ class TwitterClient {
     }
     startStreamingTweets(following, handleTweet) {
         return __awaiter(this, void 0, void 0, function* () {
-            const stream = this.twitPackage.stream('statuses/filter', { follow: following });
-            this.logger.info(JSON.stringify({ message: "streaming started", eventType: "streamingStarted" }));
-            stream.on('tweet', (tweet) => __awaiter(this, void 0, void 0, function* () {
+            const stream = this.twitPackage.stream("statuses/filter", {
+                follow: following,
+            });
+            this.logger.info(JSON.stringify({
+                message: "streaming started",
+                eventType: "streamingStarted",
+            }));
+            stream.on("tweet", (tweet) => __awaiter(this, void 0, void 0, function* () {
                 try {
                     const twitterUserId = tweet.user.id_str;
                     const user = tweet.user;
@@ -65,7 +70,7 @@ class TwitterClient {
                         isRetweet,
                         text,
                         timeStamp,
-                        fullTweetObject: tweet
+                        fullTweetObject: tweet,
                     });
                 }
                 catch (err) {
@@ -84,53 +89,64 @@ class TwitterClient {
     ) {
         return new Promise((resolve, reject) => {
             const attachmentUrl = `https://twitter.com/${screenName}/status/${tweetId}`;
-            const body = { status, attachment_url: attachmentUrl, auto_populate_reply_metadata: true };
-            this.twitPackage.post('statuses/update', body, (err) => {
+            const body = {
+                status,
+                attachment_url: attachmentUrl,
+                auto_populate_reply_metadata: true,
+            };
+            this.twitPackage.post("statuses/update", body, (err) => {
                 if (err) {
                     return reject(err);
                 }
-                return resolve({ status: 'Tweet sent' });
+                return resolve({ status: "Tweet sent" });
             });
         });
     }
     postTweet(tweet) {
         return new Promise((resolve, reject) => {
-            this.twitPackage.post('statuses/update', { status: tweet }, (err) => {
+            this.twitPackage.post("statuses/update", { status: tweet }, (err) => {
                 if (err) {
                     return reject(err);
                 }
-                return resolve({ status: 'Tweet sent' });
+                return resolve({ status: "Tweet sent" });
             });
         });
     }
     reTweet(tweetId, tweet, quotedStatus) {
         return new Promise((resolve, reject) => {
-            this.twitPackage.post('statuses/retweet/' + tweetId, { status: tweet, quoted_status: quotedStatus }, (err) => {
+            this.twitPackage.post("statuses/retweet/" + tweetId, { status: tweet, quoted_status: quotedStatus }, (err) => {
                 if (err) {
                     return reject(err);
                 }
-                return resolve({ status: 'Tweet sent' });
+                return resolve({ status: "Tweet sent" });
             });
         });
     }
     getUserByScreenName(screenName) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield this.twitterApiClient.accountsAndUsers.usersLookup({ screen_name: screenName });
+            const user = yield this.twitterApiClient.accountsAndUsers.usersLookup({
+                screen_name: screenName,
+            });
             return user;
         });
     }
     getUserTweetsByScreenName(screenName) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield this.twitterApiClient.tweets.statusesUserTimeline({ screen_name: screenName });
+            const user = yield this.twitterApiClient.tweets.statusesUserTimeline({
+                screen_name: screenName,
+            });
             return user;
         });
     }
     postMediaUpload(base64File) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                this.twitPackage.post('media/upload', { media_data: base64File }, (mediaUploadErr, mediaUploadData, mediaUploadResponse) => {
+                this.twitPackage.post("media/upload", { media_data: base64File }, (mediaUploadErr, mediaUploadData, mediaUploadResponse) => {
                     if (mediaUploadErr) {
-                        this.logger.error(JSON.stringify({ message: "error creating media upload", eventType: "errorTweeting" }));
+                        this.logger.error(JSON.stringify({
+                            message: "error creating media upload",
+                            eventType: "errorTweeting",
+                        }));
                         return reject(mediaUploadErr);
                     }
                     return resolve(mediaUploadData);
@@ -142,9 +158,13 @@ class TwitterClient {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
                 const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } };
-                this.twitPackage.post('media/metadata/create', metaParams, (mediaMetadataErr, mediaMetadataData, mediaMetadataResponse) => {
+                this.twitPackage.post("media/metadata/create", metaParams, (mediaMetadataErr, mediaMetadataData, mediaMetadataResponse) => {
                     if (mediaMetadataErr) {
-                        this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: mediaMetadataErr.message }));
+                        this.logger.error(JSON.stringify({
+                            message: "error creating media upload metadata",
+                            eventType: "errorTweeting",
+                            errorMessage: mediaMetadataErr.message,
+                        }));
                         return reject(mediaMetadataErr);
                     }
                     return resolve(mediaMetadataData);
@@ -156,9 +176,13 @@ class TwitterClient {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
                 const params = { status: statusText, media_ids: mediaIdStrList };
-                this.twitPackage.post('statuses/update', params, (statusUpdateErr, statusUpdateData, statusUpdateResponse) => {
+                this.twitPackage.post("statuses/update", params, (statusUpdateErr, statusUpdateData, statusUpdateResponse) => {
                     if (statusUpdateErr) {
-                        this.logger.error(JSON.stringify({ message: "error creating media upload metadata", eventType: "errorTweeting", errorMessage: statusUpdateErr.message }));
+                        this.logger.error(JSON.stringify({
+                            message: "error creating media upload metadata",
+                            eventType: "errorTweeting",
+                            errorMessage: statusUpdateErr.message,
+                        }));
                         return reject(statusUpdateErr);
                     }
                     return resolve(statusUpdateData);
