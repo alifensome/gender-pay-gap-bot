@@ -6,6 +6,7 @@ import { debugPrint } from "../utils/debug";
 import { Repository } from "../importData/Repository";
 import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
+import { relevantWords } from "./relevantWords";
 
 export class IncomingTweetListenerQueuer {
   twitterClient: TwitterClient;
@@ -53,9 +54,9 @@ export class IncomingTweetListenerQueuer {
   async handleIncomingTweet(input: HandleIncomingTweetInput) {
     if (input.isRetweet) {
       debugPrint({
-          message: "Ignoring retweet",
-          eventType: "ignoringRetweet",
-        })
+        message: "Ignoring retweet",
+        eventType: "ignoringRetweet",
+      });
       return;
     }
 
@@ -92,14 +93,48 @@ export class IncomingTweetListenerQueuer {
   }
 
   checkTweetContainsWord(tweet: string): boolean {
-    const replacements = [
-      { find: "'", replace: "" },
-      { find: "’", replace: "" },
-    ];
-    const upperCaseTweet = replaceMultiple(tweet.toUpperCase(), replacements);
+    const upperCaseTweet = uppercaseAndReplace(tweet);
+    const tweetedWords = upperCaseTweet.split(/[ ,]+/);
     for (let index = 0; index < relevantWords.length; index++) {
-      const word = relevantWords[index];
-      if (upperCaseTweet.includes(word)) {
+      const relevantWord = relevantWords[index];
+      if (relevantWord.requiresExact) {
+        const result = this.checkContainsExactWord(
+          tweetedWords,
+          relevantWord.phrase
+        );
+        if (result) {
+          return true;
+        }
+      } else {
+        const result = this.checkContainsPhrase(
+          upperCaseTweet,
+          relevantWord.phrase
+        );
+        if (result) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  checkContainsPhrase(
+    upperCaseTweet: string,
+    relivenatPhrase: string
+  ): boolean {
+    if (upperCaseTweet.includes(relivenatPhrase)) {
+      return true;
+    }
+    return false;
+  }
+
+  checkContainsExactWord(
+    tweetedWords: string[],
+    relivenatPhrase: string
+  ): boolean {
+    for (let index = 0; index < tweetedWords.length; index++) {
+      const tweetedWord = tweetedWords[index];
+      if (tweetedWord === relivenatPhrase) {
         return true;
       }
     }
@@ -118,31 +153,12 @@ export interface HandleIncomingTweetInput {
   fullTweetObject: any;
 }
 
-export const relevantWords = [
-  "IWD2023",
-  "IWD2022",
-  "#IWD2022",
-  "#IWD23",
-  "#IWD22",
-  "#IWD",
-  "INTERNATIONALWOMENSDAY",
-  "#INTERNATIONALWOMENSDAY",
-  "#CHOOSETOCHALLENGE",
-  "INTERNATIONAL WOMENS DAY",
-  "INTERNATIONAL WOMENS MONTH",
-  "WOMENSDAY",
-  "WOMENS DAY",
-  "BREAKTHEBIAS",
-  "WOMENS HISTORY MONTH",
-  "WOMANS HISTORY MONTH",
-  "WOMENS MONTH",
-  "WOMANS MONTH",
-  "WOMENS WEEK",
-  "GENDER PAY GAP",
-  "GIRL BOSS",
-  "GIRLBOSS",
-  "EQUALITY",
-  "INTERNATIONALMENSDAY",
-  "IMD",
-  "MENSDAY"
-];
+function uppercaseAndReplace(tweet: string) {
+  const replacements = [
+    { find: "'", replace: "" },
+    { find: "’", replace: "" },
+    { find: "#", replace: "" },
+  ];
+  const upperCaseTweet = replaceMultiple(tweet.toUpperCase(), replacements);
+  return upperCaseTweet;
+}
