@@ -14,7 +14,7 @@ export function companySizeCategoryToMinSize(companySize: CompanySize): number {
       return 1000;
     case CompanySize.From5000To19999:
       return 5000;
-    case CompanySize.Morethan20000:
+    case CompanySize.MoreThan20000:
       return 20000;
     default:
       throw new Error(`no company size for ${companySize}`);

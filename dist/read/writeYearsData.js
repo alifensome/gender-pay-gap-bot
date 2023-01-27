@@ -11,6 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.writeAllData = exports.genericWriteData = void 0;
 const parseDataFromCompany_js_1 = require("./parseDataFromCompany.js");
+function write2022_2023_data() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield genericWriteData(2022);
+    });
+}
 function write2021_2022_data() {
     return __awaiter(this, void 0, void 0, function* () {
         yield genericWriteData(2021);
@@ -52,6 +57,7 @@ function genericWriteData(year) {
 exports.genericWriteData = genericWriteData;
 function writeAllData() {
     return __awaiter(this, void 0, void 0, function* () {
+        yield write2022_2023_data();
         yield write2021_2022_data();
         yield write2020_2021_data();
         yield write2019_2020_data();

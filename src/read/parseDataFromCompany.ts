@@ -50,7 +50,7 @@ function parseString(s: string | unknown): string {
     return `${s}`
 }
 
-
+// TODO use it or loose it.
 interface Fields {
     EmployerNameField: string;
     CompanyNumberField: string;

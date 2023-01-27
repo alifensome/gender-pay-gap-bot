@@ -9,6 +9,6 @@ var CompanySize;
     CompanySize["From500To999"] = "500 to 999";
     CompanySize["From1000To4999"] = "1000 to 4999";
     CompanySize["From5000To19999"] = "5000 to 19,999";
-    CompanySize["Morethan20000"] = "20,000 or more";
+    CompanySize["MoreThan20000"] = "20,000 or more";
 })(CompanySize = exports.CompanySize || (exports.CompanySize = {}));
 //# sourceMappingURL=types.js.map
