@@ -16,7 +16,7 @@ echo "Writing from spreadsheets to JSON..."
 node --unhandled-rejections=strict ./dist/read/runWriteAllData.js
 
 echo "Combining company data..."
-node --unhandled-rejections=strict ./dist/read/combineDataSets.js
+node --unhandled-rejections=strict ./dist/read/combineDataSets/run.js
 
 echo "Formatting Json"
 jq . data/companies_GPG_Data.json > data/companies_GPG_Data_temp.json
