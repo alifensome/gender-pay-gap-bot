@@ -1,7 +1,9 @@
+// TODO make this type more dynamic, or remember to update it every year.
 export interface CompanyDataMultiYearItem {
   companyName: string;
   companyNumber: string | null; // Company Number can be null for some government bodies, health and education.
   sicCodes: string;
+  data2022To2023?: CompanyDataSingleYearItem;
   data2021To2022?: CompanyDataSingleYearItem;
   data2020To2021?: CompanyDataSingleYearItem;
   data2019To2020?: CompanyDataSingleYearItem;
@@ -22,7 +24,7 @@ export enum CompanySize {
   From500To999 = "500 to 999",
   From1000To4999 = "1000 to 4999",
   From5000To19999 = "5000 to 19,999",
-  Morethan20000 = "20,000 or more",
+  MoreThan20000 = "20,000 or more",
 }
 
 export interface TwitterData {
@@ -34,9 +36,12 @@ export interface TwitterData {
   companyNumber?: string | null;
 }
 
+// TODO deprecate this and use union type.
 export interface CompanyDataJoinedTweetsItem {
   companyName: string;
   companyNumber?: string;
+  gpg_2022_2023?: number;
+  gpg_2021_2022?: number;
   gpg_2020_2021?: number;
   gpg_2019_2020?: number;
   gpg_2018_2019?: number;

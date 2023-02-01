@@ -2,7 +2,7 @@ node_modules
 .env
 logs.txt
 .serverless
-# dist/**
+dist/**
 .vscode
 
 distBackUp/*

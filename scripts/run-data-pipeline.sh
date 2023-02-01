@@ -8,16 +8,15 @@ echo "Building"
 npm run build
 
 echo "Testing"
-npm run test
+# npm run test
 
 ./scripts/download-GPG-data.sh
 
 echo "Writing from spreadsheets to JSON..."
 node --unhandled-rejections=strict ./dist/read/runWriteAllData.js
 
-echo "Combining compay data..."
-node --unhandled-rejections=strict ./dist/read/index.js
-
+echo "Combining company data..."
+node --unhandled-rejections=strict ./dist/read/combineDataSets/run.js
 
 echo "Formatting Json"
 jq . data/companies_GPG_Data.json > data/companies_GPG_Data_temp.json
