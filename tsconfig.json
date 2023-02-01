@@ -8,6 +8,7 @@
         "sourceMap": true,
         "outDir": "dist"
     },
+    "include": ["**/*.ts", "*.ts"],
     "lib": [
         "es2015"
     ]

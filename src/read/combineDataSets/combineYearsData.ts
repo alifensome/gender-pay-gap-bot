@@ -1,6 +1,6 @@
 import { findCompany } from "../../utils/findCompany";
 import { CompanyDataMultiYearItem } from "../../types.js";
-import { toCompanyGpgDataItem } from "./toCompanyGpgDataItem";
+import { toCompanyGpgDataItem } from "./utils";
 import { BasicCompanyInfo, MultipleYearCompanyArg } from "./types";
 import { ImportAllYearsDataResult } from "./types";
 

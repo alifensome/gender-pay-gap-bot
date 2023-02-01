@@ -1,5 +1,5 @@
 import { writeJsonFile } from "../../utils/write";
-import { printPercentageComplete } from "./toCompanyGpgDataItem";
+import { printPercentageComplete } from "./utils";
 import { importAllYearsData } from "./importAllYearsData";
 import { formDeduplicatedListOfCompanies } from "./formDeduplicatedListOfCompanies";
 import { combineYearsData } from "./combineYearsData";
