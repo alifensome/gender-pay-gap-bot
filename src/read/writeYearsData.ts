@@ -1,5 +1,8 @@
 import { spreadSheetToJson } from "./parseDataFromCompany.js"
 
+async function write2022_2023_data() {
+    await genericWriteData(2022)
+}
 async function write2021_2022_data() {
     await genericWriteData(2021)
 }
@@ -15,6 +18,7 @@ async function write2018_2019_data() {
 async function write2017_2018_data() {
     await genericWriteData(2017)
 }
+
 // year is the first calendar year of the snapshot eg 21-22 would be 21
 export async function genericWriteData(year: number) {
     const startYear = year
@@ -28,6 +32,7 @@ export async function genericWriteData(year: number) {
 }
 
 export async function writeAllData() {
+    await write2022_2023_data()
     await write2021_2022_data()
     await write2020_2021_data()
     await write2019_2020_data()

@@ -6,6 +6,10 @@ describe("gpgToData", () => {
       companyName: "companyName",
       sicCodes: "",
       companyNumber: null,
+      data2022To2023: {
+        medianGpg: 11,
+        meanGpg: 10,
+      },
       data2021To2022: {
         medianGpg: 6,
         meanGpg: 1,
@@ -52,6 +56,7 @@ describe("gpgToData", () => {
       companyName: "companyName",
       sicCodes: "",
       companyNumber: null,
+      data2022To2023: null,
       data2021To2022: {
         medianGpg: 6,
         meanGpg: 1,
@@ -96,6 +101,7 @@ describe("gpgToData", () => {
       companyName: "companyName",
       sicCodes: "",
       companyNumber: null,
+      data2022To2023: null,
       data2021To2022: {
         medianGpg: 0,
         meanGpg: 1,
