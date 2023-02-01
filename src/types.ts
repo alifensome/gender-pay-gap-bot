@@ -3,12 +3,12 @@ export interface CompanyDataMultiYearItem {
   companyName: string;
   companyNumber: string | null; // Company Number can be null for some government bodies, health and education.
   sicCodes: string;
-  data2022To2023?: CompanyDataSingleYearItem;
-  data2021To2022?: CompanyDataSingleYearItem;
-  data2020To2021?: CompanyDataSingleYearItem;
-  data2019To2020?: CompanyDataSingleYearItem;
-  data2018To2019?: CompanyDataSingleYearItem;
-  data2017To2018?: CompanyDataSingleYearItem;
+  data2022To2023: CompanyDataSingleYearItem | null;
+  data2021To2022: CompanyDataSingleYearItem | null;
+  data2020To2021: CompanyDataSingleYearItem | null;
+  data2019To2020: CompanyDataSingleYearItem | null;
+  data2018To2019: CompanyDataSingleYearItem | null;
+  data2017To2018: CompanyDataSingleYearItem | null;
   size: CompanySize;
 }
 

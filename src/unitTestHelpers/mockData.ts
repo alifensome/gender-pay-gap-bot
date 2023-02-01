@@ -11,6 +11,7 @@ export const mockCompanyDataItem: CompanyDataMultiYearItem = {
   data2019To2020: { medianGpg: 32.1, meanGpg: 31.5 },
   data2018To2019: { medianGpg: 22.1, meanGpg: 21.5 },
   data2017To2018: { medianGpg: 11.1, meanGpg: 11.5 },
+  data2022To2023: { medianGpg: 10.1, meanGpg: 9.5 },
   size: CompanySize.From1000To4999,
 };
 

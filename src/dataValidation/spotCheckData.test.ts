@@ -8,6 +8,7 @@ const ryanAir: CompanyDataMultiYearItem = {
   companyName: "Ryanair ltd",
   companyNumber: null,
   sicCodes: "51101",
+  data2022To2023: null,
   data2021To2022: { meanGpg: 45.1, medianGpg: 42.8 },
   data2020To2021: { meanGpg: 67.8, medianGpg: 68.6 },
   data2019To2020: null,
@@ -19,18 +20,20 @@ const jamesFisherNuclearLimited: CompanyDataMultiYearItem = {
   companyName: "JAMES FISHER NUCLEAR LIMITED",
   companyNumber: "SC204768",
   sicCodes: "62090",
+  data2022To2023: null,
   data2021To2022: { meanGpg: 34.3, medianGpg: 29.7 },
   data2020To2021: { meanGpg: 26.7, medianGpg: 21.6 },
   data2019To2020: null,
   data2018To2019: { meanGpg: 32.4, medianGpg: 35.3 },
   data2017To2018: { meanGpg: 33, medianGpg: 38.3 },
-  size: CompanySize.From250To499,
+  size: CompanySize.From250To499
 };
 
 const dorsetHealthcareNhsFoundationTrust: CompanyDataMultiYearItem = {
   companyName: "Dorset Healthcare Nhs Foundation Trust",
   companyNumber: null,
   sicCodes: "1,86210",
+  data2022To2023: null,
   data2021To2022: { meanGpg: 14.8, medianGpg: 8.7 },
   data2020To2021: { meanGpg: 14.1, medianGpg: 8 },
   data2019To2020: null,
@@ -43,6 +46,7 @@ const doncasterMetropolitanBoroughCouncil: CompanyDataMultiYearItem = {
   companyName: "Doncaster Metropolitan Borough Council",
   companyNumber: null,
   sicCodes: "1,84110",
+  data2022To2023: null,
   data2021To2022: { meanGpg: 12.9, medianGpg: 13.9 },
   data2020To2021: { meanGpg: 14.1, medianGpg: 16 },
   data2019To2020: { meanGpg: 14.6, medianGpg: 16.9 },
