@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "t": "jest",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "deploy": "npm run build && npm run test && serverless deploy",

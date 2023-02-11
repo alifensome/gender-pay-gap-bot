@@ -1,5 +1,6 @@
 import { CompanyDataMultiYearItem } from "../types";
 import { forCompanyDataMultiYearFindFirstTrue } from "./companyDataMultiYear";
+import { isNumber } from "./isNumber";
 
 export function getMostRecentGPG(
   data: CompanyDataMultiYearItem
@@ -13,24 +14,7 @@ export function getMostRecentGPG(
   return null;
 }
 
-export function isNumber(n: any): boolean {
-  if (n === null || n === undefined || n === "") {
-    return false;
-  }
-  if (typeof n === "string") {
-    let parsedStringNumber = parseFloat(n);
-    return isNumber(parsedStringNumber);
-  }
-  if (typeof n === "number" || typeof n === "bigint") {
-    if (isSpecialNotANunber(n)) {
-      return false;
-    }
-    return true;
-  }
-  return false;
-}
-
-function isSpecialNotANunber(n: number | bigint) {
+export function isSpecialNotANumber(n: number | bigint) {
   return n != n;
 }
 

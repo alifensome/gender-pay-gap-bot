@@ -3,7 +3,7 @@ import {
   CompanyDataSingleYearItem,
   CompanySize,
 } from "../../types.js";
-import { isNumber } from "../../utils/getMostRecentGPG";
+import { isNumber } from "../../utils/isNumber";
 import { MultipleYearCompanyArg, Company } from "./types";
 
 // TODO make this more dynamic or update every year.

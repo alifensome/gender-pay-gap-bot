@@ -6,12 +6,12 @@ export const mockCompanyDataItem: CompanyDataMultiYearItem = {
   companyName: "Company Name Ltd 2",
   sicCodes: "123,456",
 
+  data2022To2023: { medianGpg: 10.1, meanGpg: 9.5 },
   data2021To2022: { medianGpg: 52.1, meanGpg: 51.5 },
   data2020To2021: { medianGpg: 42.1, meanGpg: 41.5 },
   data2019To2020: { medianGpg: 32.1, meanGpg: 31.5 },
   data2018To2019: { medianGpg: 22.1, meanGpg: 21.5 },
   data2017To2018: { medianGpg: 11.1, meanGpg: 11.5 },
-  data2022To2023: { medianGpg: 10.1, meanGpg: 9.5 },
   size: CompanySize.From1000To4999,
 };
 
@@ -37,6 +37,10 @@ export const mockGraphData: GraphData = {
       x: 2021,
       y: 51.5,
     },
+    {
+      x: 2022,
+      y: 9.5,
+    },
   ],
   medianData: [
     {
@@ -58,6 +62,10 @@ export const mockGraphData: GraphData = {
     {
       x: 2021,
       y: 52.1,
+    },
+    {
+      x: 2022,
+      y: 10.1,
     },
   ],
 };
