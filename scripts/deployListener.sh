@@ -12,5 +12,7 @@ aws s3 sync scripts s3://alifensome-general-bucket/gpga/scripts
 aws s3 cp package.json s3://alifensome-general-bucket/gpga/package.json
 aws s3 cp package-lock.json s3://alifensome-general-bucket/gpga/package-lock.json
 
-# Todo make the listener sync on start
-# restart listener
+# The listener syncs dist and data on restart start.
+echo "Restarting listener ID: $EC2_ID"
+source ./private/var.sh 
+aws ec2 reboot-instances --instance-ids $EC2_ID

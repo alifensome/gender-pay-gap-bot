@@ -32,3 +32,5 @@ sudo systemctl daemon-reload
 sudo systemctl enable shellscript.service 
 sudo systemctl start shellscript.service 
 sudo systemctl status shellscript.service -l
+
+# Debug with: journalctl -u shellscript.service --since "2023-02-11 15:10:10"

@@ -9,6 +9,9 @@ import { Repository } from "../importData/Repository";
 import { isDebugMode } from "../utils/debug";
 
 const logger = new Logger();
+
+logger.info("Started listening at time: " + new Date().toISOString());
+
 logger.info(
   JSON.stringify({
     message: `starting listener. Listening for words: ${JSON.stringify(
