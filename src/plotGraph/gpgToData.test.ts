@@ -40,6 +40,7 @@ describe("gpgToData", () => {
         { x: 2019, y: 8 },
         { x: 2020, y: 7 },
         { x: 2021, y: 6 },
+        { x: 2022, y: 11 },
       ],
       meanData: [
         { x: 2017, y: 5 },
@@ -47,6 +48,7 @@ describe("gpgToData", () => {
         { x: 2019, y: 3 },
         { x: 2020, y: 2 },
         { x: 2021, y: 1 },
+        { x: 2022, y: 10 },
       ],
     };
     expect(result).toEqual(expectedResult);
