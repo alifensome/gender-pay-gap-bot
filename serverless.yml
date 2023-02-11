@@ -1,17 +1,17 @@
 service: gender-pay-gap-bot-2
-frameworkVersion: '3'
+frameworkVersion: "3"
 useDotenv: true
 
 # plugins:
-  # - serverless-plugin-include-dependencies # Docs https://www.npmjs.com/package/serverless-plugin-include-dependencies
+# - serverless-plugin-include-dependencies # Docs https://www.npmjs.com/package/serverless-plugin-include-dependencies
 
 provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
 
-# you can overwrite defaults here
-#  stage: dev
+  # you can overwrite defaults here
+  #  stage: dev
   region: eu-west-2
 
 custom:
@@ -21,7 +21,7 @@ package:
   excludeDevDependencies: true # Required for https://www.npmjs.com/package/serverless-plugin-include-dependencies
   individually: true
   exclude:
-    - ./**  
+    - ./**
   include:
     - ./dist/**
 
@@ -29,44 +29,44 @@ functions:
   getCompanyByCompanyId:
     handler: dist/api/getCompanyHandler.getCompanyByCompanyId
     events:
-     - httpApi:
-         path: /company/{id}
-         method: get
+      - httpApi:
+          path: /company/{id}
+          method: get
     package:
       include:
         - ./dist/**
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
         - data/companies_GPG_Data.json
-        - node_modules/**         
+        - node_modules/**
 
   getCompanyByTwitterId:
     handler: dist/api/getCompanyHandler.getCompanyByTwitterId
     events:
-     - httpApi:
-         path: /company/twitterId/{id}
-         method: get
+      - httpApi:
+          path: /company/twitterId/{id}
+          method: get
     package:
       include:
         - ./dist/**
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
         - data/companies_GPG_Data.json
-        - node_modules/**             
+        - node_modules/**
 
   getCompanyByTwitterHandle:
     handler: dist/api/getCompanyHandler.getCompanyByTwitterHandle
     events:
-     - httpApi:
-         path: /company/twitterHandle/{handle}
-         method: get
+      - httpApi:
+          path: /company/twitterHandle/{handle}
+          method: get
     package:
       include:
         - ./dist/**
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
         - data/companies_GPG_Data.json
-        - node_modules/**           
+        - node_modules/**
 
   tweetGpg:
     handler: dist/tweetGPG/handler.handler
@@ -133,16 +133,16 @@ functions:
     layers:
       - arn:aws:lambda:eu-west-2:402504474878:layer:node14chartjsCanvas:1
       - arn:aws:lambda:eu-west-2:402504474878:layer:node14CanvasLib64:3
-      - arn:aws:lambda:eu-west-2:402504474878:layer:canvas-nodejs:1	
+      - arn:aws:lambda:eu-west-2:402504474878:layer:canvas-nodejs:1
     package:
       include:
         - ./dist/**
         - assets/fonts/DejaVuSans.ttf
-      exclude: 
+      exclude:
         - node_modules/**
         - data/twitterAccountData/twitterUserData-prod.json
         - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json    
+        - data/companies_GPG_Data.json
 
 resources:
   Resources:
@@ -153,8 +153,8 @@ resources:
         QueueName: "TweetQueue"
         MessageRetentionPeriod: 1209600 # 14 days retention.
         RedrivePolicy:
-          deadLetterTargetArn: 
-            Fn::GetAtt: [ TweetQueueDeadLetter, Arn ]
+          deadLetterTargetArn:
+            Fn::GetAtt: [TweetQueueDeadLetter, Arn]
           maxReceiveCount: 3
     # Dead letter queue for the above.
     TweetQueueDeadLetter:
@@ -174,16 +174,16 @@ resources:
         SubnetId: subnet-7e54ad32
         SecurityGroupIds:
           - sg-88aeb6e5
-        IamInstanceProfile: 
+        IamInstanceProfile:
           Ref: ListenerEC2Profile
 
     # Profile
     ListenerEC2Profile:
       Type: AWS::IAM::InstanceProfile
-      Properties: 
+      Properties:
         InstanceProfileName: ListenerEC2Profile
-        Roles: 
-          - Ref: ListenerRole          
+        Roles:
+          - Ref: ListenerRole
 
     # Roles
     # https://www.serverless.com/framework/docs/providers/aws/guide/iam
@@ -192,7 +192,7 @@ resources:
       Properties:
         RoleName: ListenerRole
         AssumeRolePolicyDocument:
-          Version: '2012-10-17'
+          Version: "2012-10-17"
           Statement:
             - Effect: Allow
               Principal:
@@ -202,7 +202,7 @@ resources:
         Policies:
           - PolicyName: ListenerRolePolicyName
             PolicyDocument:
-              Version: '2012-10-17'
+              Version: "2012-10-17"
               Statement:
                 - Effect: Allow
                   Action:
@@ -211,13 +211,12 @@ resources:
                     - logs:PutLogEvents
                     - logs:DescribeLogStreams
                   Resource:
-                    - 'Fn::Join':
-                      - ':'
-                      -
-                        - 'arn:aws:logs'
-                        - Ref: 'AWS::Region'
-                        - Ref: 'AWS::AccountId'
-                        - 'log-group:/aws/ec2/*:*:*'
+                    - "Fn::Join":
+                        - ":"
+                        - - "arn:aws:logs"
+                          - Ref: "AWS::Region"
+                          - Ref: "AWS::AccountId"
+                          - "log-group:/aws/ec2/*:*:*"
                     - "arn:aws:logs:eu-west-2:402504474878:log-group:/var/log/*:*:*"
                 - Effect: Allow
                   Action:
@@ -230,21 +229,20 @@ resources:
                   Action:
                     - sqs:SendMessage
                   Resource:
-                    - 
-                      Fn::GetAtt: [ TweetQueue, Arn ]
+                    - Fn::GetAtt: [TweetQueue, Arn]
 
                 - Effect: Allow
                   Action:
                     - s3:GetObject
                   Resource:
-                    - arn:aws:s3:::alifensome-general-bucket/gpga/.env
+                    - arn:aws:s3:::alifensome-general-bucket/gpga/*
 
     TweetSqsProcessorRole:
       Type: AWS::IAM::Role
       Properties:
         RoleName: TweetSqsProcessorRole
         AssumeRolePolicyDocument:
-          Version: '2012-10-17'
+          Version: "2012-10-17"
           Statement:
             - Effect: Allow
               Principal:
@@ -254,7 +252,7 @@ resources:
         Policies:
           - PolicyName: TweetSqsProcessorRolePolicyName
             PolicyDocument:
-              Version: '2012-10-17'
+              Version: "2012-10-17"
               Statement:
                 - Effect: Allow
                   Action:
@@ -262,13 +260,12 @@ resources:
                     - logs:CreateLogStream
                     - logs:PutLogEvents
                   Resource:
-                    - 'Fn::Join':
-                      - ':'
-                      -
-                        - 'arn:aws:logs'
-                        - Ref: 'AWS::Region'
-                        - Ref: 'AWS::AccountId'
-                        - 'log-group:/aws/lambda/*:*:*'
+                    - "Fn::Join":
+                        - ":"
+                        - - "arn:aws:logs"
+                          - Ref: "AWS::Region"
+                          - Ref: "AWS::AccountId"
+                          - "log-group:/aws/lambda/*:*:*"
                 - Effect: Allow
                   Action:
                     - sqs:ReceiveMessage
@@ -276,15 +273,14 @@ resources:
                     - sqs:GetQueueAttributes
 
                   Resource:
-                    - 
-                      Fn::GetAtt: [ TweetQueue, Arn ]
+                    - Fn::GetAtt: [TweetQueue, Arn]
 
     TweetAllGpgTaskRole:
       Type: AWS::IAM::Role
       Properties:
         RoleName: TweetAllGpgTaskRole
         AssumeRolePolicyDocument:
-          Version: '2012-10-17'
+          Version: "2012-10-17"
           Statement:
             - Effect: Allow
               Principal:
@@ -294,28 +290,27 @@ resources:
         Policies:
           - PolicyName: TweetAllGpgTaskRolePolicyName
             PolicyDocument:
-              Version: '2012-10-17'
+              Version: "2012-10-17"
               Statement:
-              # Cloudwatch
+                # Cloudwatch
                 - Effect: Allow
                   Action:
                     - logs:CreateLogGroup
                     - logs:CreateLogStream
                     - logs:PutLogEvents
                   Resource:
-                    - 'Fn::Join':
-                      - ':'
-                      -
-                        - 'arn:aws:logs'
-                        - Ref: 'AWS::Region'
-                        - Ref: 'AWS::AccountId'
-                        - 'log-group:/aws/lambda/*:*:*'
-              # Invoke Lambda
+                    - "Fn::Join":
+                        - ":"
+                        - - "arn:aws:logs"
+                          - Ref: "AWS::Region"
+                          - Ref: "AWS::AccountId"
+                          - "log-group:/aws/lambda/*:*:*"
+                # Invoke Lambda
                 - Effect: Allow
                   Action:
                     - "lambda:InvokeFunction"
                   Resource:
-                    - "Fn::GetAtt": [ PlotGpg5YearGraphLambdaFunction, Arn ]
+                    - "Fn::GetAtt": [PlotGpg5YearGraphLambdaFunction, Arn]
 
                 # DynamoDB
                 - Effect: Allow
@@ -328,7 +323,7 @@ resources:
                     - dynamodb:UpdateItem
                     - dynamodb:DeleteItem
                   Resource:
-                    - "Fn::GetAtt": [ GpgData, Arn ]                        
+                    - "Fn::GetAtt": [GpgData, Arn]
 
     GpgData:
       Type: AWS::DynamoDB::Table
@@ -342,8 +337,8 @@ resources:
         KeySchema:
           - AttributeName: pk # Partition key is hash. The data is physically stored by this.
             KeyType: HASH
-          - AttributeName: id # Id uniquely identifies within the partition. Range can be queried for greater than. 
-            KeyType: RANGE                
+          - AttributeName: id # Id uniquely identifies within the partition. Range can be queried for greater than.
+            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
