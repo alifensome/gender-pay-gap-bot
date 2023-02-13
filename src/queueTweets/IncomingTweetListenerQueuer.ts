@@ -35,7 +35,7 @@ export class IncomingTweetListenerQueuer {
   }
 
   getFollowsFromData(companies: TwitterData[]) {
-    const twitterIds = [];
+    const twitterIds: string[] = [];
     for (let index = 0; index < companies.length; index++) {
       const c = companies[index];
       twitterIds.push(c.twitter_id_str);

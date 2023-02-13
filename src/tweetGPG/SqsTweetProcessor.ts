@@ -2,7 +2,7 @@ import { Logger } from "tslog";
 import { CompanyDataMultiYearItem } from "../types";
 import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
-import { getMostRecentMedianGPG } from "../utils/getMostRecentGPG";
+import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
@@ -49,7 +49,7 @@ export class SqsTweetProcessor {
         );
       }
 
-      const mostRecentGPG = getMostRecentMedianGPG(data.companyData);
+      const mostRecentGPG = getMostRecentMedianGPGOrThrow(data.companyData);
       if (this.minGPG !== null && mostRecentGPG < this.minGPG) {
         this.logger.info(
           JSON.stringify({
@@ -98,8 +98,9 @@ export class SqsTweetProcessor {
   }
 
   getCopy(companyData: CompanyDataMultiYearItem): string {
-    const mostRecentGPG = getMostRecentMedianGPG(companyData);
+    const mostRecentGPG = getMostRecentMedianGPGOrThrow(companyData);
     let mostRecent = 0;
+
     if (typeof mostRecentGPG === "string") {
       mostRecent = parseFloat(mostRecentGPG);
     } else {
@@ -112,9 +113,8 @@ export class SqsTweetProcessor {
     if (isPositiveGpg) {
       return `In this organisation, women's median hourly pay is ${mostRecent}% lower than men's.`;
     } else {
-      return `In this organisation, women's median hourly pay is ${
-        -1 * mostRecent
-      }% higher than men's.`;
+      return `In this organisation, women's median hourly pay is ${-1 * mostRecent
+        }% higher than men's.`;
     }
   }
 }

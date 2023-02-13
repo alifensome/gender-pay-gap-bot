@@ -83,11 +83,11 @@ describe("Repository", () => {
       expect(result).toEqual(companyDataItemNoNumber);
     });
     it("should get the company by companyNumber", () => {
-      const result = repo.getCompany(null, "123");
+      const result = repo.getCompany("", "123");
       expect(result).toEqual(companyDataItemNoName);
     });
     it("should get nothing for nulls", () => {
-      const result = repo.getCompany(null, null);
+      const result = repo.getCompany("", null);
       expect(result).toEqual(null);
     });
   });

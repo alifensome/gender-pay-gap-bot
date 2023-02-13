@@ -38,9 +38,10 @@ export function toCompanyGpgDataItem(
 }
 
 function toCompanyDataSingleYearItem(
-  company: Company
+  company: Company | null
 ): CompanyDataSingleYearItem | null {
   if (
+    !company ||
     !isNumber(company?.genderPayGap) &&
     !isNumber(company?.medianGenderPayGap)
   ) {
@@ -63,7 +64,7 @@ function getLatestCompanyEntry(
 
   for (let index = 0; index < yearsOfCompany.length; index++) {
     const element = yearsOfCompany[index];
-    if (isValidCompany(element)) {
+    if (element && isValidCompany(element)) {
       return element;
     }
   }
@@ -84,7 +85,7 @@ function multipleYearsToList(multipleYearCompanyArg: MultipleYearCompanyArg) {
   ];
 }
 
-function isValidCompany(c: Company) {
+function isValidCompany(c: Company): c is Company {
   return !!c && !!c.companyName;
 }
 

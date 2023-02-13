@@ -7,6 +7,7 @@ import { LambdaClient } from "../lambdaClient/LambdaClient";
 import { gpgToData } from "../plotGraph/gpgToData";
 import { TwitterClient } from "../twitter/Client";
 import { companySizeCategoryToMinSize } from "../utils/companySizeUtils";
+import { isNumber } from "../utils/isNumber";
 
 export class TweetAllGpgTask {
   twitterClient: TwitterClient;
@@ -34,12 +35,15 @@ export class TweetAllGpgTask {
     this.lambdaClient = lambdaClient;
   }
 
-  async getDynamoDbLastItem(): Promise<DynamoDbLastItem> {
+  async getDynamoDbLastItem(): Promise<DynamoDbLastItem | null> {
     const result = await this.dynamoDbClient.getItem({
       id: "lastCompanyTweet",
       pk: "lastCompanyTweet",
     });
-    return result as DynamoDbLastItem | null;
+    if (result) {
+      return result as DynamoDbLastItem;
+    }
+    return null
   }
 
   async updateDynamoDbLastItem({
@@ -95,14 +99,14 @@ export class TweetAllGpgTask {
       );
       return { ok: false, errorLogs };
     }
-    let nextCompany = null;
-    let lastCompanyTweet = null;
-    let lastCompanyName = null;
-    let lastCompanyNumber = null;
+    let nextCompany: CompanyDataMultiYearItem | null = null;
+    let lastCompanyTweet: DynamoDbLastItem | null = null;
+    let lastCompanyName: string | null = null;
+    let lastCompanyNumber: string | null = null;
     try {
       lastCompanyTweet = await this.getDynamoDbLastItem();
-      lastCompanyName = lastCompanyTweet?.data?.companyName;
-      lastCompanyNumber = lastCompanyTweet?.data?.companyNumber;
+      lastCompanyName = lastCompanyTweet?.data?.companyName ?? null;
+      lastCompanyNumber = lastCompanyTweet?.data?.companyNumber ?? null;
       nextCompany = this.findNextCompanyOrFirst(
         lastCompanyName,
         lastCompanyNumber
@@ -153,48 +157,57 @@ export class TweetAllGpgTask {
     }
   }
 
-  findNextCompanyOrFirst(companyName, companyNumber): CompanyDataMultiYearItem {
+  findNextCompanyOrFirst(companyName: string | null, companyNumber: string | null): CompanyDataMultiYearItem {
     if (companyName) {
-      return this.repository.getNextMatchingCompanyWithData(
+      const c = this.repository.getNextMatchingCompanyWithData(
         companyName,
         companyNumber,
         this.matchLargeCompany
-      );
-    } else {
-      this.repository.checkSetData();
-      return this.repository.companiesGpgData[0];
+      )
+      if (c) {
+        return c;
+      }
     }
+
+    this.repository.checkSetData();
+    return this.repository.companiesGpgData[0];
   }
 
   getCopy(companyData: CompanyDataMultiYearItem): string {
     if (
-      companyData.data2021To2022.medianGpg === null ||
-      companyData.data2020To2021.medianGpg === null
+      !isNumber(companyData?.data2021To2022?.medianGpg) ||
+      !isNumber(companyData?.data2020To2021?.medianGpg)
     ) {
       throw new Error(
         "no median data for required year! This should not have happened!"
       );
     }
-
+    const has2023 = !!companyData.data2022To2023
+    const year = has2023 ? companyData.data2022To2023 : companyData.data2021To2022
+    const previousYear = has2023 ? companyData.data2021To2022 : companyData.data2020To2021
+    if (!year || !previousYear) {
+      throw new Error(
+        "could not work out the year or previous year data. This should not have happened!"
+      );
+    }
     const difference =
-      companyData.data2021To2022.medianGpg -
-      companyData.data2020To2021.medianGpg;
+      year.medianGpg -
+      previousYear.medianGpg;
     const roundedDifference = Number(difference.toFixed(1));
 
-    const isPositiveGpg = companyData.data2021To2022.medianGpg >= 0.0;
+    const isPositiveGpg = year.medianGpg >= 0.0;
     const differenceCopy = this.getDifferenceCopy(
       roundedDifference,
       isPositiveGpg
     );
-    if (companyData.data2021To2022.medianGpg === 0.0) {
+    if (year.medianGpg === 0.0) {
       return `At ${companyData.companyName}, men's and women's median hourly pay is equal, ${differenceCopy}`;
     }
     if (isPositiveGpg) {
-      return `At ${companyData.companyName}, women's median hourly pay is ${companyData.data2021To2022.medianGpg}% lower than men's, ${differenceCopy}`;
+      return `At ${companyData.companyName}, women's median hourly pay is ${year.medianGpg}% lower than men's, ${differenceCopy}`;
     } else {
-      return `At ${companyData.companyName}, women's median hourly pay is ${
-        -1 * companyData.data2021To2022.medianGpg
-      }% higher than men's, ${differenceCopy}`;
+      return `At ${companyData.companyName}, women's median hourly pay is ${-1 * year.medianGpg
+        }% higher than men's, ${differenceCopy}`;
     }
   }
 
@@ -202,12 +215,12 @@ export class TweetAllGpgTask {
     if (difference > 0.0) {
       return `an increase of ${difference} percentage points since the previous year`;
     } else if (difference < 0.0) {
-      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${
-        -1 * difference
-      } percentage points since the previous year`;
+      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${-1 * difference
+        } percentage points since the previous year`;
     } else if (difference === 0.0) {
       return `this is the same as the previous year`;
     }
+    throw new Error('could not determine GPG difference copy.')
   }
 
   matchLargeCompany(company: CompanyDataMultiYearItem): boolean {
@@ -216,8 +229,10 @@ export class TweetAllGpgTask {
     }
     if (
       company &&
-      company.data2021To2022.medianGpg !== null &&
-      company.data2020To2021.medianGpg !== null
+      company.data2021To2022 &&
+      company.data2020To2021 &&
+      isNumber(company.data2021To2022?.medianGpg) &&
+      isNumber(company.data2020To2021?.medianGpg)
     ) {
       return true;
     }

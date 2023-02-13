@@ -52,7 +52,7 @@ export class Repository {
 
   getCompany(
     name: string,
-    companyNumber: string
+    companyNumber: string | null
   ): CompanyDataMultiYearItem | null {
     this.checkSetData();
     const upperCaseName = name?.toUpperCase();
@@ -61,7 +61,7 @@ export class Repository {
 
   getTwitterUserByCompanyData(
     name: string,
-    companyNumber: string
+    companyNumber: string | null
   ): TwitterData | null {
     const upperCaseName = name?.toUpperCase();
     return findCompany(upperCaseName, companyNumber, this.twitterUserData);
@@ -88,10 +88,11 @@ export class Repository {
         return null;
       }
       const nextCompany = this.companiesGpgData[nextIndex];
+      // TODO year specific logic here.
       if (
         nextCompany &&
-        nextCompany.data2021To2022.meanGpg &&
-        nextCompany.data2020To2021.meanGpg
+        nextCompany.data2021To2022 &&
+        nextCompany.data2020To2021
       ) {
         return nextCompany;
       }

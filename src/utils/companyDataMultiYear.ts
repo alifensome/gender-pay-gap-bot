@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 export function companyDataMultiYearToList(
   company: CompanyDataMultiYearItem
 ): CompanyDataSingleYearItem[] {
-  const allYears = [];
+  const allYears: CompanyDataSingleYearItem[] = [];
   const lowestYear = 17;
   let year = currentYear + 1;
   while (year >= lowestYear) {

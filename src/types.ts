@@ -33,7 +33,7 @@ export interface TwitterData {
   twitter_name: string;
   twitter_screen_name: string;
   companyName: string;
-  companyNumber?: string | null;
+  companyNumber: string | null;
 }
 
 // TODO deprecate this and use union type.

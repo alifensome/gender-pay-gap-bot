@@ -1,12 +1,13 @@
 import DataImporter from "../importData";
 import { Repository } from "../importData/Repository";
+import { CompanyDataMultiYearItem } from "../types";
 
 const importer = new DataImporter()
 const repo = new Repository(importer)
 repo.setData()
 
 it("All twitter data should have a valid company", () => {
-    const brokenTwitterCompanyIds = []
+    const brokenTwitterCompanyIds: CompanyDataMultiYearItem[] = []
     for (let index = 0; index < repo.twitterUserData.length; index++) {
         const twitterUser = repo.twitterUserData[index];
         const companyData = repo.getCompany(twitterUser.companyName, twitterUser.companyNumber)

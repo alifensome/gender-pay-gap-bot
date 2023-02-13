@@ -10,7 +10,7 @@ export async function spreadSheetToJson(filePath, outputFileName): Promise<void>
 }
 
 export function parseDataFromJson(jsonFile: CompanyDataCsvItem[]): SingleYearCompanyDataItem[] {
-    const data = [];
+    const data: SingleYearCompanyDataItem[] = [];
     for (let index = 0; index < jsonFile.length; index++) {
         const row = jsonFile[index];
         if (!row || !Object.keys(row).length) {
