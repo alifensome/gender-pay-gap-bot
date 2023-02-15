@@ -9,7 +9,7 @@ export default class DynamoDbClient {
         this.tableName = tableName
     }
 
-    async getItem<T>(inputKeys: DynamoDbClientGetItemInput): Promise<T | UnmarshalledAny> {
+    async getItem<T>(inputKeys: DynamoDbClientGetItemInput): Promise<T | UnmarshalledAny | null> {
         const params: GetItemInput = {
             TableName: this.tableName,
             Key: marshall(inputKeys)
@@ -34,7 +34,7 @@ export default class DynamoDbClient {
     }
 
     unmarshallList(items: MarshalledItem[]) {
-        const unmarshalledItems = []
+        const unmarshalledItems: any[] = []
         for (let index = 0; index < items.length; index++) {
             const item = items[index];
             unmarshalledItems.push(unmarshall(item))

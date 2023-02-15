@@ -1,19 +1,19 @@
-import { TwitterClient } from 'twitter-api-client';
+import { StatusesUserTimeline, TwitterClient } from 'twitter-api-client';
 import dotenv from "dotenv"
 import { writeJsonFile } from '../utils/write.js';
 import BigInt from "../bigInt/bigInt.js"
 dotenv.config()
 
 const twitterClient = new TwitterClient({
-    apiKey: process.env.TWITTER_API_KEY,
-    apiSecret: process.env.TWITTER_API_SECRET,
+    apiKey: process.env.TWITTER_API_KEY as string,
+    apiSecret: process.env.TWITTER_API_SECRET as string,
     accessToken: process.env.TWITTER_ACCESS_TOKEN,
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 async function run() {
 
     let max_id = "1369758162807586816"
-    let allTimeLineTweets = []
+    let allTimeLineTweets: StatusesUserTimeline[] = []
     while (true) {
         const timeLine = await twitterClient.tweets.statusesUserTimeline({ user_id: "1367415164795039747", count: 1000, max_id, trim_user: true })
         if (!timeLine.length) {
@@ -31,7 +31,7 @@ async function run() {
 
     for (let index = 0; index < allTimeLineTweets.length; index++) {
         const post = allTimeLineTweets[index];
-        console.log(index, " - ", post.id_str, " QuotedStatusId:", post.quoted_status_id_str, "\n")
+        console.log(index, " - ", post?.id_str, " QuotedStatusId:", post.quoted_status_id_str, "\n")
     }
 }
 

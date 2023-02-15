@@ -7,7 +7,7 @@ const donkedData = dataImporter.successfulTweets()
 const companies = dataImporter.twitterUserDataProd()
 console.log("Total Donks:", donkedData.length)
 
-const joinedData = []
+const joinedData: any[] = []
 for (let index = 0; index < donkedData.length; index++) {
     const d = donkedData[index];
     const companyData = getAllCompanyDataByTwitterScreenName(d.twitter_screen_name, companies)

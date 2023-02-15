@@ -3,17 +3,17 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const twitterClient = new TwitterClient({
-    apiKey: process.env.TWITTER_API_KEY,
-    apiSecret: process.env.TWITTER_API_SECRET,
+    apiKey: process.env.TWITTER_API_KEY as string,
+    apiSecret: process.env.TWITTER_API_SECRET as string,
     accessToken: process.env.TWITTER_ACCESS_TOKEN,
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-export async function getCompanyDeletedTweets(twitterIds) {
-    const listOfListTwitterIds = truncate(twitterIds)
+export async function getCompanyDeletedTweets(twitterIds): Promise<string[]> {
+    const listOfListTwitterIds = truncate<string>(twitterIds)
     printMatrix(listOfListTwitterIds);
 
-    const allDeletedStatuses = []
+    const allDeletedStatuses: string[] = []
     for (let index = 0; index < listOfListTwitterIds.length; index++) {
         const listOfTwitterIds = listOfListTwitterIds[index];
         const ids = listOfTwitterIds.join(",")
@@ -35,8 +35,8 @@ function printMatrix(listOfListTwitterIds) {
     }
 }
 
-function truncate(list, items = 100) {
-    const matrix = []
+function truncate<T>(list, items = 100): T[][] {
+    const matrix: T[][] = []
     let attempts = 0
     while (attempts < 50) {
         attempts++

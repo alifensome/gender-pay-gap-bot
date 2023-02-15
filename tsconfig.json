@@ -9,6 +9,9 @@
         "outDir": "dist",
         "strictNullChecks": true
     },
+    "exclude": [
+        "node_modules/*",
+    ],
     "include": [
         "**/*.ts",
         "*.ts"

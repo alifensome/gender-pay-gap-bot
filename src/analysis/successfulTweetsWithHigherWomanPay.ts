@@ -1,16 +1,15 @@
 import DataImporter from '../importData'
-import { getCompanyDataByTwitterId } from "../twitter/getCompanyDataByTwitterId.js";
-import { getMostRecentGPG } from "../utils/getMostRecentGPG";
+import { getMostRecentMeanGPG } from "../utils/getMostRecentGPG";
 const dataImporter = new DataImporter()
 
 const donkedData = dataImporter.successfulTweetsWithCompanyData()
 
 console.log("Total Donks:", donkedData.length)
 
-const negativeGpg = []
+const negativeGpg: any[] = []
 for (let index = 0; index < donkedData.length; index++) {
     const d = donkedData[index];
-    const gpg = getMostRecentGPG(d) as any
+    const gpg = getMostRecentMeanGPG(d) as any
     if (typeof gpg == "string" && gpg.includes("-")) {
         negativeGpg.push(d)
     }
@@ -23,7 +22,7 @@ let companyWithHighestGpg = null
 let highestGpg = 0
 for (let index = 0; index < donkedData.length; index++) {
     const d = donkedData[index];
-    const gpg = getMostRecentGPG(d) as any
+    const gpg = getMostRecentMeanGPG(d) as any
     if (typeof gpg == "string" && gpg.includes("-")) {
         continue
     }

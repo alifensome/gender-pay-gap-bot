@@ -1,3 +1,5 @@
+import { TwitterData } from "../types";
+
 export function getCompanyDataByTwitterId(twitterId, companies) {
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index];
@@ -8,8 +10,8 @@ export function getCompanyDataByTwitterId(twitterId, companies) {
     return null;
 }
 
-export function getAllCompanyDataByTwitterScreenName(twitterScreenName, companies) {
-    const results = []
+export function getAllCompanyDataByTwitterScreenName(twitterScreenName: string, companies: TwitterData[]): TwitterData[] {
+    const results: TwitterData[] = []
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index];
         const name = c.twitter_screen_name || c.twitter_name || ""

@@ -1,11 +1,12 @@
 import DataImporter from "../importData";
 import { parseCompanyNumber } from "../read/parse";
+import { TwitterData } from "../types";
 import { writeJsonFile } from "../utils/write";
 
 const importer = new DataImporter()
 const twitterData = importer.twitterUserDataProd()
 
-const newData = []
+const newData: TwitterData[] = []
 for (let index = 0; index < twitterData.length; index++) {
     const item = twitterData[index];
     newData.push({
