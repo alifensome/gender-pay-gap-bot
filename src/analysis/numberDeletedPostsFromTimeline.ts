@@ -3,7 +3,7 @@ import DataImporter from '../importData'
 const dataImporter = new DataImporter()
 const allTimeLineTweets = dataImporter.allTimeLineTweets()
 
-const allQuotedStatusIds = []
+const allQuotedStatusIds: string[] = []
 for (let index = 0; index < allTimeLineTweets.length; index++) {
     const tweet = allTimeLineTweets[index];
 

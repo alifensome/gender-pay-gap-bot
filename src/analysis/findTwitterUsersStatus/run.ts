@@ -26,7 +26,7 @@ async function findBlockedForTwitterUserData() {
     results[TwitterUserBlockedStatus.OK] = 0
     results[TwitterUserBlockedStatus.UNKNOWN] = 0
     const totalItems = twitterData.length
-    const blockedUsers = []
+    const blockedUsers: any[] = []
 
     for (let index = 0; index < twitterData.length; index++) {
         await sleep(5000)
@@ -79,6 +79,7 @@ function parseErrorMessage(error: any): TwitterUserBlockedStatus {
     if (error.statusCode === 429) {
         throw new Error("RATE LIMITED")
     }
+    return TwitterUserBlockedStatus.OK
 }
 
 function sleep(ms) {

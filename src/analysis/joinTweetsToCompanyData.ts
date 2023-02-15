@@ -7,7 +7,7 @@ const dataImporter = new DataImporter();
 const companiesData = dataImporter.companiesGpgData();
 const twitterData = dataImporter.twitterUserDataProd();
 
-const joinedData = [];
+const joinedData: any = [];
 for (let index = 0; index < companiesData.length; index++) {
   const c = companiesData[index];
   const twitterCompany = findCompany(

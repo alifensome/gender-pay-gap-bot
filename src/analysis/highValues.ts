@@ -1,7 +1,8 @@
-import { getMostRecentGPG } from "../utils/getMostRecentGPG"
+import { getMostRecentMeanGPG } from "../utils/getMostRecentGPG"
 import { getAllCompanyDataByTwitterScreenName } from "../twitter/getCompanyDataByTwitterId";
 import { writeJsonFile } from "../utils/write";
 import Data from "../importData/index"
+import { CompanyDataMultiYearItem } from "../types";
 
 const dataImporter = new Data()
 
@@ -10,10 +11,10 @@ const donkedData = dataImporter.successfulTweets()
 const companyDataWithTwitter = dataImporter.twitterUserDataProd()
 
 async function run() {
-    const highValueNotTweeted = []
+    const highValueNotTweeted: CompanyDataMultiYearItem[] = []
     for (let index = 0; index < data.length; index++) {
         const company = data[index];
-        let gpg = getMostRecentGPG(company)
+        let gpg = getMostRecentMeanGPG(company)
         if (!gpg || gpg < 50) {
             continue;
         }
