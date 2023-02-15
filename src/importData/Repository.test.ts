@@ -86,7 +86,11 @@ describe("Repository", () => {
       const result = repo.getCompany("", "123");
       expect(result).toEqual(companyDataItemNoName);
     });
-    it("should get nothing for nulls", () => {
+    it("should return null for nulls", () => {
+      const result = repo.getCompany(null as any, null);
+      expect(result).toEqual(null);
+    });
+    it("should return null nothing for empty string and null", () => {
       const result = repo.getCompany("", null);
       expect(result).toEqual(null);
     });
