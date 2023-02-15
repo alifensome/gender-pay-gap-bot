@@ -29,7 +29,10 @@ export class LambdaClient {
                         return reject(data)
                     }
                     const responsePayload = data.Payload
-                    return resolve(JSON.parse(responsePayload.toString()))
+                    if (responsePayload) {
+                        return resolve(JSON.parse(responsePayload?.toString()))
+                    }
+                    return resolve({ message: 'success invoking but no response.' })
                 })
 
             }
@@ -44,10 +47,14 @@ export class LambdaClient {
 }
 
 
-function base64ToString(logs: string) {
+function base64ToString(logs: string | undefined) {
+    const defaultMsg = "Could not convert."
     try {
+        if (!logs) {
+            return defaultMsg
+        }
         return Buffer.from(logs, 'base64').toString('ascii');
     } catch {
-        return "Could not convert."
+        return defaultMsg
     }
 }

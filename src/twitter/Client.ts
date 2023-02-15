@@ -19,8 +19,8 @@ export class TwitterClient {
       access_token_secret: credentials.accessTokenSecret,
     });
     this.twitterApiClient = new TwitterApiClient({
-      apiKey: credentials.consumerKey,
-      apiSecret: credentials.consumerSecret,
+      apiKey: credentials.consumerKey as string,
+      apiSecret: credentials.consumerSecret as string,
       accessToken: credentials.accessToken,
       accessTokenSecret: credentials.accessTokenSecret,
     });

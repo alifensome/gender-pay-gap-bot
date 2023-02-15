@@ -25,7 +25,7 @@ export async function handler(event, context) {
 
 function parseMinGpg(minGpgFromEnv: string | undefined): number | null {
     try {
-        let parsedMinGpg = null;
+        let parsedMinGpg: number | null = null;
         if (minGpgFromEnv) {
             parsedMinGpg = parseFloat(minGpgFromEnv);
         }

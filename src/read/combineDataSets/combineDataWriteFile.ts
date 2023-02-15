@@ -3,6 +3,7 @@ import { printPercentageComplete } from "./utils";
 import { importAllYearsData } from "./importAllYearsData";
 import { formDeduplicatedListOfCompanies } from "./formDeduplicatedListOfCompanies";
 import { combineYearsData } from "./combineYearsData";
+import { CompanyDataMultiYearItem } from "../../types";
 
 export async function combineDataWriteFile(debug: boolean) {
   const allYearsData = importAllYearsData();
@@ -15,7 +16,7 @@ export async function combineDataWriteFile(debug: boolean) {
   console.log(`Deduplicated down to ${totalNumber} items`);
 
   console.log("combining data...");
-  const combinedData = [];
+  const combinedData: CompanyDataMultiYearItem[] = [];
   for (let index = 0; index < deduplicatedListOfCompanies.length; index++) {
     if (index % 100 === 0) {
       printPercentageComplete(index, totalNumber);
