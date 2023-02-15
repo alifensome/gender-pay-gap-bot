@@ -2,6 +2,7 @@ import DataImporter from '../importData'
 import { findUserByName } from "../twitter/findUserIds";
 import fs from "fs"
 import { wait } from "../utils/wait.js"
+import { UsersSearch } from 'twitter-api-client';
 const dataImporter = new DataImporter()
 const companyData = dataImporter.companiesGpgData()
 
@@ -17,8 +18,8 @@ async function run() {
     let percentageFound = 0
     const number = isTest ? testNumber : companyData.length
 
-    const foundCompanies = []
-    const notFoundCompanies = []
+    const foundCompanies: any[] = []
+    const notFoundCompanies: any[] = []
 
     let errorsInARow = 0
 
@@ -37,7 +38,7 @@ async function run() {
                 console.log(`PercentageDone: ${percentageDone}%\nFound: ${found}\nNotFound: ${notFound}\nPercentageFound: ${percentageFound}%\n`)
             }
             const company = companyData[index];
-            let user = null
+            let user: UsersSearch | null = null
             try {
                 user = await findUserByName(company.companyName)
                 errorsInARow = 0
