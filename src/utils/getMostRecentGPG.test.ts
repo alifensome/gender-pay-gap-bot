@@ -1,5 +1,5 @@
 import { CompanyDataMultiYearItem } from "../types";
-import { getMostRecentGPG, getMostRecentMedianGPG } from "./getMostRecentGPG";
+import { getMostRecentMeanGPG, getMostRecentMedianGPG } from "./getMostRecentGPG";
 import { isNumber } from "./isNumber";
 
 describe("isNumber", () => {
@@ -58,7 +58,7 @@ describe("getMostRecentGPG", () => {
       1,
     ],
   ])("should get the most recent  GPG", (company, expectedResult) => {
-    const result = getMostRecentGPG(company as CompanyDataMultiYearItem);
+    const result = getMostRecentMeanGPG(company as CompanyDataMultiYearItem);
     expect(result).toBe(expectedResult);
   });
 });

@@ -1,8 +1,20 @@
-import { CompanyDataMultiYearItem } from "../types";
+import { CompanyDataMultiYearItem, CompanyDataSingleYearItem } from "../types";
 import { forCompanyDataMultiYearFindFirstTrue } from "./companyDataMultiYear";
 import { isNumber } from "./isNumber";
 
-export function getMostRecentGPG(
+export function getMostRecentItem(
+  data: CompanyDataMultiYearItem
+): CompanyDataSingleYearItem | null {
+  const mostRecent = forCompanyDataMultiYearFindFirstTrue(data, (item) =>
+    isNumber(item?.meanGpg) && isNumber(item?.medianGpg)
+  );
+  if (mostRecent) {
+    return mostRecent;
+  }
+  return null;
+}
+
+export function getMostRecentMeanGPG(
   data: CompanyDataMultiYearItem
 ): number | null {
   const mostRecent = forCompanyDataMultiYearFindFirstTrue(data, (item) =>
@@ -12,6 +24,14 @@ export function getMostRecentGPG(
     return mostRecent.meanGpg;
   }
   return null;
+}
+
+export function getMostRecentMeanGPGOrThrow(data: CompanyDataMultiYearItem): number {
+  const mostRecent = getMostRecentMeanGPG(data)
+  if (mostRecent !== null) {
+    return mostRecent
+  }
+  throw new Error('could not find most recent GPG with getMostRecentMeanGPG')
 }
 
 export function isSpecialNotANumber(n: number | bigint) {

@@ -1,7 +1,7 @@
 import Twit from "twit"
 import dotEnv from "dotenv"
 import DataImporter from '../importData'
-import { getMostRecentGPG } from "../utils/getMostRecentGPG"
+import { getMostRecentMeanGPG, getMostRecentMeanGPGOrThrow } from '../utils/getMostRecentGPG';
 import { writeJsonFile } from "../utils/write";
 import { getCompanyDataByTwitterId } from "./getCompanyDataByTwitterId";
 import { isDebugMode } from "../utils/debug";
@@ -166,7 +166,7 @@ async function writeUnsuccessfulTweets() {
 }
 
 function getCopy(companyData, twitterScreenName) {
-    const mostRecentGPG = getMostRecentGPG(companyData)
+    const mostRecentGPG = getMostRecentMeanGPGOrThrow(companyData)
     let mostRecent = 0
     if (typeof mostRecentGPG == "string") {
         mostRecent = parseFloat(mostRecentGPG)
@@ -183,7 +183,7 @@ function getCopy(companyData, twitterScreenName) {
 }
 
 function getFollowsFromData(companies) {
-    const twitterIds = []
+    const twitterIds: string[] = []
     for (let index = 0; index < companies.length; index++) {
         const c = companies[index]
         twitterIds.push(c.twitter_id_str)
