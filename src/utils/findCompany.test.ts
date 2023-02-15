@@ -28,11 +28,11 @@ describe("findCompany", () => {
         expect(result).toEqual(companies[2])
     })
     it("should get the company by companyNumber", () => {
-        const result = findCompany(null, "c1", companies)
+        const result = findCompany(null as any, "c1", companies)
         expect(result).toEqual(companies[0],)
     })
     it("should get nothing for nulls", () => {
-        const result = findCompany(null, null, companies)
+        const result = findCompany(null as any, null, companies)
         expect(result).toEqual(null)
     })
     it("should priorities exact match over only one field matching", () => {
@@ -43,12 +43,16 @@ describe("findCompany", () => {
 
 
 describe("findCompanyWithIndex", () => {
+    it("should get the company by companyNumber and return index for only company number", () => {
+        const result = findCompanyWithIndex('', "c1", companies)
+        expect(result).toEqual({ item: companies[0], index: 0 })
+    })
     it("should get the company by companyNumber and return index", () => {
-        const result = findCompanyWithIndex(null, "c1", companies)
+        const result = findCompanyWithIndex(null as any, "c1", companies)
         expect(result).toEqual({ item: companies[0], index: 0 })
     })
     it("should return null id not exists", () => {
-        const result = findCompanyWithIndex(null, "not here", companies)
+        const result = findCompanyWithIndex(null as any, "not here", companies)
         expect(result).toEqual(null)
     })
 })

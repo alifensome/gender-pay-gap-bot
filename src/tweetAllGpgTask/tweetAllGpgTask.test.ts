@@ -49,7 +49,7 @@ describe("TweetAllGpgTask", () => {
         expect.any(Function)
       );
       const expectedCopy =
-        "At Company Name Ltd 2, women's median hourly pay is 52.1% lower than men's, an increase of 10 percentage points since the previous year";
+        "At Company Name Ltd 2, women's median hourly pay is 10.1% lower than men's, a decrease of 42 percentage points since the previous year";
       expect(mockTwitterClient.tweetWithFile).toBeCalledWith(
         "base64String",
         "Company Name Ltd 2",

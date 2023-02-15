@@ -10,5 +10,5 @@ export function debugPrint(msg: string | object) {
 
 export function isDebugMode(processOverride?: Partial<NodeJS.Process>): boolean {
     const p = !!processOverride ? processOverride : process
-    return !!p.env.DEBUG || p.argv.includes("debug") || p.argv.includes("test");
+    return Boolean(!!p.env?.DEBUG || p?.argv?.includes("debug") || p?.argv?.includes("test"));
 }

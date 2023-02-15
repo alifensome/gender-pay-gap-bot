@@ -2,7 +2,7 @@ import { SingleYearCompanyDataItem } from "../parseDataFromCompany";
 
 export interface Company {
   companyName: string;
-  companyNumber: string;
+  companyNumber: string | null;
   size: string;
   genderPayGap: number;
   medianGenderPayGap: number;
@@ -28,5 +28,5 @@ export interface MultipleYearCompanyArg {
 
 export interface BasicCompanyInfo {
   companyName: string;
-  companyNumber: string;
+  companyNumber: string | null;
 }

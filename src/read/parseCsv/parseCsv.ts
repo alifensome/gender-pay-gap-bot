@@ -4,7 +4,7 @@ import csv from 'csv-parser'
 
 export class CsvParser {
     parseFromFile(path: string): Promise<any[]> {
-        const results = []
+        const results: any[] = []
         return new Promise((resolve, reject) => {
             fs.createReadStream(path)
                 .pipe(csv())

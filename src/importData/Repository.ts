@@ -2,6 +2,7 @@ import DataImporter from ".";
 import { TwitterData, CompanyDataMultiYearItem } from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
+import { isNumber } from "../utils/isNumber";
 
 export class Repository {
   dataImporter: DataImporter;
@@ -52,7 +53,7 @@ export class Repository {
 
   getCompany(
     name: string,
-    companyNumber: string
+    companyNumber: string | null
   ): CompanyDataMultiYearItem | null {
     this.checkSetData();
     const upperCaseName = name?.toUpperCase();
@@ -61,7 +62,7 @@ export class Repository {
 
   getTwitterUserByCompanyData(
     name: string,
-    companyNumber: string
+    companyNumber: string | null
   ): TwitterData | null {
     const upperCaseName = name?.toUpperCase();
     return findCompany(upperCaseName, companyNumber, this.twitterUserData);
@@ -87,11 +88,22 @@ export class Repository {
       if (nextIndex > this.companiesGpgData.length) {
         return null;
       }
+
       const nextCompany = this.companiesGpgData[nextIndex];
+
+      const has2021Data = nextCompany.data2021To2022 &&
+        nextCompany.data2020To2021 &&
+        isNumber(nextCompany.data2021To2022.medianGpg) &&
+        isNumber(nextCompany.data2020To2021.medianGpg)
+
+      const has2022Data = nextCompany.data2022To2023 &&
+        nextCompany.data2021To2022 &&
+        isNumber(nextCompany.data2022To2023.medianGpg) &&
+        isNumber(nextCompany.data2021To2022.medianGpg)
+
+      // TODO year specific logic here.
       if (
-        nextCompany &&
-        nextCompany.data2021To2022.meanGpg &&
-        nextCompany.data2020To2021.meanGpg
+        nextCompany && (has2022Data || has2021Data)
       ) {
         return nextCompany;
       }
