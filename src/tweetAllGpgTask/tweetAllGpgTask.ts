@@ -159,13 +159,13 @@ export class TweetAllGpgTask {
 
   findNextCompanyOrFirst(companyName: string | null, companyNumber: string | null): CompanyDataMultiYearItem {
     if (companyName) {
-      const c = this.repository.getNextMatchingCompanyWithData(
+      const nextMatchingCompany = this.repository.getNextMatchingCompanyWithData(
         companyName,
         companyNumber,
         this.matchLargeCompany
       )
-      if (c) {
-        return c;
+      if (nextMatchingCompany) {
+        return nextMatchingCompany;
       }
     }
 
