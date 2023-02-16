@@ -9,7 +9,7 @@ const twitterClient = new TwitterClient({
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-export async function getCompanyDeletedTweets(twitterIds): Promise<string[]> {
+export async function getCompanyDeletedTweets(twitterIds: string[]): Promise<string[]> {
     const listOfListTwitterIds = truncate<string>(twitterIds)
     printMatrix(listOfListTwitterIds);
 
@@ -28,14 +28,14 @@ export async function getCompanyDeletedTweets(twitterIds): Promise<string[]> {
     return allDeletedStatuses
 }
 
-function printMatrix(listOfListTwitterIds) {
+function printMatrix(listOfListTwitterIds: string[][]) {
     for (let index = 0; index < listOfListTwitterIds.length; index++) {
         const l = listOfListTwitterIds[index];
         console.log(l.length);
     }
 }
 
-function truncate<T>(list, items = 100): T[][] {
+function truncate<T>(list: T[], items = 100): T[][] {
     const matrix: T[][] = []
     let attempts = 0
     while (attempts < 50) {

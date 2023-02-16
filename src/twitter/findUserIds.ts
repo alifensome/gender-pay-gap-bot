@@ -12,11 +12,11 @@ const twitterClient = new TwitterClient({
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-function replaceSearchTerms(name) {
+function replaceSearchTerms(name: string) {
     return name.replace(" limited", "").replace(" Limited", "").replace(" LTD", "").replace(" Ltd", "").replace("(", "").replace(")", "").replace(/ *\([^)]*\) */g, "").replace(" uk", "").replace(" UK", "");
 }
 
-async function findUserByName(companyName) {
+async function findUserByName(companyName: string) {
     const searchName = replaceSearchTerms(companyName);
     const users = await twitterClient.accountsAndUsers.usersSearch({ count: 10, q: searchName });
     for (let index = 0; index < users.length; index++) {
@@ -55,7 +55,7 @@ async function findUserByName(companyName) {
     return null
 }
 
-function printPotentialUsers(users) {
+function printPotentialUsers(users: any[]) {
     if (!users.length) {
         console.log("No data")
     }

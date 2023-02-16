@@ -3,7 +3,7 @@ import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter from "../importData";
 import { debugPrint } from "../utils/debug";
-import { Repository } from "../importData/Repository";
+import { Repository } from '../importData/Repository';
 import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
 import { relevantWords } from "./relevantWords";
@@ -14,7 +14,7 @@ export class IncomingTweetListenerQueuer {
   logger: Logger;
   dataImporter: DataImporter;
   repository: Repository;
-  constructor(twitterClient, sqsClient, dataImporter, repository, logger) {
+  constructor(twitterClient: TwitterClient, sqsClient: SqsClient, dataImporter: DataImporter, repository: Repository, logger: Logger) {
     this.twitterClient = twitterClient;
     this.sqsClient = sqsClient;
     this.dataImporter = dataImporter;

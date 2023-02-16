@@ -21,6 +21,6 @@ it("All twitter data should have a valid company", () => {
         }
     }
     // There should be no broken twitter-company links!
-    const expectedBroken = []
+    const expectedBroken: CompanyDataMultiYearItem[] = []
     expect(brokenTwitterCompanyIds).toEqual(expectedBroken)
 })

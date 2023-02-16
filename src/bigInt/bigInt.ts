@@ -1,7 +1,7 @@
 export default class BigInt {
     Parts: number[]
     Str: string
-    constructor(intString) {
+    constructor(intString: string) {
         this.Str = intString
         this.Parts = []
         for (let index = 0; index < intString.length; index++) {
@@ -19,7 +19,7 @@ export default class BigInt {
             this.Parts[lastIndex] = (this.Parts[lastIndex] - 1)
         }
     }
-    minusOneFromHigherOrder(index) {
+    minusOneFromHigherOrder(index: number) {
         if (index == -1) {
             return
         }

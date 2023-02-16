@@ -14,7 +14,7 @@ const twitterClient = new TwitterClient({
 });
 
 
-export async function getUser(userName) {
+export async function getUser(userName: string) {
     const users = await twitterClient.accountsAndUsers.usersSearch({ count: 10, q: userName });
     console.log(users)
 }

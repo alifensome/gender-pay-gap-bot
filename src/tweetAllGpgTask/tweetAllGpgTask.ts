@@ -1,7 +1,7 @@
 import { PutItemCommandOutput } from "@aws-sdk/client-dynamodb";
 import { Logger } from "tslog";
 import DynamoDbClient from "../dynamodb/Client";
-import { CompanyDataMultiYearItem } from "../types";
+import { CompanyDataMultiYearItem, CompanyNumber } from "../types";
 import { Repository } from "../importData/Repository";
 import { LambdaClient } from "../lambdaClient/LambdaClient";
 import { gpgToData } from "../plotGraph/gpgToData";
@@ -14,7 +14,6 @@ export class TweetAllGpgTask {
   logger: Logger;
   repository: Repository;
   dynamoDbClient: DynamoDbClient;
-  minGPG: number | null;
   isTest: boolean;
   now: string;
   lambdaClient: LambdaClient;
@@ -22,7 +21,7 @@ export class TweetAllGpgTask {
   constructor(
     twitterClient: TwitterClient,
     repo: Repository,
-    isTest,
+    isTest: boolean,
     dynamoDbClient: DynamoDbClient,
     lambdaClient: LambdaClient
   ) {
@@ -49,6 +48,9 @@ export class TweetAllGpgTask {
   async updateDynamoDbLastItem({
     companyName,
     companyNumber,
+  }: {
+    companyName: string,
+    companyNumber: CompanyNumber,
   }): Promise<PutItemCommandOutput> {
     const result = await this.dynamoDbClient.putItem({
       id: "lastCompanyTweet",
@@ -72,6 +74,10 @@ export class TweetAllGpgTask {
     companyName,
     companyNumber,
     error,
+  }: {
+    companyName: string | null,
+    companyNumber: CompanyNumber,
+    error: Error,
   }): Promise<PutItemCommandOutput> {
     const result = await this.dynamoDbClient.putItem({
       id: `lastCompanyTweet_error_${this.now}`,
@@ -139,7 +145,7 @@ export class TweetAllGpgTask {
           companyNumber: nextCompany.companyNumber,
         })
       );
-    } catch (error) {
+    } catch (error: any) {
       this.logger.error(
         JSON.stringify({
           message: "error tweeting",

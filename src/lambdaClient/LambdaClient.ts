@@ -10,7 +10,7 @@ export class LambdaClient {
         this.logger = new Logger({ name: "LambdaClient" })
     }
 
-    trigger({ functionName, payload }): Promise<any> {
+    trigger({ functionName, payload }: { functionName: string, payload: any }): Promise<any> {
         return new Promise(
             (resolve, reject) => {
                 const params = {

@@ -12,7 +12,7 @@ const minGpg = parseMinGpg(envMinGpg);
 const processor = new SqsTweetProcessor(twitterClient, repo, minGpg)
 
 
-export async function handler(event, context) {
+export async function handler(event: any, context: any) {
     for (let index = 0; index < event.Records.length; index++) {
         const record = event.Records[index];
         const { body } = record;

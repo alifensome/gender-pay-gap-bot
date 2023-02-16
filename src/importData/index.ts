@@ -7,7 +7,7 @@ import {
 } from "../types";
 
 class DataImporter {
-  readFile(path) {
+  readFile(path: string) {
     return JSON.parse(fs.readFileSync(path, "utf8"));
   }
   companiesGpgData(): CompanyDataMultiYearItem[] {

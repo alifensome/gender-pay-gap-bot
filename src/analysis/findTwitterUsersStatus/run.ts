@@ -20,7 +20,7 @@ const logger = new Logger()
 findBlockedForTwitterUserData();
 
 async function findBlockedForTwitterUserData() {
-    const results = {}
+    const results: any = {}
     results[TwitterUserBlockedStatus.BLOCKED] = 0
     results[TwitterUserBlockedStatus.NOT_FOUND] = 0
     results[TwitterUserBlockedStatus.OK] = 0
@@ -82,7 +82,7 @@ function parseErrorMessage(error: any): TwitterUserBlockedStatus {
     return TwitterUserBlockedStatus.OK
 }
 
-function sleep(ms) {
+function sleep(ms: number) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     });

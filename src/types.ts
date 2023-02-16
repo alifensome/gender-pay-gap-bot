@@ -1,7 +1,9 @@
+export type CompanyNumber = string | null; // Company Number can be null for some government bodies, health and education.
+
 // TODO make this type more dynamic, or remember to update it every year.
 export interface CompanyDataMultiYearItem {
   companyName: string;
-  companyNumber: string | null; // Company Number can be null for some government bodies, health and education.
+  companyNumber: CompanyNumber
   sicCodes: string;
   data2022To2023: CompanyDataSingleYearItem | null;
   data2021To2022: CompanyDataSingleYearItem | null;

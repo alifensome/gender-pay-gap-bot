@@ -13,8 +13,8 @@ export class TwitterClient {
   constructor(isTest = false) {
     const credentials = new TwitterCredentialGetter().getCredentials(isTest);
     this.twitPackage = new Twit({
-      consumer_key: credentials.consumerKey,
-      consumer_secret: credentials.consumerSecret,
+      consumer_key: credentials.consumerKey as string,
+      consumer_secret: credentials.consumerSecret as string,
       access_token: credentials.accessToken,
       access_token_secret: credentials.accessTokenSecret,
     });
@@ -72,7 +72,7 @@ export class TwitterClient {
           timeStamp,
           fullTweetObject: tweet,
         });
-      } catch (err) {
+      } catch (err: any) {
         this.logger.error(
           JSON.stringify({
             message: "Error while handling incoming tweeting",
@@ -86,7 +86,7 @@ export class TwitterClient {
   }
 
   quoteTweet(
-    status,
+    status: string,
     screenName: string, // tweet.user.screen_name
     tweetId: string // tweet.id_str
   ) {
@@ -106,7 +106,7 @@ export class TwitterClient {
     });
   }
 
-  postTweet(tweet) {
+  postTweet(tweet: string) {
     return new Promise((resolve, reject) => {
       this.twitPackage.post("statuses/update", { status: tweet }, (err) => {
         if (err) {
@@ -117,11 +117,11 @@ export class TwitterClient {
     });
   }
 
-  reTweet(tweetId, tweet, quotedStatus) {
+  reTweet(tweetId: string, tweet: string, quotedStatus: string) {
     return new Promise((resolve, reject) => {
       this.twitPackage.post(
         "statuses/retweet/" + tweetId,
-        { status: tweet, quoted_status: quotedStatus },
+        { status: tweet, quoted_status: quotedStatus } as any,
         (err) => {
           if (err) {
             return reject(err);
@@ -222,7 +222,7 @@ export class TwitterClient {
   async tweetWithFile(
     base64File: string,
     companyName: string,
-    statusText
+    statusText: string
   ): Promise<void> {
     const mediaUploadData = await this.postMediaUpload(base64File);
 

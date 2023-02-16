@@ -8,7 +8,7 @@ export function formDeduplicatedListOfCompanies(
   const combinedDeuplicatedData: BasicCompanyInfo[] = [];
   for (const key of Object.keys(allYearsDataResult)) {
     const singleYearList = allYearsDataResult[
-      key
+      key as keyof ImportAllYearsDataResult
     ] as SingleYearCompanyDataItem[];
     for (let index = 0; index < singleYearList.length; index++) {
       const company = singleYearList[index];

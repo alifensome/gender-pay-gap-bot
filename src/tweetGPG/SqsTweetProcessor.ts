@@ -4,6 +4,8 @@ import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 
+interface ProcessInput { twitterUserId: string, tweetId: string, screenName: string }
+
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
   logger: Logger;
@@ -21,7 +23,7 @@ export class SqsTweetProcessor {
     this.minGPG = minGPG;
   }
 
-  async process({ twitterUserId, tweetId, screenName }) {
+  async process({ twitterUserId, tweetId, screenName }: ProcessInput) {
     try {
       this.logger.info(
         JSON.stringify({

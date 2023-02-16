@@ -16,7 +16,7 @@ const dynamoDbClient = new DynamoDbClient(tableName)
 const lambdaClient = new LambdaClient(region)
 const processor = new TweetAllGpgTask(twitterClient, repo, isTest, dynamoDbClient, lambdaClient)
 
-export async function handler(event, context) {
+export async function handler(event: any, context: any) {
     await processor.sendNextTweet()
     return { ok: true };
 }
