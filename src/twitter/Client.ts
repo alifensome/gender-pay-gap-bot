@@ -42,7 +42,7 @@ export class TwitterClient {
       })
     );
 
-    stream.on("tweet", async (tweet) => {
+    stream.on("tweet", async (tweet: any) => {
       try {
         const twitterUserId = tweet.user.id_str;
         const user = tweet.user;
@@ -97,7 +97,7 @@ export class TwitterClient {
         attachment_url: attachmentUrl,
         auto_populate_reply_metadata: true,
       };
-      this.twitPackage.post("statuses/update", body, (err) => {
+      this.twitPackage.post("statuses/update", body, (err: Error) => {
         if (err) {
           return reject(err);
         }
@@ -108,12 +108,16 @@ export class TwitterClient {
 
   postTweet(tweet: string) {
     return new Promise((resolve, reject) => {
-      this.twitPackage.post("statuses/update", { status: tweet }, (err) => {
-        if (err) {
-          return reject(err);
+      this.twitPackage.post(
+        "statuses/update",
+        { status: tweet },
+        (err: Error) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve({ status: "Tweet sent" });
         }
-        return resolve({ status: "Tweet sent" });
-      });
+      );
     });
   }
 
@@ -122,7 +126,7 @@ export class TwitterClient {
       this.twitPackage.post(
         "statuses/retweet/" + tweetId,
         { status: tweet, quoted_status: quotedStatus } as any,
-        (err) => {
+        (err: Error) => {
           if (err) {
             return reject(err);
           }
@@ -151,7 +155,7 @@ export class TwitterClient {
       this.twitPackage.post(
         "media/upload",
         { media_data: base64File },
-        (mediaUploadErr, mediaUploadData, mediaUploadResponse) => {
+        (mediaUploadErr: Error, mediaUploadData: any) => {
           if (mediaUploadErr) {
             this.logger.error(
               JSON.stringify({
@@ -175,7 +179,7 @@ export class TwitterClient {
       this.twitPackage.post(
         "media/metadata/create",
         metaParams,
-        (mediaMetadataErr, mediaMetadataData, mediaMetadataResponse) => {
+        (mediaMetadataErr: Error, mediaMetadataData: any) => {
           if (mediaMetadataErr) {
             this.logger.error(
               JSON.stringify({
@@ -202,7 +206,7 @@ export class TwitterClient {
       this.twitPackage.post(
         "statuses/update",
         params,
-        (statusUpdateErr, statusUpdateData, statusUpdateResponse) => {
+        (statusUpdateErr: Error, statusUpdateData: any) => {
           if (statusUpdateErr) {
             this.logger.error(
               JSON.stringify({

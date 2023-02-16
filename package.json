@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/node": "^14.18.12",
+    "@types/twit": "^2.2.31",
     "chart.js": "^3.7.1",
     "chartjs-node-canvas": "^4.1.6",
     "commander": "^9.4.1",
