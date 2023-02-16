@@ -206,7 +206,7 @@ const ukCities = [
     "YORk"
 ]
 
-function isUkLocation(place) {
+function isUkLocation(place: string) {
     const location = place.toLocaleUpperCase();
     if (location.includes("USA")) {
         return false

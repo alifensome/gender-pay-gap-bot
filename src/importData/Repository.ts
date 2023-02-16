@@ -6,8 +6,8 @@ import { isNumber } from "../utils/isNumber";
 
 export class Repository {
   dataImporter: DataImporter;
-  twitterUserData: TwitterData[];
-  companiesGpgData: CompanyDataMultiYearItem[];
+  twitterUserData!: TwitterData[];
+  companiesGpgData!: CompanyDataMultiYearItem[];
 
   constructor(dataImporter: DataImporter) {
     this.dataImporter = dataImporter;
@@ -114,7 +114,7 @@ export class Repository {
   getNextMatchingCompanyWithData(
     name: string,
     companyNumber: string | null,
-    matchingFunction: (CompanyDataItem) => boolean
+    matchingFunction: (CompanyDataItem: CompanyDataMultiYearItem) => boolean
   ): CompanyDataMultiYearItem | null {
     this.checkSetData();
     const current = findCompanyWithIndex(

@@ -7,7 +7,8 @@
         "resolveJsonModule": true,
         "sourceMap": true,
         "outDir": "dist",
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "strict": true
     },
     "exclude": [
         "node_modules/*",

@@ -10,7 +10,7 @@ export function companyDataMultiYearToList(
   const lowestYear = 17;
   let year = currentYear + 1;
   while (year >= lowestYear) {
-    const yearData = company[`data${year - 1}To${year}`];
+    const yearData = (company[`data${year - 1}To${year}` as keyof CompanyDataMultiYearItem]) as CompanyDataSingleYearItem;
     if (yearData) {
       allYears.push(yearData);
     }

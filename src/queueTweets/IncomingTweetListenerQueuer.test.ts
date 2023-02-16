@@ -21,10 +21,10 @@ describe("IncomingTweetListenerQueuer", () => {
     getGpgForTwitterId: jest.fn().mockReturnValue({ companyData: {} }),
   };
   const handler = new IncomingTweetListenerQueuer(
-    mockTwitterClient,
-    mockSqsClient,
-    mockDataImporter,
-    mockRepository,
+    mockTwitterClient as any,
+    mockSqsClient as any,
+    mockDataImporter as any,
+    mockRepository as any,
     new Logger()
   );
   describe("listen", () => {

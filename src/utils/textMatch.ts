@@ -1,4 +1,4 @@
-function getTextMatch(companyName, twitterName) {
+function getTextMatch(companyName: string, twitterName: string) {
     const companyNameParts = companyName.toLowerCase().split(" ")
     const twitterNameParts = twitterName.toLowerCase().split(" ")
     const twitterNameWords = twitterNameParts.length

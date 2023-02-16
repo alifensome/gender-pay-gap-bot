@@ -2,7 +2,7 @@ import { getMostRecentMeanGPG } from "../utils/getMostRecentGPG"
 import { getAllCompanyDataByTwitterScreenName } from "../twitter/getCompanyDataByTwitterId";
 import { writeJsonFile } from "../utils/write";
 import Data from "../importData/index"
-import { CompanyDataMultiYearItem } from "../types";
+import { CompanyDataMultiYearItem, TwitterData } from "../types";
 
 const dataImporter = new Data()
 
@@ -30,7 +30,7 @@ async function run() {
     const filePath = "./data/high-value-not-tweeted.json"
     await writeJsonFile(filePath, highValueNotTweeted)
 
-    function getDonkedByCompanyName(companyName, donkedData, companyDataWithTwitter) {
+    function getDonkedByCompanyName(companyName: string, donkedData: any, companyDataWithTwitter: TwitterData[]) {
         for (let index = 0; index < donkedData.length; index++) {
             const d = donkedData[index];
             const companiesByTwitterName = getAllCompanyDataByTwitterScreenName(d.twitter_screen_name, companyDataWithTwitter)
