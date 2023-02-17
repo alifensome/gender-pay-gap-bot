@@ -1,5 +1,6 @@
 import { CompanyDataMultiYearItem } from "../types";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
+import { isNumber } from "../utils/isNumber";
 
 export class CopyWriter {
 
@@ -24,9 +25,56 @@ export class CopyWriter {
         }% higher than men's.`;
     }
   }
-  getDifferenceCopy(
-    companyDataMultiYearItem: CompanyDataMultiYearItem
-  ): string {
-    return "";
+
+  // used in process.
+  medianGpgWithDifferenceYearOnYear(companyData: CompanyDataMultiYearItem): string {
+    if (
+      !isNumber(companyData?.data2021To2022?.medianGpg) ||
+      !isNumber(companyData?.data2020To2021?.medianGpg)
+    ) {
+      throw new Error(
+        "no median data for required year! This should not have happened!"
+      );
+    }
+    const has2023 = !!companyData.data2022To2023
+    const year = has2023 ? companyData.data2022To2023 : companyData.data2021To2022
+    const previousYear = has2023 ? companyData.data2021To2022 : companyData.data2020To2021
+    if (!year || !previousYear) {
+      throw new Error(
+        "could not work out the year or previous year data. This should not have happened!"
+      );
+    }
+    const difference =
+      year.medianGpg -
+      previousYear.medianGpg;
+    const roundedDifference = Number(difference.toFixed(1));
+
+    const isPositiveGpg = year.medianGpg >= 0.0;
+    const differenceCopy = this.getDifferenceCopy(
+      roundedDifference,
+      isPositiveGpg
+    );
+    if (year.medianGpg === 0.0) {
+      return `At ${companyData.companyName}, men's and women's median hourly pay is equal, ${differenceCopy}`;
+    }
+    if (isPositiveGpg) {
+      return `At ${companyData.companyName}, women's median hourly pay is ${year.medianGpg}% lower than men's, ${differenceCopy}`;
+    } else {
+      return `At ${companyData.companyName}, women's median hourly pay is ${-1 * year.medianGpg
+        }% higher than men's, ${differenceCopy}`;
+    }
   }
+
+  getDifferenceCopy(difference: number, isPositiveGpg: boolean): string {
+    if (difference > 0.0) {
+      return `an increase of ${difference} percentage points since the previous year`;
+    } else if (difference < 0.0) {
+      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${-1 * difference
+        } percentage points since the previous year`;
+    } else if (difference === 0.0) {
+      return `this is the same as the previous year`;
+    }
+    throw new Error('could not determine GPG difference copy.')
+  }
+
 }

@@ -1,15 +1,16 @@
 import DataImporter from '../importData'
 import { findUserByName } from "../twitter/findUserIds";
 import fs from "fs"
-import { wait } from "../utils/wait.js"
+import { wait } from "../utils/wait"
 import { UsersSearch } from 'twitter-api-client';
 const dataImporter = new DataImporter()
+
+// TODO need to only look for users without data.
 const companyData = dataImporter.companiesGpgData()
 
 console.log("Starting...")
 
 async function run() {
-
     const isTest = false
     const testNumber = 500
     let found = 0
@@ -72,6 +73,7 @@ async function run() {
     }
 
     try {
+        // todo change output files.
         const date = new Date()
         const filePath = `./data/twitterAccountData/twitterUserData-${date.toISOString()}.json`
         const stream = fs.createWriteStream(filePath, { flags: 'w' });

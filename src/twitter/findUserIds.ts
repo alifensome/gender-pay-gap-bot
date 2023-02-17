@@ -1,4 +1,4 @@
-import { TwitterClient } from 'twitter-api-client';
+import { TwitterClient, UsersSearch } from 'twitter-api-client';
 import dotenv from "dotenv"
 import { isUkLocation } from '../utils/isUk';
 import { getTextMatch } from '../utils/textMatch';
@@ -16,7 +16,7 @@ function replaceSearchTerms(name: string) {
     return name.replace(" limited", "").replace(" Limited", "").replace(" LTD", "").replace(" Ltd", "").replace("(", "").replace(")", "").replace(/ *\([^)]*\) */g, "").replace(" uk", "").replace(" UK", "");
 }
 
-async function findUserByName(companyName: string) {
+async function findUserByName(companyName: string): Promise<UsersSearch | null> {
     const searchName = replaceSearchTerms(companyName);
     const users = await twitterClient.accountsAndUsers.usersSearch({ count: 10, q: searchName });
     for (let index = 0; index < users.length; index++) {
@@ -33,6 +33,7 @@ async function findUserByName(companyName: string) {
             continue;
         }
 
+        // TODO we should match these based off screen_name too.
         // Check matching
         const wordMatch = getTextMatch(companyName, u.name)
         if (wordMatch < 0.5) {
