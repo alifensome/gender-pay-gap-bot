@@ -55,33 +55,4 @@ describe("SqsTweetProcessor", () => {
       expect(processorWithMinGpg.logger.error).toBeCalled();
     });
   });
-  describe("getCopy", () => {
-    it("should say the median pays are equal", () => {
-      const copy = processor.getCopy({
-        data2021To2022: { medianGpg: 0 },
-        data2017To2018: { medianGpg: 10 },
-      } as any);
-      const expectedCopy =
-        "In this organisation, men's and women's median hourly pay is equal.";
-      expect(copy).toBe(expectedCopy);
-    });
-    it("should say the men's salary is higher", () => {
-      const copy = processor.getCopy({
-        data2021To2022: { medianGpg: 12.4 },
-        data2017To2018: { medianGpg: 10 },
-      } as any);
-      const expectedCopy =
-        "In this organisation, women's median hourly pay is 12.4% lower than men's.";
-      expect(copy).toBe(expectedCopy);
-    });
-    it("should say the women's salary is higher", () => {
-      const copy = processor.getCopy({
-        data2021To2022: { medianGpg: -12.4 },
-        data2017To2018: { medianGpg: 10 },
-      } as any);
-      const expectedCopy =
-        "In this organisation, women's median hourly pay is 12.4% higher than men's.";
-      expect(copy).toBe(expectedCopy);
-    });
-  });
 });

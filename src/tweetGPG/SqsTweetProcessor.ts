@@ -1,8 +1,8 @@
 import { Logger } from "tslog";
-import { CompanyDataMultiYearItem } from "../types";
 import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
+import { CopyWriter } from "../copyWriter/CopyWriter";
 
 interface ProcessInput { twitterUserId: string, tweetId: string, screenName: string }
 
@@ -11,6 +11,7 @@ export class SqsTweetProcessor {
   logger: Logger;
   repository: Repository;
   minGPG: number | null;
+  copyWriter: CopyWriter;
 
   constructor(
     twitterClient: TwitterClient,
@@ -21,6 +22,7 @@ export class SqsTweetProcessor {
     this.logger = new Logger({ name: "SqsTweetProcessor" });
     this.repository = repo;
     this.minGPG = minGPG;
+    this.copyWriter = new CopyWriter()
   }
 
   async process({ twitterUserId, tweetId, screenName }: ProcessInput) {
@@ -67,7 +69,7 @@ export class SqsTweetProcessor {
         throw new Error("SKIP for now.");
       }
 
-      const copy = this.getCopy(data.companyData);
+      const copy = this.copyWriter.medianGpg(data.companyData);
       await this.twitterClient.quoteTweet(
         copy,
         data.twitterData.twitter_screen_name,
@@ -96,27 +98,6 @@ export class SqsTweetProcessor {
         })
       );
       throw error;
-    }
-  }
-
-  getCopy(companyData: CompanyDataMultiYearItem): string {
-    const mostRecentGPG = getMostRecentMedianGPGOrThrow(companyData);
-    let mostRecent = 0;
-
-    if (typeof mostRecentGPG === "string") {
-      mostRecent = parseFloat(mostRecentGPG);
-    } else {
-      mostRecent = mostRecentGPG;
-    }
-    const isPositiveGpg = mostRecent > 0.0;
-    if (mostRecent === 0.0) {
-      return `In this organisation, men's and women's median hourly pay is equal.`;
-    }
-    if (isPositiveGpg) {
-      return `In this organisation, women's median hourly pay is ${mostRecent}% lower than men's.`;
-    } else {
-      return `In this organisation, women's median hourly pay is ${-1 * mostRecent
-        }% higher than men's.`;
     }
   }
 }
