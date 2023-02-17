@@ -28,6 +28,13 @@ export class CopyWriter {
 
   // used in process.
   medianGpgWithDifferenceYearOnYear(companyData: CompanyDataMultiYearItem): string {
+    // has two years consecutive years
+    if () {
+      // return difference stuff
+    }
+
+    // return normal median GPG copy
+
     if (
       !isNumber(companyData?.data2021To2022?.medianGpg) ||
       !isNumber(companyData?.data2020To2021?.medianGpg)
