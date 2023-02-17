@@ -96,8 +96,26 @@ describe("copyWriter", () => {
         expect(copy).toBe(expectedCopy);
       }
     );
-    test.todo(
-      "should get the copy for just the (mean/median) gpg when theres not enough data points"
+    it(
+      "should get the copy for just the (mean/median) gpg when theres not enough data points",
+      () => {
+        const companyData: CompanyDataMultiYearItem = {
+          companyName: "Company Name LTD",
+          companyNumber: null,
+          sicCodes: "123,456",
+          data2022To2023: null,
+          data2021To2022: { meanGpg: 11, medianGpg: 12.1 },
+          data2020To2021: null,
+          data2019To2020: null,
+          data2018To2019: null,
+          data2017To2018: null,
+          size: CompanySize.From1000To4999
+        }
+        const copy = copyWriter.medianGpgWithDifferenceYearOnYear(companyData);
+        const expectedCopy =
+          "At Company Name LTD, women's median hourly pay is 12.1% lower than men's.";
+        expect(copy).toBe(expectedCopy);
+      }
     );
     test.todo(
       "should get the copy for just the (mean/median) gpg when theres not enough data points returning the latest data regardless of year"
