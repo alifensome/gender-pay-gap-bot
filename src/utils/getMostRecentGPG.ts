@@ -2,18 +2,6 @@ import { CompanyDataMultiYearItem, CompanyDataSingleYearItem } from "../types";
 import { forCompanyDataMultiYearFindFirstTrue } from "./companyDataMultiYear";
 import { isNumber } from "./isNumber";
 
-export function getMostRecentItem(
-  data: CompanyDataMultiYearItem
-): CompanyDataSingleYearItem | null {
-  const mostRecent = forCompanyDataMultiYearFindFirstTrue(data, (item) =>
-    isNumber(item?.meanGpg) && isNumber(item?.medianGpg)
-  );
-  if (mostRecent) {
-    return mostRecent;
-  }
-  return null;
-}
-
 export function getMostRecentMeanGPG(
   data: CompanyDataMultiYearItem
 ): number | null {
@@ -26,19 +14,23 @@ export function getMostRecentMeanGPG(
   return null;
 }
 
-export function getMostRecentMeanGPGOrThrow(data: CompanyDataMultiYearItem): number {
-  const mostRecent = getMostRecentMeanGPG(data)
+export function getMostRecentMeanGPGOrThrow(
+  data: CompanyDataMultiYearItem
+): number {
+  const mostRecent = getMostRecentMeanGPG(data);
   if (mostRecent !== null) {
-    return mostRecent
+    return mostRecent;
   }
-  throw new Error('could not find most recent GPG with getMostRecentMeanGPG')
+  throw new Error("could not find most recent GPG with getMostRecentMeanGPG");
 }
 
 export function isSpecialNotANumber(n: number | bigint) {
   return n != n;
 }
 
-export function getMostRecentMedianGPG(data: CompanyDataMultiYearItem): number | null {
+export function getMostRecentMedianGPG(
+  data: CompanyDataMultiYearItem
+): number | null {
   const mostRecent = forCompanyDataMultiYearFindFirstTrue(data, (item) =>
     isNumber(item.medianGpg)
   );
@@ -48,10 +40,12 @@ export function getMostRecentMedianGPG(data: CompanyDataMultiYearItem): number |
   return null;
 }
 
-export function getMostRecentMedianGPGOrThrow(data: CompanyDataMultiYearItem): number {
-  const mostRecent = getMostRecentMedianGPG(data)
+export function getMostRecentMedianGPGOrThrow(
+  data: CompanyDataMultiYearItem
+): number {
+  const mostRecent = getMostRecentMedianGPG(data);
   if (mostRecent !== null) {
-    return mostRecent
+    return mostRecent;
   }
-  throw new Error('could not find most recent GPG with getMostRecentMedianGPG')
+  throw new Error("could not find most recent GPG with getMostRecentMedianGPG");
 }

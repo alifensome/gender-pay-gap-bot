@@ -4,7 +4,11 @@ import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 import { CopyWriter } from "../copyWriter/CopyWriter";
 
-interface ProcessInput { twitterUserId: string, tweetId: string, screenName: string }
+interface ProcessInput {
+  twitterUserId: string;
+  tweetId: string;
+  screenName: string;
+}
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
@@ -22,7 +26,7 @@ export class SqsTweetProcessor {
     this.logger = new Logger({ name: "SqsTweetProcessor" });
     this.repository = repo;
     this.minGPG = minGPG;
-    this.copyWriter = new CopyWriter()
+    this.copyWriter = new CopyWriter();
   }
 
   async process({ twitterUserId, tweetId, screenName }: ProcessInput) {
@@ -69,7 +73,9 @@ export class SqsTweetProcessor {
         throw new Error("SKIP for now.");
       }
 
-      const copy = this.copyWriter.medianGpg(data.companyData);
+      const copy = this.copyWriter.medianGpgForThisOrganisation(
+        data.companyData
+      );
       await this.twitterClient.quoteTweet(
         copy,
         data.twitterData.twitter_screen_name,
