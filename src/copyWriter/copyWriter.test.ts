@@ -37,7 +37,7 @@ describe("copyWriter", () => {
     });
   });
 
-  describe("medianGpgWithDifferenceYearOnYear", () => {
+  describe("medianGpgWithDifferenceYearOnYearForThisOrganisation", () => {
     it("should say the median pays are equal", () => {
       const copy =
         copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation({
@@ -46,7 +46,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "At Company Name LTD, men's and women's median hourly pay is equal, a decrease of 10 percentage points since the previous year";
+        "In this organisation, men's and women's median hourly pay is equal, a decrease of 10 percentage points since the previous year";
       expect(copy).toBe(expectedCopy);
     });
     it("should say mens pay is higher", () => {
@@ -57,7 +57,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "At Company Name LTD, women's median hourly pay is 20% lower than men's, an increase of 10 percentage points since the previous year";
+        "In this organisation, women's median hourly pay is 20% lower than men's, an increase of 10 percentage points since the previous year";
       expect(copy).toBe(expectedCopy);
     });
     it("should women's pay is higher", () => {
@@ -68,7 +68,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "At Company Name LTD, women's median hourly pay is 20% higher than men's, an increase of 10 percentage points since the previous year";
+        "In this organisation, women's median hourly pay is 20% higher than men's, an increase of 10 percentage points since the previous year";
       expect(copy).toBe(expectedCopy);
     });
 
@@ -96,7 +96,7 @@ describe("copyWriter", () => {
           companyData
         );
       const expectedCopy =
-        "At Company Name LTD, women's median hourly pay is 12.1% lower than men's, a decrease of 1.2 percentage points since the previous year";
+        "In this organisation, women's median hourly pay is 12.1% lower than men's, a decrease of 1.2 percentage points since the previous year";
       expect(copy).toBe(expectedCopy);
     });
     it("should get the copy for just the (mean/median) gpg when theres not enough data points", () => {
@@ -117,7 +117,7 @@ describe("copyWriter", () => {
           companyData
         );
       const expectedCopy =
-        "At Company Name LTD, women's median hourly pay is 12.1% lower than men's.";
+        "In this organisation, women's median hourly pay is 12.1% lower than men's.";
       expect(copy).toBe(expectedCopy);
     });
     test.todo(
