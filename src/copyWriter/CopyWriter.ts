@@ -17,14 +17,14 @@ export class CopyWriter {
     }
     const isPositiveGpg = mostRecent > 0.0;
     if (mostRecent === 0.0) {
-      return `In this organisation, men's and women's median hourly pay is equal.`;
+      return `In this organisation, men's and women's median hourly pay is equal`;
     }
     if (isPositiveGpg) {
-      return `In this organisation, women's median hourly pay is ${mostRecent}% lower than men's.`;
+      return `In this organisation, women's median hourly pay is ${mostRecent}% lower than men's`;
     } else {
       return `In this organisation, women's median hourly pay is ${
         -1 * mostRecent
-      }% higher than men's.`;
+      }% higher than men's`;
     }
   }
   medianGpgForThisOrganisation(companyData: CompanyDataMultiYearItem): string {
@@ -32,7 +32,7 @@ export class CopyWriter {
   }
 
   // used in process.
-  medianGpgWithDifferenceYearOnYear(
+  medianGpgWithDifferenceYearOnYearForThisOrganisation(
     companyData: CompanyDataMultiYearItem
   ): string {
     // has two years consecutive years
