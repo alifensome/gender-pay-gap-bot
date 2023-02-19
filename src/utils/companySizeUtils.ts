@@ -5,7 +5,7 @@ export function companySizeCategoryToMinSize(companySize: CompanySize): number {
     case CompanySize.NotProvided:
       return 0;
     case CompanySize.LessThan250:
-      return 0;
+      return 1;
     case CompanySize.From250To499:
       return 250;
     case CompanySize.From500To999:

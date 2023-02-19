@@ -1,13 +1,13 @@
 import DataImporter from "../importData";
-import { findUserByName } from "../twitter/findUserIds";
+import { findUserByName, FindUserByNameOutput } from "../twitter/findUserIds";
 import { wait } from "../utils/wait";
 import { UsersSearch } from "twitter-api-client";
 import { Repository } from "../importData/Repository";
 import { writeJsonFile } from "../utils/write";
+import { sortByCompanySize } from "../utils/sortByCompanySize";
 
 const dataImporter = new DataImporter();
 const repository = new Repository(dataImporter);
-// TODO need to only look for users without data.
 const companyData = dataImporter.companiesGpgData();
 
 console.log("Starting...");
@@ -52,9 +52,13 @@ async function run() {
       }
       await wait();
       let user: UsersSearch | null = null;
+      let findByNameResult: FindUserByNameOutput | null = null;
       try {
         // todo want to output the potential results as files or something.
-        user = await findUserByName(company.companyName);
+        findByNameResult = await findUserByName(company.companyName);
+        if (findByNameResult.foundType === "exact") {
+          user = findByNameResult.user;
+        }
         errorsInARow = 0;
       } catch (error) {
         console.log("Error while finding user for:", company);
@@ -63,7 +67,10 @@ async function run() {
       }
       if (!user) {
         notFound++;
-        notFoundCompanies.push(company);
+        notFoundCompanies.push({
+          ...company,
+          potentialMatches: findByNameResult?.potentialMatches,
+        });
         continue;
       }
       found++;
@@ -89,19 +96,18 @@ async function run() {
   }
 
   try {
-    // todo change output files.
     const date = new Date();
     const isoString = date.toISOString();
     const filePath = `./data/twitterAccountData/twitterUserData-${isoString}.json`;
 
-    //  todo order by company size before writing.
-
-    await writeJsonFile(filePath, foundCompanies);
+    const sortedFoundCompanies = sortByCompanySize(foundCompanies);
+    await writeJsonFile(filePath, sortedFoundCompanies);
 
     const notFoundFilePath = `./data/twitterAccountData/twitterUserData-notFound-${isoString}.json`;
 
-    //  todo order by company size before writing.
-    await writeJsonFile(notFoundFilePath, notFoundCompanies);
+    const sortedNotFoundCompanies: any[] = sortByCompanySize(notFoundCompanies);
+
+    await writeJsonFile(notFoundFilePath, sortedNotFoundCompanies);
 
     let finishingTime = new Date();
     console.log(

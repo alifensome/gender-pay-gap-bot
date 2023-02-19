@@ -14,3 +14,4 @@ invoke/response.json
 coverage
 
 .DS_Store
+src/copyWriter/copyWriter.txt

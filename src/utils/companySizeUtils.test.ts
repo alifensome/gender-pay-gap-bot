@@ -2,7 +2,7 @@ import DataImporter from "../importData";
 import { CompanySize } from "../types";
 import { companySizeCategoryToMinSize } from "./companySizeUtils";
 
-describe("companySizeToAverageSize", () => {
+describe("companySizeCategoryToMinSize", () => {
   it("should convert the company size to min size", () => {
     const result = companySizeCategoryToMinSize(CompanySize.From1000To4999);
     expect(result).toBe(1000);
