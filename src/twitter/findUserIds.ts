@@ -19,8 +19,8 @@ function replaceSearchTerms(name: string): string {
     { find: " Limited" },
     { find: " LTD" },
     { find: " Ltd" },
-    { find: "(" },
-    { find: ")" },
+    { find: "\\(" },
+    { find: "\\)" },
     { find: " uk" },
     { find: " UK" },
   ]).replace(/ *\([^)]*\) */g, ""); // remove stuff in brackets.;
@@ -29,7 +29,7 @@ function replaceSearchTerms(name: string): string {
 export interface FindUserByNameOutput {
   foundType: "exact" | "multiple" | "none";
   user: UsersSearch | null;
-  potentialMatches: UsersSearch[];
+  potentialMatches: Partial<UsersSearch>[];
 }
 
 export async function findUserByName(
@@ -76,9 +76,17 @@ export async function findUserByName(
   printPotentialUsers(users);
 
   if (!users.length) {
-    return { foundType: "none", user: null, potentialMatches: users };
+    return {
+      foundType: "none",
+      user: null,
+      potentialMatches: users.map(userSearchToItem),
+    };
   }
-  return { foundType: "multiple", user: null, potentialMatches: users };
+  return {
+    foundType: "multiple",
+    user: null,
+    potentialMatches: users.map(userSearchToItem),
+  };
 }
 
 function printPotentialUsers(users: any[]) {
@@ -89,4 +97,15 @@ function printPotentialUsers(users: any[]) {
     const u = users[index];
     console.log(`${index} - ${u.name} - ${u.id}`);
   }
+}
+
+function userSearchToItem(userSearchResult: UsersSearch) {
+  return {
+    id: userSearchResult.id,
+    id_str: userSearchResult.id_str,
+    name: userSearchResult.name,
+    screen_name: userSearchResult.screen_name,
+    location: userSearchResult.location,
+    description: userSearchResult.description,
+  };
 }

@@ -5,6 +5,7 @@ import { UsersSearch } from "twitter-api-client";
 import { Repository } from "../importData/Repository";
 import { writeJsonFile } from "../utils/write";
 import { sortByCompanySize } from "../utils/sortByCompanySize";
+import { isDebugMode } from "../utils/debug";
 
 const dataImporter = new DataImporter();
 const repository = new Repository(dataImporter);
@@ -13,13 +14,18 @@ const companyData = dataImporter.companiesGpgData();
 console.log("Starting...");
 
 async function run() {
-  const isTest = false;
-  const testNumber = 500;
+  const isTest = isDebugMode() || false;
+  const testNumber = 50;
   let found = 0;
   let notFound = 0;
   let percentageDone = 0;
   let percentageFound = 0;
-  const number = isTest ? testNumber : companyData.length;
+  const numberToSearchFor = isTest ? testNumber : companyData.length;
+  if (isTest) {
+    console.log(
+      `Running in  test mode, will search for ${numberToSearchFor} items.`
+    );
+  }
 
   const foundCompanies: any[] = [];
   const notFoundCompanies: any[] = [];
@@ -29,13 +35,13 @@ async function run() {
   let startTime = new Date();
 
   try {
-    for (let index = 0; index < number; index++) {
+    for (let index = 0; index < numberToSearchFor; index++) {
       if (errorsInARow > 4) {
         console.log("Too many failures!!!");
         break;
       }
       if (index % 100 == 0) {
-        percentageDone = (index / number) * 100;
+        percentageDone = (index / numberToSearchFor) * 100;
         percentageFound = (found / index) * 100;
         console.log(
           `PercentageDone: ${percentageDone}%\nFound: ${found}\nNotFound: ${notFound}\nPercentageFound: ${percentageFound}%\n`
@@ -58,6 +64,20 @@ async function run() {
         findByNameResult = await findUserByName(company.companyName);
         if (findByNameResult.foundType === "exact") {
           user = findByNameResult.user;
+          if (user) {
+            found++;
+            console.log(
+              `Found ${company.companyName}, ${user.name}, ${user.screen_name}.`
+            );
+
+            foundCompanies.push({
+              twitter_id: user.id,
+              twitter_name: user.name,
+              twitter_screen_name: user.screen_name,
+              companyName: company.companyName,
+              companyNumber: company.companyNumber,
+            });
+          }
         }
         errorsInARow = 0;
       } catch (error) {
@@ -73,17 +93,11 @@ async function run() {
         });
         continue;
       }
-      found++;
 
-      foundCompanies.push({
-        twitter_id: user.id,
-        twitter_name: user.name,
-        twitter_screen_name: user.screen_name,
-        ...company,
-      });
+      continue;
     }
 
-    percentageFound = (found / number) * 100;
+    percentageFound = (found / numberToSearchFor) * 100;
 
     console.log(
       `\nComplete!!!\nFound:${found}\nNotFound:${notFound}\nPercentageFound: ${percentageFound}%\n`
@@ -115,6 +129,7 @@ async function run() {
       (finishingTime.getTime() - startTime.getTime()) / (1000 * 60),
       " Minutes"
     );
+    //TODO combine data sets at the end if we want to.
   } catch (error) {
     console.log(`Threw error while writing fie.`);
     console.log(foundCompanies);

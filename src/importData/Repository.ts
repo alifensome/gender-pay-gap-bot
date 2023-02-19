@@ -64,6 +64,7 @@ export class Repository {
     name: string,
     companyNumber: CompanyNumber
   ): TwitterData | null {
+    this.checkSetData();
     const upperCaseName = name?.toUpperCase();
     return findCompany(upperCaseName, companyNumber, this.twitterUserData);
   }
