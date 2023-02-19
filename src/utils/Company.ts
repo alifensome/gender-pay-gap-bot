@@ -1,5 +1,5 @@
 import { CompanyDataMultiYearItem, CompanyDataSingleYearItem } from "../types";
-import { isNumber } from "./isNumber";
+import { isNumber } from "./numberUtils";
 
 type PredicateFn = (item: CompanyDataSingleYearItem) => boolean;
 

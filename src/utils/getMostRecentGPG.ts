@@ -1,6 +1,6 @@
 import { CompanyDataMultiYearItem, CompanyDataSingleYearItem } from "../types";
 import { forCompanyDataMultiYearFindFirstTrue } from "./companyDataMultiYear";
-import { isNumber } from "./isNumber";
+import { isNumber } from "./numberUtils";
 
 export function getMostRecentMeanGPG(
   data: CompanyDataMultiYearItem

@@ -1,5 +1,5 @@
 import { CompanyDataMultiYearItem } from "../types";
-import { isNumber } from "../utils/isNumber";
+import { isNumber } from "../utils/numberUtils";
 import { GraphData, GraphDataPoint } from "./plot";
 
 export function gpgToData(companyData: CompanyDataMultiYearItem): GraphData {

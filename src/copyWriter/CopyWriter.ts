@@ -1,7 +1,7 @@
 import { CompanyDataMultiYearItem } from "../types";
 import { Company } from "../utils/Company";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
-import { isNumber, modulus, roundNumber } from "../utils/isNumber";
+import { isNumber, modulus, roundNumber } from "../utils/numberUtils";
 
 export class CopyWriter {
   medianGpgForThisOrganisationPartialSentence(

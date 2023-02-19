@@ -7,7 +7,7 @@ import { LambdaClient } from "../lambdaClient/LambdaClient";
 import { gpgToData } from "../plotGraph/gpgToData";
 import { TwitterClient } from "../twitter/Client";
 import { companySizeCategoryToMinSize } from "../utils/companySizeUtils";
-import { isNumber } from "../utils/isNumber";
+import { isNumber } from "../utils/numberUtils";
 
 export class TweetAllGpgTask {
   twitterClient: TwitterClient;
@@ -42,15 +42,15 @@ export class TweetAllGpgTask {
     if (result) {
       return result as DynamoDbLastItem;
     }
-    return null
+    return null;
   }
 
   async updateDynamoDbLastItem({
     companyName,
     companyNumber,
   }: {
-    companyName: string,
-    companyNumber: CompanyNumber,
+    companyName: string;
+    companyNumber: CompanyNumber;
   }): Promise<PutItemCommandOutput> {
     const result = await this.dynamoDbClient.putItem({
       id: "lastCompanyTweet",
@@ -75,9 +75,9 @@ export class TweetAllGpgTask {
     companyNumber,
     error,
   }: {
-    companyName: string | null,
-    companyNumber: CompanyNumber,
-    error: Error,
+    companyName: string | null;
+    companyNumber: CompanyNumber;
+    error: Error;
   }): Promise<PutItemCommandOutput> {
     const result = await this.dynamoDbClient.putItem({
       id: `lastCompanyTweet_error_${this.now}`,
@@ -163,13 +163,17 @@ export class TweetAllGpgTask {
     }
   }
 
-  findNextCompanyOrFirst(companyName: string | null, companyNumber: string | null): CompanyDataMultiYearItem {
+  findNextCompanyOrFirst(
+    companyName: string | null,
+    companyNumber: string | null
+  ): CompanyDataMultiYearItem {
     if (companyName) {
-      const nextMatchingCompany = this.repository.getNextMatchingCompanyWithData(
-        companyName,
-        companyNumber,
-        this.matchLargeCompany
-      )
+      const nextMatchingCompany =
+        this.repository.getNextMatchingCompanyWithData(
+          companyName,
+          companyNumber,
+          this.matchLargeCompany
+        );
       if (nextMatchingCompany) {
         return nextMatchingCompany;
       }
@@ -188,17 +192,19 @@ export class TweetAllGpgTask {
         "no median data for required year! This should not have happened!"
       );
     }
-    const has2023 = !!companyData.data2022To2023
-    const year = has2023 ? companyData.data2022To2023 : companyData.data2021To2022
-    const previousYear = has2023 ? companyData.data2021To2022 : companyData.data2020To2021
+    const has2023 = !!companyData.data2022To2023;
+    const year = has2023
+      ? companyData.data2022To2023
+      : companyData.data2021To2022;
+    const previousYear = has2023
+      ? companyData.data2021To2022
+      : companyData.data2020To2021;
     if (!year || !previousYear) {
       throw new Error(
         "could not work out the year or previous year data. This should not have happened!"
       );
     }
-    const difference =
-      year.medianGpg -
-      previousYear.medianGpg;
+    const difference = year.medianGpg - previousYear.medianGpg;
     const roundedDifference = Number(difference.toFixed(1));
 
     const isPositiveGpg = year.medianGpg >= 0.0;
@@ -212,8 +218,9 @@ export class TweetAllGpgTask {
     if (isPositiveGpg) {
       return `At ${companyData.companyName}, women's median hourly pay is ${year.medianGpg}% lower than men's, ${differenceCopy}`;
     } else {
-      return `At ${companyData.companyName}, women's median hourly pay is ${-1 * year.medianGpg
-        }% higher than men's, ${differenceCopy}`;
+      return `At ${companyData.companyName}, women's median hourly pay is ${
+        -1 * year.medianGpg
+      }% higher than men's, ${differenceCopy}`;
     }
   }
 
@@ -221,12 +228,13 @@ export class TweetAllGpgTask {
     if (difference > 0.0) {
       return `an increase of ${difference} percentage points since the previous year`;
     } else if (difference < 0.0) {
-      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${-1 * difference
-        } percentage points since the previous year`;
+      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${
+        -1 * difference
+      } percentage points since the previous year`;
     } else if (difference === 0.0) {
       return `this is the same as the previous year`;
     }
-    throw new Error('could not determine GPG difference copy.')
+    throw new Error("could not determine GPG difference copy.");
   }
 
   matchLargeCompany(company: CompanyDataMultiYearItem): boolean {

@@ -3,7 +3,7 @@ import {
   CompanyDataSingleYearItem,
   CompanySize,
 } from "../../types.js";
-import { isNumber } from "../../utils/isNumber";
+import { isNumber } from "../../utils/numberUtils";
 import { MultipleYearCompanyArg, Company } from "./types";
 
 // TODO make this more dynamic or update every year.
@@ -42,8 +42,7 @@ function toCompanyDataSingleYearItem(
 ): CompanyDataSingleYearItem | null {
   if (
     !company ||
-    !isNumber(company?.genderPayGap) &&
-    !isNumber(company?.medianGenderPayGap)
+    (!isNumber(company?.genderPayGap) && !isNumber(company?.medianGenderPayGap))
   ) {
     return null;
   }

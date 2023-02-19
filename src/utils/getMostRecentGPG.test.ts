@@ -1,6 +1,9 @@
 import { CompanyDataMultiYearItem } from "../types";
-import { getMostRecentMeanGPG, getMostRecentMedianGPG } from "./getMostRecentGPG";
-import { isNumber } from "./isNumber";
+import {
+  getMostRecentMeanGPG,
+  getMostRecentMedianGPG,
+} from "./getMostRecentGPG";
+import { isNumber } from "./numberUtils";
 
 describe("isNumber", () => {
   it.each([

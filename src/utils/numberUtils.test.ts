@@ -1,4 +1,4 @@
-import { modulus } from "./isNumber";
+import { modulus } from "./numberUtils";
 
 describe("modulus", () => {
   it("should return a positive number", () => {

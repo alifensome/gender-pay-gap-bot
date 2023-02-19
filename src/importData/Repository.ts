@@ -2,7 +2,7 @@ import DataImporter from ".";
 import { TwitterData, CompanyDataMultiYearItem, CompanyNumber } from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
-import { isNumber } from "../utils/isNumber";
+import { isNumber } from "../utils/numberUtils";
 
 export class Repository {
   dataImporter: DataImporter;
