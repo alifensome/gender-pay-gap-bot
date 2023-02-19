@@ -8,6 +8,7 @@ describe("SqsTweetProcessor", () => {
     getGpgForTwitterId: jest.fn().mockReturnValue({
       companyData: {
         data2021To2022: { medianGpg: 52.2 },
+        data2020To2021: { medianGpg: 0 },
         companyNumber: "321",
       },
       twitterData: { twitter_screen_name: "name" },
