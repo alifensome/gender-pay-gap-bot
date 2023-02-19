@@ -1,20 +1,14 @@
 import { CompanyDataMultiYearItem } from "../types";
 import { Company } from "../utils/Company";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
-import { isNumber } from "../utils/isNumber";
+import { isNumber, modulus, roundNumber } from "../utils/isNumber";
 
 export class CopyWriter {
   medianGpgForThisOrganisationPartialSentence(
     companyData: CompanyDataMultiYearItem
   ): string {
     const mostRecentGPG = getMostRecentMedianGPGOrThrow(companyData);
-    let mostRecent = 0;
-
-    if (typeof mostRecentGPG === "string") {
-      mostRecent = parseFloat(mostRecentGPG);
-    } else {
-      mostRecent = mostRecentGPG;
-    }
+    const mostRecent = Number(mostRecentGPG.toFixed(1));
     const isPositiveGpg = mostRecent > 0.0;
     if (mostRecent === 0.0) {
       return `In this organisation, men's and women's median hourly pay is equal`;
@@ -27,47 +21,73 @@ export class CopyWriter {
       }% higher than men's`;
     }
   }
+
   medianGpgForThisOrganisation(companyData: CompanyDataMultiYearItem): string {
     return `${this.medianGpgForThisOrganisationPartialSentence(companyData)}.`;
   }
 
-  // used in process.
   medianGpgWithDifferenceYearOnYearForThisOrganisation(
     companyData: CompanyDataMultiYearItem
   ): string {
-    // has two years consecutive years
     const company = new Company(companyData);
     if (company.hasTwoYearsConsecutive()) {
       const previousYears = company.getTwoYearsConsecutive();
-      // return difference stuff
       const year = previousYears!.year!;
       const previousYear = previousYears!.previousYear!;
-
-      const difference = year.medianGpg - previousYear.medianGpg;
-      const roundedDifference = Number(difference.toFixed(1));
-
-      const isPositiveGpg = year.medianGpg >= 0.0;
       const differenceCopy = this.getDifferenceCopy(
-        roundedDifference,
-        isPositiveGpg
+        year.medianGpg,
+        previousYear.medianGpg
       );
       const medianGpgCopy =
         this.medianGpgForThisOrganisationPartialSentence(companyData);
-      return `${medianGpgCopy}, ${differenceCopy}`;
+      return `${medianGpgCopy}. ${differenceCopy}`;
     }
     return this.medianGpgForThisOrganisation(companyData);
   }
 
-  getDifferenceCopy(difference: number, isPositiveGpg: boolean): string {
-    if (difference > 0.0) {
-      return `an increase of ${difference} percentage points since the previous year`;
-    } else if (difference < 0.0) {
-      return `${isPositiveGpg ? "a decrease" : "an increase"} of ${
-        -1 * difference
-      } percentage points since the previous year`;
-    } else if (difference === 0.0) {
-      return `this is the same as the previous year`;
+  getDifferenceCopy(year: number, previousYear: number): string {
+    const difference = year - previousYear;
+    const yearRounded = roundNumber(year);
+    const previousYearRounded = roundNumber(previousYear);
+
+    const roundedDifference = roundNumber(difference);
+
+    const changesDirection = yearRounded * previousYearRounded < 0;
+
+    const gpgIncreased =
+      (yearRounded > previousYearRounded &&
+        yearRounded >= 0 &&
+        previousYearRounded >= 0) ||
+      (yearRounded < previousYearRounded &&
+        yearRounded <= 0 &&
+        previousYearRounded <= 0) ||
+      (changesDirection && modulus(yearRounded) > modulus(previousYearRounded));
+
+    const gpgNotChanged = year === previousYear;
+
+    if (roundedDifference === 0.0 || gpgNotChanged) {
+      return `The pay gap is the same as the previous year.`;
     }
-    throw new Error("could not determine GPG difference copy.");
+
+    if (changesDirection) {
+      if (previousYearRounded === 0) {
+        return `In the previous year women's median hourly pay was equal to men's.`;
+      }
+      if (previousYearRounded > 0) {
+        return `In the previous year men's median hourly pay was ${previousYearRounded} percentage point higher then women's.`;
+      } else {
+        return `In the previous year women's median hourly pay was ${
+          -1 * previousYearRounded
+        } percentage point higher then men's.`;
+      }
+    }
+
+    const modulatedDifference = modulus(roundedDifference);
+
+    if (gpgIncreased) {
+      return `The pay gap is ${modulatedDifference} percentage points higher than the previous year.`;
+    } else {
+      return `The pay gap is ${modulatedDifference} percentage points lower than the previous year.`;
+    }
   }
 }
