@@ -11,6 +11,17 @@ const dataImporter = new DataImporter();
 const repository = new Repository(dataImporter);
 const companyData = dataImporter.companiesGpgData();
 
+// TODO
+// Acronym from the parts of the name.
+// get rid of spaces and see if it exact matches.
+// bug check some of the name matching.
+// Print when fewer then 50 followers discards an option.
+// colour code the output
+// time estimation.
+// order companies by biggest first.
+// remove plc
+// save needed data to file so we can process locally.
+
 console.log("Starting...");
 
 async function run() {
@@ -76,6 +87,7 @@ async function run() {
               twitter_screen_name: user.screen_name,
               companyName: company.companyName,
               companyNumber: company.companyNumber,
+              size: company.size,
             });
           }
         }
@@ -84,6 +96,7 @@ async function run() {
         console.log("Error while finding user for:", company);
         console.log(error);
         errorsInARow++;
+        continue;
       }
       if (!user) {
         notFound++;
@@ -103,6 +116,7 @@ async function run() {
       `\nComplete!!!\nFound:${found}\nNotFound:${notFound}\nPercentageFound: ${percentageFound}%\n`
     );
   } catch (error) {
+    errorsInARow++;
     console.log(
       `Threw error ${percentageDone}% through. Found: ${found}, Not found: ${notFound} `
     );

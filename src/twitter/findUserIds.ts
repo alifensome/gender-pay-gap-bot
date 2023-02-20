@@ -89,13 +89,15 @@ export async function findUserByName(
   };
 }
 
-function printPotentialUsers(users: any[]) {
+function printPotentialUsers(users: UsersSearch[]) {
   if (!users.length) {
     console.log("No data");
   }
   for (let index = 0; index < users.length; index++) {
     const u = users[index];
-    console.log(`${index} - ${u.name} - ${u.id}`);
+    console.log(
+      `${index} - ${u.name} - ${u.screen_name} - ${u.id} - Followers:${u.followers_count}`
+    );
   }
 }
 
@@ -107,5 +109,8 @@ function userSearchToItem(userSearchResult: UsersSearch) {
     screen_name: userSearchResult.screen_name,
     location: userSearchResult.location,
     description: userSearchResult.description,
+    followers_count: userSearchResult.followers_count,
+    verified: userSearchResult.verified,
+    protected: userSearchResult.protected,
   };
 }

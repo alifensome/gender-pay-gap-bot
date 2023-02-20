@@ -14,4 +14,16 @@ describe("sortByCompanySize", () => {
       { size: CompanySize.NotProvided },
     ]);
   });
+  it("should not break when no size is entered", () => {
+    const result = sortByCompanySize([
+      { companyName: "1" },
+      { companyName: "2" },
+      { companyName: "3" },
+    ]);
+    expect(result).toEqual([
+      { companyName: "1" },
+      { companyName: "2" },
+      { companyName: "3" },
+    ]);
+  });
 });
