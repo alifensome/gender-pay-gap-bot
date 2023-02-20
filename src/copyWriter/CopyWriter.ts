@@ -74,7 +74,7 @@ export class CopyWriter {
         return `In the previous year women's median hourly pay was equal to men's.`;
       }
       if (previousYearRounded > 0) {
-        return `In the previous year men's median hourly pay was ${previousYearRounded} percentage point higher then women's.`;
+        return `In the previous year women's median hourly pay was ${previousYearRounded} percentage point lower then men's.`;
       } else {
         return `In the previous year women's median hourly pay was ${
           -1 * previousYearRounded
@@ -85,9 +85,9 @@ export class CopyWriter {
     const modulatedDifference = modulus(roundedDifference);
 
     if (gpgIncreased) {
-      return `The pay gap is ${modulatedDifference} percentage points higher than the previous year.`;
+      return `The pay gap is ${modulatedDifference} percentage points wider than the previous year.`;
     } else {
-      return `The pay gap is ${modulatedDifference} percentage points lower than the previous year.`;
+      return `The pay gap is ${modulatedDifference} percentage points smaller than the previous year.`;
     }
   }
 }

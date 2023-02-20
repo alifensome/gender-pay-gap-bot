@@ -17,6 +17,9 @@ function replaceSearchTerms(name: string): string {
   return replaceMultiple(name, [
     { find: " limited" },
     { find: " Limited" },
+    { find: " plc" },
+    { find: " Plc" },
+    { find: " PLC" },
     { find: " LTD" },
     { find: " Ltd" },
     { find: "\\(" },
@@ -55,7 +58,7 @@ export async function findUserByName(
     }
 
     // TODO we should match these based off screen_name too.
-    // Check matching
+    // Check matching - this is based off company name and not the search name with the replacements done.
     const wordMatch = getTextMatch(companyName, u.name);
     if (wordMatch < 0.5) {
       continue;
