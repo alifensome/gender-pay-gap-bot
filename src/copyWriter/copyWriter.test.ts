@@ -45,7 +45,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, men's and women's median hourly pay is equal. The pay gap is 10 percentage points lower than the previous year.";
+        "In this organisation, men's and women's median hourly pay is equal. The pay gap is 10 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say the median pays are equal and the gap is lower when +10 change year on year", () => {
@@ -56,7 +56,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, men's and women's median hourly pay is equal. The pay gap is 10 percentage points lower than the previous year.";
+        "In this organisation, men's and women's median hourly pay is equal. The pay gap is 10 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say the median pays are equal and the gap is the same as the previous year", () => {
@@ -78,7 +78,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% lower than men's. The pay gap is 10 percentage points higher than the previous year.";
+        "In this organisation, women's median hourly pay is 20% lower than men's. The pay gap is 10 percentage points wider than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say mens pay is higher and the gap is decreasing", () => {
@@ -89,7 +89,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 10% lower than men's. The pay gap is 10 percentage points lower than the previous year.";
+        "In this organisation, women's median hourly pay is 10% lower than men's. The pay gap is 10 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say mens pay is higher and the gap is the same", () => {
@@ -111,7 +111,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% higher than men's. The pay gap is 10 percentage points higher than the previous year.";
+        "In this organisation, women's median hourly pay is 20% higher than men's. The pay gap is 10 percentage points wider than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that women's pay is higher and the gap is getting lower", () => {
@@ -122,7 +122,7 @@ describe("copyWriter", () => {
           companyName: "Company Name LTD",
         } as any);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% higher than men's. The pay gap is 10 percentage points lower than the previous year.";
+        "In this organisation, women's median hourly pay is 20% higher than men's. The pay gap is 10 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that women's pay is higher and the gap is the same", () => {
@@ -145,7 +145,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 2% higher than men's. In the previous year men's median hourly pay was 1 percentage point higher then women's.";
+        "In this organisation, women's median hourly pay is 2% higher than men's. In the previous year women's median hourly pay was 1 percentage point lower then men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that men's pay is higher and state the previous years data when it crosses the 0 mark", () => {
@@ -181,7 +181,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% higher than men's. In the previous year men's median hourly pay was 1 percentage point higher then women's.";
+        "In this organisation, women's median hourly pay is 20% higher than men's. In the previous year women's median hourly pay was 1 percentage point lower then men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should get the copy for the (mean/median) gpg and show the difference between years when theres 2023 data", () => {
@@ -202,7 +202,7 @@ describe("copyWriter", () => {
           companyData
         );
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 12.1% lower than men's. The pay gap is 1.2 percentage points lower than the previous year.";
+        "In this organisation, women's median hourly pay is 12.1% lower than men's. The pay gap is 1.2 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should get the copy for the (mean/median) gpg and show the difference between years even with one years data missing", () => {
@@ -223,7 +223,7 @@ describe("copyWriter", () => {
           companyData
         );
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 12.1% lower than men's. The pay gap is 1.2 percentage points lower than the previous year.";
+        "In this organisation, women's median hourly pay is 12.1% lower than men's. The pay gap is 1.2 percentage points smaller than the previous year.";
       expect(copy).toBe(expectedCopy);
     });
     it("should get the copy for just the (mean/median) gpg when theres not enough data points", () => {
