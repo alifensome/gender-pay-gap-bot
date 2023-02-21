@@ -27,7 +27,7 @@ describe("SqsTweetProcessor", () => {
       await processor.process(input);
       expect(mockRepo.getGpgForTwitterId).toBeCalledWith(input.twitterUserId);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 52.2% lower than men's.";
+        "In this organisation, women's median hourly pay is 52.2% lower than men's. The pay gap is 52.2 percentage points wider than the previous year.";
       expect(mockTwitterClient.quoteTweet).toBeCalledWith(
         expectedCopy,
         "name",
@@ -47,7 +47,7 @@ describe("SqsTweetProcessor", () => {
       ).rejects.toThrowError("");
       expect(mockRepo.getGpgForTwitterId).toBeCalledWith(input.twitterUserId);
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 52.2% lower than men's.";
+        "In this organisation, women's median hourly pay is 52.2% lower than men's. The pay gap is 52.2 percentage points wider than the previous year.";
       expect(mockTwitterClient.quoteTweet).toBeCalledWith(
         expectedCopy,
         "name",

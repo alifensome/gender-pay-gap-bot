@@ -73,9 +73,10 @@ export class SqsTweetProcessor {
         throw new Error("SKIP for now.");
       }
 
-      const copy = this.copyWriter.medianGpgForThisOrganisation(
-        data.companyData
-      );
+      const copy =
+        this.copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation(
+          data.companyData
+        );
       await this.twitterClient.quoteTweet(
         copy,
         data.twitterData.twitter_screen_name,
