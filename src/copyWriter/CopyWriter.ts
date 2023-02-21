@@ -71,14 +71,14 @@ export class CopyWriter {
 
     if (changesDirection) {
       if (previousYearRounded === 0) {
-        return `In the previous year women's median hourly pay was equal to men's.`;
+        return `In the previous year, women's median hourly pay was equal to men's.`;
       }
       if (previousYearRounded > 0) {
-        return `In the previous year women's median hourly pay was ${previousYearRounded} percentage point lower then men's.`;
+        return `In the previous year, women's median hourly pay was ${previousYearRounded}% lower than men's.`;
       } else {
-        return `In the previous year women's median hourly pay was ${
+        return `In the previous year, women's median hourly pay was ${
           -1 * previousYearRounded
-        } percentage point higher then men's.`;
+        }% higher than men's.`;
       }
     }
 

@@ -145,7 +145,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 2% higher than men's. In the previous year women's median hourly pay was 1 percentage point lower then men's.";
+        "In this organisation, women's median hourly pay is 2% higher than men's. In the previous year, women's median hourly pay was 1% lower than men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that men's pay is higher and state the previous years data when it crosses the 0 mark", () => {
@@ -157,7 +157,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 1% lower than men's. In the previous year women's median hourly pay was 2 percentage point higher then men's.";
+        "In this organisation, women's median hourly pay is 1% lower than men's. In the previous year, women's median hourly pay was 2% higher than men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that men's pay is higher and state the previous years data when it crosses the 0 mark by a considerable amount", () => {
@@ -169,7 +169,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% lower than men's. In the previous year women's median hourly pay was 1 percentage point higher then men's.";
+        "In this organisation, women's median hourly pay is 20% lower than men's. In the previous year, women's median hourly pay was 1% higher than men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should say that women's pay is higher and state the previous years data when it crosses the 0 mark by a considerable amount", () => {
@@ -181,7 +181,7 @@ describe("copyWriter", () => {
         } as any);
 
       const expectedCopy =
-        "In this organisation, women's median hourly pay is 20% higher than men's. In the previous year women's median hourly pay was 1 percentage point lower then men's.";
+        "In this organisation, women's median hourly pay is 20% higher than men's. In the previous year, women's median hourly pay was 1% lower than men's.";
       expect(copy).toBe(expectedCopy);
     });
     it("should get the copy for the (mean/median) gpg and show the difference between years when theres 2023 data", () => {

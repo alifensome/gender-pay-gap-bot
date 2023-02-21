@@ -2315,10 +2315,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "1648024394",
-    "twitter_id": 1648024394,
+    "twitter_id_str": "3318514089",
+    "twitter_id": 3318514089,
     "twitter_name": "bp",
-    "twitter_screen_name": "bp_plc",
+    "twitter_screen_name": "bp_uk",
     "companyName": "BP OIL UK LIMITED",
     "companyNumber": "00446915"
   },
@@ -17542,5 +17542,12 @@
     "twitter_screen_name": "YoungsPubs",
     "companyName": "YOUNG & CO'S BREWERY PLC",
     "companyNumber": "00032762"
+  },
+  {
+    "companyName": "DHL PARCEL UK LIMITED",
+    "companyNumber": "00965783",
+    "twitter_id_str": "1029722113903616001",
+    "twitter_name": "DHLParcelUK",
+    "twitter_screen_name": "DHLParcelUK"
   }
 ]
