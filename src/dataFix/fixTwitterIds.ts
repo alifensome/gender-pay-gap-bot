@@ -8,12 +8,8 @@ const dataImporter = new DataImporter()
 
 dotEnv.config()
 
-const path = process.argv0
-console.log(`Fixing data fro path ${path}. Continue?`)
-
-
-// readfile 
-// const companyDataProd = dataImporter.twitterUserDataProd()
+const path = process.argv[2]
+console.log(`Fixing data fro path: ${path}. Continue?`)
 
 const twitterClient = new TwitterClient({
     apiKey: getEnvVar('TWITTER_API_KEY'),
@@ -26,6 +22,7 @@ async function run() {
     const shouldContinue = await promptUser('Continue?');
 
     if (shouldContinue !== 'y') {
+        console.log('exiting...')
         process.exit(0)
     }
     const dataToFix = dataImporter.readFile(path)
