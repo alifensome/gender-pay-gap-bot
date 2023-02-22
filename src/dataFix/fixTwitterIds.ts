@@ -1,9 +1,11 @@
 import dotEnv from "dotenv"
 import DataImporter from '../importData'
-import { TwitterClient } from 'twitter-api-client';
+import { TwitterClient, UsersLookup } from 'twitter-api-client';
 import { writeJsonFile } from "../utils/write.js";
 import { getEnvVar } from "../utils/getEnvVar";
 import { promptUser } from "../utils/promptUser";
+import { TwitterData } from "../types";
+import { isValidTwitterItem } from '../utils/isValidTwitterItem';
 const dataImporter = new DataImporter()
 
 dotEnv.config()
@@ -25,7 +27,7 @@ async function run() {
         console.log('exiting...')
         process.exit(0)
     }
-    const dataToFix = dataImporter.readFile(path)
+    const dataToFix: TwitterData[] = dataImporter.readFile(path)
 
     const maxValue = 2147483647
     let numberOfErrors = 0
@@ -35,21 +37,33 @@ async function run() {
             console.log(`${(index / dataToFix.length) * 100}%`)
         }
         const row = dataToFix[index];
-        if (row.twitter_id_str) {
+        if (row.twitter_id_str && row.twitter_screen_name) {
             newCompanyData.push(row)
             continue;
         }
-        if (!row.twitter_id) {
-            throw new Error(`no twitterID found ${JSON.stringify(row)}`)
-        }
         let userIdStr = `${row.twitter_id}`
+        let twitter_screen_name: string = row.twitter_screen_name
         if (row.twitter_id >= maxValue) {
             numberOfErrors++
-            const user = await twitterClient.accountsAndUsers.usersLookup({ screen_name: row.twitter_screen_name })
-            console.log(`Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`)
-            userIdStr = user[0].id_str
+            //todo some of these data points don't have twitter_screen_name
+            if (row.twitter_screen_name) {
+                const user = await twitterClient.accountsAndUsers.usersLookup({ screen_name: row.twitter_screen_name })
+                console.log(`Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`)
+                userIdStr = user[0].id_str
+                twitter_screen_name = user[0].screen_name
+            } else if (row.twitter_id_str || row.twitter_id) {
+                const user = await twitterClient.accountsAndUsers.usersLookup({ user_id: row.twitter_id_str || `${row.twitter_id}` })
+                console.log(`Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`)
+                userIdStr = user[0].id_str
+                twitter_screen_name = user[0].screen_name
+            }
+
         }
         row.twitter_id_str = userIdStr
+        row.twitter_screen_name = twitter_screen_name
+        if (!isValidTwitterItem(row)) {
+            throw new Error(`invalid item ${JSON.stringify(row)}`);
+        }
         newCompanyData.push(row)
     }
 
