@@ -41,6 +41,8 @@ async function run() {
   const foundCompanies: any[] = [];
   const notFoundCompanies: any[] = [];
 
+  // TODO check if we already have a twitter user for a match.
+
   let errorsInARow = 0;
 
   let startTime = new Date();
