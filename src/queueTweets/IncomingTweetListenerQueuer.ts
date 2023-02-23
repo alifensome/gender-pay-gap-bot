@@ -120,9 +120,9 @@ export class IncomingTweetListenerQueuer {
 
   checkContainsPhrase(
     upperCaseTweet: string,
-    relivenatPhrase: string
+    relevantPhrase: string
   ): boolean {
-    if (upperCaseTweet.includes(relivenatPhrase)) {
+    if (upperCaseTweet.includes(relevantPhrase)) {
       return true;
     }
     return false;
@@ -130,11 +130,11 @@ export class IncomingTweetListenerQueuer {
 
   checkContainsExactWord(
     tweetedWords: string[],
-    relivenatPhrase: string
+    relevantPhrase: string
   ): boolean {
     for (let index = 0; index < tweetedWords.length; index++) {
       const tweetedWord = tweetedWords[index];
-      if (tweetedWord === relivenatPhrase) {
+      if (tweetedWord === relevantPhrase) {
         return true;
       }
     }
