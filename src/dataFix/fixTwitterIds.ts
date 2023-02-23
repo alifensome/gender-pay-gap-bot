@@ -45,7 +45,7 @@ async function run() {
     }
     let userIdStr = `${row.twitter_id}`;
     let twitter_screen_name: string = row.twitter_screen_name;
-    if (row.twitter_id >= maxValue) {
+    if (!row.twitter_id || row.twitter_id >= maxValue) {
       numberOfErrors++;
       //todo some of these data points don't have twitter_screen_name
       if (row.twitter_screen_name) {
