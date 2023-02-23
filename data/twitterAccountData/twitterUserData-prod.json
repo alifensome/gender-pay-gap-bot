@@ -17549,5 +17549,14 @@
     "twitter_id_str": "1029722113903616001",
     "twitter_name": "DHLParcelUK",
     "twitter_screen_name": "DHLParcelUK"
+  },
+  {
+    "twitter_id": 426159377,
+    "twitter_id_str": "426159377",
+    "twitter_name": "Morgan Stanley",
+    "twitter_screen_name": "MorganStanley",
+    "companyName": "MORGAN STANLEY UK LIMITED",
+    "companyNumber": "04071123",
+    "size": "1000 to 4999"
   }
 ]
