@@ -17528,8 +17528,8 @@
     "companyNumber": "FC014392"
   },
   {
-    "twitter_id_str": "325021093",
-    "twitter_id": 325021093,
+    "twitter_id_str": "149157068",
+    "twitter_id": 149157068,
     "twitter_name": "Space NK",
     "twitter_screen_name": "Space_NK",
     "companyName": "SPACE NK LIMITED",
@@ -17549,5 +17549,14 @@
     "twitter_id_str": "1029722113903616001",
     "twitter_name": "DHLParcelUK",
     "twitter_screen_name": "DHLParcelUK"
+  },
+  {
+    "twitter_id": 426159377,
+    "twitter_id_str": "426159377",
+    "twitter_name": "Morgan Stanley",
+    "twitter_screen_name": "MorganStanley",
+    "companyName": "MORGAN STANLEY UK LIMITED",
+    "companyNumber": "04071123",
+    "size": "1000 to 4999"
   }
 ]
