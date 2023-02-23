@@ -6,7 +6,8 @@
     "companyName": "ABRDN PLC",
     "companyNumber": "SC286832",
     "size": "1000 to 4999",
-    "sicCodes": "70100"
+    "sicCodes": "70100",
+    "twitter_id_str": "394715530"
   },
   {
     "twitter_id": 4012037146,
@@ -15,7 +16,8 @@
     "companyName": "ALETHEIA ACADEMIES TRUST",
     "companyNumber": "07801612",
     "size": "500 to 999",
-    "sicCodes": "85200,85310"
+    "sicCodes": "85200,85310",
+    "twitter_id_str": "4012037146"
   },
   {
     "twitter_id": 955912262585344000,
@@ -24,7 +26,8 @@
     "companyName": "ACES ACADEMIES TRUST",
     "companyNumber": "07732319",
     "size": "250 to 499",
-    "sicCodes": "85310"
+    "sicCodes": "85310",
+    "twitter_id_str": "955912262585344001"
   },
   {
     "twitter_id_str": "76642763",
@@ -17305,7 +17308,7 @@
   },
   {
     "twitter_id_str": "1138831656868044802",
-    "twitter_id": 1138831656868044802,
+    "twitter_id": 1138831656868044800,
     "twitter_name": "BeereGroup",
     "twitter_screen_name": "BeereGroup",
     "companyName": "BEERE ELECTRICAL SERVICES LIMITED",
@@ -17353,7 +17356,7 @@
   },
   {
     "twitter_id_str": "1346816160063508487",
-    "twitter_id": 1346816160063508487,
+    "twitter_id": 1346816160063508500,
     "twitter_name": "Anderson",
     "twitter_screen_name": "AndersonGroupUK",
     "companyName": "M. ANDERSON CONSTRUCTION LIMITED",
@@ -17481,7 +17484,7 @@
   },
   {
     "twitter_id_str": "1448413132263772162",
-    "twitter_id": 1448413132263772162,
+    "twitter_id": 1448413132263772200,
     "twitter_name": "3RiversLearningTrust",
     "twitter_screen_name": "3Rivers_Trust",
     "companyName": "THE THREE RIVERS LEARNING TRUST",
@@ -17497,7 +17500,7 @@
   },
   {
     "twitter_id_str": "910487328627535872",
-    "twitter_id": 910487328627535872,
+    "twitter_id": 910487328627535900,
     "twitter_name": "London Northwestern Railway",
     "twitter_screen_name": "LNRailway",
     "companyName": "LONDON AND NORTH WESTERN RAILWAY COMPANY LIMITED",
