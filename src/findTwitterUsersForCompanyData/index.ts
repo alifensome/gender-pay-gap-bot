@@ -83,6 +83,7 @@ async function run() {
 
             foundCompanies.push({
               twitter_id: user.id,
+              twitter_id_str: user.id_str,
               twitter_name: user.name,
               twitter_screen_name: user.screen_name,
               companyName: company.companyName,
