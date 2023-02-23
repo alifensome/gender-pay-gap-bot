@@ -39,6 +39,10 @@ async function run() {
       console.log(`${(index / dataToFix.length) * 100}%`);
     }
     const row = dataToFix[index];
+    // unprocessable item
+    if (!row.twitter_id_str && !row.twitter_id && !row.twitter_screen_name) {
+      throw new Error(`unprocessable row: ${JSON.stringify(row)}`);
+    }
     if (row.twitter_id_str && row.twitter_screen_name) {
       newCompanyData.push(row);
       continue;
@@ -95,8 +99,10 @@ async function run() {
   console.log(numberOfErrors);
   await writeJsonFile(path, newCompanyData);
   console.log(
-    `Number of items: ${newCompanyData}. Number of errors:${numberOfErrors}.`
+    `Number of items: ${newCompanyData.length}. Number of errors:${numberOfErrors}.`
   );
+  console.log("exiting...");
+  process.exit(0);
 }
 
 run();
