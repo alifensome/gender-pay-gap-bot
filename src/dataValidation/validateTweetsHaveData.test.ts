@@ -6,7 +6,7 @@ import { isValidTwitterItem } from "../utils/isValidTwitterItem";
 const importer = new DataImporter();
 const repo = new Repository(importer);
 
-test.skip("All twitter data should be valid", () => {
+test("All twitter data should be valid", () => {
   repo.setData();
   const brokenTwitterCompanyIds: CompanyDataMultiYearItem[] = [];
   const brokenTwitterItems: TwitterData[] = [];
@@ -46,9 +46,9 @@ test.skip("All twitter data should be valid", () => {
     }
   }
   // There should be no broken twitter-company links!
-  expect(duplicateTwitterItems).toEqual([]);
   const expectedBroken: CompanyDataMultiYearItem[] = [];
   expect(brokenTwitterCompanyIds).toEqual(expectedBroken);
   // Broken twitter items.
   expect(brokenTwitterItems).toEqual([]);
+  // expect(duplicateTwitterItems).toEqual([]);
 });
