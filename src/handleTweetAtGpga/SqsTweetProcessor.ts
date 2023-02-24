@@ -3,42 +3,31 @@ import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 import { CopyWriter } from "../copyWriter/CopyWriter";
-
-interface ProcessInput {
-  twitterUserId: string;
-  tweetId: string;
-  screenName: string;
-}
+import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
   logger: Logger;
   repository: Repository;
-  minGPG: number | null;
   copyWriter: CopyWriter;
 
-  constructor(
-    twitterClient: TwitterClient,
-    repo: Repository,
-    minGPG: number | null
-  ) {
+  constructor(twitterClient: TwitterClient, repo: Repository) {
     this.twitterClient = twitterClient;
     this.logger = new Logger({ name: "TweetAtGpgaSqsTweetProcessor" });
     this.repository = repo;
-    this.minGPG = minGPG;
     this.copyWriter = new CopyWriter();
   }
 
-  async process({ twitterUserId, tweetId, screenName }: ProcessInput) {
+  async process(input: HandleIncomingTweetInput) {
     try {
       // TODO decide if its relevant / parsable.
       this.logger.info(
         JSON.stringify({
           message: "processing sqs record",
           eventType: "processingRecordTweetAtGpga",
-          twitterUserId,
-          tweetId,
-          screenName,
+          twitterUserId: input.twitterUserId,
+          tweetId: input.tweetId,
+          screenName: input.screenName,
         })
       );
 
@@ -49,51 +38,33 @@ export class SqsTweetProcessor {
       // if parsable
 
       // get company(s) by name
-      const data = this.repository.getGpgForTwitterId(twitterUserId);
-      if (!data || !data.companyData) {
-        this.logger.error(
-          JSON.stringify({
-            message: "error finding company",
-            eventType: "errorGettingCompany",
-            tweetId,
-            twitterUserId,
-            errorHandlingTweetAtGpga: 1,
-            screenName,
-          })
-        );
-        throw new Error(
-          `could not find company. TwitterUserId: ${twitterUserId}, ${screenName}`
-        );
-      }
+      // const data = this.repository.getGpgForTwitterId(twitterUserId);
+      // if (!data || !data.companyData) {
+      //   this.logger.error(
+      //     JSON.stringify({
+      //       message: "error finding company",
+      //       eventType: "errorGettingCompany",
+      //       tweetId,
+      //       twitterUserId,
+      //       errorHandlingTweetAtGpga: 1,
+      //       screenName,
+      //     })
+      //   );
+      //   throw new Error(
+      //     `could not find company. TwitterUserId: ${twitterUserId}, ${screenName}`
+      //   );
+      // }
 
       // build copy and stuff
 
-      const mostRecentGPG = getMostRecentMedianGPGOrThrow(data.companyData);
-      if (this.minGPG !== null && mostRecentGPG < this.minGPG) {
-        this.logger.info(
-          JSON.stringify({
-            message: "skipped",
-            eventType: "skipTweet",
-            tweetId,
-            twitterUserId,
-            screenName,
-            companyName: data.companyData.companyName,
-            tempSkip: 1,
-          })
-        );
-        throw new Error("SKIP for now.");
-      }
+      // const mostRecentGPG = getMostRecentMedianGPGOrThrow(data.companyData);
 
-      const copy =
-        this.copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation(
-          data.companyData
-        );
+      // const copy =
+      //   this.copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation(
+      //     data.companyData
+      //   );
 
-      this.logger.info("would have tweeted:", {
-        copy,
-        twitter_screen_name: data.twitterData.twitter_screen_name,
-        tweetId,
-      });
+      this.logger.info("would have tweeted for input:", input);
       // TODO reply to the tweet rather than quote tweeting.
 
       // await this.twitterClient.quoteTweet(
@@ -105,10 +76,10 @@ export class SqsTweetProcessor {
         JSON.stringify({
           message: "sent tweet in reply to tweeting at gpga",
           eventType: "sentTweetReplyToTweetingAtGpga",
-          tweetId,
-          twitterUserId,
-          screenName,
-          companyName: data.companyData.companyName,
+          tweetId: input.tweetId,
+          twitterUserId: input.twitterUserId,
+          screenName: input.screenName,
+          // companyName: data.companyData.companyName,
           successfullySentTweet: 1,
         })
       );
@@ -117,10 +88,10 @@ export class SqsTweetProcessor {
         JSON.stringify({
           message: "error sending tweet",
           eventType: "errorHandlingTweetAtGpga",
-          tweetId,
-          twitterUserId,
+          tweetId: input.tweetId,
+          twitterUserId: input.twitterUserId,
+          screenName: input.screenName,
           errorHandlingTweetAtGpga: 1,
-          screenName,
         })
       );
       throw error;
