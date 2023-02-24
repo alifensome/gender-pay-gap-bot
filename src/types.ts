@@ -1,9 +1,11 @@
+import { BasicCompanyInfo } from "./read/combineDataSets/types";
+
 export type CompanyNumber = string | null; // Company Number can be null for some government bodies, health and education.
 
 // TODO make this type more dynamic, or remember to update it every year.
 export interface CompanyDataMultiYearItem {
   companyName: string;
-  companyNumber: CompanyNumber
+  companyNumber: CompanyNumber;
   sicCodes: string;
   data2022To2023: CompanyDataSingleYearItem | null;
   data2021To2022: CompanyDataSingleYearItem | null;
@@ -36,6 +38,7 @@ export interface TwitterData {
   twitter_screen_name: string;
   companyName: string;
   companyNumber: string | null;
+  duplicateCompanies?: BasicCompanyInfo[];
 }
 
 // TODO deprecate this and use union type.

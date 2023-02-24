@@ -43,6 +43,8 @@ export async function findUserByName(
     count: 10,
     q: searchName,
   });
+  // TODO often the first result is actually correct.
+  //I should take this into account when returning the result.
   for (let index = 0; index < users.length; index++) {
     const u = users[index];
 

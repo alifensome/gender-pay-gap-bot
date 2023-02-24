@@ -50,5 +50,5 @@ test("All twitter data should be valid", () => {
   expect(brokenTwitterCompanyIds).toEqual(expectedBroken);
   // Broken twitter items.
   expect(brokenTwitterItems).toEqual([]);
-  // expect(duplicateTwitterItems).toEqual([]);
+  expect(duplicateTwitterItems).toEqual([]);
 });

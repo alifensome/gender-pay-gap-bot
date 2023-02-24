@@ -130,16 +130,14 @@
     "twitter_id": 191781601,
     "twitter_name": "Barclays Bank",
     "twitter_screen_name": "Barclays",
-    "companyName": "BARCLAYS BANK PLC",
-    "companyNumber": "01026167"
-  },
-  {
-    "twitter_id_str": "191781601",
-    "twitter_id": 191781601,
-    "twitter_name": "Barclays Bank",
-    "twitter_screen_name": "Barclays",
     "companyName": "BARCLAYS BANK UK PLC",
-    "companyNumber": "09740322"
+    "companyNumber": "09740322",
+    "duplicateCompanies": [
+      {
+        "companyName": "BARCLAYS BANK PLC",
+        "companyNumber": "01026167"
+      }
+    ]
   },
   {
     "twitter_id_str": "17192371",
@@ -581,14 +579,7 @@
     "companyName": "HORIZON ACADEMY TRUST",
     "companyNumber": "08411590"
   },
-  {
-    "twitter_id_str": "467368287",
-    "twitter_id": 467368287,
-    "twitter_name": "HSBC",
-    "twitter_screen_name": "HSBC",
-    "companyName": "HSBC UK BANK PLC",
-    "companyNumber": "09928412"
-  },
+
   {
     "twitter_id_str": "105171742",
     "twitter_id": 105171742,
@@ -1011,7 +1002,13 @@
     "twitter_name": "One YMCA",
     "twitter_screen_name": "oneymca",
     "companyName": "ONE YMCA",
-    "companyNumber": "04430743"
+    "companyNumber": "04430743",
+    "duplicateCompanies": [
+      {
+        "companyName": "ONE YMCA ",
+        "companyNumber": "04430743"
+      }
+    ]
   },
   {
     "twitter_id_str": "1722006002",
@@ -1109,14 +1106,7 @@
     "companyName": "Registers of Scotland",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "143047334",
-    "twitter_id": 143047334,
-    "twitter_name": "Royal Agricultural University",
-    "twitter_screen_name": "RoyalAgUni",
-    "companyName": "ROYAL AGRICULTURAL UNIVERSITY",
-    "companyNumber": "00099168"
-  },
+
   {
     "twitter_id_str": "41125613",
     "twitter_id": 41125613,
@@ -1219,15 +1209,13 @@
     "twitter_name": "SSE Plc",
     "twitter_screen_name": "SSE",
     "companyName": "SSE PLC",
-    "companyNumber": "SC117119"
-  },
-  {
-    "twitter_id_str": "67342845",
-    "twitter_id": 67342845,
-    "twitter_name": "SSE Plc",
-    "twitter_screen_name": "SSE",
-    "companyName": "SSE SERVICES PLC",
-    "companyNumber": "02366879"
+    "companyNumber": "SC117119",
+    "duplicateCompanies": [
+      {
+        "companyName": "SSE SERVICES PLC",
+        "companyNumber": "02366879"
+      }
+    ]
   },
   {
     "twitter_id_str": "340306281",
@@ -1515,7 +1503,13 @@
     "twitter_name": "Wirral Community Health&Care NHS Foundation Trust",
     "twitter_screen_name": "wchc_nhs",
     "companyName": "Wirral Community Health and Care NHS Foundation Trust",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "companyName": "Wirral Community NHS Foundation Trust",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "22907406",
@@ -1611,7 +1605,13 @@
     "twitter_name": "Active Luton",
     "twitter_screen_name": "ActiveLuton",
     "companyName": "ACTIVE LUTON",
-    "companyNumber": "05458934"
+    "companyNumber": "05458934",
+    "duplicateCompanies": [
+      {
+        "companyName": "ACTIVE LUTON ",
+        "companyNumber": "05458934"
+      }
+    ]
   },
   {
     "twitter_id_str": "765128145926234112",
@@ -1974,10 +1974,9 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "34042766",
-    "twitter_id": 34042766,
-    "twitter_name": "McKinsey & Company",
-    "twitter_screen_name": "McKinsey",
+    "twitter_id_str": "65381936",
+    "twitter_name": "Bain & Company",
+    "twitter_screen_name": "BainAlerts",
     "companyName": "BAIN & COMPANY INC. UNITED KINGDOM",
     "companyNumber": "FC014328"
   },
@@ -2307,7 +2306,13 @@
     "twitter_name": "Bournemouth & Poole College",
     "twitter_screen_name": "BPCollege",
     "companyName": "Bournemouth & Poole College",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "companyName": "Bournemouth Poole College Further Education",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "281095551",
@@ -2891,7 +2896,13 @@
     "twitter_name": "Chest Heart & Stroke Scotland",
     "twitter_screen_name": "CHSScotland",
     "companyName": "CHEST HEART & STROKE SCOTLAND LTD",
-    "companyNumber": "SC129114"
+    "companyNumber": "SC129114",
+    "duplicateCompanies": [
+      {
+        "companyName": "CHEST HEART & STROKE SCOTLAND  LTD",
+        "companyNumber": "SC129114"
+      }
+    ]
   },
   {
     "twitter_id_str": "312690506",
@@ -3187,15 +3198,17 @@
     "twitter_name": "Credit Suisse",
     "twitter_screen_name": "CreditSuisse",
     "companyName": "CREDIT SUISSE (UK) LIMITED",
-    "companyNumber": "02009520"
-  },
-  {
-    "twitter_id_str": "84281104",
-    "twitter_id": 84281104,
-    "twitter_name": "Credit Suisse",
-    "twitter_screen_name": "CreditSuisse",
-    "companyName": "CREDIT SUISSE INTERNATIONAL",
-    "companyNumber": "02500199"
+    "companyNumber": "02009520",
+    "duplicateCompanies": [
+      {
+        "companyName": "CREDIT SUISSE INTERNATIONAL",
+        "companyNumber": "02500199"
+      },
+      {
+        "companyName": "CREDIT SUISSE SECURITIES (EUROPE) LIMITED",
+        "companyNumber": "00891554"
+      }
+    ]
   },
   {
     "twitter_id_str": "95204203",
@@ -3459,15 +3472,13 @@
     "twitter_name": "Dyson",
     "twitter_screen_name": "Dyson",
     "companyName": "DYSON LIMITED",
-    "companyNumber": "02627406"
-  },
-  {
-    "twitter_id_str": "1410302630",
-    "twitter_id": 1410302630,
-    "twitter_name": "Dyson",
-    "twitter_screen_name": "Dyson",
-    "companyName": "DYSON TECHNOLOGY LIMITED",
-    "companyNumber": "01959090"
+    "companyNumber": "02627406",
+    "duplicateCompanies": [
+      {
+        "companyName": "DYSON TECHNOLOGY LIMITED",
+        "companyNumber": "01959090"
+      }
+    ]
   },
   {
     "twitter_id_str": "87661524",
@@ -4283,7 +4294,13 @@
     "twitter_name": "Health and Safety Executive",
     "twitter_screen_name": "H_S_E",
     "companyName": "Health and Safety Executive",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "companyName": "Health & Safety Executive",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "729993874874208256",
@@ -4459,15 +4476,17 @@
     "twitter_name": "HSBC",
     "twitter_screen_name": "HSBC",
     "companyName": "HSBC Bank PLC",
-    "companyNumber": "00014259"
-  },
-  {
-    "twitter_id_str": "467368287",
-    "twitter_id": 467368287,
-    "twitter_name": "HSBC",
-    "twitter_screen_name": "HSBC",
-    "companyName": "HSBC PRIVATE BANK (UK) LIMITED",
-    "companyNumber": "00499482"
+    "companyNumber": "00014259",
+    "duplicateCompanies": [
+      {
+        "companyName": "HSBC PRIVATE BANK (UK) LIMITED",
+        "companyNumber": "00499482"
+      },
+      {
+        "companyName": "HSBC UK BANK PLC",
+        "companyNumber": "09928412"
+      }
+    ]
   },
   {
     "twitter_id_str": "60907090",
@@ -4531,7 +4550,13 @@
     "twitter_name": "Hyperoptic",
     "twitter_screen_name": "Hyperoptic",
     "companyName": "HYPEROPTIC LTD",
-    "companyNumber": "07222543"
+    "companyNumber": "07222543",
+    "duplicateCompanies": [
+      {
+        "companyName": "HYPEROPTIC  LTD",
+        "companyNumber": "07222543"
+      }
+    ]
   },
   {
     "twitter_id_str": "15353955",
@@ -4643,7 +4668,13 @@
     "twitter_name": "Jewish Care",
     "twitter_screen_name": "Jewish_Care",
     "companyName": "JEWISH CARE",
-    "companyNumber": "02447900"
+    "companyNumber": "02447900",
+    "duplicateCompanies": [
+      {
+        "companyName": "JEWISH CARE ",
+        "companyNumber": "02447900"
+      }
+    ]
   },
   {
     "twitter_id_str": "18829580",
@@ -4683,7 +4714,13 @@
     "twitter_name": "JTL",
     "twitter_screen_name": "JTLTraining",
     "companyName": "JTL",
-    "companyNumber": "03958541"
+    "companyNumber": "03958541",
+    "duplicateCompanies": [
+      {
+        "companyName": "JTL ",
+        "companyNumber": "03958541"
+      }
+    ]
   },
   {
     "twitter_id_str": "887269137969557504",
@@ -5278,10 +5315,9 @@
     "companyNumber": "RC000338"
   },
   {
-    "twitter_id_str": "20049651",
-    "twitter_id": 20049651,
-    "twitter_name": "Salford City Council",
-    "twitter_screen_name": "SalfordCouncil",
+    "twitter_id_str": "26461381",
+    "twitter_name": "Manchester City Council",
+    "twitter_screen_name": "ManCityCouncil",
     "companyName": "Manchester City Council",
     "companyNumber": null
   },
@@ -5355,7 +5391,8 @@
     "twitter_name": "McKinsey & Company",
     "twitter_screen_name": "McKinsey",
     "companyName": "MCKINSEY & COMPANY, INC. UNITED KINGDOM",
-    "companyNumber": "BR002227"
+    "companyNumber": "BR002227",
+    "duplicateCompanies": []
   },
   {
     "twitter_id_str": "17973642",
@@ -5595,15 +5632,13 @@
     "twitter_name": "mothercare",
     "twitter_screen_name": "mothercareuk",
     "companyName": "MOTHERCARE PLC.",
-    "companyNumber": "01950509"
-  },
-  {
-    "twitter_id_str": "31407388",
-    "twitter_id": 31407388,
-    "twitter_name": "mothercare",
-    "twitter_screen_name": "mothercareuk",
-    "companyName": "MOTHERCARE UK LIMITED",
-    "companyNumber": "00533087"
+    "companyNumber": "01950509",
+    "duplicateCompanies": [
+      {
+        "companyName": "MOTHERCARE UK LIMITED",
+        "companyNumber": "00533087"
+      }
+    ]
   },
   {
     "twitter_id_str": "148126543",
@@ -5643,7 +5678,14 @@
     "twitter_name": "National Education Union",
     "twitter_screen_name": "NEUnion",
     "companyName": "National Education Union",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "twitter_screen_name": "NEUnion",
+        "companyName": "National Union of Teachers",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "102684774",
@@ -5891,7 +5933,17 @@
     "twitter_name": "Nottingham College",
     "twitter_screen_name": "NottmCollege",
     "companyName": "Nottingham College",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "companyName": "New College Nottingham",
+        "companyNumber": null
+      },
+      {
+        "companyName": "Central College Nottingham",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "45827920",
@@ -6021,14 +6073,7 @@
     "companyName": "OLLECO",
     "companyNumber": "05878742"
   },
-  {
-    "twitter_id_str": "1005808738631110656",
-    "twitter_id": 1005808738631110700,
-    "twitter_name": "One YMCA",
-    "twitter_screen_name": "oneymca",
-    "companyName": "ONE YMCA ",
-    "companyNumber": "04430743"
-  },
+
   {
     "twitter_id_str": "3110071023",
     "twitter_id": 3110071023,
@@ -6602,8 +6647,14 @@
     "twitter_id": 143047334,
     "twitter_name": "Royal Agricultural University",
     "twitter_screen_name": "RoyalAgUni",
-    "companyName": "ROYAL AGRICULTURAL UNIVERSITY ",
-    "companyNumber": "00099168"
+    "companyName": "ROYAL AGRICULTURAL UNIVERSITY",
+    "companyNumber": "00099168",
+    "duplicateCompanies": [
+      {
+        "companyName": "ROYAL AGRICULTURAL UNIVERSITY ",
+        "companyNumber": "00099168"
+      }
+    ]
   },
   {
     "twitter_id_str": "837457969",
@@ -6699,7 +6750,13 @@
     "twitter_name": "Royal Surrey",
     "twitter_screen_name": "RoyalSurrey",
     "companyName": "Royal Surrey County NHS Foundation Trust",
-    "companyNumber": "581R2276"
+    "companyNumber": "581R2276",
+    "duplicateCompanies": [
+      {
+        "companyName": "Royal Surrey County Hospital",
+        "companyNumber": "581R2276"
+      }
+    ]
   },
   {
     "twitter_id_str": "20692386",
@@ -6867,7 +6924,13 @@
     "twitter_name": "Sheldon School",
     "twitter_screen_name": "sheldonschool",
     "companyName": "SHELDON SCHOOL",
-    "companyNumber": "07556236"
+    "companyNumber": "07556236",
+    "duplicateCompanies": [
+      {
+        "companyName": "SHELDON SCHOOL ",
+        "companyNumber": "07556236"
+      }
+    ]
   },
   {
     "twitter_id_str": "314541668",
@@ -7067,7 +7130,13 @@
     "twitter_name": "South Downs Leisure",
     "twitter_screen_name": "SDownsLeisure",
     "companyName": "SOUTH DOWNS LEISURE",
-    "companyNumber": "09204269"
+    "companyNumber": "09204269",
+    "duplicateCompanies": [
+      {
+        "companyName": "SOUTH DOWNS LEISURE ",
+        "companyNumber": "09204269"
+      }
+    ]
   },
   {
     "twitter_id_str": "222387259",
@@ -7267,7 +7336,13 @@
     "twitter_name": "St Joseph's services",
     "twitter_screen_name": "joseph_sevices",
     "companyName": "ST JOSEPH'S SERVICES",
-    "companyNumber": "SC500182"
+    "companyNumber": "SC500182",
+    "duplicateCompanies": [
+      {
+        "companyName": "ST JOSEPH'S SERVICES ",
+        "companyNumber": "SC500182"
+      }
+    ]
   },
   {
     "twitter_id_str": "1693865808",
@@ -7387,7 +7462,13 @@
     "twitter_name": "Stockport Grammar",
     "twitter_screen_name": "stockportgs",
     "companyName": "STOCKPORT GRAMMAR SCHOOL",
-    "companyNumber": "06261525"
+    "companyNumber": "06261525",
+    "duplicateCompanies": [
+      {
+        "companyName": "STOCKPORT GRAMMAR SCHOOL ",
+        "companyNumber": "06261525"
+      }
+    ]
   },
   {
     "twitter_id_str": "36929721",
@@ -7859,7 +7940,13 @@
     "twitter_name": "The Fremantle Trust",
     "twitter_screen_name": "FremantleTrust",
     "companyName": "THE FREMANTLE TRUST",
-    "companyNumber": "02722437"
+    "companyNumber": "02722437",
+    "duplicateCompanies": [
+      {
+        "companyName": "THE FREMANTLE TRUST ",
+        "companyNumber": "02722437"
+      }
+    ]
   },
   {
     "twitter_id_str": "1321211966900285443",
@@ -7867,7 +7954,13 @@
     "twitter_name": "The Galaxy Trust",
     "twitter_screen_name": "thegalaxytrust",
     "companyName": "THE GALAXY TRUST",
-    "companyNumber": "10250958"
+    "companyNumber": "10250958",
+    "duplicateCompanies": [
+      {
+        "companyName": "THE GALAXY TRUST ",
+        "companyNumber": "10250958"
+      }
+    ]
   },
   {
     "twitter_id_str": "917021534",
@@ -7891,7 +7984,13 @@
     "twitter_name": "The Investment Association",
     "twitter_screen_name": "InvAssoc",
     "companyName": "THE INVESTMENT ASSOCIATION",
-    "companyNumber": "04343737"
+    "companyNumber": "04343737",
+    "duplicateCompanies": [
+      {
+        "companyName": "THE INVESTMENT ASSOCIATION ",
+        "companyNumber": "04343737"
+      }
+    ]
   },
   {
     "twitter_id_str": "1729854650",
@@ -8371,7 +8470,13 @@
     "twitter_name": "UBS",
     "twitter_screen_name": "UBS",
     "companyName": "UBS AG",
-    "companyNumber": "FC021146"
+    "companyNumber": "FC021146",
+    "duplicateCompanies": [
+      {
+        "companyName": "UBS AG ",
+        "companyNumber": "FC021146"
+      }
+    ]
   },
   {
     "twitter_id_str": "322601789",
@@ -8667,7 +8772,13 @@
     "twitter_name": "Uni of Reading",
     "twitter_screen_name": "UniofReading",
     "companyName": "UNIVERSITY OF READING",
-    "companyNumber": "RC000665"
+    "companyNumber": "RC000665",
+    "duplicateCompanies": [
+      {
+        "companyName": "The University of Reading",
+        "companyNumber": "RC000665"
+      }
+    ]
   },
   {
     "twitter_id_str": "19341622",
@@ -8691,7 +8802,13 @@
     "twitter_name": "University of Southampton",
     "twitter_screen_name": "unisouthampton",
     "companyName": "University of Southampton",
-    "companyNumber": null
+    "companyNumber": null,
+    "duplicateCompanies": [
+      {
+        "companyName": "University of Southampton ",
+        "companyNumber": null
+      }
+    ]
   },
   {
     "twitter_id_str": "36966062",
@@ -8718,10 +8835,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "60642183",
-    "twitter_id": 60642183,
-    "twitter_name": "University of Exeter",
-    "twitter_screen_name": "UniofExeter",
+    "twitter_id_str": "51018268",
+    "twitter_id": 51018268,
+    "twitter_name": "UWE Bristol",
+    "twitter_screen_name": "UWEBristol",
     "companyName": "University of the West of England",
     "companyNumber": null
   },
@@ -9165,14 +9282,7 @@
     "companyName": "WIPRO LIMITED",
     "companyNumber": "BR003334"
   },
-  {
-    "twitter_id_str": "2152897284",
-    "twitter_id": 2152897284,
-    "twitter_name": "Wirral Community Health&Care NHS Foundation Trust",
-    "twitter_screen_name": "wchc_nhs",
-    "companyName": "Wirral Community NHS Foundation Trust",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "162018121",
     "twitter_id": 162018121,
@@ -9412,14 +9522,6 @@
     "twitter_screen_name": "actnforchildren",
     "companyName": "Action For Children",
     "companyNumber": "04764232"
-  },
-  {
-    "twitter_id_str": "399356790",
-    "twitter_id": 399356790,
-    "twitter_name": "Active Luton",
-    "twitter_screen_name": "ActiveLuton",
-    "companyName": "ACTIVE LUTON ",
-    "companyNumber": "05458934"
   },
   {
     "twitter_id_str": "93837626",
@@ -9691,7 +9793,13 @@
     "twitter_name": "Aston Services Group",
     "twitter_screen_name": "AstonServicesG",
     "companyName": "ASTON SERVICES GROUP LTD",
-    "companyNumber": "00909852"
+    "companyNumber": "00909852",
+    "duplicateCompanies": [
+      {
+        "companyName": "aston services group",
+        "companyNumber": "00909852"
+      }
+    ]
   },
   {
     "twitter_id_str": "4008552117",
@@ -9836,14 +9944,6 @@
     "twitter_screen_name": "barburtweeto",
     "companyName": "BARBURRITO LIMITED",
     "companyNumber": "04565665"
-  },
-  {
-    "twitter_id_str": "191781601",
-    "twitter_id": 191781601,
-    "twitter_name": "Barclays Bank",
-    "twitter_screen_name": "Barclays",
-    "companyName": "Barclays Bank PLC",
-    "companyNumber": "01026167"
   },
   {
     "twitter_id_str": "116398569",
@@ -10109,14 +10209,7 @@
     "companyName": "Bourne Education Trust",
     "companyNumber": "07768726"
   },
-  {
-    "twitter_id_str": "33296824",
-    "twitter_id": 33296824,
-    "twitter_name": "Bournemouth & Poole College",
-    "twitter_screen_name": "BPCollege",
-    "companyName": "Bournemouth Poole College Further Education",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "478633953",
     "twitter_id": 478633953,
@@ -10195,7 +10288,13 @@
     "twitter_name": "British Airways",
     "twitter_screen_name": "British_Airways",
     "companyName": "BRITISH AIRWAYS PLC",
-    "companyNumber": "01777777"
+    "companyNumber": "01777777",
+    "duplicateCompanies": [
+      {
+        "companyName": "BRITISH AIRWAYS HOLIDAYS LIMITED",
+        "companyNumber": "00554278"
+      }
+    ]
   },
   {
     "twitter_id_str": "7400692",
@@ -10525,14 +10624,7 @@
     "companyName": "Cheltenham Ladies' College",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "26509054",
-    "twitter_id": 26509054,
-    "twitter_name": "Chest Heart & Stroke Scotland",
-    "twitter_screen_name": "CHSScotland",
-    "companyName": "CHEST HEART & STROKE SCOTLAND  LTD",
-    "companyNumber": "SC129114"
-  },
+
   {
     "twitter_id_str": "255925684",
     "twitter_id": 255925684,
@@ -10813,22 +10905,7 @@
     "companyName": "Creative Education Trust",
     "companyNumber": "07617529"
   },
-  {
-    "twitter_id_str": "84281104",
-    "twitter_id": 84281104,
-    "twitter_name": "Credit Suisse",
-    "twitter_screen_name": "CreditSuisse",
-    "companyName": "Credit Suisse International",
-    "companyNumber": "02500199"
-  },
-  {
-    "twitter_id_str": "84281104",
-    "twitter_id": 84281104,
-    "twitter_name": "Credit Suisse",
-    "twitter_screen_name": "CreditSuisse",
-    "companyName": "CREDIT SUISSE SECURITIES (EUROPE) LIMITED",
-    "companyNumber": "00891554"
-  },
+
   {
     "twitter_id_str": "837417492",
     "twitter_id": 837417492,
@@ -11781,14 +11858,7 @@
     "companyName": "Hbvb",
     "companyNumber": "08453545"
   },
-  {
-    "twitter_id_str": "44574039",
-    "twitter_id": 44574039,
-    "twitter_name": "Health and Safety Executive",
-    "twitter_screen_name": "H_S_E",
-    "companyName": "Health & Safety Executive",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "1147516243",
     "twitter_id": 1147516243,
@@ -11918,14 +11988,6 @@
     "companyNumber": "04295981"
   },
   {
-    "twitter_id_str": "465830293",
-    "twitter_id": 465830293,
-    "twitter_name": "Hull University Teaching Hospitals NHS Trust",
-    "twitter_screen_name": "HullHospitals",
-    "companyName": "Hull and East Yorkshire Hospitals NHS Trust",
-    "companyNumber": null
-  },
-  {
     "twitter_id_str": "135502751",
     "twitter_id": 135502751,
     "twitter_name": "Humberside Police",
@@ -11949,14 +12011,7 @@
     "companyName": "Hymans Robertson LLP",
     "companyNumber": "OC310282"
   },
-  {
-    "twitter_id_str": "297355059",
-    "twitter_id": 297355059,
-    "twitter_name": "Hyperoptic",
-    "twitter_screen_name": "Hyperoptic",
-    "companyName": "HYPEROPTIC  LTD",
-    "companyNumber": "07222543"
-  },
+
   {
     "twitter_id_str": "2994671745",
     "twitter_id": 2994671745,
@@ -12125,14 +12180,7 @@
     "companyName": "JESUS COLLEGE OXFORD",
     "companyNumber": "RC000284"
   },
-  {
-    "twitter_id_str": "78273435",
-    "twitter_id": 78273435,
-    "twitter_name": "Jewish Care",
-    "twitter_screen_name": "Jewish_Care",
-    "companyName": "JEWISH CARE ",
-    "companyNumber": "02447900"
-  },
+
   {
     "twitter_id_str": "18829580",
     "twitter_id": 18829580,
@@ -12188,14 +12236,6 @@
     "twitter_screen_name": "JoJoMamanBebe",
     "companyName": "Jojo Maman Bebe Ltd",
     "companyNumber": "02737508"
-  },
-  {
-    "twitter_id_str": "76906502",
-    "twitter_id": 76906502,
-    "twitter_name": "JTL",
-    "twitter_screen_name": "JTLTraining",
-    "companyName": "JTL ",
-    "companyNumber": "03958541"
   },
   {
     "twitter_id_str": "407757254",
@@ -13827,7 +13867,13 @@
     "twitter_name": "Rowans Hospice",
     "twitter_screen_name": "RowansHospice",
     "companyName": "ROWANS HOSPICE",
-    "companyNumber": "02275068"
+    "companyNumber": "02275068",
+    "duplicateCompanies": [
+      {
+        "companyName": "THE ROWANS HOSPICE",
+        "companyNumber": "02275068"
+      }
+    ]
   },
   {
     "twitter_id_str": "160872117",
@@ -13877,14 +13923,7 @@
     "companyName": "Royal Society Of Chemistry (The)",
     "companyNumber": "RC000524"
   },
-  {
-    "twitter_id_str": "22945554",
-    "twitter_id": 22945554,
-    "twitter_name": "Royal Surrey",
-    "twitter_screen_name": "RoyalSurrey",
-    "companyName": "Royal Surrey County Hospital",
-    "companyNumber": "581R2276"
-  },
+
   {
     "twitter_id_str": "1136745128",
     "twitter_id": 1136745128,
@@ -14117,14 +14156,7 @@
     "companyName": "Sharnbrook Academy Federation",
     "companyNumber": "07500018"
   },
-  {
-    "twitter_id_str": "837425582",
-    "twitter_id": 837425582,
-    "twitter_name": "Sheldon School",
-    "twitter_screen_name": "sheldonschool",
-    "companyName": "SHELDON SCHOOL ",
-    "companyNumber": "07556236"
-  },
+
   {
     "twitter_id_str": "1562762988",
     "twitter_id": 1562762988,
@@ -14245,14 +14277,7 @@
     "companyName": "South Bank Multi Academy Trust",
     "companyNumber": "10067116"
   },
-  {
-    "twitter_id_str": "1226244882",
-    "twitter_id": 1226244882,
-    "twitter_name": "South Downs Leisure",
-    "twitter_screen_name": "SDownsLeisure",
-    "companyName": "SOUTH DOWNS LEISURE ",
-    "companyNumber": "09204269"
-  },
+
   {
     "twitter_id_str": "29690793",
     "twitter_id": 29690793,
@@ -14390,14 +14415,6 @@
     "companyNumber": "03303549"
   },
   {
-    "twitter_id_str": "1213407251920117760",
-    "twitter_id": 1213407251920117800,
-    "twitter_name": "St Joseph's services",
-    "twitter_screen_name": "joseph_sevices",
-    "companyName": "ST JOSEPH'S SERVICES ",
-    "companyNumber": "SC500182"
-  },
-  {
     "twitter_id_str": "41342369",
     "twitter_id": 41342369,
     "twitter_name": "St Mary's University",
@@ -14477,14 +14494,7 @@
     "companyName": "Stewarts Law LLP",
     "companyNumber": "OC329883"
   },
-  {
-    "twitter_id_str": "25078850",
-    "twitter_id": 25078850,
-    "twitter_name": "Stockport Grammar",
-    "twitter_screen_name": "stockportgs",
-    "companyName": "STOCKPORT GRAMMAR SCHOOL ",
-    "companyNumber": "06261525"
-  },
+
   {
     "twitter_id_str": "254133117",
     "twitter_id": 254133117,
@@ -14859,7 +14869,13 @@
     "twitter_name": "The Faith & Belief Forum",
     "twitter_screen_name": "faithbelieforum",
     "companyName": "THE FAITH & BELIEF FORUM",
-    "companyNumber": "CE011036"
+    "companyNumber": "CE011036",
+    "duplicateCompanies": [
+      {
+        "companyName": "THE FAITH & BELIEF FORUM ",
+        "companyNumber": "CE011036"
+      }
+    ]
   },
   {
     "twitter_id_str": "938705153108185089",
@@ -14869,22 +14885,7 @@
     "companyName": "The Fallibroome Trust",
     "companyNumber": "07346144"
   },
-  {
-    "twitter_id_str": "1005906618",
-    "twitter_id": 1005906618,
-    "twitter_name": "The Fremantle Trust",
-    "twitter_screen_name": "FremantleTrust",
-    "companyName": "THE FREMANTLE TRUST ",
-    "companyNumber": "02722437"
-  },
-  {
-    "twitter_id_str": "1321211966900285443",
-    "twitter_id": 1321211966900285400,
-    "twitter_name": "The Galaxy Trust",
-    "twitter_screen_name": "thegalaxytrust",
-    "companyName": "THE GALAXY TRUST ",
-    "companyNumber": "10250958"
-  },
+
   {
     "twitter_id_str": "990946147974950912",
     "twitter_id": 990946147974950900,
@@ -14941,14 +14942,7 @@
     "companyName": "THE HOWARD ACADEMY TRUST",
     "companyNumber": "09175427"
   },
-  {
-    "twitter_id_str": "499940368",
-    "twitter_id": 499940368,
-    "twitter_name": "The Investment Association",
-    "twitter_screen_name": "InvAssoc",
-    "companyName": "THE INVESTMENT ASSOCIATION ",
-    "companyNumber": "04343737"
-  },
+
   {
     "twitter_id_str": "277389303",
     "twitter_id": 277389303,
@@ -15429,14 +15423,7 @@
     "companyName": "Tyco Electronics UK Ltd",
     "companyNumber": "00550926"
   },
-  {
-    "twitter_id_str": "38237581",
-    "twitter_id": 38237581,
-    "twitter_name": "UBS",
-    "twitter_screen_name": "UBS",
-    "companyName": "UBS AG ",
-    "companyNumber": "FC021146"
-  },
+
   {
     "twitter_id_str": "82853372",
     "twitter_id": 82853372,
@@ -15494,10 +15481,10 @@
     "companyNumber": "02366616"
   },
   {
-    "twitter_id_str": "49620271",
-    "twitter_id": 49620271,
-    "twitter_name": "Oxford Brookes University",
-    "twitter_screen_name": "oxford_brookes",
+    "twitter_id_str": "61444480",
+    "twitter_id": 61444480,
+    "twitter_name": "University College, Oxford (Univ)",
+    "twitter_screen_name": "UnivOxford",
     "companyName": "University College Oxford",
     "companyNumber": null
   },
@@ -15574,10 +15561,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "19341622",
-    "twitter_id": 19341622,
-    "twitter_name": "The University of Sheffield",
-    "twitter_screen_name": "sheffielduni",
+    "twitter_id_str": "14626381",
+    "twitter_id": 14626381,
+    "twitter_name": "SheffieldSU",
+    "twitter_screen_name": "SheffieldSU",
     "companyName": "University of Sheffield Union of Students",
     "companyNumber": null
   },
@@ -16205,14 +16192,7 @@
     "companyName": "Arts and Humanities Research Council",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "2711144145",
-    "twitter_id": 2711144145,
-    "twitter_name": "Aston Services Group",
-    "twitter_screen_name": "AstonServicesG",
-    "companyName": "aston services group",
-    "companyNumber": "00909852"
-  },
+
   {
     "twitter_id_str": "14224706",
     "twitter_id": 14224706,
@@ -16261,14 +16241,7 @@
     "companyName": "Carmel College",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "119443478",
-    "twitter_id": 119443478,
-    "twitter_name": "Nottingham College",
-    "twitter_screen_name": "NottmCollege",
-    "companyName": "Central College Nottingham",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "21996212",
     "twitter_id": 21996212,
@@ -16565,14 +16538,7 @@
     "companyName": "Moulton College",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "884369177368199168",
-    "twitter_id": 884369177368199200,
-    "twitter_name": "National Education Union",
-    "twitter_screen_name": "NEUnion",
-    "companyName": "National Union of Teachers",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "104849636",
     "twitter_id": 104849636,
@@ -16581,14 +16547,7 @@
     "companyName": "Natural Environment Research Council",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "119443478",
-    "twitter_id": 119443478,
-    "twitter_name": "Nottingham College",
-    "twitter_screen_name": "NottmCollege",
-    "companyName": "New College Nottingham",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "2789676871",
     "twitter_id": 2789676871,
@@ -16797,14 +16756,7 @@
     "companyName": "The Engineering And Physical Sciences Research Council",
     "companyNumber": "RC000708"
   },
-  {
-    "twitter_id_str": "24712679",
-    "twitter_id": 24712679,
-    "twitter_name": "The Faith & Belief Forum",
-    "twitter_screen_name": "faithbelieforum",
-    "companyName": "THE FAITH & BELIEF FORUM ",
-    "companyNumber": "CE011036"
-  },
+
   {
     "twitter_id_str": "154090001",
     "twitter_id": 154090001,
@@ -16813,14 +16765,7 @@
     "companyName": "The Heritage Automotive Ltd.",
     "companyNumber": "01660430"
   },
-  {
-    "twitter_id_str": "196083432",
-    "twitter_id": 196083432,
-    "twitter_name": "Rowans Hospice",
-    "twitter_screen_name": "RowansHospice",
-    "companyName": "THE ROWANS HOSPICE",
-    "companyNumber": "02275068"
-  },
+
   {
     "twitter_id_str": "38673476",
     "twitter_id": 38673476,
@@ -16829,14 +16774,7 @@
     "companyName": "The University of Brighton",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "59142515",
-    "twitter_id": 59142515,
-    "twitter_name": "Uni of Reading",
-    "twitter_screen_name": "UniofReading",
-    "companyName": "The University of Reading",
-    "companyNumber": "RC000665"
-  },
+
   {
     "twitter_id_str": "851292919",
     "twitter_id": 851292919,
@@ -16877,14 +16815,7 @@
     "companyName": "UNIVERSITY OF MANCHESTER STUDENTS' UNION ",
     "companyNumber": "07759820"
   },
-  {
-    "twitter_id_str": "26203004",
-    "twitter_id": 26203004,
-    "twitter_name": "University of Southampton",
-    "twitter_screen_name": "unisouthampton",
-    "companyName": "University of Southampton ",
-    "companyNumber": null
-  },
+
   {
     "twitter_id_str": "21000110",
     "twitter_id": 21000110,
@@ -17240,14 +17171,7 @@
     "companyName": "Department, for Environment, Food and Rural Affairs",
     "companyNumber": null
   },
-  {
-    "twitter_id_str": "18332190",
-    "twitter_id": 18332190,
-    "twitter_name": "British_Airways",
-    "twitter_screen_name": "British_Airways",
-    "companyName": "BRITISH AIRWAYS HOLIDAYS LIMITED",
-    "companyNumber": "00554278"
-  },
+
   {
     "twitter_id_str": "66985285",
     "twitter_id": 66985285,
