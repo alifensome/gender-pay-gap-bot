@@ -15,15 +15,18 @@ export class IncomingTweetListenerQueuer {
   logger: Logger;
   dataImporter: DataImporter;
   repository: Repository;
+  sqsClientTweetAtGpga: SqsClient;
   constructor(
     twitterClient: TwitterClient,
     sqsClient: SqsClient,
+    sqsClientTweetAtGpga: SqsClient,
     dataImporter: DataImporter,
     repository: Repository,
     logger: Logger
   ) {
     this.twitterClient = twitterClient;
     this.sqsClient = sqsClient;
+    this.sqsClientTweetAtGpga = sqsClientTweetAtGpga;
     this.dataImporter = dataImporter;
     this.repository = repository;
     this.logger = logger;
@@ -114,7 +117,7 @@ export class IncomingTweetListenerQueuer {
     }
 
     // Queue the message to a new queue
-    // await this.sqsClient.queueMessage(input);
+    await this.sqsClientTweetAtGpga.queueMessage(input);
 
     this.logger.info(
       JSON.stringify({

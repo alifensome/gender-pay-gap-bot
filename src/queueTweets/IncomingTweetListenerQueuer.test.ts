@@ -15,6 +15,9 @@ describe("IncomingTweetListenerQueuer", () => {
   const mockSqsClient = {
     queueMessage: jest.fn(),
   };
+  const mockSqsTweetAtGpgaClient = {
+    queueMessage: jest.fn(),
+  };
   const mockDataImporter = {
     twitterUserDataProd: jest.fn().mockReturnValue(twitterData),
   };
@@ -24,6 +27,7 @@ describe("IncomingTweetListenerQueuer", () => {
   const handler = new IncomingTweetListenerQueuer(
     mockTwitterClient as any,
     mockSqsClient as any,
+    mockSqsTweetAtGpgaClient as any,
     mockDataImporter as any,
     mockRepository as any,
     new Logger()
