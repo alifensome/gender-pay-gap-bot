@@ -10,6 +10,7 @@ const twitterData = [{ twitter_id_str: "1" }, { twitter_id_str: "2" }];
 describe("IncomingTweetListenerQueuer", () => {
   const mockTwitterClient = {
     startStreamingTweets: jest.fn(),
+    startStreamingTweetsTaggingGPGA: jest.fn(),
   };
   const mockSqsClient = {
     queueMessage: jest.fn(),
@@ -28,9 +29,12 @@ describe("IncomingTweetListenerQueuer", () => {
     new Logger()
   );
   describe("listen", () => {
-    it("should listen to twitter with a handler", async () => {
+    it("should listen to twitter with a handler for company tweets and a handler for tweets at the GPGA", async () => {
       await handler.listen();
       expect(mockTwitterClient.startStreamingTweets).toBeCalledTimes(1);
+      expect(mockTwitterClient.startStreamingTweetsTaggingGPGA).toBeCalledTimes(
+        1
+      );
       expect(mockTwitterClient.startStreamingTweets.mock.calls[0][0]).toEqual([
         "1",
         "2",
@@ -80,7 +84,7 @@ describe("IncomingTweetListenerQueuer", () => {
       const input: HandleIncomingTweetInput = {
         twitterUserId: "twitterUserId",
         tweetId: "tweetId",
-        user: "user",
+        user: { a: "user" } as any,
         screenName: "screenName",
         isRetweet: false,
         text: "text",

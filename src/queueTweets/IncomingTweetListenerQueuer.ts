@@ -3,10 +3,11 @@ import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter from "../importData";
 import { debugPrint } from "../utils/debug";
-import { Repository } from '../importData/Repository';
+import { Repository } from "../importData/Repository";
 import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
 import { relevantWords } from "./relevantWords";
+import { User } from "twitter-api-client/dist/interfaces/types/StatusesLookupTypes";
 
 export class IncomingTweetListenerQueuer {
   twitterClient: TwitterClient;
@@ -14,7 +15,13 @@ export class IncomingTweetListenerQueuer {
   logger: Logger;
   dataImporter: DataImporter;
   repository: Repository;
-  constructor(twitterClient: TwitterClient, sqsClient: SqsClient, dataImporter: DataImporter, repository: Repository, logger: Logger) {
+  constructor(
+    twitterClient: TwitterClient,
+    sqsClient: SqsClient,
+    dataImporter: DataImporter,
+    repository: Repository,
+    logger: Logger
+  ) {
     this.twitterClient = twitterClient;
     this.sqsClient = sqsClient;
     this.dataImporter = dataImporter;
@@ -28,9 +35,14 @@ export class IncomingTweetListenerQueuer {
       this.logger.info(JSON.stringify({ message: "running in debug mode!" }));
       twitterData.push(this.dataImporter.twitterUserDataTest()[0]);
     }
+    // Listen for our followers tweets.
     const followers = this.getFollowsFromData(twitterData);
-    return this.twitterClient.startStreamingTweets(followers, (input) =>
+    this.twitterClient.startStreamingTweets(followers, (input) =>
       this.handleIncomingTweet(input)
+    );
+    // Listen for tweets at us.
+    this.twitterClient.startStreamingTweetsTaggingGPGA((input) =>
+      this.handleIncomingTweetAtTheGpga(input)
     );
   }
 
@@ -92,6 +104,28 @@ export class IncomingTweetListenerQueuer {
     );
   }
 
+  async handleIncomingTweetAtTheGpga(input: HandleIncomingTweetInput) {
+    if (input.isRetweet) {
+      debugPrint({
+        message: "Ignoring retweet",
+        eventType: "ignoringRetweet",
+      });
+      return;
+    }
+
+    // Queue the message to a new queue
+    // await this.sqsClient.queueMessage(input);
+
+    this.logger.info(
+      JSON.stringify({
+        message: `successfully queued tweet at the GPGA: ${input.tweetId}, userId: ${input.twitterUserId}`,
+        eventType: "successfulQueueTweetAtGpga",
+        screenName: input.screenName,
+        input,
+      })
+    );
+  }
+
   checkTweetContainsWord(tweet: string): boolean {
     const upperCaseTweet = uppercaseAndReplace(tweet);
     const tweetedWords = upperCaseTweet.split(/[ ,]+/);
@@ -118,10 +152,7 @@ export class IncomingTweetListenerQueuer {
     return false;
   }
 
-  checkContainsPhrase(
-    upperCaseTweet: string,
-    relevantPhrase: string
-  ): boolean {
+  checkContainsPhrase(upperCaseTweet: string, relevantPhrase: string): boolean {
     if (upperCaseTweet.includes(relevantPhrase)) {
       return true;
     }
@@ -145,7 +176,7 @@ export class IncomingTweetListenerQueuer {
 export interface HandleIncomingTweetInput {
   twitterUserId: string;
   tweetId: string;
-  user: string;
+  user: User;
   screenName: string;
   isRetweet: boolean;
   text: string;

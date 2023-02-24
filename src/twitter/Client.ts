@@ -2,8 +2,15 @@ import Twit from "twit";
 import { Logger } from "tslog";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { debugPrint } from "../utils/debug";
-import { TwitterClient as TwitterApiClient } from "twitter-api-client";
+import {
+  StatusesLookup,
+  TwitterClient as TwitterApiClient,
+} from "twitter-api-client";
 import { TwitterCredentialGetter } from "./TwitterCredentialGetter";
+
+type HandleIncomingStatusFunction = (
+  input: HandleIncomingTweetInput
+) => Promise<void>;
 
 export class TwitterClient {
   twitPackage: Twit;
@@ -30,7 +37,7 @@ export class TwitterClient {
 
   async startStreamingTweets(
     following: string[],
-    handleTweet: (input: HandleIncomingTweetInput) => Promise<void>
+    handleTweet: HandleIncomingStatusFunction
   ): Promise<void> {
     const stream = this.twitPackage.stream("statuses/filter", {
       follow: following,
@@ -42,7 +49,7 @@ export class TwitterClient {
       })
     );
 
-    stream.on("tweet", async (tweet: any) => {
+    stream.on("tweet", async (tweet: StatusesLookup) => {
       try {
         const twitterUserId = tweet.user.id_str;
         const user = tweet.user;
@@ -83,6 +90,71 @@ export class TwitterClient {
         );
       }
     });
+  }
+
+  async startStreamingTweetsTaggingGPGA(
+    handleTweet: HandleIncomingStatusFunction
+  ): Promise<void> {
+    const stream = this.twitPackage.stream("statuses/filter", {
+      track: "@PayGapApp",
+    });
+    this.logger.info(
+      JSON.stringify({
+        message: "streaming started for tweets tagging the gpga",
+        eventType: "streamingStartedTweetsTaggingGPGA",
+      })
+    );
+
+    stream.on("tweet", async (tweet: StatusesLookup) => {
+      await this.onTweetAtGpga(tweet, handleTweet);
+    });
+  }
+
+  // TODO this could be reused with some minor adjustments.
+  async onTweetAtGpga(
+    tweet: StatusesLookup,
+    handleTweet: HandleIncomingStatusFunction
+  ) {
+    try {
+      const twitterUserId = tweet.user.id_str;
+      const user = tweet.user;
+      const screenName = tweet.user.screen_name;
+      const isRetweet = tweet.text.startsWith("RT");
+      const text = tweet.text;
+      const timeStamp = new Date().toISOString();
+
+      console.log({
+        tweet,
+        message: "tweet detected at GPGA",
+        eventType: "tweetReceivedAtGpga",
+        twitterName: tweet.user.name,
+        twitterUserId,
+        screenName,
+        isRetweet,
+        text,
+        timeStamp,
+      });
+
+      await handleTweet({
+        twitterUserId,
+        tweetId: tweet.id_str,
+        user,
+        screenName,
+        isRetweet,
+        text,
+        timeStamp,
+        fullTweetObject: tweet,
+      });
+    } catch (err: any) {
+      this.logger.error(
+        JSON.stringify({
+          message: "Error while handling incoming tweet at the GPGA",
+          eventType: "errorHandlingTweetAtGpga",
+          errMessage: err.message,
+          tweet,
+        })
+      );
+    }
   }
 
   quoteTweet(
