@@ -14,8 +14,8 @@ aws s3 cp package.json s3://alifensome-general-bucket/gpga/package.json
 aws s3 cp package-lock.json s3://alifensome-general-bucket/gpga/package-lock.json
 
 # The listener syncs dist and data on restart start.
+source ./private/var.sh
 echo "Restarting listener ID: $EC2_ID"
-source ./private/var.sh 
 aws ec2 reboot-instances --instance-ids $EC2_ID
 echo "Finished deloyment."
 
