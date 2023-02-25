@@ -1,6 +1,7 @@
 import { TwitterClient } from "twitter-api-client";
 import { TwitterClient as AlisTwitterClient } from "./Client";
 import dotenv from "dotenv";
+import { wait } from "../utils/wait";
 dotenv.config();
 
 const twitterClient = new TwitterClient({
@@ -13,6 +14,43 @@ const twitterClient = new TwitterClient({
 const alisTwitterClient = new AlisTwitterClient();
 
 async function run() {
+  const stream = alisTwitterClient.twitPackage.stream("statuses/filter", {
+    track: ["Ukraine", "war"],
+    stall_warnings: "true",
+  } as any);
+  console.log("running");
+
+  // stream.start();
+  stream.on("connected", function (response) {
+    console.log("connected");
+  });
+  stream.on("limit", function (limitMessage) {
+    console.log("limit", limitMessage);
+  });
+  stream.on("disconnect", function (disconnectMessage) {
+    console.log("disconnect", disconnectMessage);
+  });
+  stream.on("warning", function (warning) {
+    console.log("warning", warning);
+  });
+  stream.on("connect", function (request) {
+    console.log("connect");
+  });
+  // stream.on("message", function (message, a) {
+  //   console.log("message", message, a);
+  // });
+
+  stream.on("error", function (message: any) {
+    console.log("error", message);
+  });
+  stream.on("tweet", async (tweet: any) => {
+    console.log(tweet.text);
+  });
+  // console.log(stream.eventNames());
+  await wait(5000);
+  stream.stop();
+  await wait(2000);
+  stream.start();
   // const getAuthResult = alisTwitterClient.twitPackage.getAuth();
   // console.log(getAuthResult);
   // alisTwitterClient.twitPackage.setAuth(getAuthResult);
@@ -22,10 +60,10 @@ async function run() {
   //   (a, b) => console.log(a, b)
   // );
   // console.log(t);
-  const t = await alisTwitterClient.startStreamingTweetsTaggingGPGA(
-    console.log as any
-  );
-  console.log(t);
+  // const t = await alisTwitterClient.startStreamingTweetsTaggingGPGA(
+  //   console.log as any
+  // );
+  // console.log(t);
   // // Search for a user
   // const data = await twitterClient.accountsAndUsers.usersSearch({ q: 'twitterDev' });
   // console.log(data)

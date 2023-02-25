@@ -7,7 +7,11 @@ import { Repository } from "../importData/Repository";
 import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
 import { relevantWords } from "./relevantWords";
-import { User } from "twitter-api-client/dist/interfaces/types/StatusesLookupTypes";
+import StatusesLookup, {
+  User,
+} from "twitter-api-client/dist/interfaces/types/StatusesLookupTypes";
+
+const PayGapAppUserName = "@PayGapApp";
 
 export class IncomingTweetListenerQueuer {
   twitterClient: TwitterClient;
@@ -38,14 +42,11 @@ export class IncomingTweetListenerQueuer {
       this.logger.info(JSON.stringify({ message: "running in debug mode!" }));
       twitterData.push(this.dataImporter.twitterUserDataTest()[0]);
     }
-    // Listen for our followers tweets.
+    // Listen for our followers tweets and tweets at us.
     const followers = this.getFollowsFromData(twitterData);
+    this.logger.info(`found ${followers.length} twitter ids to follow.`);
     this.twitterClient.startStreamingTweets(followers, (input) =>
       this.handleIncomingTweet(input)
-    );
-    // Listen for tweets at us.
-    this.twitterClient.startStreamingTweetsTaggingGPGA((input) =>
-      this.handleIncomingTweetAtTheGpga(input)
     );
   }
 
@@ -66,7 +67,46 @@ export class IncomingTweetListenerQueuer {
     return twitterIds;
   }
 
-  async handleIncomingTweet(input: HandleIncomingTweetInput) {
+  async handleIncomingTweet(input: HandleIncomingTweetInput): Promise<void> {
+    if (input.isRetweet) {
+      debugPrint({
+        message: "Ignoring retweet",
+        eventType: "ignoringRetweet",
+      });
+      return;
+    }
+    const isReply = !!input?.fullTweetObject?.in_reply_to_status_id;
+    if (isReply) {
+      debugPrint({
+        message: "Ignoring reply",
+        eventType: "ignoringReply",
+      });
+      return;
+    }
+
+    if (input.text.includes(PayGapAppUserName)) {
+      return await this.handleIncomingTweetAtTheGpga(input);
+    }
+    const userById = this.repository.getTwitterUserByTwitterId(
+      input.twitterUserId
+    );
+    if (userById) {
+      return await this.handleIncomingTweetFromCompany(input);
+    }
+    this.logger.info(
+      JSON.stringify({
+        message:
+          "could not work out if this is a tweet at us or by a company, ignoring.",
+        twitterUserId: input.twitterUserId,
+        tweetId: input.tweetId,
+        screenName: input.screenName,
+        eventType: "couldNotRouteHandlingIgnoring",
+      })
+    );
+    return;
+  }
+
+  async handleIncomingTweetFromCompany(input: HandleIncomingTweetInput) {
     if (input.isRetweet) {
       debugPrint({
         message: "Ignoring retweet",
@@ -117,7 +157,7 @@ export class IncomingTweetListenerQueuer {
     }
 
     // Queue the message to a new queue
-    await this.sqsClientTweetAtGpga.queueMessage(input);
+    await this.sqsClientTweetAtGpga.queueMessage(input, 0);
 
     this.logger.info(
       JSON.stringify({
@@ -184,7 +224,7 @@ export interface HandleIncomingTweetInput {
   isRetweet: boolean;
   text: string;
   timeStamp: string;
-  fullTweetObject: any;
+  fullTweetObject: StatusesLookup;
 }
 
 function uppercaseAndReplace(tweet: string) {

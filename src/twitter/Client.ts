@@ -7,6 +7,7 @@ import {
   TwitterClient as TwitterApiClient,
 } from "twitter-api-client";
 import { TwitterCredentialGetter } from "./TwitterCredentialGetter";
+import { restartStream } from "./restartStream";
 
 type HandleIncomingStatusFunction = (
   input: HandleIncomingTweetInput
@@ -35,12 +36,14 @@ export class TwitterClient {
     this.logger = new Logger({ name: TwitterClient.name });
   }
 
+  // Can only have one of these calls per app.
   async startStreamingTweets(
     following: string[],
     handleTweet: HandleIncomingStatusFunction
   ): Promise<void> {
     const stream = this.twitPackage.stream("statuses/filter", {
       follow: following,
+      track: ["@PayGapApp"],
     });
     this.logger.info(
       JSON.stringify({
@@ -48,73 +51,37 @@ export class TwitterClient {
         eventType: "streamingStarted",
       })
     );
+    stream.on("connected", function (response) {
+      console.log("connected");
+    });
+    stream.on("limit", function (limitMessage) {
+      console.log("limit", limitMessage);
+    });
+    stream.on("disconnect", async function (disconnectMessage) {
+      console.log("disconnect", disconnectMessage);
+      await restartStream(stream);
+    });
+    stream.on("warning", function (warning) {
+      console.log("twitter stream sent warning", warning);
+    });
+    stream.on("connect", function (request) {
+      console.log("connect");
+    });
+    stream.on("error", async function (message: any) {
+      console.log("twitter stream sent error:", message);
+      await restartStream(stream);
+    });
 
     stream.on("tweet", async (tweet: StatusesLookup) => {
-      try {
-        const twitterUserId = tweet.user.id_str;
-        const user = tweet.user;
-        const screenName = tweet.user.screen_name;
-        const isRetweet = tweet.text.startsWith("RT");
-        const text = tweet.text;
-        const timeStamp = new Date().toISOString();
-
-        debugPrint({
-          message: "tweet detected",
-          eventType: "tweetReceived",
-          twitterName: tweet.user.name,
-          twitterUserId,
-          screenName,
-          isRetweet,
-          text,
-          timeStamp,
-        });
-
-        await handleTweet({
-          twitterUserId,
-          tweetId: tweet.id_str,
-          user,
-          screenName,
-          isRetweet,
-          text,
-          timeStamp,
-          fullTweetObject: tweet,
-        });
-      } catch (err: any) {
-        this.logger.error(
-          JSON.stringify({
-            message: "Error while handling incoming tweeting",
-            eventType: "errorHandlingTweet",
-            errMessage: err.message,
-            tweet,
-          })
-        );
-      }
+      await this.handleTweetEvent(tweet, handleTweet);
     });
   }
 
-  async startStreamingTweetsTaggingGPGA(
-    handleTweet: HandleIncomingStatusFunction
-  ): Promise<void> {
-    const stream = this.twitPackage.stream("statuses/filter", {
-      track: "@PayGapApp",
-    });
-    this.logger.info(
-      JSON.stringify({
-        message: "streaming started for tweets tagging the gpga",
-        eventType: "streamingStartedTweetsTaggingGPGA",
-      })
-    );
-
-    stream.on("tweet", async (tweet: StatusesLookup) => {
-      await this.onTweetAtGpga(tweet, handleTweet);
-    });
-  }
-
-  // TODO this could be reused with some minor adjustments.
-  async onTweetAtGpga(
+  async handleTweetEvent(
     tweet: StatusesLookup,
     handleTweet: HandleIncomingStatusFunction
   ) {
+    // TODO report some log to show its working.
     try {
       const twitterUserId = tweet.user.id_str;
       const user = tweet.user;
@@ -122,11 +89,10 @@ export class TwitterClient {
       const isRetweet = tweet.text.startsWith("RT");
       const text = tweet.text;
       const timeStamp = new Date().toISOString();
-
-      console.log({
-        tweet,
-        message: "tweet detected at GPGA",
-        eventType: "tweetReceivedAtGpga",
+      // todo work out if its a reply.
+      debugPrint({
+        message: "tweet detected",
+        eventType: "tweetReceived",
         twitterName: tweet.user.name,
         twitterUserId,
         screenName,
@@ -146,10 +112,11 @@ export class TwitterClient {
         fullTweetObject: tweet,
       });
     } catch (err: any) {
+      console.log(err);
       this.logger.error(
         JSON.stringify({
-          message: "Error while handling incoming tweet at the GPGA",
-          eventType: "errorHandlingTweetAtGpga",
+          message: "Error while handling incoming tweeting",
+          eventType: "errorHandlingTweet",
           errMessage: err.message,
           tweet,
         })

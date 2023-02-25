@@ -21,7 +21,7 @@ describe("Client", () => {
     it("should handle tweets", async () => {
       const mockHandle = jest.fn();
 
-      await client.onTweetAtGpga(mockTweet, mockHandle as any);
+      await client.handleTweetEvent(mockTweet, mockHandle as any);
       expect(mockHandle).toBeCalledTimes(1);
       expect(mockHandle).toBeCalledWith({
         fullTweetObject: mockTweet,
@@ -43,7 +43,7 @@ describe("Client", () => {
         ...mockTweet,
         text: "RT Some tweet.",
       } as any;
-      await client.onTweetAtGpga(mockRetweet, mockHandle as any);
+      await client.handleTweetEvent(mockRetweet, mockHandle as any);
       expect(mockHandle).toBeCalledTimes(1);
       expect(mockHandle).toBeCalledWith({
         fullTweetObject: mockRetweet,
