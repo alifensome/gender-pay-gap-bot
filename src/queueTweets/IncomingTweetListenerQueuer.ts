@@ -20,6 +20,8 @@ export class IncomingTweetListenerQueuer {
   dataImporter: DataImporter;
   repository: Repository;
   sqsClientTweetAtGpga: SqsClient;
+  numberOfMessages = 0;
+
   constructor(
     twitterClient: TwitterClient,
     sqsClient: SqsClient,
@@ -68,6 +70,16 @@ export class IncomingTweetListenerQueuer {
   }
 
   async handleIncomingTweet(input: HandleIncomingTweetInput): Promise<void> {
+    this.numberOfMessages++;
+    if (this.numberOfMessages % 100 === 0) {
+      this.logger.info(
+        JSON.stringify({
+          message: `Received ${this.numberOfMessages} messaged since started listening.`,
+          numberOfMessages: this.numberOfMessages,
+          eventType: "received100Messages",
+        })
+      );
+    }
     if (input.isRetweet) {
       debugPrint({
         message: "Ignoring retweet",
@@ -93,16 +105,6 @@ export class IncomingTweetListenerQueuer {
     if (userById) {
       return await this.handleIncomingTweetFromCompany(input);
     }
-    this.logger.info(
-      JSON.stringify({
-        message:
-          "could not work out if this is a tweet at us or by a company, ignoring.",
-        twitterUserId: input.twitterUserId,
-        tweetId: input.tweetId,
-        screenName: input.screenName,
-        eventType: "couldNotRouteHandlingIgnoring",
-      })
-    );
     return;
   }
 
