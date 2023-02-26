@@ -262,6 +262,7 @@ resources:
                           - Ref: "AWS::AccountId"
                           - "log-group:/aws/ec2/*:*:*"
                     - "arn:aws:logs:eu-west-2:402504474878:log-group:/var/log/*:*:*"
+                    - "arn:aws:logs:eu-west-2:402504474878:log-group:*:*:*"
                 - Effect: Allow
                   Action:
                     - ec2:CreateNetworkInterface
