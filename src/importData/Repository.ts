@@ -147,6 +147,20 @@ export class Repository {
     }
   }
 
+  fuzzyFindCompanyByName(companyName: string): CompanyDataMultiYearItem | null {
+    this.checkSetData();
+    const upperCaseName = companyName?.toUpperCase();
+    const exactMatchOnName = findCompany(
+      upperCaseName,
+      "UNKNOWN_COMPANY_NUMBER",
+      this.companiesGpgData
+    );
+    if (exactMatchOnName) {
+      return exactMatchOnName;
+    }
+    return null;
+  }
+
   checkSetData() {
     if (!this.twitterUserData || !this.companiesGpgData) {
       this.setData();
