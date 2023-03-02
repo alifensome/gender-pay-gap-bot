@@ -1,19 +1,14 @@
-import DataImporter from "../importData"
+import { isNumber } from "../utils/numberUtils";
 
 export default class Analyser {
-    dataImporter: DataImporter
-    constructor() {
-        this.dataImporter = new DataImporter()
+  average(list: number[]) {
+    let total = 0;
+    for (const item of list) {
+      if (!isNumber(item)) {
+        throw new Error(`Not a number: ${item}`);
+      }
+      total += item;
     }
-    getAverageForYears() {
-
-        return 1
-    }
-    average(list: number[]) {
-        let total = 0
-        for (const item of list) {
-            total += item
-        }
-        return total / list.length
-    }
+    return total / list.length;
+  }
 }
