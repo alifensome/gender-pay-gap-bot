@@ -7,16 +7,17 @@ import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQu
 import { parseTweet } from "./parseTweet";
 import { TweetAtGpgaType } from "./parseTweet.test";
 import { shouldNeverHappen } from "../utils/shouldNeverHappen";
+import { LambdaLogger } from "../lambdaLogger";
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
-  logger: Logger;
+  logger: LambdaLogger;
   repository: Repository;
   copyWriter: CopyWriter;
 
   constructor(twitterClient: TwitterClient, repo: Repository) {
     this.twitterClient = twitterClient;
-    this.logger = new Logger({ name: "TweetAtGpgaSqsTweetProcessor" });
+    this.logger = new LambdaLogger("HandleTweetAtGpgaTweetAtGpgaSqsTweetProcessor");
     this.repository = repo;
     this.copyWriter = new CopyWriter();
   }
@@ -24,14 +25,13 @@ export class SqsTweetProcessor {
   async process(input: HandleIncomingTweetInput) {
     try {
       // TODO decide if its relevant / parsable.
-      this.logger.info(
-        JSON.stringify({
-          message: "processing sqs record",
-          eventType: "processingRecordTweetAtGpga",
-          twitterUserId: input.twitterUserId,
-          tweetId: input.tweetId,
-          screenName: input.screenName,
-        })
+      this.logger.logEvent({
+        message: "processing sqs record",
+        eventType: "processingRecordTweetAtGpga",
+        twitterUserId: input.twitterUserId,
+        tweetId: input.tweetId,
+        screenName: input.screenName,
+      }
       );
 
       // parse tweet.
@@ -53,15 +53,14 @@ export class SqsTweetProcessor {
           return;
       }
     } catch (error) {
-      this.logger.error(
-        JSON.stringify({
+      this.logger.logEvent(
+        {
           message: "error sending tweet",
           eventType: "errorHandlingTweetAtGpga",
           tweetId: input.tweetId,
           twitterUserId: input.twitterUserId,
           screenName: input.screenName,
-          errorHandlingTweetAtGpga: 1,
-        })
+        }
       );
       // todo handle error case somehow.
       throw error;
@@ -72,7 +71,10 @@ export class SqsTweetProcessor {
     companyName: string,
     input: HandleIncomingTweetInput
   ) {
-    this.logger.info({ message: "would have tweeted for input:", input });
+    this.logger.logEvent({
+      message: "would have tweeted for input:", data: input,
+      eventType: "tweetAtUsHandleRelevantTweet"
+    });
     this.repository.checkSetData();
     const company = this.repository.fuzzyFindCompanyByName(companyName);
 
@@ -112,16 +114,15 @@ export class SqsTweetProcessor {
     //     screenName: data.twitterData.twitter_screen_name,
     //   }
     // );
-    this.logger.info(
-      JSON.stringify({
-        message: "sent tweet in reply to tweeting at gpga",
-        eventType: "sentTweetReplyToTweetingAtGpga",
-        tweetId: input.tweetId,
-        twitterUserId: input.twitterUserId,
-        screenName: input.screenName,
-        // companyName: data.companyData.companyName,
-        successfullySentTweet: 1,
-      })
+    this.logger.logEvent({
+      message: "sent tweet in reply to tweeting at gpga",
+      eventType: "sentTweetReplyToTweetingAtGpga",
+      tweetId: input.tweetId,
+      twitterUserId: input.twitterUserId,
+      screenName: input.screenName,
+      // companyName: data.companyData.companyName,
+      successfullySentTweet: 1,
+    }
     );
   }
 }
