@@ -3,6 +3,7 @@ import { TwitterData, CompanyDataMultiYearItem, CompanyNumber } from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
 import { isNumber } from "../utils/numberUtils";
+import { getTextMatch } from "../utils/textMatch";
 
 export class Repository {
   dataImporter: DataImporter;
@@ -147,7 +148,7 @@ export class Repository {
     }
   }
 
-  fuzzyFindCompanyByName(companyName: string): CompanyDataMultiYearItem | null {
+  fuzzyFindCompanyByName(companyName: string): FuzzyFindCompanyByNameResult {
     this.checkSetData();
     const upperCaseName = companyName?.toUpperCase();
     const exactMatchOnName = findCompany(
@@ -156,9 +157,33 @@ export class Repository {
       this.companiesGpgData
     );
     if (exactMatchOnName) {
-      return exactMatchOnName;
+      return { exactMatch: exactMatchOnName, closeMatches: [] };
     }
-    return null;
+    const potentialMatches = this.findPotentialMatchesByName(companyName, 0.85);
+    if (potentialMatches.length) {
+      return { closeMatches: potentialMatches, exactMatch: null };
+    }
+    const potentialMatches75 = this.findPotentialMatchesByName(
+      companyName,
+      0.75
+    );
+
+    return { closeMatches: potentialMatches75, exactMatch: null };
+  }
+
+  private findPotentialMatchesByName(
+    companyName: string,
+    minimumMatchFactor: number
+  ): CompanyDataMultiYearItem[] {
+    const potentialMatches: CompanyDataMultiYearItem[] = [];
+    for (let index = 0; index < this.companiesGpgData.length; index++) {
+      const company = this.companiesGpgData[index];
+      const match = getTextMatch(companyName, company.companyName);
+      if (match >= minimumMatchFactor) {
+        potentialMatches.push(company);
+      }
+    }
+    return potentialMatches;
   }
 
   checkSetData() {
@@ -166,4 +191,9 @@ export class Repository {
       this.setData();
     }
   }
+}
+
+interface FuzzyFindCompanyByNameResult {
+  exactMatch: CompanyDataMultiYearItem | null;
+  closeMatches: CompanyDataMultiYearItem[] | null[];
 }

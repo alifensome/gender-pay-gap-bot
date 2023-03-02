@@ -17,7 +17,9 @@ export class SqsTweetProcessor {
 
   constructor(twitterClient: TwitterClient, repo: Repository) {
     this.twitterClient = twitterClient;
-    this.logger = new LambdaLogger("HandleTweetAtGpgaTweetAtGpgaSqsTweetProcessor");
+    this.logger = new LambdaLogger(
+      "HandleTweetAtGpgaTweetAtGpgaSqsTweetProcessor"
+    );
     this.repository = repo;
     this.copyWriter = new CopyWriter();
   }
@@ -31,8 +33,7 @@ export class SqsTweetProcessor {
         twitterUserId: input.twitterUserId,
         tweetId: input.tweetId,
         screenName: input.screenName,
-      }
-      );
+      });
 
       // parse tweet.
       const parsedTweetResult = parseTweet(input.text);
@@ -40,18 +41,18 @@ export class SqsTweetProcessor {
       switch (parsedTweetResult.type) {
         case TweetAtGpgaType.RequestingCompanyGpg:
           if (!parsedTweetResult.companyName) {
-            throw new Error("no company name");
+            throw new Error("no company name but was parsable.");
           }
           await this.handleRelevantTweet(parsedTweetResult.companyName, input);
           return;
         case TweetAtGpgaType.Irrelevant:
           // if unparsable then  reply with something else or ignore.
           this.logger.logEvent({
-            eventType: 'tweetAtUsSkippedAsIrrelevant',
-            message: 'Tweet at us skipped as irrelevant',
+            eventType: "tweetAtUsSkippedAsIrrelevant",
+            message: "Tweet at us skipped as irrelevant",
             screenName: input.screenName,
             tweetId: input.tweetId,
-          })
+          });
           return;
 
         default:
@@ -59,15 +60,13 @@ export class SqsTweetProcessor {
           return;
       }
     } catch (error) {
-      this.logger.logEvent(
-        {
-          message: "error sending tweet",
-          eventType: "errorHandlingTweetAtGpga",
-          tweetId: input.tweetId,
-          twitterUserId: input.twitterUserId,
-          screenName: input.screenName,
-        }
-      );
+      this.logger.logEvent({
+        message: "error sending tweet",
+        eventType: "errorHandlingTweetAtGpga",
+        tweetId: input.tweetId,
+        twitterUserId: input.twitterUserId,
+        screenName: input.screenName,
+      });
       // todo handle error case somehow.
       throw error;
     }
@@ -78,8 +77,9 @@ export class SqsTweetProcessor {
     input: HandleIncomingTweetInput
   ) {
     this.logger.logEvent({
-      message: "would have tweeted for input:", data: input,
-      eventType: "tweetAtUsHandleRelevantTweet"
+      message: "would have tweeted for input:",
+      data: input,
+      eventType: "tweetAtUsHandleRelevantTweet",
     });
     this.repository.checkSetData();
     const company = this.repository.fuzzyFindCompanyByName(companyName);
@@ -128,7 +128,6 @@ export class SqsTweetProcessor {
       screenName: input.screenName,
       // companyName: data.companyData.companyName,
       successfullySentTweet: 1,
-    }
-    );
+    });
   }
 }

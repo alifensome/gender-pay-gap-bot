@@ -22,6 +22,16 @@ const companyDataItem1 = {
   data2018To2019: { meanGpg: 16.9, medianGpg: 21.3 },
   data2017To2018: { meanGpg: 13.4, medianGpg: 20.5 },
 };
+const companyDataItem2 = {
+  companyName: "Ali CONTROLS BUILDING EFFICIENCY UK LIMITED",
+  companyNumber: "08993483",
+  sicCodes: "43220,81100",
+  data2021To2022: { meanGpg: null, medianGpg: null },
+  data2020To2021: { meanGpg: 26.4, medianGpg: 28 },
+  data2019To2020: { meanGpg: null, medianGpg: null },
+  data2018To2019: { meanGpg: 16.9, medianGpg: 21.3 },
+  data2017To2018: { meanGpg: 13.4, medianGpg: 20.5 },
+};
 const companyDataItemNoNumber = {
   companyName: "NAME",
   companyNumber: null,
@@ -47,6 +57,7 @@ describe("Repository", () => {
         companyDataItem1,
         companyDataItemNoNumber,
         companyDataItemNoName,
+        companyDataItem2,
       ]),
   };
   const repo = new Repository(mockDataImporter as any);
@@ -222,6 +233,25 @@ describe("Repository", () => {
             matcher
           );
         expect(result).toBe(null);
+      });
+    });
+  });
+
+  describe("fuzzyFindCompanyByName", () => {
+    it("should find by exact match", () => {
+      const result = repo.fuzzyFindCompanyByName(companyDataItem1.companyName);
+      expect(result).toEqual({
+        exactMatch: companyDataItem1,
+        closeMatches: [],
+      });
+    });
+    it("should find partial match", () => {
+      const result = repo.fuzzyFindCompanyByName(
+        "Ali CONTROLS BUILDING EFFICIENCY"
+      );
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [companyDataItem2],
       });
     });
   });
