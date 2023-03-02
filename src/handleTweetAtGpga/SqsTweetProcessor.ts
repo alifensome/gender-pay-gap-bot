@@ -46,6 +46,12 @@ export class SqsTweetProcessor {
           return;
         case TweetAtGpgaType.Irrelevant:
           // if unparsable then  reply with something else or ignore.
+          this.logger.logEvent({
+            eventType: 'tweetAtUsSkippedAsIrrelevant',
+            message: 'Tweet at us skipped as irrelevant',
+            screenName: input.screenName,
+            tweetId: input.tweetId,
+          })
           return;
 
         default:
