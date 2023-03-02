@@ -145,6 +145,27 @@ export class TwitterClient {
     });
   }
 
+
+  replyToTweet({ tweet, replyTweetId, screenName }: ReplyToTweetInput): Promise<any> {
+    const tweetAtScreenName = `@${screenName} ${tweet}`
+    return new Promise((resolve, reject) => {
+      this.twitPackage.post(
+        "statuses/update",
+        {
+          status: tweetAtScreenName,
+          in_reply_to_status_id: replyTweetId
+        },
+        (err: Error) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve({ status: "Tweet sent" });
+        }
+      );
+    });
+  }
+
+
   postTweet(tweet: string) {
     return new Promise((resolve, reject) => {
       this.twitPackage.post(
@@ -277,3 +298,5 @@ export class TwitterClient {
     await this.postStatusWithMedia(statusText, [mediaIdStr]);
   }
 }
+
+export interface ReplyToTweetInput { tweet: string, replyTweetId: string, screenName: string }

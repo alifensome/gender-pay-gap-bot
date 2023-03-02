@@ -105,10 +105,12 @@ export class SqsTweetProcessor {
     //     data.companyData
     //   );
     // TODO reply to the tweet rather than quote tweeting.
-    // await this.twitterClient.quoteTweet(
-    //   copy,
-    //   data.twitterData.twitter_screen_name,
-    //   tweetId
+    // await this.twitterClient.replyToTweet(
+    //   {
+    //     tweet: copy,
+    //     replyTweetId: tweetId,
+    //     screenName: data.twitterData.twitter_screen_name,
+    //   }
     // );
     this.logger.info(
       JSON.stringify({
