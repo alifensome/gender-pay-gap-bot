@@ -5,6 +5,11 @@ import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
 import { isNumber } from "../utils/numberUtils";
 import { getTextMatch } from "../utils/textMatch";
 
+interface potentialMatchResult {
+  company: CompanyDataMultiYearItem;
+  match: number;
+}
+
 export class Repository {
   dataImporter: DataImporter;
   twitterUserData!: TwitterData[];
@@ -168,7 +173,40 @@ export class Repository {
       0.75
     );
 
-    return { closeMatches: potentialMatches75, exactMatch: null };
+    if (potentialMatches75.length) {
+      return { closeMatches: potentialMatches75, exactMatch: null };
+    }
+
+    // attempt order by
+    const orderedPotentialMatches =
+      this.findPotentialMatchesOrderByMatch(companyName);
+
+    return {
+      closeMatches: orderedPotentialMatches.map((c) => c.company),
+      exactMatch: null,
+    };
+  }
+
+  private findPotentialMatchesOrderByMatch(
+    companyName: string
+  ): potentialMatchResult[] {
+    const potentialMatches: potentialMatchResult[] = [];
+    for (let index = 0; index < this.companiesGpgData.length; index++) {
+      const company = this.companiesGpgData[index];
+      const match = getTextMatch(companyName, company.companyName);
+      if (match > 0) {
+        potentialMatches.push({ company, match });
+      }
+    }
+    return potentialMatches.sort((a, b) => {
+      if (a.match > b.match) {
+        return -1;
+      }
+      if (a.match < b.match) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   private findPotentialMatchesByName(

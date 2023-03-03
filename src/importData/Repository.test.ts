@@ -12,7 +12,7 @@ const twitterDataItem2 = {
   companyName: "NAME",
   companyNumber: null,
 };
-const companyDataItem1 = {
+const johnsonBuildingCompany = {
   companyName: "JOHNSON CONTROLS BUILDING EFFICIENCY UK LIMITED",
   companyNumber: "08993483",
   sicCodes: "43220,81100",
@@ -22,7 +22,7 @@ const companyDataItem1 = {
   data2018To2019: { meanGpg: 16.9, medianGpg: 21.3 },
   data2017To2018: { meanGpg: 13.4, medianGpg: 20.5 },
 };
-const companyDataItem2 = {
+const aliBuildingCompanyDataItem = {
   companyName: "Ali CONTROLS BUILDING EFFICIENCY UK LIMITED",
   companyNumber: "08993483",
   sicCodes: "43220,81100",
@@ -32,6 +32,34 @@ const companyDataItem2 = {
   data2018To2019: { meanGpg: 16.9, medianGpg: 21.3 },
   data2017To2018: { meanGpg: 13.4, medianGpg: 20.5 },
 };
+const accenture = {
+  companyName: "ACCENTURE (UK) LIMITED",
+  companyNumber: "04757301",
+  size: "5000 to 19,999",
+  sicCodes: "70229",
+  data2022To2023: null,
+  data2021To2022: {
+    meanGpg: 20.2,
+    medianGpg: 16.1,
+  },
+  data2020To2021: {
+    meanGpg: 17.4,
+    medianGpg: 12.1,
+  },
+  data2019To2020: {
+    meanGpg: 16.6,
+    medianGpg: 9.8,
+  },
+  data2018To2019: {
+    meanGpg: 16.7,
+    medianGpg: 10.6,
+  },
+  data2017To2018: {
+    meanGpg: 16.7,
+    medianGpg: 10.2,
+  },
+};
+
 const companyDataItemNoNumber = {
   companyName: "NAME",
   companyNumber: null,
@@ -54,10 +82,11 @@ describe("Repository", () => {
     companiesGpgData: jest
       .fn()
       .mockReturnValue([
-        companyDataItem1,
+        johnsonBuildingCompany,
         companyDataItemNoNumber,
         companyDataItemNoName,
-        companyDataItem2,
+        aliBuildingCompanyDataItem,
+        accenture,
       ]),
   };
   const repo = new Repository(mockDataImporter as any);
@@ -75,7 +104,7 @@ describe("Repository", () => {
     it("should get the full company for the twitterId", () => {
       const result = repo.getGpgForTwitterId("123");
       expect(result).toEqual({
-        companyData: companyDataItem1,
+        companyData: johnsonBuildingCompany,
         twitterData: twitterDataItem1,
       });
     });
@@ -239,9 +268,11 @@ describe("Repository", () => {
 
   describe("fuzzyFindCompanyByName", () => {
     it("should find by exact match", () => {
-      const result = repo.fuzzyFindCompanyByName(companyDataItem1.companyName);
+      const result = repo.fuzzyFindCompanyByName(
+        johnsonBuildingCompany.companyName
+      );
       expect(result).toEqual({
-        exactMatch: companyDataItem1,
+        exactMatch: johnsonBuildingCompany,
         closeMatches: [],
       });
     });
@@ -251,16 +282,37 @@ describe("Repository", () => {
       );
       expect(result).toEqual({
         exactMatch: null,
-        closeMatches: [companyDataItem2],
+        closeMatches: [aliBuildingCompanyDataItem],
       });
     });
-    it("should find partial match", () => {
+    it("should find partial match with case insensitivity", () => {
       const result = repo.fuzzyFindCompanyByName(
         "Ali CONTROLS BUILDing EFFICIENCY"
       );
       expect(result).toEqual({
         exactMatch: null,
-        closeMatches: [companyDataItem2],
+        closeMatches: [aliBuildingCompanyDataItem],
+      });
+    });
+    it("should find partial match with weird brackets", () => {
+      const result = repo.fuzzyFindCompanyByName("ACCENTURE (UK) LIMITED");
+      expect(result).toEqual({
+        exactMatch: accenture,
+        closeMatches: [],
+      });
+    });
+    it("should handle single word requests", () => {
+      const result = repo.fuzzyFindCompanyByName("ACCENTURE");
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [accenture],
+      });
+    });
+    it("should order potential matches by how close that are", () => {
+      const result = repo.fuzzyFindCompanyByName("Ali CONTROLS BUILDING ");
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [aliBuildingCompanyDataItem, johnsonBuildingCompany],
       });
     });
   });
