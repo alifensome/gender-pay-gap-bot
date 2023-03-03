@@ -104,7 +104,7 @@ export class SqsTweetProcessor {
         return;
       }
 
-      if (numberOfCloseMatches > 1 && numberOfCloseMatches <= 5) {
+      if (numberOfCloseMatches > 1) {
         // handle multiple results
         this.logger.logEvent({
           message: "found partial matches",
@@ -141,8 +141,10 @@ export class SqsTweetProcessor {
     closeMatches: CompanyDataMultiYearItem[],
     input: HandleIncomingTweetInput
   ) {
+    const top3 = closeMatches.slice(0, 3);
+
     const multipleResultsCopy =
-      this.copyWriter.tweetAtUsMultipleResultsFound(closeMatches);
+      this.copyWriter.tweetAtUsMultipleResultsFound(top3);
 
     await this.twitterClient.replyToTweet({
       tweet: multipleResultsCopy,
