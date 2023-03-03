@@ -100,6 +100,24 @@ describe("IncomingTweetListenerQueuer", () => {
       expect(mockSqsClient.queueMessage).toBeCalledWith(input);
     });
 
+    it("should ignore replies", async () => {
+      const input: HandleIncomingTweetInput = {
+        twitterUserId: "twitterUserId",
+        tweetId: "tweetId",
+        user: { a: "user" } as any,
+        screenName: "screenName",
+        isRetweet: false,
+        text: "text",
+        timeStamp: "timeStamp",
+        fullTweetObject: {
+          text: relevantWords[0].phrase,
+          in_reply_to_status_id: "in_reply_to_status_id",
+        } as any,
+      };
+      await handler.handleIncomingTweet(input);
+      expect(mockSqsClient.queueMessage).toHaveBeenCalledTimes(0);
+    });
+
     it("should take an incoming tweet directed at the GPGA and queue it to a the tweet at gpga queue", async () => {
       const input: HandleIncomingTweetInput = {
         twitterUserId: "twitterUserId",
@@ -109,11 +127,31 @@ describe("IncomingTweetListenerQueuer", () => {
         isRetweet: false,
         text: "@PayGapApp hello",
         timeStamp: "timeStamp",
-        fullTweetObject: { text: relevantWords[0].phrase } as any,
+        fullTweetObject: {
+          text: relevantWords[0].phrase,
+        } as any,
       };
       await handler.handleIncomingTweet(input);
       expect(mockSqsTweetAtGpgaClient.queueMessage).toBeCalledWith(input, 0);
       expect(mockSqsClient.queueMessage).toHaveBeenCalledTimes(0);
     });
+  });
+  it("should take an incoming tweet directed at the GPGA and queue it to a the tweet at gpga queue even if its a reply", async () => {
+    const input: HandleIncomingTweetInput = {
+      twitterUserId: "twitterUserId",
+      tweetId: "tweetId",
+      user: { a: "user" } as any,
+      screenName: "screenName",
+      isRetweet: false,
+      text: "@PayGapApp hello",
+      timeStamp: "timeStamp",
+      fullTweetObject: {
+        text: relevantWords[0].phrase,
+        in_reply_to_status_id: "in_reply_to_status_id",
+      } as any,
+    };
+    await handler.handleIncomingTweet(input);
+    expect(mockSqsTweetAtGpgaClient.queueMessage).toBeCalledWith(input, 0);
+    expect(mockSqsClient.queueMessage).toHaveBeenCalledTimes(0);
   });
 });

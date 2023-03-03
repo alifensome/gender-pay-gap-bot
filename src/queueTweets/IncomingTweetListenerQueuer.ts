@@ -87,22 +87,17 @@ export class IncomingTweetListenerQueuer {
       });
       return;
     }
-    const isReply = !!input?.fullTweetObject?.in_reply_to_status_id;
-    if (isReply) {
-      debugPrint({
-        message: "Ignoring reply",
-        eventType: "ignoringReply",
-      });
-      return;
-    }
 
     if (input.text.includes(PayGapAppUserName)) {
       return await this.handleIncomingTweetAtTheGpga(input);
     }
+
+    const isReply = !!input?.fullTweetObject?.in_reply_to_status_id;
+
     const userById = this.repository.getTwitterUserByTwitterId(
       input.twitterUserId
     );
-    if (userById) {
+    if (userById && !isReply) {
       return await this.handleIncomingTweetFromCompany(input);
     }
     return;
