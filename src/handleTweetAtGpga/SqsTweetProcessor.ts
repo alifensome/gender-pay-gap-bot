@@ -8,6 +8,7 @@ import { parseTweet } from "./parseTweet";
 import { TweetAtGpgaType } from "./parseTweet.test";
 import { shouldNeverHappen } from "../utils/shouldNeverHappen";
 import { LambdaLogger } from "../lambdaLogger";
+import { CompanyDataMultiYearItem } from "../types";
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
@@ -26,7 +27,6 @@ export class SqsTweetProcessor {
 
   async process(input: HandleIncomingTweetInput) {
     try {
-      // TODO decide if its relevant / parsable.
       this.logger.logEvent({
         message: "processing sqs record",
         eventType: "processingRecordTweetAtGpga",
@@ -82,51 +82,80 @@ export class SqsTweetProcessor {
       eventType: "tweetAtUsHandleRelevantTweet",
     });
     this.repository.checkSetData();
-    const company = this.repository.fuzzyFindCompanyByName(companyName);
+    const fuzzyMatchResult =
+      this.repository.fuzzyFindCompanyByName(companyName);
 
-    // if parsable
+    if (fuzzyMatchResult.exactMatch) {
+      this.logger.logEvent({
+        message: "found exact match",
+        data: {
+          input,
+          fuzzyMatchName: fuzzyMatchResult.exactMatch.companyName,
+        },
+        eventType: "tweetAtUsExactMatch",
+      });
+      await this.handleSingleResult(fuzzyMatchResult.exactMatch, input);
+      return;
+    }
 
-    // get company(s) by name
-    // const data = this.repository.getGpgForTwitterId(twitterUserId);
-    // if (!data || !data.companyData) {
-    //   this.logger.error(
-    //     JSON.stringify({
-    //       message: "error finding company",
-    //       eventType: "errorGettingCompany",
-    //       tweetId,
-    //       twitterUserId,
-    //       errorHandlingTweetAtGpga: 1,
-    //       screenName,
-    //     })
-    //   );
-    //   throw new Error(
-    //     `could not find company. TwitterUserId: ${twitterUserId}, ${screenName}`
-    //   );
-    // }
+    if (fuzzyMatchResult.closeMatches) {
+      const numberOfCloseMatches = fuzzyMatchResult.closeMatches.length;
+      if (numberOfCloseMatches === 1) {
+        // handle single result
+        await this.handleSingleResult(fuzzyMatchResult!.closeMatches[0], input);
+        return;
+      }
 
-    // build copy and stuff
+      if (numberOfCloseMatches > 1 && numberOfCloseMatches <= 5) {
+        // handle multiple results
 
-    // const mostRecentGPG = getMostRecentMedianGPGOrThrow(data.companyData);
+        // get copy and tweet
+        this.logger.logEvent({
+          message: "found partial matches",
+          data: input,
+          eventType: "tweetAtUsPartialMatch",
+          closeMatchNumber: numberOfCloseMatches,
+        });
+        return;
+      }
+    }
 
-    // const copy =
-    //   this.copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation(
-    //     data.companyData
-    //   );
-    // TODO reply to the tweet rather than quote tweeting.
-    // await this.twitterClient.replyToTweet(
-    //   {
-    //     tweet: copy,
-    //     replyTweetId: tweetId,
-    //     screenName: data.twitterData.twitter_screen_name,
-    //   }
-    // );
+    // handle no matches found.
+
+    // get copy and tweet
+    this.logger.logEvent({
+      message: "found no matches",
+      data: input,
+      eventType: "tweetAtUsNoMatch",
+    });
+  }
+
+  private async handleSingleResult(
+    companyDataMultiYearItem: CompanyDataMultiYearItem,
+    input: HandleIncomingTweetInput
+  ) {
+    const mostRecentGpg = getMostRecentMedianGPGOrThrow(
+      companyDataMultiYearItem
+    );
+    const copy = this.copyWriter.getAtCompanyNameMedianPayCopy(
+      companyDataMultiYearItem.companyName,
+      mostRecentGpg
+    );
+
+    await this.twitterClient.replyToTweet({
+      tweet: copy,
+      replyTweetId: input.tweetId,
+      screenName: input.screenName,
+    });
+
     this.logger.logEvent({
       message: "sent tweet in reply to tweeting at gpga",
       eventType: "sentTweetReplyToTweetingAtGpga",
       tweetId: input.tweetId,
       twitterUserId: input.twitterUserId,
       screenName: input.screenName,
-      // companyName: data.companyData.companyName,
+      companyName: companyDataMultiYearItem.companyName,
+      companyNumber: companyDataMultiYearItem.companyNumber,
       successfullySentTweet: 1,
     });
   }

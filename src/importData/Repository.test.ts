@@ -254,5 +254,14 @@ describe("Repository", () => {
         closeMatches: [companyDataItem2],
       });
     });
+    it("should find partial match", () => {
+      const result = repo.fuzzyFindCompanyByName(
+        "Ali CONTROLS BUILDing EFFICIENCY"
+      );
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [companyDataItem2],
+      });
+    });
   });
 });

@@ -90,4 +90,18 @@ export class CopyWriter {
       return `The pay gap is ${modulatedDifference} percentage points smaller than the previous year.`;
     }
   }
+
+  getAtCompanyNameMedianPayCopy(companyName: string, medianGpg: number) {
+    const isPositiveGpg = medianGpg >= 0.0;
+    if (medianGpg === 0.0) {
+      return `At ${companyName}, men's and women's median hourly pay is equal.`;
+    }
+    if (isPositiveGpg) {
+      return `At ${companyName}, women's median hourly pay is ${medianGpg}% lower than men's.`;
+    } else {
+      return `At ${companyName}, women's median hourly pay is ${
+        -1 * medianGpg
+      }% higher than men's.`;
+    }
+  }
 }

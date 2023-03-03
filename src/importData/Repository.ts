@@ -195,5 +195,5 @@ export class Repository {
 
 interface FuzzyFindCompanyByNameResult {
   exactMatch: CompanyDataMultiYearItem | null;
-  closeMatches: CompanyDataMultiYearItem[] | null[];
+  closeMatches: CompanyDataMultiYearItem[];
 }

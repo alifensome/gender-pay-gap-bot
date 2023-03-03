@@ -291,32 +291,59 @@ describe("copyWriter", () => {
     });
     it("should fall back on old copy for historic data reported before 2020", () => {
       const companyData: CompanyDataMultiYearItem = {
-        "companyName": "Shearman & Sterling LLP",
-        "companyNumber": null,
-        "size": "Less than 250" as any,
-        "sicCodes": "69102",
-        "data2022To2023": null,
-        "data2021To2022": null,
-        "data2020To2021": null,
-        "data2019To2020": {
-          "meanGpg": 37,
-          "medianGpg": 52
+        companyName: "Shearman & Sterling LLP",
+        companyNumber: null,
+        size: "Less than 250" as any,
+        sicCodes: "69102",
+        data2022To2023: null,
+        data2021To2022: null,
+        data2020To2021: null,
+        data2019To2020: {
+          meanGpg: 37,
+          medianGpg: 52,
         },
-        "data2018To2019": {
-          "meanGpg": 39,
-          "medianGpg": 54
+        data2018To2019: {
+          meanGpg: 39,
+          medianGpg: 54,
         },
-        "data2017To2018": {
-          "meanGpg": 39,
-          "medianGpg": 54
-        }
-      }
+        data2017To2018: {
+          meanGpg: 39,
+          medianGpg: 54,
+        },
+      };
       const copy =
         copyWriter.medianGpgWithDifferenceYearOnYearForThisOrganisation(
           companyData
         );
       const expectedCopy =
         "In this organisation, women's median hourly pay is 52% lower than men's.";
+      expect(copy).toBe(expectedCopy);
+    });
+  });
+
+  describe("atCompanyNameMedianPay", () => {
+    it("should print men's is higher then then women's", () => {
+      const copy = copyWriter.getAtCompanyNameMedianPayCopy(
+        "company name",
+        20.1
+      );
+      const expectedCopy =
+        "At company name, women's median hourly pay is 20.1% lower than men's.";
+      expect(copy).toBe(expectedCopy);
+    });
+    it("should women's is higher then men's", () => {
+      const copy = copyWriter.getAtCompanyNameMedianPayCopy(
+        "company name",
+        -20.1
+      );
+      const expectedCopy =
+        "At company name, women's median hourly pay is 20.1% higher than men's.";
+      expect(copy).toBe(expectedCopy);
+    });
+    it("should women's and men's are equal", () => {
+      const copy = copyWriter.getAtCompanyNameMedianPayCopy("company name", 0);
+      const expectedCopy =
+        "At company name, men's and women's median hourly pay is equal.";
       expect(copy).toBe(expectedCopy);
     });
   });
