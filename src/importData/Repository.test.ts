@@ -60,6 +60,16 @@ const accenture = {
   },
 };
 
+const hsbcPlc = {
+  companyName: "HSBC plc",
+} as any;
+const hsbcBank = {
+  companyName: "HSBC bank",
+} as any;
+const hsbcBankUk = {
+  companyName: "HSBC Bank uk",
+} as any;
+
 const companyDataItemNoNumber = {
   companyName: "NAME",
   companyNumber: null,
@@ -87,6 +97,9 @@ describe("Repository", () => {
         companyDataItemNoName,
         aliBuildingCompanyDataItem,
         accenture,
+        hsbcBankUk,
+        hsbcPlc,
+        hsbcBank,
       ]),
   };
   const repo = new Repository(mockDataImporter as any);
@@ -308,11 +321,18 @@ describe("Repository", () => {
         closeMatches: [accenture],
       });
     });
-    it("should order potential matches by how close that are", () => {
-      const result = repo.fuzzyFindCompanyByName("Ali CONTROLS BUILDING ");
+    it("should find difference between similar names", () => {
+      const result = repo.fuzzyFindCompanyByName("HSBC");
       expect(result).toEqual({
         exactMatch: null,
-        closeMatches: [aliBuildingCompanyDataItem, johnsonBuildingCompany],
+        closeMatches: [hsbcPlc, hsbcBank, hsbcBankUk],
+      });
+    });
+    it("should order potential matches by how close that are", () => {
+      const result = repo.fuzzyFindCompanyByName("Ali CONTROLS BUILDING");
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [aliBuildingCompanyDataItem],
       });
     });
   });

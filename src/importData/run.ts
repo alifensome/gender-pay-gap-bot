@@ -6,4 +6,6 @@ const repo = new Repository(importer);
 
 repo.checkSetData();
 
-console.log(repo.fuzzyFindCompanyByName("Accenture"));
+const results = repo.fuzzyFindCompanyByName(process.argv[2]);
+console.log(results);
+console.log("Close matches:" + results?.closeMatches?.length);

@@ -177,6 +177,15 @@ export class Repository {
       return { closeMatches: potentialMatches75, exactMatch: null };
     }
 
+    const potentialMatches50 = this.findPotentialMatchesByName(
+      companyName,
+      0.5
+    );
+
+    if (potentialMatches50.length) {
+      return { closeMatches: potentialMatches50, exactMatch: null };
+    }
+
     // attempt order by
     const orderedPotentialMatches =
       this.findPotentialMatchesOrderByMatch(companyName);
@@ -198,30 +207,22 @@ export class Repository {
         potentialMatches.push({ company, match });
       }
     }
-    return potentialMatches.sort((a, b) => {
-      if (a.match > b.match) {
-        return -1;
-      }
-      if (a.match < b.match) {
-        return 1;
-      }
-      return 0;
-    });
+    return potentialMatches.sort(sortByMatchDesc());
   }
 
   private findPotentialMatchesByName(
     companyName: string,
     minimumMatchFactor: number
   ): CompanyDataMultiYearItem[] {
-    const potentialMatches: CompanyDataMultiYearItem[] = [];
+    const potentialMatches: potentialMatchResult[] = [];
     for (let index = 0; index < this.companiesGpgData.length; index++) {
       const company = this.companiesGpgData[index];
       const match = getTextMatch(companyName, company.companyName);
       if (match >= minimumMatchFactor) {
-        potentialMatches.push(company);
+        potentialMatches.push({ company, match });
       }
     }
-    return potentialMatches;
+    return potentialMatches.sort(sortByMatchDesc()).map((c) => c.company);
   }
 
   checkSetData() {
@@ -234,4 +235,18 @@ export class Repository {
 interface FuzzyFindCompanyByNameResult {
   exactMatch: CompanyDataMultiYearItem | null;
   closeMatches: CompanyDataMultiYearItem[];
+}
+
+function sortByMatchDesc():
+  | ((a: potentialMatchResult, b: potentialMatchResult) => number)
+  | undefined {
+  return (a, b) => {
+    if (a.match > b.match) {
+      return -1;
+    }
+    if (a.match < b.match) {
+      return 1;
+    }
+    return 0;
+  };
 }
