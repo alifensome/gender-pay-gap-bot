@@ -29,4 +29,9 @@ export const relevantWords = [
   { phrase: "INTERNATIONALMENSDAY", requiresExact: false },
   { phrase: "IMD", requiresExact: true },
   { phrase: "MENSDAY", requiresExact: false },
+  { phrase: "EMPOWER WOMEN", requiresExact: false },
+  { phrase: "EMPOWERING WOMEN", requiresExact: false },
+  { phrase: "INSPIRATIONAL WOMEN", requiresExact: false },
+  { phrase: "CELEBRATE WOMEN", requiresExact: false },
+  { phrase: "CELEBRATING WOMEN", requiresExact: false },
 ];
