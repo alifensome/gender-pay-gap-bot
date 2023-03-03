@@ -1,5 +1,5 @@
 import { findCompany } from "../../utils/findCompany";
-import { SingleYearCompanyDataItem } from "../parseDataFromCompany";
+import { SingleYearCompanyDataItem } from "./types";
 import { BasicCompanyInfo, ImportAllYearsDataResult } from "./types";
 
 export function formDeduplicatedListOfCompanies(

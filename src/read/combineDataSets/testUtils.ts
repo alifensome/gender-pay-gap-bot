@@ -1,5 +1,5 @@
 import { BasicCompanyInfo, ImportAllYearsDataResult } from "./types";
-import { SingleYearCompanyDataItem } from "../parseDataFromCompany";
+import { SingleYearCompanyDataItem } from "./types";
 import { CompanySize } from "../../types";
 
 export const mockImportedData: ImportAllYearsDataResult = {

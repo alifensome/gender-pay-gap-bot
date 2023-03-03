@@ -1,5 +1,4 @@
 import { CompanyDataMultiYearItem, CompanySize } from "../../types";
-import { SingleYearCompanyDataItem } from "../parseDataFromCompany";
 import { combineYearsData } from "./combineYearsData";
 import { mockImportedData } from "./testUtils";
 

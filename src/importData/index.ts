@@ -1,5 +1,5 @@
 import fs from "fs";
-import { CompanyDataCsvItem } from "../read/parseDataFromCompany";
+import { CompanyDataCsvItem } from "../read/combineDataSets/types";
 import {
   TwitterData,
   CompanyDataJoinedTweetsItem,
@@ -38,28 +38,28 @@ class DataImporter {
   /**
    * Generic import data/gpg.
    * @param year gpg starting year e.g. 2022 for 2022-2023.
-   * @returns 
+   * @returns
    */
   gpgByYear(year: number): CompanyDataCsvItem[] {
     return this.readFile(`./data/gpg_${year}_${year + 1}.json`);
   }
   gpg_2022_2023(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2022)
+    return this.gpgByYear(2022);
   }
   gpg_2021_2022(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2021)
+    return this.gpgByYear(2021);
   }
   gpg_2020_2021(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2020)
+    return this.gpgByYear(2020);
   }
   gpg_2019_2020(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2019)
+    return this.gpgByYear(2019);
   }
   gpg_2018_2019(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2018)
+    return this.gpgByYear(2018);
   }
   gpg_2017_2018(): CompanyDataCsvItem[] {
-    return this.gpgByYear(2017)
+    return this.gpgByYear(2017);
   }
   companyDataJoinedTweets(): CompanyDataJoinedTweetsItem[] {
     return this.readFile("./data/companyDataJoinedWithTweets.json");

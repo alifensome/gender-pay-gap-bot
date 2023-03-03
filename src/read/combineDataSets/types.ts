@@ -1,8 +1,8 @@
-import { SingleYearCompanyDataItem } from "../parseDataFromCompany";
+import { CompanyNumber } from "../../types";
 
 export interface Company {
   companyName: string;
-  companyNumber: string | null;
+  companyNumber: CompanyNumber;
   size: string;
   genderPayGap: number;
   medianGenderPayGap: number;
@@ -28,5 +28,44 @@ export interface MultipleYearCompanyArg {
 
 export interface BasicCompanyInfo {
   companyName: string;
-  companyNumber: string | null;
+  companyNumber: CompanyNumber;
+}
+
+export interface SingleYearCompanyDataItem {
+  companyName: string;
+  companyNumber: CompanyNumber; // Company Number can be null for some government bodies, health and education.
+  size: string;
+  sicCodes: string;
+  genderPayGap: number;
+  medianGenderPayGap: number;
+}
+
+export interface CompanyDataCsvItem {
+  EmployerName: string;
+  EmployerId: string;
+  Address: string;
+  PostCode: string;
+  CompanyNumber: string;
+  SicCodes: string;
+  DiffMeanHourlyPercent: string;
+  DiffMedianHourlyPercent: string;
+  DiffMeanBonusPercent: string;
+  DiffMedianBonusPercent: string;
+  MaleBonusPercent: string;
+  FemaleBonusPercent: string;
+  MaleLowerQuartile: string;
+  FemaleLowerQuartile: string;
+  MaleLowerMiddleQuartile: string;
+  FemaleLowerMiddleQuartile: string;
+  MaleUpperMiddleQuartile: string;
+  FemaleUpperMiddleQuartile: string;
+  MaleTopQuartile: string;
+  FemaleTopQuartile: string;
+  CompanyLinkToGPGInfo: string;
+  ResponsiblePerson: string;
+  EmployerSize: string;
+  CurrentName: string;
+  SubmittedAfterTheDeadline: string;
+  DueDate: string;
+  DateSubmitted: string;
 }
