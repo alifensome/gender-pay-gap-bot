@@ -14,6 +14,14 @@ export const mockCompanyDataItem: CompanyDataMultiYearItem = {
   size: CompanySize.From1000To4999,
 };
 
+export function getMockCompanyDataItem(
+  companyNumber = "123"
+): CompanyDataMultiYearItem {
+  return {
+    ...mockCompanyDataItem,
+    companyName: "Company Name Ltd " + companyNumber,
+  };
+}
 export const mockGraphData: GraphData = {
   meanData: [
     {
