@@ -5,7 +5,7 @@ import { BasicCompanyInfo, ImportAllYearsDataResult } from "./types";
 export function formDeduplicatedListOfCompanies(
   allYearsDataResult: ImportAllYearsDataResult
 ): BasicCompanyInfo[] {
-  const combinedDeuplicatedData: BasicCompanyInfo[] = [];
+  const combinedDeduplicatedData: BasicCompanyInfo[] = [];
   for (const key of Object.keys(allYearsDataResult)) {
     const singleYearList = allYearsDataResult[
       key as keyof ImportAllYearsDataResult
@@ -15,15 +15,15 @@ export function formDeduplicatedListOfCompanies(
       const isInCombinedData = findCompany<BasicCompanyInfo>(
         company.companyName,
         company.companyNumber,
-        combinedDeuplicatedData
+        combinedDeduplicatedData
       );
       if (!isInCombinedData) {
-        combinedDeuplicatedData.push({
+        combinedDeduplicatedData.push({
           companyName: company.companyName,
           companyNumber: company.companyNumber,
         });
       }
     }
   }
-  return combinedDeuplicatedData;
+  return combinedDeduplicatedData;
 }
