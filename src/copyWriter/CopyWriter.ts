@@ -104,4 +104,15 @@ export class CopyWriter {
       }% higher than men's.`;
     }
   }
+  tweetAtUsMultipleResultsFound(companies: { companyName: string }[]): string {
+    const beginning = `I found ${companies.length} matches for your request. Did you mean:\n\n`;
+    const companiesList = companies.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.companyName + "\n",
+      ""
+    );
+    const end =
+      "\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
+    return beginning + companiesList + end;
+  }
 }

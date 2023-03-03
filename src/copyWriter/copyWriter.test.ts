@@ -322,7 +322,7 @@ describe("copyWriter", () => {
   });
 
   describe("atCompanyNameMedianPay", () => {
-    it("should print men's is higher then then women's", () => {
+    it("should print men's pay is higher then then women's", () => {
       const copy = copyWriter.getAtCompanyNameMedianPayCopy(
         "company name",
         20.1
@@ -331,7 +331,7 @@ describe("copyWriter", () => {
         "At company name, women's median hourly pay is 20.1% lower than men's.";
       expect(copy).toBe(expectedCopy);
     });
-    it("should women's is higher then men's", () => {
+    it("should print women's pay is higher then men's", () => {
       const copy = copyWriter.getAtCompanyNameMedianPayCopy(
         "company name",
         -20.1
@@ -340,10 +340,24 @@ describe("copyWriter", () => {
         "At company name, women's median hourly pay is 20.1% higher than men's.";
       expect(copy).toBe(expectedCopy);
     });
-    it("should women's and men's are equal", () => {
+    it("should print women's and men's pay is equal", () => {
       const copy = copyWriter.getAtCompanyNameMedianPayCopy("company name", 0);
       const expectedCopy =
         "At company name, men's and women's median hourly pay is equal.";
+      expect(copy).toBe(expectedCopy);
+    });
+  });
+
+  describe("tweetAtUsMultipleResultsFound", () => {
+    it("should say theres multiple results and print the companies", () => {
+      const copy = copyWriter.tweetAtUsMultipleResultsFound([
+        { companyName: "Barclays Bank PLC Limited" },
+        { companyName: "Barclays bank bums" },
+        { companyName: "Barclays bank for dog" },
+      ]);
+
+      const expectedCopy =
+        "I found 3 matches for your request. Did you mean:\n\nBarclays Bank PLC Limited\nBarclays bank bums\nBarclays bank for dog\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
       expect(copy).toBe(expectedCopy);
     });
   });

@@ -108,14 +108,14 @@ export class SqsTweetProcessor {
 
       if (numberOfCloseMatches > 1 && numberOfCloseMatches <= 5) {
         // handle multiple results
-
-        // get copy and tweet
         this.logger.logEvent({
           message: "found partial matches",
           data: input,
           eventType: "tweetAtUsPartialMatch",
           closeMatchNumber: numberOfCloseMatches,
         });
+
+        await this.handleMultipleResults(fuzzyMatchResult.closeMatches, input);
         return;
       }
     }
@@ -127,6 +127,20 @@ export class SqsTweetProcessor {
       message: "found no matches",
       data: input,
       eventType: "tweetAtUsNoMatch",
+    });
+  }
+
+  private async handleMultipleResults(
+    closeMatches: CompanyDataMultiYearItem[],
+    input: HandleIncomingTweetInput
+  ) {
+    const multipleResultsCopy =
+      this.copyWriter.tweetAtUsMultipleResultsFound(closeMatches);
+
+    await this.twitterClient.replyToTweet({
+      tweet: multipleResultsCopy,
+      replyTweetId: input.tweetId,
+      screenName: input.screenName,
     });
   }
 
