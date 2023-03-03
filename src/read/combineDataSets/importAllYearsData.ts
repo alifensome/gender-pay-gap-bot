@@ -1,5 +1,5 @@
 import DataImporter from "../../importData";
-import { parseDataFromJson } from "../parseDataFromCompany";
+import { parseDataFromJson } from "../parseDataFromCompanyJson";
 import { ImportAllYearsDataResult } from "./types";
 
 export function importAllYearsData(): ImportAllYearsDataResult {

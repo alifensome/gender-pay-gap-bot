@@ -1,19 +1,8 @@
 import { parseCompanyNumber, parseGpg } from "./parse";
-import { CsvParser } from "./parseCsv/parseCsv";
-import { writeJsonFile } from "../utils/write";
 import {
   CompanyDataCsvItem,
   SingleYearCompanyDataItem,
 } from "./combineDataSets/types";
-
-export async function spreadSheetToJson(
-  filePath: string,
-  outputFileName: string
-): Promise<void> {
-  const csvParser = new CsvParser();
-  const rows = await csvParser.parseFromFile(filePath);
-  await writeJsonFile(outputFileName, rows);
-}
 
 export function parseDataFromJson(
   jsonFile: CompanyDataCsvItem[]
