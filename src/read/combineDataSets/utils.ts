@@ -4,7 +4,7 @@ import {
   CompanySize,
 } from "../../types.js";
 import { isNumber } from "../../utils/numberUtils";
-import { MultipleYearCompanyArg, Company } from "./types";
+import { MultipleYearCompanyArg, SingleYearCompanyDataItem } from "./types";
 
 // TODO make this more dynamic or update every year.
 export function toCompanyGpgDataItem(
@@ -38,7 +38,7 @@ export function toCompanyGpgDataItem(
 }
 
 function toCompanyDataSingleYearItem(
-  company: Company | null
+  company: SingleYearCompanyDataItem | null
 ): CompanyDataSingleYearItem | null {
   if (
     !company ||
@@ -50,6 +50,11 @@ function toCompanyDataSingleYearItem(
     return {
       meanGpg: company.genderPayGap,
       medianGpg: company.medianGenderPayGap,
+      femaleUpperMiddleQuartile: company.femaleUpperMiddleQuartile,
+      diffMedianBonusPercent: company.diffMedianBonusPercent,
+      femaleLowerMiddleQuartile: company.femaleLowerMiddleQuartile,
+      femaleLowerQuartile: company.femaleLowerQuartile,
+      femaleTopQuartile: company.femaleTopQuartile,
     };
   }
   throw new Error(`wrong fields present: ${JSON.stringify(company)}`);
@@ -58,7 +63,7 @@ function toCompanyDataSingleYearItem(
 // TODO make this work more dynamically or remember to update it every year.
 function getLatestCompanyEntry(
   multipleYearCompanyArg: MultipleYearCompanyArg
-): Company {
+): SingleYearCompanyDataItem {
   const yearsOfCompany = multipleYearsToList(multipleYearCompanyArg);
 
   for (let index = 0; index < yearsOfCompany.length; index++) {
@@ -84,7 +89,9 @@ function multipleYearsToList(multipleYearCompanyArg: MultipleYearCompanyArg) {
   ];
 }
 
-function isValidCompany(c: Company): c is Company {
+function isValidCompany(
+  c: SingleYearCompanyDataItem
+): c is SingleYearCompanyDataItem {
   return !!c && !!c.companyName;
 }
 

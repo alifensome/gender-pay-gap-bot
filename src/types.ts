@@ -19,6 +19,11 @@ export interface CompanyDataMultiYearItem {
 export interface CompanyDataSingleYearItem {
   meanGpg: number;
   medianGpg: number;
+  diffMedianBonusPercent: number | null;
+  femaleLowerQuartile: number;
+  femaleLowerMiddleQuartile: number;
+  femaleUpperMiddleQuartile: number;
+  femaleTopQuartile: number;
 }
 
 export enum CompanySize {

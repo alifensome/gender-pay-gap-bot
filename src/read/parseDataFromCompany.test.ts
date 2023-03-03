@@ -73,6 +73,11 @@ describe("parseDataFromJson", () => {
         medianGenderPayGap: 16,
         sicCodes: "85200,85310",
         size: "Less than 250",
+        diffMedianBonusPercent: null,
+        femaleLowerMiddleQuartile: 64,
+        femaleLowerQuartile: 64,
+        femaleTopQuartile: 29,
+        femaleUpperMiddleQuartile: 50,
       },
       {
         companyName: "1LIFE MANAGEMENT SOLUTIONS LIMITED",
@@ -81,6 +86,11 @@ describe("parseDataFromJson", () => {
         medianGenderPayGap: -35.3,
         sicCodes: "93110,93130,93290",
         size: "Less than 250",
+        femaleLowerMiddleQuartile: 65.2,
+        femaleLowerQuartile: 41.7,
+        femaleTopQuartile: 52.2,
+        femaleUpperMiddleQuartile: 65.2,
+        diffMedianBonusPercent: -100.0,
       },
     ];
     expect(result).toEqual(expectedResult);

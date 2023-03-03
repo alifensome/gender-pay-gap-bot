@@ -1,8 +1,14 @@
-import { parseCompanyNumber, parseGpg } from "./parse";
+import {
+  parseCompanyNumber,
+  parseGpg,
+  parseNullableNumber,
+  parseStringNumberWithTab,
+} from "./parse";
 import {
   CompanyDataCsvItem,
   SingleYearCompanyDataItem,
 } from "./combineDataSets/types";
+import { parseString } from "./parse";
 
 export function parseDataFromJson(
   jsonFile: CompanyDataCsvItem[]
@@ -22,6 +28,19 @@ export function parseDataFromJson(
       continue;
     }
     const size = row.EmployerSize;
+    const femaleUpperMiddleQuartile = parseStringNumberWithTab(
+      row.FemaleUpperMiddleQuartile
+    );
+    const diffMedianBonusPercent = parseNullableNumber(
+      row.DiffMedianBonusPercent
+    );
+    const femaleLowerMiddleQuartile = parseStringNumberWithTab(
+      row.FemaleLowerMiddleQuartile
+    );
+    const femaleLowerQuartile = parseStringNumberWithTab(
+      row.FemaleLowerQuartile
+    );
+    const femaleTopQuartile = parseStringNumberWithTab(row.FemaleTopQuartile);
     const singleYearItem: SingleYearCompanyDataItem = {
       companyName,
       companyNumber,
@@ -29,19 +48,13 @@ export function parseDataFromJson(
       medianGenderPayGap,
       sicCodes,
       size,
+      femaleUpperMiddleQuartile,
+      diffMedianBonusPercent,
+      femaleLowerMiddleQuartile,
+      femaleLowerQuartile,
+      femaleTopQuartile,
     };
     data.push(singleYearItem);
   }
   return data;
-}
-
-function parseString(s: string | unknown): string {
-  if (!s) {
-    return "";
-  }
-  if (typeof s === "string") {
-    const result = s.replace(/\n/g, "");
-    return result;
-  }
-  return `${s}`;
 }

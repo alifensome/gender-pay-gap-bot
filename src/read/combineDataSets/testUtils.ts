@@ -61,5 +61,10 @@ export function createTestSingleYearCompanyDataItem(
     sicCodes: "456",
     genderPayGap: gap,
     medianGenderPayGap: gap + 1,
+    femaleUpperMiddleQuartile: 1,
+    diffMedianBonusPercent: 1,
+    femaleLowerMiddleQuartile: 2,
+    femaleLowerQuartile: 3,
+    femaleTopQuartile: 4,
   };
 }

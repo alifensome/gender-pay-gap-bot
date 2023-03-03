@@ -1,14 +1,5 @@
 import { CompanyNumber } from "../../types";
 
-export interface Company {
-  companyName: string;
-  companyNumber: CompanyNumber;
-  size: string;
-  genderPayGap: number;
-  medianGenderPayGap: number;
-  sicCodes: string;
-}
-
 export interface ImportAllYearsDataResult {
   data_2022_2023: SingleYearCompanyDataItem[];
   data_2021_2022: SingleYearCompanyDataItem[];
@@ -18,12 +9,12 @@ export interface ImportAllYearsDataResult {
   data_2017_2018: SingleYearCompanyDataItem[];
 }
 export interface MultipleYearCompanyArg {
-  item_2023: Company | null;
-  item_2022: Company | null;
-  item_2021: Company | null;
-  item_2020: Company | null;
-  item_2019: Company | null;
-  item_2018: Company | null;
+  item_2023: SingleYearCompanyDataItem | null;
+  item_2022: SingleYearCompanyDataItem | null;
+  item_2021: SingleYearCompanyDataItem | null;
+  item_2020: SingleYearCompanyDataItem | null;
+  item_2019: SingleYearCompanyDataItem | null;
+  item_2018: SingleYearCompanyDataItem | null;
 }
 
 export interface BasicCompanyInfo {
@@ -38,6 +29,11 @@ export interface SingleYearCompanyDataItem {
   sicCodes: string;
   genderPayGap: number;
   medianGenderPayGap: number;
+  diffMedianBonusPercent: number | null;
+  femaleLowerQuartile: number;
+  femaleLowerMiddleQuartile: number;
+  femaleUpperMiddleQuartile: number;
+  femaleTopQuartile: number;
 }
 
 export interface CompanyDataCsvItem {
