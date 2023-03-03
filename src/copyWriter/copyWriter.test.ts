@@ -361,4 +361,14 @@ describe("copyWriter", () => {
       expect(copy).toBe(expectedCopy);
     });
   });
+
+  describe("tweetAtUsCouldNotFindResults", () => {
+    it("should say theres multiple results and print the companies", () => {
+      const copy = copyWriter.tweetAtUsCouldNotFindResults();
+
+      const expectedCopy =
+        "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
+      expect(copy).toBe(expectedCopy);
+    });
+  });
 });

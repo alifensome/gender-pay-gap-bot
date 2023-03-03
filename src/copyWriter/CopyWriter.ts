@@ -115,4 +115,7 @@ export class CopyWriter {
       "\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
     return beginning + companiesList + end;
   }
+  tweetAtUsCouldNotFindResults() {
+    return "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
+  }
 }

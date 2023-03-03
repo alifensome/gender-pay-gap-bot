@@ -1,4 +1,3 @@
-import { Logger } from "tslog";
 import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
@@ -120,13 +119,22 @@ export class SqsTweetProcessor {
       }
     }
 
-    // handle no matches found.
-
-    // get copy and tweet
     this.logger.logEvent({
       message: "found no matches",
       data: input,
       eventType: "tweetAtUsNoMatch",
+    });
+    await this.handleNotFound(input);
+    return;
+  }
+
+  private async handleNotFound(input: HandleIncomingTweetInput) {
+    const notFoundCopy = this.copyWriter.tweetAtUsCouldNotFindResults();
+
+    await this.twitterClient.replyToTweet({
+      tweet: notFoundCopy,
+      replyTweetId: input.tweetId,
+      screenName: input.screenName,
     });
   }
 
