@@ -1,4 +1,4 @@
-import { parseTweet } from "./parseTweet";
+import { parseTweet, TweetAtGpgaType } from "./parseTweet";
 
 describe("parseTweet", () => {
   it("should by default say irrelevant", () => {
@@ -38,25 +38,3 @@ describe("parseTweet", () => {
     expect(result.type).toBe(TweetAtGpgaType.Irrelevant);
   });
 });
-
-export enum TweetAtGpgaType {
-  Irrelevant,
-  RequestingCompanyGpg,
-}
-export const searchPhrases = [
-  "I would like the pay gap for ",
-  "what is the data for ",
-  "what is the pay gap for ",
-  "what is the pay gap at ",
-  "what is the pay gap in ",
-  "gender pay gap for ",
-  " pay gap for ",
-  " paygap for ",
-  " pay-gap for ",
-  "gender pay gap for the ",
-  "give me the pay gap for ",
-  "get me the pay gap for ",
-  "get me the pay gap of ",
-  "have the pay gap for ",
-  "tell me the pay gap for ",
-];
