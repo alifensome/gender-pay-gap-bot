@@ -1,4 +1,9 @@
-import { CompanyDataMultiYearItem, CompanySize } from "../types";
+import {
+  CompanyDataMultiYearItem,
+  CompanyDataSingleYearItem,
+  CompanySize,
+} from "../types";
+import { mockCompanyDataItem } from "../unitTestHelpers/mockData";
 import { CopyWriter } from "./CopyWriter";
 
 const copyWriter = new CopyWriter();
@@ -448,6 +453,41 @@ describe("copyWriter", () => {
       const expectedCopy =
         "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
       expect(copy).toBe(expectedCopy);
+    });
+  });
+
+  describe("", () => {
+    it("should print the quartiles", () => {
+      const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "Company Name",
+        mockCompanyDataItem.data2022To2023 as CompanyDataSingleYearItem
+      );
+      const expectedCopy =
+        "At Company Name:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\nWomen's median bonus pay is 1% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+      expect(result).toBe(expectedCopy);
+    });
+    it("should allow bonus gap to be null", () => {
+      const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "Company Name",
+        {
+          ...mockCompanyDataItem.data2022To2023,
+          diffMedianBonusPercent: null,
+        } as CompanyDataSingleYearItem
+      );
+      const expectedCopy =
+        "At Company Name:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+      expect(result).toBe(expectedCopy);
+    });
+  });
+
+  describe("capitaliseFirst", () => {
+    it("should capitalise the first letter", () => {
+      const result = copyWriter.capitaliseFirst("hello world.");
+      expect(result).toBe("Hello world.");
+    });
+    it("should not throw error if empty string", () => {
+      const result = copyWriter.capitaliseFirst("");
+      expect(result).toBe("");
     });
   });
 });

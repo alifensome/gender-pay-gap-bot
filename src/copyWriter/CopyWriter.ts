@@ -1,4 +1,4 @@
-import { CompanyDataMultiYearItem } from "../types";
+import { CompanyDataMultiYearItem, CompanyDataSingleYearItem } from "../types";
 import { Company } from "../utils/Company";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 import { isNumber, modulus, roundNumber } from "../utils/numberUtils";
@@ -92,18 +92,45 @@ export class CopyWriter {
   }
 
   getAtCompanyNameMedianPayCopy(companyName: string, medianGpg: number) {
-    const isPositiveGpg = medianGpg >= 0.0;
-    if (medianGpg === 0.0) {
-      return `At ${companyName}, men's and women's median hourly pay is equal.`;
+    const medianPayCopyPart = this.medianPayCopyPart(medianGpg);
+    return `At ${companyName}, ${medianPayCopyPart}`;
+  }
+
+  medianPayCopyPart(medianGpg: number) {
+    return this.payCopyPart(medianGpg, "median");
+  }
+  meanPayCopyPart(gpg: number) {
+    return this.payCopyPart(gpg, "mean");
+  }
+
+  payCopyPart(gpg: number, metric: "median" | "mean") {
+    const isPositiveGpg = gpg >= 0.0;
+    if (gpg === 0.0) {
+      return `men's and women's ${metric} hourly pay is equal.`;
     }
     if (isPositiveGpg) {
-      return `At ${companyName}, women's median hourly pay is ${medianGpg}% lower than men's.`;
+      return `women's ${metric} hourly pay is ${gpg}% lower than men's.`;
     } else {
-      return `At ${companyName}, women's median hourly pay is ${
-        -1 * medianGpg
-      }% higher than men's.`;
+      return `women's ${metric} hourly pay is ${-1 * gpg}% higher than men's.`;
     }
   }
+
+  genericCopyPart(
+    gpg: number,
+    metric: "median" | "mean",
+    payType: "hourly pay" | "bonus pay"
+  ) {
+    const isPositiveGpg = gpg >= 0.0;
+    if (gpg === 0.0) {
+      return `men's and women's ${metric} ${payType} is equal.`;
+    }
+    if (isPositiveGpg) {
+      return `women's ${metric} ${payType} is ${gpg}% lower than men's.`;
+    } else {
+      return `women's ${metric} ${payType} is ${-1 * gpg}% higher than men's.`;
+    }
+  }
+
   tweetAtUsMultipleResultsFound(companies: { companyName: string }[]): string {
     const beginning = `I found ${companies.length} matches for your request. Did you mean:\n\n`;
     const companiesList = companies.reduce(
@@ -117,5 +144,42 @@ export class CopyWriter {
   }
   tweetAtUsCouldNotFindResults() {
     return "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
+  }
+  medianMeanGpgQuartilesBonusCopy(
+    companyName: string,
+    singleYearData: CompanyDataSingleYearItem
+  ) {
+    const medianPayCopyPart = this.capitaliseFirst(
+      this.medianPayCopyPart(singleYearData?.medianGpg)
+    );
+
+    const meanPayCopyPart = this.capitaliseFirst(
+      this.meanPayCopyPart(singleYearData.meanGpg)
+    );
+
+    const bonusPayCopyPart = this.capitaliseFirst(
+      this.medianBonusPayCopy(singleYearData.diffMedianBonusPercent)
+    );
+
+    return `At ${companyName}:\n${medianPayCopyPart}\n${meanPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
+      singleYearData
+    )}`;
+  }
+
+  quartileCopy(singleYearData: CompanyDataSingleYearItem): string {
+    return `Percentage of women in each pay quarter:\nUpper: ${singleYearData.femaleTopQuartile}%\nUpper middle: ${singleYearData.femaleUpperMiddleQuartile}%\nLower middle: ${singleYearData.femaleLowerMiddleQuartile}%\nLower: ${singleYearData.femaleLowerQuartile}%`;
+  }
+  medianBonusPayCopy(bonus: number | null): string {
+    if (bonus === null) {
+      return "";
+    }
+    return this.genericCopyPart(bonus, "median", "bonus pay") + "\n";
+  }
+
+  capitaliseFirst(s: string): string {
+    if (!s) {
+      return "";
+    }
+    return s[0].toUpperCase() + s.slice(1);
   }
 }
