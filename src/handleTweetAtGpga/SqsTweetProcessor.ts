@@ -1,6 +1,10 @@
 import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
-import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
+import {
+  getMostRecentMedianGPG,
+  getMostRecentMedianGPGOrThrow,
+  getMostRecentYearOrThrow,
+} from "../utils/getMostRecentGPG";
 import { CopyWriter } from "../copyWriter/CopyWriter";
 import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { parseTweet, TweetAtGpgaType } from "./parseTweet";
@@ -157,10 +161,9 @@ export class SqsTweetProcessor {
     companyDataMultiYearItem: CompanyDataMultiYearItem,
     input: HandleIncomingTweetInput
   ) {
-    const mostRecentGpg = getMostRecentMedianGPGOrThrow(
-      companyDataMultiYearItem
-    );
-    const copy = this.copyWriter.getAtCompanyNameMedianPayCopy(
+    const mostRecentGpg = getMostRecentYearOrThrow(companyDataMultiYearItem);
+
+    const copy = this.copyWriter.medianMeanGpgQuartilesBonusCopy(
       companyDataMultiYearItem.companyName,
       mostRecentGpg
     );

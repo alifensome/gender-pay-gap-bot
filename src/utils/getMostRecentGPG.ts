@@ -14,6 +14,19 @@ export function getMostRecentMeanGPG(
   return null;
 }
 
+export function getMostRecentYearOrThrow(
+  data: CompanyDataMultiYearItem
+): CompanyDataSingleYearItem {
+  const mostRecent = forCompanyDataMultiYearFindFirstTrue(
+    data,
+    (item) => item !== null && isNumber(item.meanGpg)
+  );
+  if (mostRecent) {
+    return mostRecent;
+  }
+  throw new Error("could not find any data for");
+}
+
 export function getMostRecentMeanGPGOrThrow(
   data: CompanyDataMultiYearItem
 ): number {

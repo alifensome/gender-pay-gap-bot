@@ -49,11 +49,12 @@ describe("SqsTweetProcessor", () => {
       };
       await handler.process(input);
       expect(mockTwitterClient.replyToTweet).toHaveBeenCalledTimes(1);
+      const expectedTweetText =
+        "At Company Name Ltd 2:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\nWomen's median bonus pay is 1% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
       expect(mockTwitterClient.replyToTweet).toBeCalledWith({
         replyTweetId: "tweetId",
         screenName: "screenName",
-        tweet:
-          "At Company Name Ltd 2, women's median hourly pay is 10.1% lower than men's.",
+        tweet: expectedTweetText,
       });
       expect(mockRepo.fuzzyFindCompanyByName).toBeCalledWith("company name 1");
     });
