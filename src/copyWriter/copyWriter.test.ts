@@ -482,7 +482,7 @@ describe("copyWriter", () => {
     });
     it("should not exceed 280 characters less screen name length ~ 10 char", () => {
       const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
-        "user",
+        "userWithQuiteALongName",
         "BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED",
         {
           ...mockCompanyDataItem.data2022To2023,
@@ -502,11 +502,40 @@ describe("copyWriter", () => {
         } as CompanyDataSingleYearItem
       );
       const expectedCopy =
-        "@user At BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED More...:\nWomen's median hourly pay is 10.1% lower than men's\nWomen's mean hourly pay is 9.5% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+        "@user At BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED More Words:\nWomen's median hourly pay is 10.1% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+      expect(result).toBe(expectedCopy);
+    });
+
+    it("should trim company name when theres not enough chars after removing mean pay", () => {
+      const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "AliFensome",
+        "Tameside and Glossop Integrated Care NHS Foundation Trust",
+        {
+          meanGpg: 25.8,
+          medianGpg: 10.9,
+          femaleUpperMiddleQuartile: 84.2,
+          diffMedianBonusPercent: 49.3,
+          femaleLowerMiddleQuartile: 80.5,
+          femaleLowerQuartile: 83.2,
+          femaleTopQuartile: 70.1,
+        } as CompanyDataSingleYearItem
+      );
+      const expectedCopy =
+        "@AliFensome At Tameside and Glossop Integrated Care NHS Foundatio...:\nWomen's median hourly pay is 10.9% lower than men's\nWomen's median bonus pay is 49.3% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 70.1%\nUpper middle: 84.2%\nLower middle: 80.5%\nLower: 83.2%";
       expect(result).toBe(expectedCopy);
     });
   });
 
+  describe("trimCompanyName", () => {
+    it("should trim the company name", () => {
+      const result = copyWriter.trimCompanyName(281, "a company name");
+      expect(result).toBe("a company ...");
+    });
+    it("should trim the company name", () => {
+      const result = copyWriter.trimCompanyName(282, "a company name");
+      expect(result).toBe("a company...");
+    });
+  });
   describe("capitaliseFirst", () => {
     it("should capitalise the first letter", () => {
       const result = copyWriter.capitaliseFirst("hello world.");

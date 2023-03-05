@@ -3,6 +3,7 @@ import { Company } from "../utils/Company";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 import { isNumber, modulus, roundNumber } from "../utils/numberUtils";
 
+const MAX_TWEET_CHAR_LENGTH = 280;
 export class CopyWriter {
   medianGpgForThisOrganisationPartialSentence(
     companyData: CompanyDataMultiYearItem
@@ -169,15 +170,40 @@ export class CopyWriter {
       this.medianBonusPayCopy(singleYearData.diffMedianBonusPercent)
     );
 
-    const fullNameTweet = `@${screenName} At ${companyName}:\n${medianPayCopyPart}\n${meanPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
+    const longerTweet = `@${screenName} At ${companyName}:\n${medianPayCopyPart}\n${meanPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
       singleYearData
     )}`;
 
-    const fullNameTweetLength = fullNameTweet.length;
-    if (fullNameTweetLength <= 280) {
-      return fullNameTweet;
+    const longTweetLength = longerTweet.length;
+    if (longTweetLength <= 280) {
+      return longerTweet;
     }
-    // Tweet would be too long
+
+    const shorterTweet = `@${screenName} At ${companyName}:\n${medianPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
+      singleYearData
+    )}`;
+
+    if (shorterTweet.length <= MAX_TWEET_CHAR_LENGTH) {
+      return shorterTweet;
+    }
+
+    const shortCompanyName = this.trimCompanyName(
+      shorterTweet.length,
+      companyName
+    );
+    const shorterTweetWithShortName = `@${screenName} At ${shortCompanyName}:\n${medianPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
+      singleYearData
+    )}`;
+    if (shorterTweetWithShortName.length <= MAX_TWEET_CHAR_LENGTH) {
+      return shorterTweetWithShortName;
+    }
+    throw new Error(
+      "can not shorten the tweet enough to be under 280 chars. Minimum length:" +
+        shorterTweetWithShortName.length
+    );
+  }
+
+  trimCompanyName(fullNameTweetLength: number, companyName: string) {
     const numberOfExceedingChars = fullNameTweetLength - 280;
     const companyNameLength = companyName.length;
     if (companyNameLength < numberOfExceedingChars) {
@@ -188,11 +214,7 @@ export class CopyWriter {
     const shortCompanyName =
       companyName.slice(0, companyNameLength - numberOfExceedingChars - 3) +
       "...";
-    return this.medianMeanGpgQuartilesBonusCopy(
-      screenName,
-      shortCompanyName,
-      singleYearData
-    );
+    return shortCompanyName;
   }
 
   quartileCopy(singleYearData: CompanyDataSingleYearItem): string {
