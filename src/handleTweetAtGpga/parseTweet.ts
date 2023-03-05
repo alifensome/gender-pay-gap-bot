@@ -53,7 +53,6 @@ function parseText(phrase: string, searchTerms: string[]): string | undefined {
       const myRegexp = new RegExp(term + "(.*)", "g");
       const matches = myRegexp.exec(lowerCasePhrase);
       if (matches && matches.length >= 1) {
-        console.log(matches[1]); // abc
         return matches[1]
           .replace(term, "")
           .replace("@PayGapApp", "")
