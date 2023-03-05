@@ -478,6 +478,16 @@ describe("copyWriter", () => {
         "At Company Name:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
       expect(result).toBe(expectedCopy);
     });
+    it("should not exceed 280 characters less screen name length ~ 10 char", () => {
+      const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED",
+        {
+          ...mockCompanyDataItem.data2022To2023,
+          diffMedianBonusPercent: null,
+        } as CompanyDataSingleYearItem
+      );
+      expect(result.length < 270).toBe(true);
+    });
   });
 
   describe("capitaliseFirst", () => {
