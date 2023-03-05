@@ -93,14 +93,14 @@ export class CopyWriter {
 
   getAtCompanyNameMedianPayCopy(companyName: string, medianGpg: number) {
     const medianPayCopyPart = this.medianPayCopyPart(medianGpg);
-    return `At ${companyName}, ${medianPayCopyPart}`;
+    return `At ${companyName}, ${medianPayCopyPart}.`;
   }
 
   medianPayCopyPart(medianGpg: number) {
-    return this.payCopyPart(medianGpg, "median");
+    return this.genericCopyPart(medianGpg, "median", "hourly pay", false);
   }
   meanPayCopyPart(gpg: number) {
-    return this.payCopyPart(gpg, "mean");
+    return this.genericCopyPart(gpg, "mean", "hourly pay", false);
   }
 
   payCopyPart(gpg: number, metric: "median" | "mean") {
@@ -118,21 +118,28 @@ export class CopyWriter {
   genericCopyPart(
     gpg: number,
     metric: "median" | "mean",
-    payType: "hourly pay" | "bonus pay"
+    payType: "hourly pay" | "bonus pay",
+    fullStop = true
   ) {
     const isPositiveGpg = gpg >= 0.0;
+    const fullStopOrString = fullStop ? "." : "";
     if (gpg === 0.0) {
-      return `men's and women's ${metric} ${payType} is equal.`;
+      return `men's and women's ${metric} ${payType} is equal${fullStopOrString}`;
     }
     if (isPositiveGpg) {
-      return `women's ${metric} ${payType} is ${gpg}% lower than men's.`;
+      return `women's ${metric} ${payType} is ${gpg}% lower than men's${fullStopOrString}`;
     } else {
-      return `women's ${metric} ${payType} is ${-1 * gpg}% higher than men's.`;
+      return `women's ${metric} ${payType} is ${
+        -1 * gpg
+      }% higher than men's${fullStopOrString}`;
     }
   }
 
-  tweetAtUsMultipleResultsFound(companies: { companyName: string }[]): string {
-    const beginning = `I found ${companies.length} matches for your request. Did you mean:\n\n`;
+  tweetAtUsMultipleResultsFound(
+    screenName: string,
+    companies: { companyName: string }[]
+  ): string {
+    const beginning = `@${screenName} I found ${companies.length} matches for your request. Did you mean:\n\n`;
     const companiesList = companies.reduce(
       (accumulator, currentValue) =>
         accumulator + currentValue.companyName + "\n",
@@ -142,13 +149,14 @@ export class CopyWriter {
       "\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
     return beginning + companiesList + end;
   }
-  tweetAtUsCouldNotFindResults() {
-    return "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
+  tweetAtUsCouldNotFindResults(screenName: string): string {
+    return `@${screenName} I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/`;
   }
   medianMeanGpgQuartilesBonusCopy(
+    screenName: string,
     companyName: string,
     singleYearData: CompanyDataSingleYearItem
-  ) {
+  ): string {
     const medianPayCopyPart = this.capitaliseFirst(
       this.medianPayCopyPart(singleYearData?.medianGpg)
     );
@@ -161,9 +169,30 @@ export class CopyWriter {
       this.medianBonusPayCopy(singleYearData.diffMedianBonusPercent)
     );
 
-    return `At ${companyName}:\n${medianPayCopyPart}\n${meanPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
+    const fullNameTweet = `@${screenName} At ${companyName}:\n${medianPayCopyPart}\n${meanPayCopyPart}\n${bonusPayCopyPart}\n${this.quartileCopy(
       singleYearData
     )}`;
+
+    const fullNameTweetLength = fullNameTweet.length;
+    if (fullNameTweetLength <= 280) {
+      return fullNameTweet;
+    }
+    // Tweet would be too long
+    const numberOfExceedingChars = fullNameTweetLength - 280;
+    const companyNameLength = companyName.length;
+    if (companyNameLength < numberOfExceedingChars) {
+      throw new Error(
+        "can not trim company name as its shorter than exceeding chars."
+      );
+    }
+    const shortCompanyName =
+      companyName.slice(0, companyNameLength - numberOfExceedingChars - 3) +
+      "...";
+    return this.medianMeanGpgQuartilesBonusCopy(
+      screenName,
+      shortCompanyName,
+      singleYearData
+    );
   }
 
   quartileCopy(singleYearData: CompanyDataSingleYearItem): string {
@@ -173,7 +202,7 @@ export class CopyWriter {
     if (bonus === null) {
       return "";
     }
-    return this.genericCopyPart(bonus, "median", "bonus pay") + "\n";
+    return this.genericCopyPart(bonus, "median", "bonus pay", false) + "\n";
   }
 
   capitaliseFirst(s: string): string {

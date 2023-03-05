@@ -434,24 +434,24 @@ describe("copyWriter", () => {
 
   describe("tweetAtUsMultipleResultsFound", () => {
     it("should say theres multiple results and print the companies", () => {
-      const copy = copyWriter.tweetAtUsMultipleResultsFound([
+      const copy = copyWriter.tweetAtUsMultipleResultsFound("user", [
         { companyName: "Barclays Bank PLC Limited" },
         { companyName: "Barclays bank bums" },
         { companyName: "Barclays bank for dog" },
       ]);
 
       const expectedCopy =
-        "I found 3 matches for your request. Did you mean:\n\nBarclays Bank PLC Limited\nBarclays bank bums\nBarclays bank for dog\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
+        "@user I found 3 matches for your request. Did you mean:\n\nBarclays Bank PLC Limited\nBarclays bank bums\nBarclays bank for dog\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
       expect(copy).toBe(expectedCopy);
     });
   });
 
   describe("tweetAtUsCouldNotFindResults", () => {
     it("should say theres multiple results and print the companies", () => {
-      const copy = copyWriter.tweetAtUsCouldNotFindResults();
+      const copy = copyWriter.tweetAtUsCouldNotFindResults("user");
 
       const expectedCopy =
-        "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
+        "@user I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/";
       expect(copy).toBe(expectedCopy);
     });
   });
@@ -459,15 +459,17 @@ describe("copyWriter", () => {
   describe("", () => {
     it("should print the quartiles", () => {
       const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "user",
         "Company Name",
         mockCompanyDataItem.data2022To2023 as CompanyDataSingleYearItem
       );
       const expectedCopy =
-        "At Company Name:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\nWomen's median bonus pay is 1% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+        "@user At Company Name:\nWomen's median hourly pay is 10.1% lower than men's\nWomen's mean hourly pay is 9.5% lower than men's\nWomen's median bonus pay is 1% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
       expect(result).toBe(expectedCopy);
     });
     it("should allow bonus gap to be null", () => {
       const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "user",
         "Company Name",
         {
           ...mockCompanyDataItem.data2022To2023,
@@ -475,18 +477,33 @@ describe("copyWriter", () => {
         } as CompanyDataSingleYearItem
       );
       const expectedCopy =
-        "At Company Name:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+        "@user At Company Name:\nWomen's median hourly pay is 10.1% lower than men's\nWomen's mean hourly pay is 9.5% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
       expect(result).toBe(expectedCopy);
     });
     it("should not exceed 280 characters less screen name length ~ 10 char", () => {
       const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "user",
         "BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED",
         {
           ...mockCompanyDataItem.data2022To2023,
           diffMedianBonusPercent: null,
         } as CompanyDataSingleYearItem
       );
-      expect(result.length < 270).toBe(true);
+      expect(result.length < 280).toBe(true);
+    });
+
+    it("should trim company name when theres not enough chars", () => {
+      const result = copyWriter.medianMeanGpgQuartilesBonusCopy(
+        "user",
+        "BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED More Words",
+        {
+          ...mockCompanyDataItem.data2022To2023,
+          diffMedianBonusPercent: null,
+        } as CompanyDataSingleYearItem
+      );
+      const expectedCopy =
+        "@user At BNP PARIBAS REAL ESTATE ADVISORY & PROPERTY MANAGEMENT UK LIMITED More...:\nWomen's median hourly pay is 10.1% lower than men's\nWomen's mean hourly pay is 9.5% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+      expect(result).toBe(expectedCopy);
     });
   });
 

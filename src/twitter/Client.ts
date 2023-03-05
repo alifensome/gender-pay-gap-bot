@@ -145,15 +145,21 @@ export class TwitterClient {
     });
   }
 
-
-  replyToTweet({ tweet, replyTweetId, screenName }: ReplyToTweetInput): Promise<any> {
-    const tweetAtScreenName = `@${screenName} ${tweet}`
+  replyToTweet({ tweet, replyTweetId }: ReplyToTweetInput): Promise<any> {
+    if (!tweet.includes("@")) {
+      throw new Error("tweet must be in response to someone with an @ symbol.");
+    }
+    if (tweet.length > 280) {
+      throw new Error(
+        "tweet can not be longer than 280 chars But was:" + tweet.length
+      );
+    }
     return new Promise((resolve, reject) => {
       this.twitPackage.post(
         "statuses/update",
         {
-          status: tweetAtScreenName,
-          in_reply_to_status_id: replyTweetId
+          status: tweet,
+          in_reply_to_status_id: replyTweetId,
         },
         (err: Error) => {
           if (err) {
@@ -164,7 +170,6 @@ export class TwitterClient {
       );
     });
   }
-
 
   postTweet(tweet: string) {
     return new Promise((resolve, reject) => {
@@ -299,4 +304,7 @@ export class TwitterClient {
   }
 }
 
-export interface ReplyToTweetInput { tweet: string, replyTweetId: string, screenName: string }
+export interface ReplyToTweetInput {
+  tweet: string;
+  replyTweetId: string;
+}

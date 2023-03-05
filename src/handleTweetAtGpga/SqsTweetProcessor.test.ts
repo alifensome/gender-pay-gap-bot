@@ -50,10 +50,9 @@ describe("SqsTweetProcessor", () => {
       await handler.process(input);
       expect(mockTwitterClient.replyToTweet).toHaveBeenCalledTimes(1);
       const expectedTweetText =
-        "At Company Name Ltd 2:\nWomen's median hourly pay is 10.1% lower than men's.\nWomen's mean hourly pay is 9.5% lower than men's.\nWomen's median bonus pay is 1% lower than men's.\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
+        "@screenName At Company Name Ltd 2:\nWomen's median hourly pay is 10.1% lower than men's\nWomen's mean hourly pay is 9.5% lower than men's\nWomen's median bonus pay is 1% lower than men's\n\nPercentage of women in each pay quarter:\nUpper: 4%\nUpper middle: 1%\nLower middle: 2%\nLower: 3%";
       expect(mockTwitterClient.replyToTweet).toBeCalledWith({
         replyTweetId: "tweetId",
-        screenName: "screenName",
         tweet: expectedTweetText,
       });
       expect(mockRepo.fuzzyFindCompanyByName).toBeCalledWith("company name 1");
@@ -76,9 +75,8 @@ describe("SqsTweetProcessor", () => {
       expect(mockTwitterClient.replyToTweet).toHaveBeenCalledTimes(1);
       expect(mockTwitterClient.replyToTweet).toBeCalledWith({
         replyTweetId: "tweetId",
-        screenName: "screenName",
         tweet:
-          "I found 3 matches for your request. Did you mean:\n\nCompany Name Ltd 123\nCompany Name Ltd 456\nCompany Name Ltd 789\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data",
+          "@screenName I found 3 matches for your request. Did you mean:\n\nCompany Name Ltd 123\nCompany Name Ltd 456\nCompany Name Ltd 789\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data",
       });
       expect(mockRepo.fuzzyFindCompanyByName).toBeCalledWith("company name 1");
     });
@@ -95,9 +93,8 @@ describe("SqsTweetProcessor", () => {
       expect(mockTwitterClient.replyToTweet).toHaveBeenCalledTimes(1);
       expect(mockTwitterClient.replyToTweet).toBeCalledWith({
         replyTweetId: "tweetId",
-        screenName: "screenName",
         tweet:
-          "I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/",
+          "@screenName I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/",
       });
       expect(mockRepo.fuzzyFindCompanyByName).toBeCalledWith("company name 1");
     });

@@ -132,12 +132,13 @@ export class SqsTweetProcessor {
   }
 
   private async handleNotFound(input: HandleIncomingTweetInput) {
-    const notFoundCopy = this.copyWriter.tweetAtUsCouldNotFindResults();
+    const notFoundCopy = this.copyWriter.tweetAtUsCouldNotFindResults(
+      input.screenName
+    );
 
     await this.twitterClient.replyToTweet({
       tweet: notFoundCopy,
       replyTweetId: input.tweetId,
-      screenName: input.screenName,
     });
   }
 
@@ -147,13 +148,14 @@ export class SqsTweetProcessor {
   ) {
     const top3 = closeMatches.slice(0, 3);
 
-    const multipleResultsCopy =
-      this.copyWriter.tweetAtUsMultipleResultsFound(top3);
+    const multipleResultsCopy = this.copyWriter.tweetAtUsMultipleResultsFound(
+      input.screenName,
+      top3
+    );
 
     await this.twitterClient.replyToTweet({
       tweet: multipleResultsCopy,
       replyTweetId: input.tweetId,
-      screenName: input.screenName,
     });
   }
 
@@ -164,6 +166,7 @@ export class SqsTweetProcessor {
     const mostRecentGpg = getMostRecentYearOrThrow(companyDataMultiYearItem);
 
     const copy = this.copyWriter.medianMeanGpgQuartilesBonusCopy(
+      input.screenName,
       companyDataMultiYearItem.companyName,
       mostRecentGpg
     );
@@ -171,7 +174,6 @@ export class SqsTweetProcessor {
     await this.twitterClient.replyToTweet({
       tweet: copy,
       replyTweetId: input.tweetId,
-      screenName: input.screenName,
     });
 
     this.logger.logEvent({
