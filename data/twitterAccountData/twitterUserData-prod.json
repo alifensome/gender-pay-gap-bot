@@ -21983,5 +21983,1168 @@
     "companyNumber": "01855026",
     "size": "Not Provided",
     "twitter_id_str": "266645845"
-  }
+  },
+  {
+    "companyName": "HBOS PLC",
+    "companyNumber": "SC218813",
+    "size": "20,000 or more",
+    "sicCodes": "64205",
+    "twitter_id_str": "194049387",
+    "twitter_screen_name": "halifaxbank"
+  },
+  {
+    "companyName": "NATIONAL WESTMINSTER BANK PUBLIC LIMITED COMPANY",
+    "companyNumber": "00929027",
+    "size": "20,000 or more",
+    "sicCodes": "64191",
+    "twitter_id_str": "429724798",
+    "twitter_screen_name": "natwestgroup"
+  },
+  {
+    "companyName": "PRICEWATERHOUSECOOPERS SERVICES LIMITED",
+    "companyNumber": "00728502",
+    "size": "20,000 or more",
+    "sicCodes": "82990",
+    "twitter_id_str": "24153071",
+    "twitter_screen_name": "PwC_UK"
+  },
+  {
+    "companyName": "B & M RETAIL LIMITED",
+    "companyNumber": "01357507",
+    "size": "20,000 or more",
+    "sicCodes": "47190",
+    "twitter_id_str": "130548872",
+    "twitter_screen_name": "bmstores"
+  },
+  {
+    "companyName": "BOOTS MANAGEMENT SERVICES LIMITED",
+    "companyNumber": "07073438",
+    "size": "20,000 or more",
+    "sicCodes": "82990",
+    "twitter_id_str": "545087869",
+    "twitter_screen_name": "bootsuk"
+  },
+  {
+    "companyName": "BRITISH TELECOMMUNICATIONS PUBLIC LIMITED COMPANY",
+    "companyNumber": "01800000",
+    "size": "20,000 or more",
+    "sicCodes": "61900",
+    "twitter_id_str": "118750085",
+    "twitter_screen_name": "bt_uk"
+  },
+  {
+    "companyName": "CO-OPERATIVE GROUP LIMITED",
+    "companyNumber": "IP00525R",
+    "size": "20,000 or more",
+    "twitter_id_str": "46361818",
+    "twitter_screen_name": "coopuk"
+  },
+  {
+    "companyName": "COMPASS GROUP, UK AND IRELAND LIMITED",
+    "companyNumber": "02272248",
+    "size": "20,000 or more",
+    "sicCodes": "70100",
+    "twitter_id_str": "185613886",
+    "twitter_screen_name": "compassgroupuk"
+  },
+  {
+    "companyName": "GREENE KING RETAIL SERVICES LIMITED",
+    "companyNumber": "03324496",
+    "size": "20,000 or more",
+    "sicCodes": "78200",
+    "twitter_id_str": "351812643",
+    "twitter_screen_name": "greeneking"
+  },
+  {
+    "companyName": "GXO LOGISTICS UK LIMITED",
+    "companyNumber": "SC037270",
+    "size": "20,000 or more",
+    "sicCodes": "49410,52103",
+    "twitter_id_str": "1370482370743259139",
+    "twitter_screen_name": "GXOLogistics"
+  },
+  {
+    "companyName": "ICELAND FOODS LIMITED",
+    "companyNumber": "01107406",
+    "size": "20,000 or more",
+    "sicCodes": "47110",
+    "twitter_id_str": "26239116",
+    "twitter_screen_name": "IcelandFoods"
+  },
+  {
+    "companyName": "J D WETHERSPOON PLC",
+    "companyNumber": "01709784",
+    "size": "20,000 or more",
+    "sicCodes": "56302"
+  },
+  {
+    "companyName": "JAGUAR LAND ROVER LIMITED",
+    "companyNumber": "01672070",
+    "size": "20,000 or more",
+    "sicCodes": "29100",
+    "twitter_id_str": "506091611",
+    "twitter_screen_name": "jaguarlandrover"
+  },
+  {
+    "companyName": "LIDL GREAT BRITAIN LIMITED",
+    "companyNumber": "02816429",
+    "size": "20,000 or more",
+    "sicCodes": "47110",
+    "twitter_id_str": "340234449",
+    "twitter_screen_name": "lidlgb"
+  },
+  {
+    "companyName": "Manchester University NHS Foundation Trust",
+    "companyNumber": null,
+    "size": "20,000 or more",
+    "sicCodes": "1",
+    "twitter_name": "MFT NHS",
+    "twitter_screen_name": "MFTnhs",
+    "twitter_id": 356127438,
+    "twitter_id_str": "356127438"
+  },
+  {
+    "companyName": "MARKS AND SPENCER P.L.C.",
+    "companyNumber": "00214436",
+    "size": "20,000 or more",
+    "sicCodes": "47190",
+    "twitter_id_str": "37916167",
+    "twitter_screen_name": "marksandspencer"
+  },
+  {
+    "companyName": "MITCHELLS & BUTLERS RETAIL LIMITED",
+    "companyNumber": "00024542",
+    "size": "20,000 or more",
+    "sicCodes": "56101,56302",
+    "twitter_id_str": "1920532177",
+    "twitter_screen_name": "eatdrinkmb"
+  },
+  {
+    "companyName": "MITIE LIMITED",
+    "companyNumber": "02938041",
+    "size": "20,000 or more",
+    "sicCodes": "82990",
+    "twitter_id_str": "133644713",
+    "twitter_screen_name": "mitie",
+    "duplicateCompany": [
+      {
+        "companyName": "MITIE CLEANING & ENVIRONMENTAL SERVICES LIMITED",
+        "companyNumber": "00686377"
+      }
+    ]
+  },
+  {
+    "companyName": "NEXT RETAIL LIMITED",
+    "companyNumber": "04521150",
+    "size": "20,000 or more",
+    "sicCodes": "47710,47721,47789,47910",
+    "twitter_id_str": "43299388",
+    "twitter_screen_name": "nextofficial"
+  },
+  {
+    "companyName": "NHS PROFESSIONALS LIMITED",
+    "companyNumber": "06704614",
+    "size": "20,000 or more",
+    "sicCodes": "78200,84110",
+    "twitter_id_str": "243601641",
+    "twitter_screen_name": "nhspbank"
+  },
+  {
+    "companyName": "OPENREACH LIMITED",
+    "companyNumber": "10690039",
+    "size": "20,000 or more",
+    "sicCodes": "61100",
+    "twitter_id_str": "14079974",
+    "twitter_screen_name": "WeAreOpenreach"
+  },
+  {
+    "companyName": "PRIMARK STORES LIMITED",
+    "companyNumber": "00453448",
+    "size": "20,000 or more",
+    "sicCodes": "47710",
+    "twitter_id_str": "1630182978",
+    "twitter_screen_name": "Primark"
+  },
+  {
+    "companyName": "ROYAL MAIL GROUP LIMITED",
+    "companyNumber": "04138203",
+    "size": "20,000 or more",
+    "sicCodes": "53100",
+    "twitter_id_str": "96965958",
+    "twitter_screen_name": "RoyalMail"
+  },
+  {
+    "companyName": "SAINSBURY'S SUPERMARKETS LTD",
+    "companyNumber": "03261722",
+    "size": "20,000 or more",
+    "sicCodes": "47110",
+    "twitter_id_str": "80685646",
+    "twitter_screen_name": "sainsburys"
+  },
+  {
+    "companyName": "SERCO LIMITED",
+    "companyNumber": "00242246",
+    "size": "20,000 or more",
+    "sicCodes": "70100,70229,72190,84110",
+    "twitter_id_str": "187948685",
+    "twitter_screen_name": "SercoGroup"
+  },
+  {
+    "companyName": "SODEXO LIMITED",
+    "companyNumber": "00842846",
+    "size": "20,000 or more",
+    "sicCodes": "70100",
+    "twitter_id_str": "296778352",
+    "twitter_screen_name": "sodexouk_ire"
+  },
+  {
+    "companyName": "STAFFLINE RECRUITMENT LIMITED",
+    "companyNumber": "03996086",
+    "size": "20,000 or more",
+    "sicCodes": "78200",
+    "twitter_id_str": "2426943300",
+    "twitter_screen_name": "stafflineuk"
+  },
+  {
+    "companyName": "T. J. MORRIS LIMITED",
+    "companyNumber": "01505036",
+    "size": "20,000 or more",
+    "sicCodes": "47190",
+    "twitter_id_str": "115405290",
+    "twitter_screen_name": "homebargains"
+  },
+  {
+    "companyName": "TESCO STORES LIMITED",
+    "companyNumber": "00519500",
+    "size": "20,000 or more",
+    "sicCodes": "47110,47290,47710,47750",
+    "twitter_id_str": "271986064",
+    "twitter_screen_name": "tesco"
+  },
+  {
+    "companyName": "UBER LONDON LIMITED",
+    "companyNumber": "08014782",
+    "size": "20,000 or more",
+    "sicCodes": "62090",
+    "twitter_id_str": "19103481",
+    "twitter_screen_name": "uber"
+  },
+  {
+    "companyName": "WM MORRISON SUPERMARKETS P L C",
+    "companyNumber": "00358949",
+    "size": "20,000 or more",
+    "sicCodes": "47110",
+    "twitter_id_str": "224168895",
+    "twitter_screen_name": "Morrisons"
+  },
+  {
+    "companyName": "WPP 2005 LIMITED",
+    "companyNumber": "01003653",
+    "size": "20,000 or more",
+    "sicCodes": "70100",
+    "twitter_id_str": "19186720",
+    "twitter_screen_name": "WPP"
+  },
+  {
+    "companyName": "Department Of Work And Pensions",
+    "companyNumber": null,
+    "size": "20,000 or more",
+    "twitter_id_str": "382527632",
+    "twitter_screen_name": "dwpgovuk"
+  },
+  {
+    "companyName": "DEBENHAMS RETAIL PLC",
+    "companyNumber": "00083395",
+    "size": "20,000 or more",
+    "sicCodes": "47710,47721,70100",
+    "twitter_id_str": "296196029"
+  },
+  {
+    "companyName": "THE ROYAL BANK OF SCOTLAND PUBLIC LIMITED COMPANY",
+    "companyNumber": "SC083026",
+    "size": "20,000 or more",
+    "sicCodes": "66190",
+    "twitter_id_str": "284537825",
+    "twitter_screen_name": "rbs_help"
+  },
+  {
+    "companyName": "ALTRAD EMPLOYMENT SERVICES LIMITED",
+    "companyNumber": "11631174",
+    "size": "5000 to 19,999",
+    "sicCodes": "78300",
+    "twitter_id_str": "925271184698216448",
+    "twitter_screen_name": "altrad_services"
+  },
+  {
+    "companyName": "ANGLIAN WATER SERVICES LIMITED",
+    "companyNumber": "02366656",
+    "size": "5000 to 19,999",
+    "sicCodes": "36000,37000,70100",
+    "twitter_id_str": "52770745",
+    "twitter_screen_name": "anglianwater"
+  },
+  {
+    "companyName": "ARNOLD CLARK AUTOMOBILES LIMITED",
+    "companyNumber": "SC036386",
+    "size": "5000 to 19,999",
+    "sicCodes": "45111,45112,45200",
+    "twitter_id_str": "17962574",
+    "twitter_screen_name": "ArnoldClark"
+  },
+  {
+    "companyName": "BDO SERVICES LIMITED",
+    "companyNumber": "07020023",
+    "size": "5000 to 19,999",
+    "sicCodes": "82990",
+    "twitter_id_str": "21747776",
+    "twitter_screen_name": "bdoaccountant"
+  },
+  {
+    "companyName": "BDW TRADING LIMITED",
+    "companyNumber": "03018173",
+    "size": "5000 to 19,999",
+    "sicCodes": "41201",
+    "twitter_id_str": "296177469",
+    "twitter_screen_name": "Barrattplc"
+  },
+  {
+    "companyName": "Birmingham Community Healthcare NHS Foundation Trust",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,86210",
+    "twitter_id": 234765052,
+    "twitter_id_str": "234765052",
+    "twitter_name": "bhamcommunity",
+    "twitter_screen_name": "bhamcommunity"
+  },
+  {
+    "companyName": "Bournemouth, Christchurch & Poole Council",
+    "companyNumber": null,
+    "twitter_id": 27616536,
+    "twitter_id_str": "27616536",
+    "twitter_name": "BCP Council",
+    "twitter_screen_name": "BCPCouncil"
+  },
+  {
+    "companyName": "BRITISH BROADCASTING CORPORATION",
+    "companyNumber": "RC000057",
+    "size": "5000 to 19,999",
+    "sicCodes": "",
+    "twitter_id_str": "19701628",
+    "twitter_screen_name": "bbc"
+  },
+  {
+    "companyName": "Central & North West London N H S",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,86210",
+    "twitter_id_str": "593718408",
+    "twitter_screen_name": "cnwlnhs"
+  },
+  {
+    "companyName": "DELOITTE LLP",
+    "companyNumber": "OC303675",
+    "size": "5000 to 19,999",
+    "twitter_id_str": "20687139",
+    "twitter_screen_name": "DeloitteUK",
+    "duplicateCompany": [
+      {
+        "companyName": "DELOITTE MCS LIMITED",
+        "companyNumber": "03311052"
+      }
+    ]
+  },
+  {
+    "companyName": "Department for Business, Energy & Industrial Strategy",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,84110",
+    "id": 45205091,
+    "twitter_id_str": "45205091",
+    "name": "Department for Science, Innovation and Technology",
+    "twitter_screen_name": "SciTechgovuk"
+  },
+  {
+    "companyName": "Derbyshire County Council",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,84110",
+    "twitter_id_str": "22760568",
+    "twitter_screen_name": "Derbyshirecc"
+  },
+  {
+    "companyName": "E.ON UK PLC",
+    "companyNumber": "02366970",
+    "size": "5000 to 19,999",
+    "sicCodes": "35110,64209",
+    "twitter_id_str": "142611379",
+    "twitter_screen_name": "eonenergyuk"
+  },
+  {
+    "companyName": "FIRST MTR SOUTH WESTERN TRAINS LIMITED",
+    "companyNumber": "07900320",
+    "size": "5000 to 19,999",
+    "sicCodes": "49100",
+    "twitter_id_str": "381112363",
+    "twitter_screen_name": "SW_Help"
+  },
+  {
+    "companyName": "FUJITSU SERVICES LIMITED",
+    "companyNumber": "00096056",
+    "size": "5000 to 19,999",
+    "sicCodes": "62020,62090,95110",
+    "twitter_id_str": "186219523",
+    "twitter_screen_name": "fujitsu_uk"
+  },
+  {
+    "companyName": "H M Government Cabinet Office",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,84110",
+    "twitter_id_str": "143478208",
+    "twitter_screen_name": "cabinetofficeuk"
+  },
+  {
+    "companyName": "HOWDEN JOINERY LIMITED",
+    "companyNumber": "00526923",
+    "size": "5000 to 19,999",
+    "sicCodes": "47599",
+    "twitter_id_str": "194111203",
+    "twitter_screen_name": "HowdensJoinery"
+  },
+  {
+    "companyName": "Lancashire Teaching Hospitals Nhs Foundation Trust",
+    "companyNumber": null,
+    "size": "5000 to 19,999",
+    "sicCodes": "1,86210",
+    "id": 207937709,
+    "twitter_id_str": "207937709",
+    "name": "Chorley & Royal Preston",
+    "twitter_screen_name": "LancsHospitals"
+    },
+    {
+      "companyName": "MARSH SERVICES LIMITED",
+      "companyNumber": "03053552",
+      "size": "5000 to 19,999",
+      "sicCodes": "82990",
+      "twitter_id_str": "217362840",
+      "twitter_screen_name": "marshglobal"
+    },
+    {
+      "companyName": "Newcastle City Council",
+      "companyNumber": null,
+      "size": "5000 to 19,999",
+      "id": 17805281,
+      "twitter_id_str": "17805281",
+      "name": "NewcastleCityCouncil",
+      "twitter_screen_name": "NewcastleCC"
+    },
+    {
+      "companyName": "North West Ambulance Service N H S Trust",
+      "companyNumber": null,
+      "size": "5000 to 19,999",
+      "sicCodes": "1,86210",
+      "twitter_id_str": "348464547",
+      "twitter_screen_name": "NWAmbulance"
+    },
+    {
+      "companyName": "OVE ARUP & PARTNERS INTERNATIONAL LIMITED",
+      "companyNumber": "00952468",
+      "size": "5000 to 19,999",
+      "sicCodes": "71122",
+      "twitter_id_str": "67339136",
+      "twitter_screen_name": "Arup"
+    },
+    {
+      "companyName": "PAYSTREAM MY MAX LIMITED",
+      "companyNumber": "06042225",
+      "size": "5000 to 19,999",
+      "sicCodes": "78200",
+      "twitter_id_str": "306233293",
+      "twitter_screen_name": "PayStreamLtd"
+    },
+    {
+      "companyName": "REDWIGWAM LIMITED",
+      "companyNumber": "08963893",
+      "size": "5000 to 19,999",
+      "sicCodes": "78200",
+      "twitter_id_str": "2205102126",
+      "twitter_screen_name": "redwigwam"
+    },
+    {
+      "companyName": "RIVER ISLAND CLOTHING CO. LIMITED",
+      "companyNumber": "00636095",
+      "size": "5000 to 19,999",
+      "sicCodes": "47710",
+      "twitter_id_str": "19768204",
+      "twitter_screen_name": "riverisland"
+    },
+    {
+      "companyName": "Royal Cornwall Hospitals NHS Trusts",
+      "companyNumber": null,
+      "size": "5000 to 19,999",
+      "sicCodes": "",
+      "twitter_id_str": "104475962",
+      "twitter_screen_name": "RCHTWeCare"
+    },
+    {
+      "companyName": "Sandwell & West Birmingham Hospitals N H S Trust",
+      "companyNumber": null,
+      "size": "5000 to 19,999",
+      "sicCodes": "1,86210",
+      "twitter_id_str": "150600078",
+      "twitter_screen_name": "SWBHnhs"
+    },
+    {
+      "companyName": "SEVERN TRENT WATER LIMITED",
+      "companyNumber": "02366686",
+      "size": "5000 to 19,999",
+      "sicCodes": "36000",
+      "twitter_id_str": "28312115",
+      "twitter_screen_name": "stwater"
+    },
+    {
+      "companyName": "SINGLE RESOURCE LIMITED",
+      "companyNumber": "04866747",
+      "size": "5000 to 19,999",
+      "sicCodes": "78200"
+    },
+    {
+      "companyName": "Sussex Community NHS Foundation Trust",
+      "companyNumber": null,
+      "size": "5000 to 19,999",
+      "sicCodes": "1,86210",
+      "twitter_id_str": "456492555",
+      "twitter_screen_name": "nhs_scft"
+      },
+      {
+        "companyName": "TC FACILITIES MANAGEMENT LIMITED",
+        "companyNumber": "02567667",
+        "size": "5000 to 19,999",
+        "sicCodes": "81210",
+        "twitter_id_str": "2282358102",
+        "twitter_screen_name": "weareTCFM"
+      },
+      {
+        "companyName": "THAMES WATER UTILITIES LIMITED",
+        "companyNumber": "02366661",
+        "size": "5000 to 19,999",
+        "sicCodes": "36000",
+        "twitter_id_str": "26551168",
+        "twitter_screen_name": "thameswater"
+      },
+      {
+        "companyName": "UNITED UTILITIES WATER LIMITED",
+        "companyNumber": "02366678",
+        "size": "5000 to 19,999",
+        "sicCodes": "36000",
+        "twitter_id_str": "20982364",
+        "twitter_screen_name": "unitedutilities"
+      },
+      {
+        "companyName": "University Hospitals Of Morecambe Bay Nhs Foundation Trust",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86210",
+        "id": 185557557,
+        "twitter_id_str": "185557557",
+        "name": "MorecambeBayNHSTrust",
+        "twitter_screen_name": "UHMBT"
+      },
+      {
+        "companyName": "VODAFONE LIMITED",
+        "companyNumber": "01471587",
+        "size": "5000 to 19,999",
+        "sicCodes": "33200,61900",
+        "id": 20678384,
+        "twitter_id_str": "20678384",
+        "name": "Vodafone UK",
+        "twitter_screen_name": "VodafoneUK"
+      },
+      {
+        "companyName": "WICKES BUILDING SUPPLIES LIMITED",
+        "companyNumber": "01840419",
+        "size": "5000 to 19,999",
+        "sicCodes": "47789",
+        "twitter_id_str": "54333296",
+        "twitter_screen_name": "Wickes"
+      },
+      {
+        "companyName": "Wrightington, Wigan And Leigh Nhs Foundation Trust.",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86210",
+        "id": 441786041,
+        "twitter_id_str": "441786041",
+        "name": "WWL NHS",
+        "twitter_screen_name": "WWLNHS"
+      },
+      {
+        "companyName": "2 SISTERS FOOD GROUP LIMITED",
+        "companyNumber": "02826929",
+        "size": "5000 to 19,999",
+        "sicCodes": "10120",
+        "twitter_id_str": "1540916156",
+        "twitter_screen_name": "2SFGofficial"
+      },
+      {
+        "companyName": "A.F.BLAKEMORE AND SON LIMITED",
+        "companyNumber": "00391135",
+        "size": "5000 to 19,999",
+        "sicCodes": "46390",
+        "twitter_id_str": "1379235787",
+        "twitter_screen_name": "AF_Blakemore"
+      },
+      {
+        "companyName": "ACHIEVE TOGETHER LIMITED",
+        "companyNumber": "03153442",
+        "size": "5000 to 19,999",
+        "sicCodes": "87200",
+        "twitter_id_str": "1721914658",
+        "twitter_screen_name": "Achieve_Support"
+      },
+      {
+        "companyName": "ADECCO UK LIMITED",
+        "companyNumber": "00593232",
+        "size": "5000 to 19,999",
+        "sicCodes": "78200",
+        "twitter_id_str": "26277395",
+        "twitter_screen_name": "Adecco_UK"
+      },
+      {
+        "companyName": "AIRBUS OPERATIONS LIMITED",
+        "companyNumber": "03468788",
+        "size": "5000 to 19,999",
+        "sicCodes": "30300",
+        "twitter_id_str": "15425377",
+        "twitter_screen_name": "Airbus"
+      },
+      {
+        "companyName": "AMEY SERVICES LIMITED",
+        "companyNumber": "02507588",
+        "size": "5000 to 19,999",
+        "sicCodes": "78300,84110",
+        "twitter_id_str": "51033422",
+        "twitter_screen_name": "AmeyLtd"
+      },
+      {
+        "companyName": "ARRIVA LONDON SOUTH LIMITED",
+        "companyNumber": "02328467",
+        "size": "5000 to 19,999",
+        "sicCodes": "49319",
+        "twitter_id_str": "1243523857",
+        "twitter_screen_name": "Arriva_London"
+      },
+      {
+        "companyName": "ASTRAZENECA UK LIMITED",
+        "companyNumber": "03674842",
+        "size": "5000 to 19,999",
+        "sicCodes": "70100",
+        "twitter_id_str": "62465691",
+        "twitter_screen_name": "AstraZeneca"
+      },
+      {
+        "companyName": "ATALIAN SERVEST LIMITED",
+        "companyNumber": "06355228",
+        "size": "5000 to 19,999",
+        "sicCodes": "81100",
+        "twitter_id_str": "215213144",
+        "twitter_screen_name": "AtalianServest"
+      },
+      {
+        "companyName": "ATKINS LIMITED",
+        "companyNumber": "00688424",
+        "size": "5000 to 19,999",
+        "sicCodes": "70229,71112,71129,82990",
+        "twitter_id_str": "187457899",
+        "twitter_screen_name": "atkinsglobal"
+      },
+      {
+        "companyName": "ATOS IT SERVICES UK LIMITED",
+        "companyNumber": "01245534",
+        "size": "5000 to 19,999",
+        "sicCodes": "26200,62090,70229,86900",
+        "twitter_id_str": "39801655",
+        "twitter_screen_name": "Atos"
+      },
+      {
+        "companyName": "AUTOMOBILE ASSOCIATION DEVELOPMENTS LIMITED",
+        "companyNumber": "01878835",
+        "size": "5000 to 19,999",
+        "sicCodes": "82990,85530,94990",
+        "twitter_id_str": "384323508",
+        "twitter_screen_name": "TheAA_UK"
+      },
+      {
+        "companyName": "BAKKAVOR FOODS LIMITED",
+        "companyNumber": "01060806",
+        "size": "5000 to 19,999",
+        "sicCodes": "10850",
+        "twitter_id_str": "2151204336",
+        "twitter_screen_name": "Bakkavor"
+      },
+      {
+        "companyName": "BALFOUR BEATTY GROUP EMPLOYMENT LIMITED",
+        "companyNumber": "08312432",
+        "size": "5000 to 19,999",
+        "sicCodes": "78300",
+        "twitter_id_str": "295763337",
+        "twitter_screen_name": "balfourbeatty"
+      },
+      {
+        "companyName": "BARCHESTER HEALTHCARE LIMITED",
+        "companyNumber": "02792285",
+        "size": "5000 to 19,999",
+        "sicCodes": "70100",
+        "twitter_id_str": "276956790",
+        "twitter_screen_name": "Barchester_care"
+      },
+      {
+        "companyName": "Bedfordshire Hospitals NHS Foundation Trust",
+        "companyNumber": null,
+        "id": 53031869,
+        "twitter_id_str": "53031869",
+        "name": "Bedford Hospital (Bedfordshire Hospitals NHS FT)",
+        "twitter_screen_name": "bedfordhospital"
+      },
+      {
+        "companyName": "BESTWAY PANACEA HOLDINGS LIMITED",
+        "companyNumber": "09225479",
+        "size": "5000 to 19,999",
+        "sicCodes": "70100",
+        "twitter_id_str": "458478660",
+        "twitter_screen_name": "BidvestNoonan"
+      },
+      {
+        "companyName": "BIDVEST NOONAN (UK) LIMITED",
+        "companyNumber": "05049403",
+        "size": "5000 to 19,999",
+        "sicCodes": "81100,81222,81229",
+        "twitter_id_str": "458478660",
+        "twitter_screen_name": "BidvestNoonan"
+      },
+      {
+        "companyName": "Bolton N H S Foundation Trust",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86210",
+        "twitter_id_str": "389524007",
+        "twitter_screen_name": "boltonnhsft"
+      },
+      {
+        "companyName": "BOOKER LIMITED",
+        "companyNumber": "00197380",
+        "size": "5000 to 19,999",
+        "twitter_id_str": "19541391",
+        "twitter_screen_name": "BookerCatering"
+      },
+      {
+        "companyName": "BRAKE BROS LIMITED",
+        "companyNumber": "02035315",
+        "size": "5000 to 19,999",
+        "sicCodes": "46390",
+        "twitter_id_str": "423494883",
+        "twitter_screen_name": "brakes_food"
+      },
+      {
+        "companyName": "BRIGHT HORIZONS FAMILY SOLUTIONS LIMITED",
+        "companyNumber": "02328679",
+        "size": "5000 to 19,999",
+        "twitter_id_str": "316432038",
+        "twitter_screen_name": "BHFamiliesUK"
+      },
+      {
+        "companyName": "Brighton and Sussex University Hospitals NHS Trust",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86101",
+        "twitter_id_str": "1352636163044110337",
+        "twitter_screen_name": "UHSussex"
+      },
+      {
+        "companyName": "BRITISH GAS SERVICES LIMITED",
+        "companyNumber": "03141243",
+        "size": "5000 to 19,999",
+        "sicCodes": "96090",
+        "twitter_id_str": "46630225",
+        "twitter_screen_name": "BritishGas"
+      },
+      {
+        "companyName": "BROOK STREET (UK) LIMITED",
+        "companyNumber": "00459637",
+        "size": "5000 to 19,999",
+        "sicCodes": "78200",
+        "twitter_id_str": "808465471",
+        "twitter_screen_name": "brookstreetuk"
+      },
+      {
+        "companyName": "BUSY BEES NURSERIES LIMITED",
+        "companyNumber": "03454787",
+        "size": "5000 to 19,999",
+        "sicCodes": "85100",
+        "twitter_id_str": "127627532",
+        "twitter_screen_name": "busybeesuk"
+      },
+      {
+        "companyName": "CADENT GAS LIMITED",
+        "companyNumber": "10080864",
+        "size": "5000 to 19,999",
+        "sicCodes": "35220",
+        "twitter_id_str": "856836520493412352",
+        "twitter_screen_name": "CadentGasLtd"
+      },
+      {
+        "companyName": "Caerphilly County Borough Council",
+        "companyNumber": null,
+        "id": 211872294,
+        "twitter_id_str": "211872294",
+        "name": "caerphillycbc",
+        "twitter_screen_name": "CaerphillyCBC"
+      },
+      {
+        "companyName": "Calderdale & Huddersfield N H S",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86210",
+        "twitter_id_str": "587307830",
+        "twitter_screen_name": "CHFTNHS"
+      },
+      {
+        "companyName": "CAPGEMINI UK PLC",
+        "companyNumber": "00943935",
+        "size": "5000 to 19,999",
+        "sicCodes": "62020",
+        "twitter_id_str": "26485750",
+        "twitter_screen_name": "CapgeminiUK"
+      },
+      {
+        "companyName": "CARE UK COMMUNITY PARTNERSHIPS LTD",
+        "companyNumber": "02644862",
+        "size": "5000 to 19,999",
+        "sicCodes": "87300",
+        "twitter_id_str": "50603139",
+        "twitter_screen_name": "careuk"
+      },
+      {
+        "companyName": "CATER LINK LIMITED",
+        "companyNumber": "03732298",
+        "size": "5000 to 19,999",
+        "sicCodes": "56290",
+        "twitter_id_str": "908621279175069696",
+        "twitter_screen_name": "caterlink_ltd"
+      },
+      {
+        "companyName": "CBRE MANAGED SERVICES LIMITED",
+        "companyNumber": "01799580",
+        "size": "5000 to 19,999",
+        "sicCodes": "82990",
+        "twitter_id_str": "24021788",
+        "twitter_screen_name": "CBRE_UK"
+      },
+      {
+        "companyName": "CDS (SUPERSTORES INTERNATIONAL) LIMITED",
+        "companyNumber": "02699203",
+        "size": "5000 to 19,999",
+        "sicCodes": "47190",
+        "twitter_id_str": "49934559",
+        "twitter_screen_name": "TheRangeUK"
+      },
+      {
+        "companyName": "CENTER PARCS LIMITED",
+        "companyNumber": "01908230",
+        "size": "5000 to 19,999",
+        "sicCodes": "64209",
+        "twitter_id_str": "19340869",
+        "twitter_screen_name": "CenterParcsUK"
+      },
+      {
+        "companyName": "CENTRAL ENGLAND CO-OPERATIVE LIMITED",
+        "companyNumber": "IP10143R",
+        "size": "5000 to 19,999",
+        "sicCodes": "",
+        "twitter_id_str": "68695871",
+        "twitter_screen_name": "mycoopfood"
+      },
+      {
+        "companyName": "CGI IT UK LIMITED",
+        "companyNumber": "00947968",
+        "size": "5000 to 19,999",
+        "sicCodes": "62020",
+        "twitter_id_str": "177468335",
+        "twitter_screen_name": "CGI_UKNEWS"
+      },
+      {
+        "companyName": "CHURCHILL CONTRACT SERVICES LIMITED",
+        "companyNumber": "03762020",
+        "size": "5000 to 19,999",
+        "sicCodes": "81299",
+        "twitter_id_str": "2163407065",
+        "twitter_screen_name": "Churchill_Group"
+      },
+      {
+        "companyName": "CIRCLE HEALTH GROUP LIMITED",
+        "companyNumber": "02164270",
+        "size": "5000 to 19,999",
+        "sicCodes": "86101,86220,86230,86900",
+        "twitter_id_str": "329059117",
+        "twitter_screen_name": "circlehealthgrp"
+      },
+      {
+        "companyName": "CITY FACILITIES MANAGEMENT (UK) LIMITED",
+        "companyNumber": "SC092623",
+        "size": "5000 to 19,999",
+        "sicCodes": "81100",
+        "twitter_id_str": "1570218432",
+        "twitter_screen_name": "CityHoldings"
+      },
+      {
+        "companyName": "CIVICA UK LIMITED",
+        "companyNumber": "01628868",
+        "size": "5000 to 19,999",
+        "sicCodes": "62090",
+        "twitter_id_str": "108276103",
+        "twitter_screen_name": "CivicaUK"
+      },
+      {
+        "companyName": "COGNIZANT WORLDWIDE LIMITED",
+        "companyNumber": "07195160",
+        "size": "5000 to 19,999",
+        "sicCodes": "62020,62090",
+        "twitter_id_str": "69687111",
+        "twitter_screen_name": "Cognizant"
+      },
+      {
+        "companyName": "Cornwall Council",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "id": 31370801,
+        "twitter_id_str": "31370801",
+        "name": "@cornwallcouncil",
+        "twitter_screen_name": "CornwallCouncil"
+      },
+      {
+        "companyName": "COSTA LIMITED",
+        "companyNumber": "01270695",
+        "id": 16696296,
+        "twitter_id_str": "16696296",
+        "name": "Costa Coffee",
+        "twitter_screen_name": "CostaCoffee"
+      },
+      {
+        "companyName": "COSTCO WHOLESALE UK LIMITED",
+        "companyNumber": "02635489",
+        "size": "5000 to 19,999",
+        "sicCodes": "46900",
+        "twitter_id_str": "1056152593",
+        "twitter_screen_name": "Costco"
+      },
+      {
+        "companyName": "Countess of Chester Hospital NHS FT",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86101",
+        "twitter_id_str": "23066478",
+        "twitter_screen_name": "TheCountessNHS"
+      },
+      {
+        "companyName": "CRANSWICK COUNTRY FOODS PLC",
+        "companyNumber": "01803402",
+        "size": "5000 to 19,999",
+        "sicCodes": "10110",
+        "twitter_id_str": "202184358",
+        "twitter_screen_name": "CranswickPlc"
+      },
+      {
+        "companyName": "CURRYS GROUP LIMITED",
+        "companyNumber": "00504877",
+        "size": "5000 to 19,999",
+        "sicCodes": "47540",
+        "twitter_id_str": "170277278",
+        "twitter_screen_name": "currys"
+      },
+      {
+        "companyName": "CVS (UK) LIMITED",
+        "companyNumber": "03777473",
+        "size": "5000 to 19,999",
+        "sicCodes": "75000",
+        "twitter_id_str": "4327079428",
+        "twitter_screen_name": "CVSGroupPlc"
+      },
+      {
+        "companyName": "DAVID LLOYD LEISURE LIMITED",
+        "companyNumber": "01516226",
+        "size": "5000 to 19,999",
+        "sicCodes": "93120",
+        "twitter_id_str": "593815665",
+        "twitter_screen_name": "DavidLloydUK"
+      },
+      {
+        "companyName": "DB GROUP SERVICES (UK) LIMITED",
+        "companyNumber": "03077349",
+        "size": "5000 to 19,999",
+        "sicCodes": "78300",
+        "twitter_id_str": "41330603",
+        "twitter_screen_name": "DeutscheBank"
+      },
+      {
+        "companyName": "DEVONPORT ROYAL DOCKYARD LIMITED",
+        "companyNumber": "02077752",
+        "size": "5000 to 19,999",
+        "sicCodes": "30110",
+        "twitter_id_str": "1567910330986004482",
+        "twitter_screen_name": "Babcockplc"
+      },
+      {
+        "companyName": "DIMENSIONS (UK) LIMITED",
+        "companyNumber": "IP031192",
+        "size": "5000 to 19,999",
+        "sicCodes": "",
+        "twitter_id_str": "34963801",
+        "twitter_screen_name": "DimensionsUK"
+      },
+      {
+        "companyName": "DL INSURANCE SERVICES LIMITED",
+        "companyNumber": "03001989",
+        "size": "5000 to 19,999",
+        "sicCodes": "65120",
+        "twitter_id_str": "749232894",
+        "twitter_screen_name": "DLGroupMedia"
+      },
+      {
+        "companyName": "Doncaster Bassetlaw Hospitals NHS Trust",
+        "companyNumber": null,
+        "twitter_id_str": "550176910",
+        "name": "Doncaster and Bassetlaw Teaching Hospitals",
+        "twitter_screen_name": "DBH_NHSFT"
+      },
+      {
+        "companyName": "DONE BROTHERS (CASH BETTING) LIMITED",
+        "companyNumber": "01277703",
+        "size": "5000 to 19,999",
+        "sicCodes": "92000",
+        "twitter_id_str": "196053757",
+        "twitter_screen_name": "Betfred"
+      },
+      {
+        "companyName": "DOUBLE NEGATIVE LIMITED",
+        "companyNumber": "03325701",
+        "size": "5000 to 19,999",
+        "sicCodes": "59120",
+        "twitter_id_str": "19231962",
+        "twitter_screen_name": "dneg"
+      },
+      {
+        "companyName": "DUNELM (SOFT FURNISHINGS) LTD",
+        "companyNumber": "02129238",
+        "size": "5000 to 19,999",
+        "sicCodes": "47510,47910",
+        "twitter_id_str": "317111083",
+        "twitter_screen_name": "DunelmUK"
+      },
+      {
+        "companyName": "EDF ENERGY LIMITED",
+        "companyNumber": "02366852",
+        "size": "5000 to 19,999",
+        "sicCodes": "35110",
+        "twitter_id_str": "123065047",
+        "twitter_screen_name": "edfenergy"
+      },
+      {
+        "companyName": "ENGIE SERVICES LIMITED",
+        "companyNumber": "00598379",
+        "size": "5000 to 19,999",
+        "sicCodes": "81100",
+        "twitter_id_str": "738783225842110464",
+        "twitter_screen_name": "ENGIE_UK"
+      },
+      {
+        "companyName": "ERNST & YOUNG SERVICES LIMITED",
+        "companyNumber": "02812206",
+        "size": "5000 to 19,999",
+        "sicCodes": "82990",
+        "twitter_id_str": "297224904",
+        "twitter_screen_name": "EY_UKI"
+      },
+      {
+        "companyName": "Essex Partnership University NHS Foundation Trust",
+        "companyNumber": null,
+        "size": "5000 to 19,999",
+        "sicCodes": "1,86210",
+        "id": 843792645906464800,
+        "twitter_id_str": "843792645906464770",
+        "name": "EPUT",
+        "twitter_screen_name": "EPUTNHS"
+      },
+      {
+        "companyName": "ESTEE LAUDER COSMETICS LIMITED",
+        "companyNumber": "00659213",
+        "size": "5000 to 19,999",
+        "sicCodes": "46450",
+        "twitter_id_str": "409203711",
+        "twitter_screen_name": "EsteeLauderUK"
+      },
+      {
+        "companyName": "EUI LIMITED",
+        "companyNumber": "02686904",
+        "size": "5000 to 19,999",
+        "sicCodes": "65110,65120",
+        "twitter_id_str": "2284842134",
+        "twitter_screen_name": "AdmiralUK"
+      },
+      {
+        "companyName": "EURO CAR PARTS LIMITED",
+        "companyNumber": "02680212",
+        "size": "5000 to 19,999",
+        "sicCodes": "45320",
+        "twitter_id_str": "117346112",
+        "twitter_screen_name": "LKQEuroCarParts"
+      },
+      {
+        "companyName": "EURO GARAGES LIMITED",
+        "companyNumber": "04246195",
+        "size": "5000 to 19,999",
+        "sicCodes": "47300",
+        "twitter_id_str": "1915282380",
+        "twitter_screen_name": "TheEGGroup"
+      },
+      {
+        "companyName": "FDM GROUP LIMITED",
+        "companyNumber": "02542980",
+        "size": "5000 to 19,999",
+        "sicCodes": "62020,62090,78200",
+        "twitter_id_str": "181923786",
+        "twitter_screen_name": "FDMGroup"
+      },
+      {
+        "companyName": "FEDEX EXPRESS UK TRANSPORTATION LIMITED",
+        "companyNumber": "01628530",
+        "size": "5000 to 19,999",
+        "sicCodes": "49410",
+        "twitter_id_str": "407598613",
+        "twitter_screen_name": "FedExEurope"
+      },
+      {
+        "companyName": "FORD MOTOR COMPANY LIMITED",
+        "companyNumber": "00235446",
+        "size": "5000 to 19,999",
+        "sicCodes": "29100,29320,45111",
+        "twitter_id_str": "67617769",
+        "twitter_screen_name": "forduk"
+      },
+      {
+        "companyName": "G4S SECURE SOLUTIONS (UK) LIMITED",
+        "companyNumber": "01046019",
+        "size": "5000 to 19,999",
+        "sicCodes": "80100",
+        "twitter_id_str": "102072191",
+        "twitter_screen_name": "G4SUKI"
+      },
+      {
+        "companyName": "GAP PERSONNEL HOLDINGS LIMITED",
+        "companyNumber": "03589208",
+        "size": "5000 to 19,999",
+        "sicCodes": "78200",
+        "twitter_id_str": "196978441",
+        "twitter_screen_name": "gappersonnel"
+      }
 ]
