@@ -10,6 +10,7 @@ import { relevantWords } from "./relevantWords";
 import StatusesLookup, {
   User,
 } from "twitter-api-client/dist/interfaces/types/StatusesLookupTypes";
+import { deduplicateList } from "../utils/deduplicateList";
 
 const PayGapAppUserName = "@PayGapApp";
 
@@ -52,10 +53,10 @@ export class IncomingTweetListenerQueuer {
     );
   }
 
-  getFollowsFromData(companies: TwitterData[]) {
+  getFollowsFromData(twitterData: TwitterData[]) {
     const twitterIds: string[] = [];
-    for (let index = 0; index < companies.length; index++) {
-      const c = companies[index];
+    for (let index = 0; index < twitterData.length; index++) {
+      const c = twitterData[index];
       twitterIds.push(c.twitter_id_str);
     }
     if (twitterIds.length === 0) {
@@ -66,7 +67,7 @@ export class IncomingTweetListenerQueuer {
         JSON.stringify({ message: "too many twitter IDs to watch!" })
       );
     }
-    return twitterIds;
+    return deduplicateList(twitterIds, (x, y) => x === y);
   }
 
   async handleIncomingTweet(input: HandleIncomingTweetInput): Promise<void> {

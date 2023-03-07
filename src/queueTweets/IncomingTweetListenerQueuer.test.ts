@@ -48,6 +48,13 @@ describe("IncomingTweetListenerQueuer", () => {
       const followers = handler.getFollowsFromData(twitterData as any);
       expect(followers).toEqual(["1", "2"]);
     });
+    it("should deduplicate", async () => {
+      const followers = handler.getFollowsFromData([
+        ...twitterData,
+        ...twitterData,
+      ] as any);
+      expect(followers).toEqual(["1", "2"]);
+    });
   });
   describe("checkTweetContainsWord", () => {
     it("checks that a special word is in the tweet", () => {
