@@ -1204,6 +1204,12 @@
       {
         "companyName": "SSE SERVICES PLC",
         "companyNumber": "02366879"
+      },
+      {
+        "companyName": "SOUTHERN ELECTRIC POWER DISTRIBUTION PLC",
+        "companyNumber": "04094290",
+        "twitter_screen_name": "SSE",
+        "twitter_id_str": "67342845"
       }
     ]
   },
@@ -23401,5 +23407,894 @@
     "companyNumber": "06799478",
     "twitter_screen_name": "WrenKitchens",
     "twitter_id_str": "34354763"
+  },
+  {
+    "companyName": "BOOHOO.COM UK LIMITED",
+    "companyNumber": "05723154",
+    "twitter_screen_name": "boohoo",
+    "twitter_id_str": "35773873"
+  },
+  {
+    "companyName": "MISSGUIDED LIMITED",
+    "companyNumber": "03235904",
+    "twitter_screen_name": "Missguided",
+    "twitter_id_str": "21249332"
+  },
+  {
+    "companyName": "MNG-MANGO U.K. LIMITED",
+    "companyNumber": "03358140",
+    "twitter_screen_name": "Mango",
+    "twitter_id_str": "205339205"
+  },
+  {
+    "companyName": "MONSTER ENERGY EUROPE LIMITED",
+    "companyNumber": "06394100",
+    "twitter_screen_name": "MonsterEnergy",
+    "twitter_id_str": "63253045"
+  },
+  {
+    "companyName": "TSB BANK PLC",
+    "companyNumber": "SC095237",
+    "twitter_screen_name": "tsb",
+    "twitter_id_str": "746954528"
+  },
+  {
+    "companyName": "MONSTER ENERGY EUROPE LIMITED",
+    "companyNumber": "06394100",
+    "twitter_screen_name": "MonsterEnergy",
+    "twitter_id_str": "63253045"
+  },
+  {
+    "companyName": "TRAVELODGE HOTELS LIMITED",
+    "companyNumber": "00769170",
+    "twitter_screen_name": "TravelodgeUK",
+    "twitter_id_str": "41601068"
+  },
+  {
+    "companyName": "GLAXOSMITHKLINE SERVICES UNLIMITED",
+    "companyNumber": "01047315",
+    "twitter_screen_name": "GSK",
+    "twitter_id_str": "5383942"
+  },
+  {
+    "companyName": "GOVIA THAMESLINK RAILWAY LIMITED",
+    "companyNumber": "07934306",
+    "twitter_screen_name": "TLRailUK",
+    "twitter_id_str": "2589703207"
+  },
+  {
+    "companyName": "H&M HENNES & MAURITZ UK LIMITED",
+    "companyNumber": "01413450",
+    "twitter_screen_name": "hmunitedkingdom",
+    "twitter_id_str": "93839201"
+  },
+  {
+    "companyName": "H&M HENNES & MAURITZ UK LIMITED",
+    "companyNumber": "01413450",
+    "twitter_screen_name": "hm",
+    "twitter_id_str": "14399483"
+  },
+  {
+    "companyName": "HALFORDS GROUP PLC",
+    "companyNumber": "04457314",
+    "twitter_screen_name": "Halfords_uk",
+    "twitter_id_str": "46640060"
+  },
+  {
+    "companyName": "Hampshire Constabulary",
+    "companyNumber": null,
+    "twitter_screen_name": "HantsPolice",
+    "twitter_id_str": "76299612"
+  },
+  {
+    "companyName": "HAYS SPECIALIST RECRUITMENT LIMITED",
+    "companyNumber": "00975677",
+    "twitter_screen_name": "HaysNews",
+    "twitter_id_str": "59748266"
+  },
+  {
+    "companyName": "JACOBS U.K. LIMITED",
+    "companyNumber": "02594504",
+    "twitter_screen_name": "JacobsConnects",
+    "twitter_id_str": "14245324"
+  },
+  {
+    "companyName": "IKEA LIMITED",
+    "companyNumber": "01986283",
+    "twitter_screen_name": "IKEAUK",
+    "twitter_id_str": "2255265458"
+  },
+  {
+    "companyName": "LADBROKES BETTING & GAMING LIMITED",
+    "companyNumber": "00775667",
+    "twitter_screen_name": "Ladbrokes",
+    "twitter_id_str": "35342611"
+  },
+  {
+    "companyName": "Lancashire Constabulary",
+    "companyNumber": null,
+    "twitter_screen_name": "LancsPolice",
+    "twitter_id_str": "79983391"
+  },
+  {
+    "companyName": "LLOYDS PHARMACY LIMITED",
+    "companyNumber": "00758153",
+    "twitter_screen_name": "LloydsPharmacy",
+    "twitter_id_str": "242740609"
+  },
+  {
+    "companyName": "MATALAN RETAIL LTD.",
+    "companyNumber": "02103564",
+    "twitter_screen_name": "matalan",
+    "twitter_id_str": "50320485"
+  },
+  {
+    "companyName": "MCDONALD'S RESTAURANTS LIMITED",
+    "companyNumber": "01002769",
+    "twitter_screen_name": "McDonaldsUK",
+    "twitter_id_str": "2248573141"
+  },
+  {
+    "companyName": "MICROSOFT LIMITED",
+    "companyNumber": "01624297",
+    "twitter_screen_name": "MicrosoftUK",
+    "twitter_id_str": "720474368"
+  },
+  {
+    "companyName": "MOTO HOSPITALITY LIMITED",
+    "companyNumber": "00734299",
+    "twitter_screen_name": "motoway",
+    "twitter_id_str": "130458367"
+  },
+  {
+    "companyName": "NANDO'S CHICKENLAND LIMITED",
+    "companyNumber": "02580031",
+    "twitter_screen_name": "NandosUK",
+    "twitter_id_str": "20241784"
+  },
+  {
+    "companyName": "NATIONAL HIGHWAYS LIMITED",
+    "companyNumber": "09346363",
+    "twitter_screen_name": "NationalHways",
+    "twitter_id_str": "51508924"
+  },
+  {
+    "companyName": "NEW LOOK RETAILERS LIMITED",
+    "companyNumber": "01618428",
+    "twitter_screen_name": "newlook",
+    "twitter_id_str": "19301055"
+  },
+  {
+    "companyName": "NHS Blood and Transplant",
+    "companyNumber": null,
+    "twitter_screen_name": "NHSBT",
+    "twitter_id_str": "613309014"
+  },
+  {
+    "companyName": "NISSAN MOTOR MANUFACTURING (UK) LIMITED",
+    "companyNumber": "01806912",
+    "twitter_screen_name": "NissanUK",
+    "twitter_id_str": "198596515"
+  },
+  {
+    "companyName": "Northern Trains Limited",
+    "companyNumber": null,
+    "twitter_screen_name": "northernassist",
+    "twitter_id_str": "194512268"
+  },
+  {
+    "companyName": "OCADO CENTRAL SERVICES LIMITED",
+    "companyNumber": "09047023",
+    "twitter_screen_name": "Ocado",
+    "twitter_id_str": "20155502"
+  },
+  {
+    "companyName": "ONE STOP STORES LIMITED",
+    "companyNumber": "02462858",
+    "twitter_screen_name": "onestopstores",
+    "twitter_id_str": "194613107"
+  },
+  {
+    "companyName": "Powys Council",
+    "companyNumber": null,
+    "twitter_screen_name": "PowysCC",
+    "twitter_id_str": "26273960"
+  },
+  {
+    "companyName": "Powys Council",
+    "companyNumber": null,
+    "twitter_screen_name": "PowysCC",
+    "twitter_id_str": "26273960"
+  },
+  {
+    "companyName": "PRET A MANGER (EUROPE) LIMITED",
+    "companyNumber": "01854213",
+    "twitter_screen_name": "pret",
+    "twitter_id_str": "146385359"
+  },
+  {
+    "companyName": "SAVILLS (UK) LIMITED",
+    "companyNumber": "02605138",
+    "twitter_screen_name": "Savills",
+    "twitter_id_str": "36380487"
+  },
+  {
+    "companyName": "SAVILLS (UK) LIMITED",
+    "companyNumber": "02605138",
+    "twitter_screen_name": "Savills",
+    "twitter_id_str": "36380487"
+  },
+  {
+    "companyName": "SCREWFIX DIRECT LIMITED",
+    "companyNumber": "03006378",
+    "twitter_screen_name": "Screwfix",
+    "twitter_id_str": "87905257"
+  },
+  {
+    "companyName": "SPORTSDIRECT.COM RETAIL LIMITED",
+    "companyNumber": "03406347",
+    "twitter_screen_name": "SportsDirectUK",
+    "twitter_id_str": "28545204"
+  },
+  {
+    "companyName": "STONEGATE PUB COMPANY LIMITED",
+    "companyNumber": "BR014816",
+    "twitter_screen_name": "Stonegate_Group",
+    "twitter_id_str": "317243439"
+  },
+  {
+    "companyName": "STONEGATE PUB COMPANY LIMITED",
+    "companyNumber": "BR014816",
+    "twitter_screen_name": "Stonegate_Group",
+    "twitter_id_str": "317243439"
+  },
+  {
+    "companyName": "TAYLOR WIMPEY UK LIMITED",
+    "companyNumber": "01392762",
+    "twitter_screen_name": "TaylorWimpey",
+    "twitter_id_str": "60333916"
+  },
+  {
+    "companyName": "TELEFONICA UK LIMITED",
+    "companyNumber": "01743099",
+    "twitter_screen_name": "O2",
+    "twitter_id_str": "15133627"
+  },
+  {
+    "companyName": "TRAVIS PERKINS PLC",
+    "companyNumber": "00824821",
+    "twitter_screen_name": "TravisPerkinsCo",
+    "twitter_id_str": "1299685584"
+  },
+  {
+    "companyName": "UPS LIMITED",
+    "companyNumber": "01933173",
+    "twitter_screen_name": "UPS_UK",
+    "twitter_id_str": "412411429"
+  },
+  {
+    "companyName": "UPS LIMITED",
+    "companyNumber": "01933173",
+    "twitter_screen_name": "UPS",
+    "twitter_id_str": "158129535"
+  },
+  {
+    "companyName": "VIRGIN MEDIA LIMITED",
+    "companyNumber": "02591237",
+    "twitter_screen_name": "virginmedia",
+    "twitter_id_str": "17872077"
+  },
+  {
+    "companyName": "WAGAMAMA LIMITED",
+    "companyNumber": "02605751",
+    "twitter_screen_name": "wagamama_uk",
+    "twitter_id_str": "1098907423"
+  },
+  {
+    "companyName": "WH SMITH RETAIL HOLDINGS LIMITED",
+    "companyNumber": "00471941",
+    "twitter_screen_name": "WHSmith",
+    "twitter_id_str": "25273394"
+  },
+  {
+    "companyName": "WILKO LIMITED",
+    "companyNumber": "00365335",
+    "twitter_screen_name": "LoveWilko",
+    "twitter_id_str": "123600583"
+  },
+  {
+    "companyName": "WREN KITCHENS LIMITED",
+    "companyNumber": "06799478",
+    "twitter_screen_name": "WrenKitchens",
+    "twitter_id_str": "34354763"
+  },
+  {
+    "companyName": "CORAL RACING LIMITED",
+    "companyNumber": "00541600",
+    "twitter_screen_name": "coral",
+    "twitter_id_str": "47659350"
+  },
+  {
+    "companyName": "ASOS.COM LIMITED",
+    "companyNumber": "03584121",
+    "twitter_screen_name": "ASOS_Careers",
+    "twitter_id_str": "123588556"
+  },
+  {
+    "companyName": "ASOS.COM LIMITED",
+    "companyNumber": "03584121",
+    "twitter_screen_name": "ASOS_news",
+    "twitter_id_str": "1331329987723530250"
+  },
+  {
+    "companyName": "ASK ITALIAN RESTAURANTS LIMITED",
+    "companyNumber": "10406599",
+    "twitter_screen_name": "ASKItalian",
+    "twitter_id_str": "338240910"
+  },
+  {
+    "companyName": "SWIZZELS MATLOW LIMITED",
+    "companyNumber": "00562269",
+    "twitter_screen_name": "SwizzelsMatlow",
+    "twitter_id_str": "61526333"
+  },
+  {
+    "companyName": "TESLA MOTORS LIMITED",
+    "companyNumber": "04384008",
+    "twitter_screen_name": "Tesla",
+    "twitter_id_str": "13298072"
+  },
+  {
+    "companyName": "THE ARSENAL FOOTBALL CLUB PUBLIC LIMITED COMPANY",
+    "companyNumber": "00109244",
+    "twitter_screen_name": "Arsenal",
+    "twitter_id_str": "34613288"
+  },
+  {
+    "companyName": "JEWSON LIMITED",
+    "companyNumber": "00348407",
+    "twitter_screen_name": "Jewson",
+    "twitter_id_str": "256254577"
+  },
+  {
+    "companyName": "VIRGIN ATLANTIC AIRWAYS LIMITED",
+    "companyNumber": "01600117",
+    "twitter_screen_name": "VirginAtlantic",
+    "twitter_id_str": "20626359"
+  },
+  {
+    "companyName": "WELCOME BREAK HOLDINGS LIMITED",
+    "companyNumber": "03290817",
+    "twitter_screen_name": "welcomebreak",
+    "twitter_id_str": "57615727"
+  },
+  {
+    "companyName": "HOUSE OF FRASER (STORES) LIMITED",
+    "companyNumber": "SC010677",
+    "twitter_screen_name": "houseoffraser",
+    "twitter_id_str": "63196333"
+  },
+  {
+    "companyName": "Advisory, Conciliation and Arbitration Service",
+    "companyNumber": null,
+    "twitter_screen_name": "acasorguk",
+    "twitter_id_str": "36380531"
+  },
+  {
+    "companyName": "ANGLIAN WINDOWS LIMITED",
+    "companyNumber": "02540020",
+    "twitter_screen_name": "AnglianLimited",
+    "twitter_id_str": "1405527551489953795"
+  },
+  {
+    "companyName": "ANN SUMMERS LTD.",
+    "companyNumber": "01034349",
+    "twitter_screen_name": "AnnSummers",
+    "twitter_id_str": "20241746"
+  },
+  {
+    "companyName": "ARLA FOODS LIMITED",
+    "companyNumber": "02143253",
+    "twitter_screen_name": "ArlaFoodsUK",
+    "twitter_id_str": "2833820842"
+  },
+  {
+    "companyName": "AXA PPP HEALTHCARE GROUP LIMITED",
+    "companyNumber": "03148346",
+    "twitter_screen_name": "AXAHealth",
+    "twitter_id_str": "61730911"
+  },
+  {
+    "companyName": "AXA SERVICES LIMITED",
+    "companyNumber": "00446043",
+    "twitter_screen_name": "AXA",
+    "twitter_id_str": "142294033"
+  },
+  {
+    "companyName": "BIRDS EYE LIMITED",
+    "companyNumber": "00343496",
+    "twitter_screen_name": "birdseyeuk",
+    "twitter_id_str": "1469984364"
+  },
+  {
+    "companyName": "BRITVIC SOFT DRINKS LIMITED",
+    "companyNumber": "00517211",
+    "twitter_screen_name": "Britvic",
+    "twitter_id_str": "227349294"
+  },
+  {
+    "companyName": "BUPA INSURANCE SERVICES LIMITED",
+    "companyNumber": "03829851",
+    "twitter_screen_name": "BupaUK",
+    "twitter_id_str": "222115471"
+  },
+  {
+    "companyName": "Cambridgeshire Police",
+    "companyNumber": null,
+    "twitter_screen_name": "CambsCops",
+    "twitter_id_str": "203004911"
+  },
+  {
+    "companyName": "CARAVAN CLUB LIMITED(THE)",
+    "companyNumber": "00646027",
+    "twitter_screen_name": "candmclub",
+    "twitter_id_str": "26026540"
+  },
+  {
+    "companyName": "CARPETRIGHT LIMITED",
+    "companyNumber": "02294875",
+    "twitter_screen_name": "Carpetright",
+    "twitter_id_str": "70702878"
+  },
+  {
+    "companyName": "CINEWORLD CINEMAS LIMITED",
+    "companyNumber": "01915767",
+    "twitter_screen_name": "cineworld",
+    "twitter_id_str": "17679727"
+  },
+  {
+    "companyName": "COCA-COLA EUROPACIFIC PARTNERS GREAT BRITAIN LIMITED",
+    "companyNumber": "00027173",
+    "twitter_screen_name": "CocaCola_GB",
+    "twitter_id_str": "20666236"
+  },
+  {
+    "companyName": "CREATIVE SUPPORT LIMITED",
+    "companyNumber": "IP27440R",
+    "twitter_screen_name": "crtvspprt",
+    "twitter_id_str": "362429707"
+  },
+  {
+    "companyName": "DANIEL THWAITES PUBLIC LIMITED COMPANY",
+    "companyNumber": "00051702",
+    "twitter_screen_name": "ThwaitesBrewery",
+    "twitter_id_str": "119357043"
+  },
+  {
+    "companyName": "FIRST CYMRU BUSES LIMITED",
+    "companyNumber": "00133884",
+    "twitter_screen_name": "FirstCymru",
+    "twitter_id_str": "97223190"
+  },
+  {
+    "companyName": "FIRST TRENITALIA WEST COAST RAIL LIMITED",
+    "companyNumber": "10349442",
+    "twitter_screen_name": "avantiwestcoast",
+    "twitter_id_str": "1143560758476906497"
+  },
+  {
+    "companyName": "FIRST WEST OF ENGLAND LIMITED",
+    "companyNumber": "00025088",
+    "twitter_screen_name": "316413922",
+    "twitter_id_str": "firstbsa"
+  },
+  {
+    "companyName": "FIRST GLASGOW (NO.1) LIMITED",
+    "companyNumber": "SC097299",
+    "twitter_screen_name": "FirstinGlasgow",
+    "twitter_id_str": "110667154"
+  },
+  {
+    "companyName": "FIRST WEST YORKSHIRE LIMITED",
+    "companyNumber": "01990370",
+    "twitter_screen_name": "FirstWestYorks",
+    "twitter_id_str": "88944741"
+  },
+  {
+    "companyName": "GAMES WORKSHOP LIMITED",
+    "companyNumber": "01467092",
+    "twitter_screen_name": "warhammer",
+    "twitter_id_str": "1240624917533597698"
+  },
+  {
+    "companyName": "GATWICK AIRPORT LIMITED",
+    "companyNumber": "01991018",
+    "twitter_screen_name": "Gatwick_Airport",
+    "twitter_id_str": "33875003"
+  },
+  {
+    "companyName": "General Medical Council",
+    "companyNumber": null,
+    "twitter_screen_name": "gmcuk",
+    "twitter_id_str": "492996846"
+  },
+  {
+    "companyName": "GUARDIAN NEWS & MEDIA LIMITED",
+    "companyNumber": "00908396",
+    "twitter_screen_name": "guardian",
+    "twitter_id_str": "87818409"
+  },
+  {
+    "companyName": "GUIDE DOGS FOR THE BLIND ASSOCIATION(THE)",
+    "companyNumber": "00291646",
+    "twitter_screen_name": "guidedogs",
+    "twitter_id_str": "80571413"
+  },
+  {
+    "companyName": "Hertfordshire Constabulary",
+    "companyNumber": null,
+    "twitter_screen_name": "HertsPolice",
+    "twitter_id_str": "46129757"
+  },
+  {
+    "companyName": "HISCOX UNDERWRITING GROUP SERVICES LIMITED",
+    "companyNumber": "04137419",
+    "twitter_screen_name": "HiscoxUK",
+    "twitter_id_str": "91096435"
+  },
+  {
+    "companyName": "IPSOS MORI UK LIMITED",
+    "companyNumber": "01640855",
+    "twitter_screen_name": "IpsosUK",
+    "twitter_id_str": "23456307"
+  },
+  {
+    "companyName": "JACOBS & TURNER LIMITED",
+    "companyNumber": "SC047678",
+    "twitter_screen_name": "Trespass",
+    "twitter_id_str": "107068861"
+  },
+  {
+    "companyName": "JIGSAW HOMES GROUP LIMITED",
+    "companyNumber": "IP29433R",
+    "twitter_screen_name": "JigsawHG",
+    "twitter_id_str": "146408134"
+  },
+  {
+    "companyName": "JUPITER HOTELS LIMITED",
+    "companyNumber": "07550805",
+    "twitter_screen_name": "jupiter_hotels",
+    "twitter_id_str": "581906217"
+  },
+  {
+    "companyName": "KAPLAN FINANCIAL LIMITED",
+    "companyNumber": "01028790",
+    "twitter_screen_name": "kaplanuk",
+    "twitter_id_str": "706825598"
+  },
+  {
+    "companyName": "KRISPY KREME U.K. LIMITED",
+    "companyNumber": "04532445",
+    "twitter_screen_name": "krispykremeUK",
+    "twitter_id_str": "18355475"
+  },
+  {
+    "companyName": "LINKLATERS BUSINESS SERVICES",
+    "companyNumber": "00633907",
+    "twitter_screen_name": "LinklatersLLP",
+    "twitter_id_str": "35719785"
+  },
+  {
+    "companyName": "London Borough of Hackney",
+    "companyNumber": null,
+    "twitter_screen_name": "hackneycouncil",
+    "twitter_id_str": "203119681"
+  },
+  {
+    "companyName": "LOTUS CARS LIMITED",
+    "companyNumber": "00895081",
+    "twitter_screen_name": "lotuscars",
+    "twitter_id_str": "61460381"
+  },
+  {
+    "companyName": "NATIONAL HOUSE-BUILDING COUNCIL",
+    "companyNumber": "00320784",
+    "twitter_screen_name": "NHBC",
+    "twitter_id_str": "19645412"
+  },
+  {
+    "companyName": "Northamptonshire Police",
+    "companyNumber": null,
+    "twitter_screen_name": "NorthantsPolice",
+    "twitter_id_str": "50670711"
+  },
+  {
+    "companyName": "Office For Standards In Education, Childrens Services And Skills",
+    "companyNumber": null,
+    "twitter_screen_name": "Ofstednews",
+    "twitter_id_str": "197378511"
+  },
+  {
+    "companyName": "OASIS DENTAL CARE LIMITED",
+    "companyNumber": "00478127",
+    "twitter_screen_name": "Bupadentalcare",
+    "twitter_id_str": "302070841"
+  },
+  {
+    "companyName": "PEOPLEPLUS GROUP LIMITED",
+    "companyNumber": "05722765",
+    "twitter_screen_name": "peopleplusuk",
+    "twitter_id_str": "43083936"
+  },
+  {
+    "companyName": "REED & MACKAY TRAVEL LIMITED",
+    "companyNumber": "00963087",
+    "twitter_screen_name": "ReedMackay",
+    "twitter_id_str": "1850989178"
+  },
+  {
+    "companyName": "ROYAL & SUN ALLIANCE INSURANCE LIMITED",
+    "companyNumber": "00093792",
+    "twitter_screen_name": "rsagroup",
+    "twitter_id_str": "282668562"
+  },
+  {
+    "companyName": "SAGA PLC",
+    "companyNumber": "08804263",
+    "twitter_screen_name": "SagaUK",
+    "twitter_id_str": "408548387"
+  },
+  {
+    "companyName": "SCOTTISH WIDOWS SERVICES LIMITED",
+    "companyNumber": "SC189975",
+    "twitter_screen_name": "ScottishWidows",
+    "twitter_id_str": "305016517"
+  },
+  {
+    "companyName": "SEASALT LIMITED",
+    "companyNumber": "02259954",
+    "twitter_screen_name": "seasaltclothing",
+    "twitter_id_str": "182440703"
+  },
+  {
+    "companyName": "SENSE, THE NATIONAL DEAFBLIND AND RUBELLA ASSOCIATION",
+    "companyNumber": "01825301",
+    "twitter_screen_name": "sensecharity",
+    "twitter_id_str": "42653087"
+  },
+  {
+    "companyName": "SONY EUROPE LIMITED",
+    "companyNumber": "02422874",
+    "twitter_screen_name": "SonyUK",
+    "twitter_id_str": "17804411"
+  },
+
+  {
+    "companyName": "THE RANDOM HOUSE GROUP LIMITED",
+    "companyNumber": "00954009",
+    "twitter_screen_name": "randomhouse",
+    "twitter_id_str": "7586362"
+  },
+  {
+    "companyName": "THE CO-OPERATIVE ACADEMIES TRUST",
+    "companyNumber": "07747126",
+    "twitter_screen_name": "CoopAcademies",
+    "twitter_id_str": "569925538"
+  },
+  {
+    "companyName": "CHELSEA FOOTBALL CLUB LIMITED",
+    "companyNumber": "01965149",
+    "twitter_screen_name": "ChelseaFC",
+    "twitter_id_str": "22910295"
+  },
+  {
+    "companyName": "LEEDS UNITED FOOTBALL CLUB LIMITED",
+    "companyNumber": "06233875",
+    "twitter_screen_name": "LUFC",
+    "twitter_id_str": "1024095475"
+  },
+  {
+    "companyName": "LEGO COMPANY LIMITED",
+    "companyNumber": "00368236",
+    "twitter_screen_name": "LEGO_Group",
+    "twitter_id_str": "295325513"
+  },
+  {
+    "companyName": "NORWICH CITY FOOTBALL CLUB PLC",
+    "companyNumber": "00154044",
+    "twitter_screen_name": "NorwichCityFC",
+    "twitter_id_str": "187572312"
+  },
+  {
+    "companyName": "THE LIVERPOOL FOOTBALL CLUB AND ATHLETIC GROUNDS LIMITED",
+    "companyNumber": "00035668",
+    "twitter_screen_name": "LFC",
+    "twitter_id_str": "19583545"
+  },
+  {
+    "companyName": "BRIGHTON AND HOVE ALBION FOOTBALL CLUB,LIMITED(THE)",
+    "companyNumber": "00081077",
+    "twitter_screen_name": "OfficialBHAFC",
+    "twitter_id_str": "57606154"
+  },
+  {
+    "companyName": "EVERTON FOOTBALL CLUB COMPANY, LIMITED",
+    "companyNumber": "00036624",
+    "twitter_screen_name": "Everton",
+    "twitter_id_str": "15891449"
+  },
+  {
+    "companyName": "EVANS HALSHAW LIMITED",
+    "companyNumber": "01994002",
+    "twitter_screen_name": "evanshalshawuk",
+    "twitter_id_str": "329113120"
+  },
+  {
+    "companyName": "LEICESTER CITY FOOTBALL CLUB LIMITED",
+    "companyNumber": "04593477",
+    "twitter_screen_name": "LCFC",
+    "twitter_id_str": "122392884"
+  },
+  {
+    "companyName": "LEON RESTAURANTS LIMITED",
+    "companyNumber": "05018441",
+    "twitter_screen_name": "leonrestaurants",
+    "twitter_id_str": "39734835"
+  },
+  {
+    "companyName": "MANCHESTER CITY FOOTBALL CLUB LIMITED",
+    "companyNumber": "00040946",
+    "twitter_screen_name": "ManCity",
+    "twitter_id_str": "14573900"
+  },
+  {
+    "companyName": "WOLVERHAMPTON WANDERERS FOOTBALL CLUB (1986) LIMITED",
+    "companyNumber": "01989823",
+    "twitter_screen_name": "Wolves",
+    "twitter_id_str": "49296276"
+  },
+  {
+    "companyName": "WOODLAND TRUST(THE)",
+    "companyNumber": "01982873",
+    "twitter_screen_name": "WoodlandTrust",
+    "twitter_id_str": "19396413"
+  },
+  {
+    "companyName": "FULHAM FOOTBALL CLUB LIMITED",
+    "companyNumber": "02114486",
+    "twitter_screen_name": "FulhamFC",
+    "twitter_id_str": "22903812"
+  },
+  {
+    "companyName": "NORTHAMPTON RUGBY FOOTBALL CLUB LIMITED",
+    "companyNumber": "03139409",
+    "twitter_screen_name": "SaintsRugby",
+    "twitter_id_str": "24868133"
+  },
+  {
+    "companyName": "NOTTINGHAM FOREST FOOTBALL CLUB LIMITED",
+    "companyNumber": "01630402",
+    "twitter_screen_name": "NFFC",
+    "twitter_id_str": "39754653"
+  },
+  {
+    "companyName": "THE RANGERS FOOTBALL CLUB LIMITED",
+    "companyNumber": "SC425159",
+    "twitter_screen_name": "RangersFC",
+    "twitter_id_str": "351838853"
+  },
+  {
+    "companyName": "THE SHEFFIELD UNITED FOOTBALL CLUB LIMITED",
+    "companyNumber": "00061564",
+    "twitter_screen_name": "SheffieldUnited",
+    "twitter_id_str": "63463538"
+  },
+  {
+    "companyName": "WEST HAM UNITED FOOTBALL CLUB LIMITED",
+    "companyNumber": "00066516",
+    "twitter_screen_name": "WestHam",
+    "twitter_id_str": "156247074"
+  },
+  {
+    "companyName": "SWANSEA CITY ASSOCIATION FOOTBALL CLUB LIMITED(THE)",
+    "companyNumber": "00123414",
+    "twitter_screen_name": "SwansOfficial",
+    "twitter_id_str": "472385266"
+  },
+  {
+    "companyName": "HARRY RAMSDEN'S LIMITED",
+    "companyNumber": "02395362",
+    "twitter_screen_name": "HarryRamsdensUK",
+    "twitter_id_str": "584049499"
+  },
+  {
+    "companyName": "LHR AIRPORTS LIMITED",
+    "companyNumber": "01970855",
+    "twitter_screen_name": "HeathrowAirport",
+    "twitter_id_str": "20823928"
+  },
+  {
+    "companyName": "MANCHESTER AIRPORT PLC",
+    "companyNumber": "01960988",
+    "twitter_screen_name": "manairport",
+    "twitter_id_str": "19913832"
+  },
+  {
+    "companyName": "STANSTED AIRPORT LIMITED",
+    "companyNumber": "01990920",
+    "twitter_screen_name": "STN_Airport",
+    "twitter_id_str": "41570734"
+  },
+  {
+    "companyName": "LONDON LUTON AIRPORT OPERATIONS LIMITED",
+    "companyNumber": "03491213",
+    "twitter_screen_name": "LDNLutonAirport",
+    "twitter_id_str": "124219169"
+  },
+  {
+    "companyName": "BRISTOL AIRPORT LIMITED",
+    "companyNumber": "02078692",
+    "twitter_screen_name": "BristolAirport",
+    "twitter_id_str": "326157384"
+  },
+  {
+    "companyName": "CARDIFF INTERNATIONAL AIRPORT LIMITED",
+    "companyNumber": "02076096",
+    "twitter_screen_name": "Cardiff_Airport",
+    "twitter_id_str": "168530981"
+  },
+  {
+    "companyName": "EAST MIDLANDS INTERNATIONAL AIRPORT LIMITED",
+    "companyNumber": "02078271",
+    "twitter_screen_name": "EMA_Airport",
+    "twitter_id_str": "2510585947"
+  },
+  {
+    "companyName": "EDINBURGH AIRPORT LIMITED",
+    "companyNumber": "SC096623",
+    "twitter_screen_name": "EDI_Airport",
+    "twitter_id_str": "41570978"
+  },
+  {
+    "companyName": "GLASGOW PRESTWICK AIRPORT LIMITED",
+    "companyNumber": "SC135362",
+    "twitter_screen_name": "GPAPassenger",
+    "twitter_id_str": "208591683"
+  },
+  {
+    "companyName": "LONDON CITY AIRPORT LIMITED",
+    "companyNumber": "01963361",
+    "twitter_screen_name": "LondonCityAir",
+    "twitter_id_str": "32388036"
+  },
+  {
+    "companyName": "EXETER AND DEVON AIRPORT LIMITED",
+    "companyNumber": "02148705",
+    "twitter_screen_name": "Exeter_Airport",
+    "twitter_id_str": "69269525"
+  },
+  {
+    "companyName": "BIRMINGHAM AIRPORT LIMITED",
+    "companyNumber": "02078273",
+    "twitter_screen_name": "bhx_official",
+    "twitter_id_str": "82154934"
+  },
+  {
+    "companyName": "GLASGOW AIRPORT LIMITED",
+    "companyNumber": "SC096624",
+    "twitter_screen_name": "GLA_Airport",
+    "twitter_id_str": "41571188"
+  },
+  {
+    "companyName": "LEEDS BRADFORD AIRPORT LIMITED",
+    "companyNumber": "02065958",
+    "twitter_screen_name": "LBIAirport",
+    "twitter_id_str": "143375180"
+  },
+  {
+    "companyName": "LIVERPOOL AIRPORT LIMITED",
+    "companyNumber": "02116704",
+    "twitter_screen_name": "lpl_airport",
+    "twitter_id_str": "63410795"
   }
 ]
