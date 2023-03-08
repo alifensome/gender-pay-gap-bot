@@ -444,6 +444,23 @@ describe("copyWriter", () => {
         "@user I found 3 matches for your request. Did you mean:\n\nBarclays Bank PLC Limited\nBarclays bank bums\nBarclays bank for dog\n\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
       expect(copy).toBe(expectedCopy);
     });
+    it("should not exceed 280", () => {
+      const result = copyWriter.tweetAtUsMultipleResultsFound("min_esh", [
+        {
+          companyName:
+            "something really really really really really really really really really long ",
+        },
+        {
+          companyName:
+            "something really really really really really really really really really long ",
+        },
+        {
+          companyName:
+            "something really really really really really really really really really long ",
+        },
+      ]);
+      expect(result.length).toBe(280);
+    });
   });
 
   describe("tweetAtUsCouldNotFindResults", () => {

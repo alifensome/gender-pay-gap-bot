@@ -151,7 +151,10 @@ export class TwitterClient {
     }
     if (tweet.length > 280) {
       throw new Error(
-        "tweet can not be longer than 280 chars But was:" + tweet.length
+        "tweet can not be longer than 280 chars But was:" +
+          tweet.length +
+          "Content:" +
+          tweet
       );
     }
     return new Promise((resolve, reject) => {

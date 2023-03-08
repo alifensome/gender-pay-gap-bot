@@ -83,6 +83,10 @@ const companyDataItemNoName = {
 const celticFc = {
   companyName: "CELTIC F.C. LIMITED",
 };
+
+const bbc = {
+  companyName: "BRITISH BROADCASTING CORPORATION",
+};
 describe("Repository", () => {
   const mockDataImporter = {
     twitterUserDataProd: jest
@@ -104,6 +108,7 @@ describe("Repository", () => {
         hsbcPlc,
         hsbcBank,
         celticFc,
+        bbc,
       ]),
   };
   const repo = new Repository(mockDataImporter as any);

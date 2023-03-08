@@ -148,7 +148,9 @@ export class CopyWriter {
     );
     const end =
       "\nReply with 'pay gap for' followed by the company name and I'll fetch the data";
-    return beginning + companiesList + end;
+    const full = beginning + companiesList + end;
+    const trimmedTweet = full.slice(0, 280);
+    return trimmedTweet;
   }
   tweetAtUsCouldNotFindResults(screenName: string): string {
     return `@${screenName} I couldn't find a match for your request, or there are too many companies matching that name. Try searching for them here instead: https://gender-pay-gap.service.gov.uk/`;
