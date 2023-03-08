@@ -1728,8 +1728,8 @@
     "twitter_id": 66780587,
     "twitter_name": "Amazon Web Services",
     "twitter_screen_name": "awscloud",
-    "companyName": "AMAZON UK SERVICES LTD.",
-    "companyNumber": "03223028"
+    "companyName": "AMAZON WEB SERVICES EMEA SARL, UK BRANCH",
+    "companyNumber": "BR019315"
   },
   {
     "twitter_id_str": "735405470433878016",
@@ -9534,14 +9534,6 @@
     "companyNumber": "02115499"
   },
   {
-    "twitter_id_str": "66780587",
-    "twitter_id": 66780587,
-    "twitter_name": "Amazon Web Services",
-    "twitter_screen_name": "awscloud",
-    "companyName": "Amazon UK Services Ltd.",
-    "companyNumber": "03223028"
-  },
-  {
     "twitter_id_str": "735405470433878016",
     "twitter_id": 735405470433878000,
     "twitter_name": "Ambitions Academies Trust",
@@ -16828,13 +16820,6 @@
     "companyNumber": "03977902"
   },
   {
-    "twitter_id_str": "123275968",
-    "twitter_id": 123275968,
-    "twitter_screen_name": "gbkburgers",
-    "companyName": "GOURMET BURGER KITCHEN LIMITED",
-    "companyNumber": "03970045"
-  },
-  {
     "twitter_id_str": "1278317358",
     "twitter_id": 1278317358,
     "twitter_screen_name": "HeinzUK",
@@ -23916,5 +23901,186 @@
     "companyNumber": "02116704",
     "twitter_screen_name": "lpl_airport",
     "twitter_id_str": "63410795"
+  },
+
+  {
+    "companyName": "DREAMS LIMITED",
+    "companyNumber": "08428347",
+    "twitter_screen_name": "Dreams_Beds",
+    "twitter_id_str": "312683870"
+  },
+  {
+    "companyName": "AMERICAN AIRLINES, INC.",
+    "companyNumber": "BR002223",
+    "twitter_screen_name": "americanair",
+    "twitter_id_str": "22536055"
+  },
+  {
+    "companyName": "GLOBAL MEDIA & ENTERTAINMENT LIMITED",
+    "companyNumber": "06251684",
+    "twitter_screen_name": "global",
+    "twitter_id_str": "29960050"
+  },
+  {
+    "companyName": "GUSTO RESTAURANTS GROUP LIMITED",
+    "companyNumber": "08722610",
+    "twitter_screen_name": "gusto_uk",
+    "twitter_id_str": "833664972626522112"
+  },
+  {
+    "companyName": "INNOCENT LIMITED",
+    "companyNumber": "04007092",
+    "twitter_screen_name": "innocent",
+    "twitter_id_str": "14266714"
+  },
+  {
+    "companyName": "JET2.COM LIMITED",
+    "companyNumber": "02739537",
+    "twitter_screen_name": "jet2tweets",
+    "twitter_id_str": "2831747803"
+  },
+  {
+    "companyName": "JOULES LIMITED",
+    "companyNumber": "02934327",
+    "twitter_screen_name": "Joulesclothing",
+    "twitter_id_str": "20437530"
+  },
+  {
+    "companyName": "SPECSAVERS OPTICAL SUPERSTORES LIMITED",
+    "companyNumber": "01721624",
+    "twitter_screen_name": "Specsavers",
+    "twitter_id_str": "151871119"
+  },
+  {
+    "companyName": "NATIONAL GRID GAS PLC",
+    "companyNumber": "02006000",
+    "twitter_screen_name": "nationalgrid",
+    "twitter_id_str": "109525104"
+  },
+  {
+    "companyName": "National Heritage Memorial Fund",
+    "companyNumber": null,
+    "twitter_screen_name": "HeritageFundUK",
+    "twitter_id_str": "155576163"
+  },
+  {
+    "companyName": "NBCUNIVERSAL INTERNATIONAL LIMITED",
+    "companyNumber": "04415234",
+    "twitter_screen_name": "nbcuniversal",
+    "twitter_id_str": "93673287"
+  },
+  {
+    "companyName": "NEAL'S YARD (NATURAL REMEDIES) LIMITED",
+    "companyNumber": "01597194",
+    "twitter_screen_name": "nyr_official",
+    "twitter_id_str": "262195622"
+  },
+  {
+    "companyName": "NESTLE UK LTD.",
+    "companyNumber": "00051491",
+    "twitter_screen_name": "NestleUKI",
+    "twitter_id_str": "31152288"
+  },
+  {
+    "companyName": "GMB",
+    "companyNumber": null,
+    "twitter_screen_name": "GMB_union",
+    "twitter_id_str": "330387008"
+  },
+  {
+    "companyName": "GO NORTH WEST LIMITED",
+    "companyNumber": "08205871",
+    "twitter_screen_name": "gnwbus",
+    "twitter_id_str": "1112617250027118593"
+  },
+  {
+    "companyName": "GOURMET BURGER KITCHEN (UK) LIMITED",
+    "companyNumber": "06800894",
+    "twitter_screen_name": "gbkburgers",
+    "twitter_id_str": "123275968"
+  },
+  {
+    "companyName": "The University of Northampton",
+    "companyNumber": null,
+    "twitter_screen_name": "UniNorthants",
+    "twitter_id_str": "20668046"
+  },
+  {
+    "companyName": "YHA (ENGLAND AND WALES)",
+    "companyNumber": "00282555",
+    "twitter_screen_name": "YHAOfficial",
+    "twitter_id_str": "202570267"
+  },
+  {
+    "companyName": "'PRIFYSGOL ABERYSTWYTH' AND 'ABERYSTWYTH UNIVERSITY'",
+    "companyNumber": "RC000641",
+    "twitter_screen_name": "AberUni",
+    "twitter_id_str": "18721907"
+  },
+  {
+    "companyName": "ZURICH UK GENERAL SERVICES LIMITED",
+    "companyNumber": "03843124",
+    "twitter_screen_name": "ZurichInsUK",
+    "twitter_id_str": "130445082"
+  },
+  {
+    "companyName": "3M UNITED KINGDOM PUBLIC LIMITED COMPANY",
+    "companyNumber": "01123045",
+    "twitter_screen_name": "3MUK",
+    "twitter_id_str": "21291135"
+  },
+  {
+    "companyName": "AB INBEV UK LIMITED",
+    "companyNumber": "03982132",
+    "twitter_screen_name": "BudBrewingUKI",
+    "twitter_id_str": "2792120115"
+  },
+  {
+    "companyName": "ABELLIO EAST ANGLIA LIMITED",
+    "companyNumber": "07861414",
+    "twitter_screen_name": "greateranglia",
+    "twitter_id_str": "157996395"
+  },
+  {
+    "companyName": "ABELLIO EAST MIDLANDS LIMITED",
+    "companyNumber": "09860485",
+    "twitter_screen_name": "EastMidRailway",
+    "twitter_id_str": "16795011"
+  },
+  {
+    "companyName": "ABELLIO LONDON LTD",
+    "companyNumber": "03786162",
+    "twitter_screen_name": "AbellioLondon",
+    "twitter_id_str": "2471231767"
+  },
+  {
+    "companyName": "ADIDAS (U.K.) LIMITED",
+    "companyNumber": "01075951",
+    "twitter_screen_name": "adidasUK",
+    "twitter_id_str": "35706371"
+  },
+  {
+    "companyName": "AIRBUS DEFENCE AND SPACE LIMITED",
+    "companyNumber": "02449259",
+    "twitter_screen_name": "AirbusDefence",
+    "twitter_id_str": "75519531"
+  },
+  {
+    "companyName": "ALDERMORE BANK PLC",
+    "companyNumber": "00947662",
+    "twitter_screen_name": "AldermoreBank",
+    "twitter_id_str": "384230818"
+  },
+  {
+    "companyName": "ALSTOM TRANSPORT UK LIMITED",
+    "companyNumber": "08462831",
+    "twitter_screen_name": "AlstomUK",
+    "twitter_id_str": "821083604"
+  },
+  {
+    "companyName": "AMAZON EU SARL, UK BRANCH",
+    "companyNumber": "BR017427",
+    "twitter_screen_name": "AmazonUK",
+    "twitter_id_str": "209004862"
   }
 ]
