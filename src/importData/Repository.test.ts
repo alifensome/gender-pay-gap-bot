@@ -358,5 +358,12 @@ describe("Repository", () => {
         closeMatches: [celticFc],
       });
     });
+    it("should find acronyms", () => {
+      const result = repo.fuzzyFindCompanyByName("bbc");
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [bbc],
+      });
+    });
   });
 });

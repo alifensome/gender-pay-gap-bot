@@ -1,18 +1,25 @@
 import { replaceAll } from "./replace";
 
+export function stringSplitByWords(s: string): string[] {
+  const sCleaned = replaceAll(s, "  ", " ").toLowerCase();
+
+  const sParts = sCleaned
+    .split(" ")
+    .filter((x) => x !== "")
+    .map((x) => replaceAll(x, " "));
+  return sParts;
+}
+
+export function toAcronym(word: string) {
+  return stringSplitByWords(word)
+    .reduce((acc, value) => acc + value[0], "")
+    .toUpperCase();
+}
+
 export function getTextMatch(t1: string, t2: string) {
-  const t1Cleaned = replaceAll(t1, "  ", " ").toLowerCase();
-  const t2Cleaned = replaceAll(t2, "  ", " ").toLowerCase();
+  const t1Parts = stringSplitByWords(t1);
 
-  const t1Parts = t1Cleaned
-    .split(" ")
-    .filter((x) => x !== "")
-    .map((x) => replaceAll(x, " "));
-
-  const t2Parts = t2Cleaned
-    .split(" ")
-    .filter((x) => x !== "")
-    .map((x) => replaceAll(x, " "));
+  const t2Parts = stringSplitByWords(t2);
 
   const t2NumberOfParts = t2Parts.length;
   let includesCount = 0;

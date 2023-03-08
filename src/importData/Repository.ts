@@ -4,7 +4,11 @@ import { TwitterData, CompanyDataMultiYearItem, CompanyNumber } from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
 import { isNumber } from "../utils/numberUtils";
-import { getTextMatch } from "../utils/textMatch";
+import {
+  getTextMatch,
+  stringSplitByWords,
+  toAcronym,
+} from "../utils/textMatch";
 
 interface potentialMatchResult {
   company: CompanyDataMultiYearItem;
@@ -227,9 +231,17 @@ export class Repository {
     const potentialMatches: potentialMatchResult[] = [];
     for (let index = 0; index < this.companiesGpgData.length; index++) {
       const company = this.companiesGpgData[index];
+
       const dataCompanyName = replaceTerms
         ? replaceTerms(company.companyName)
         : company.companyName;
+
+      if (stringSplitByWords(searchName).length === 1) {
+        const companyAcronym = toAcronym(dataCompanyName);
+        if (companyAcronym === searchName) {
+          potentialMatches.push({ company, match: 0.9 });
+        }
+      }
       const match = getTextMatch(searchName, dataCompanyName);
       if (match >= minimumMatchFactor) {
         potentialMatches.push({ company, match });
