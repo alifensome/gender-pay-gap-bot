@@ -4,8 +4,9 @@ import { TwitterClient } from "twitter-api-client";
 import { getEnvVar } from "../utils/getEnvVar";
 import { promptUser } from "../utils/promptUser";
 import { TwitterData } from "../types";
-import { isValidTwitterItem } from "../utils/isValidTwitterItem";
 import { wait } from "../utils/wait";
+import { writeJsonFile } from "../utils/write";
+
 const dataImporter = new DataImporter();
 
 dotEnv.config();
@@ -90,6 +91,10 @@ async function run() {
     errorsBadMatch: JSON.stringify(errorsBadMatch),
     errors404: JSON.stringify(errors404),
   });
+  await writeJsonFile('./data/twitterAccountData/ids-screenName.json',{
+    errorsBadMatch,
+    errors404,
+  })
   console.log("exiting...");
   process.exit(0);
 }
