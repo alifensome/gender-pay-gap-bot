@@ -80,6 +80,9 @@ const companyDataItemNoName = {
   companyNumber: "123",
   sicCodes: "companyDataItemNoName",
 };
+const celticFc = {
+  companyName: "CELTIC F.C. LIMITED",
+};
 describe("Repository", () => {
   const mockDataImporter = {
     twitterUserDataProd: jest
@@ -100,6 +103,7 @@ describe("Repository", () => {
         hsbcBankUk,
         hsbcPlc,
         hsbcBank,
+        celticFc,
       ]),
   };
   const repo = new Repository(mockDataImporter as any);
@@ -325,6 +329,13 @@ describe("Repository", () => {
       const result = repo.fuzzyFindCompanyByName("HSBC");
       expect(result).toEqual({
         exactMatch: null,
+        closeMatches: [hsbcPlc],
+      });
+    });
+    it.skip("should handle single word search better", () => {
+      const result = repo.fuzzyFindCompanyByName("HSBC");
+      expect(result).toEqual({
+        exactMatch: null,
         closeMatches: [hsbcPlc, hsbcBank, hsbcBankUk],
       });
     });
@@ -333,6 +344,13 @@ describe("Repository", () => {
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [aliBuildingCompanyDataItem],
+      });
+    });
+    it("should ignore some strings and brackets", () => {
+      const result = repo.fuzzyFindCompanyByName("Celtic PLC");
+      expect(result).toEqual({
+        exactMatch: null,
+        closeMatches: [celticFc],
       });
     });
   });

@@ -2,7 +2,7 @@ import { TwitterClient, UsersSearch } from "twitter-api-client";
 import dotenv from "dotenv";
 import { isUkLocation } from "../utils/isUk";
 import { getTextMatch } from "../utils/textMatch";
-import { replaceMultiple } from "../utils/replace";
+import { replaceSearchTerms } from "./replaceSearchTerms";
 
 dotenv.config();
 
@@ -12,22 +12,6 @@ const twitterClient = new TwitterClient({
   accessToken: process.env.TWITTER_ACCESS_TOKEN,
   accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
-
-function replaceSearchTerms(name: string): string {
-  return replaceMultiple(name, [
-    { find: " limited" },
-    { find: " Limited" },
-    { find: " plc" },
-    { find: " Plc" },
-    { find: " PLC" },
-    { find: " LTD" },
-    { find: " Ltd" },
-    { find: "\\(" },
-    { find: "\\)" },
-    { find: " uk" },
-    { find: " UK" },
-  ]).replace(/ *\([^)]*\) */g, ""); // remove stuff in brackets.;
-}
 
 export interface FindUserByNameOutput {
   foundType: "exact" | "multiple" | "none";

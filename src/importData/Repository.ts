@@ -1,4 +1,5 @@
 import DataImporter from ".";
+import { replaceSearchTerms } from "../twitter/replaceSearchTerms";
 import { TwitterData, CompanyDataMultiYearItem, CompanyNumber } from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
@@ -164,6 +165,7 @@ export class Repository {
     if (exactMatchOnName) {
       return { exactMatch: exactMatchOnName, closeMatches: [] };
     }
+
     const potentialMatches = this.findPotentialMatchesByName(companyName, 0.85);
     if (potentialMatches.length) {
       return { closeMatches: potentialMatches, exactMatch: null };
@@ -177,18 +179,21 @@ export class Repository {
       return { closeMatches: potentialMatches75, exactMatch: null };
     }
 
-    const potentialMatches50 = this.findPotentialMatchesByName(
+    const potentialMatchesWithReplace = this.findPotentialMatchesByName(
       companyName,
-      0.5
+      0.75,
+      replaceSearchTerms
     );
 
-    if (potentialMatches50.length) {
-      return { closeMatches: potentialMatches50, exactMatch: null };
+    if (potentialMatchesWithReplace.length) {
+      return { closeMatches: potentialMatchesWithReplace, exactMatch: null };
     }
 
     // attempt order by
-    const orderedPotentialMatches =
-      this.findPotentialMatchesOrderByMatch(companyName);
+    const orderedPotentialMatches = this.findPotentialMatchesOrderByMatch(
+      companyName,
+      replaceSearchTerms
+    );
 
     return {
       closeMatches: orderedPotentialMatches.map((c) => c.company),
@@ -197,12 +202,15 @@ export class Repository {
   }
 
   private findPotentialMatchesOrderByMatch(
-    companyName: string
+    companyName: string,
+    replaceTerms: (s: string) => string
   ): potentialMatchResult[] {
+    const searchName = replaceTerms(companyName);
+
     const potentialMatches: potentialMatchResult[] = [];
     for (let index = 0; index < this.companiesGpgData.length; index++) {
       const company = this.companiesGpgData[index];
-      const match = getTextMatch(companyName, company.companyName);
+      const match = getTextMatch(searchName, replaceTerms(company.companyName));
       if (match > 0) {
         potentialMatches.push({ company, match });
       }
@@ -212,12 +220,17 @@ export class Repository {
 
   private findPotentialMatchesByName(
     companyName: string,
-    minimumMatchFactor: number
+    minimumMatchFactor: number,
+    replaceTerms?: (s: string) => string
   ): CompanyDataMultiYearItem[] {
+    const searchName = replaceTerms ? replaceTerms(companyName) : companyName;
     const potentialMatches: potentialMatchResult[] = [];
     for (let index = 0; index < this.companiesGpgData.length; index++) {
       const company = this.companiesGpgData[index];
-      const match = getTextMatch(companyName, company.companyName);
+      const dataCompanyName = replaceTerms
+        ? replaceTerms(company.companyName)
+        : company.companyName;
+      const match = getTextMatch(searchName, dataCompanyName);
       if (match >= minimumMatchFactor) {
         potentialMatches.push({ company, match });
       }
