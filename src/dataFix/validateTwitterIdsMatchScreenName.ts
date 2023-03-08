@@ -5,12 +5,12 @@ import { getEnvVar } from "../utils/getEnvVar";
 import { promptUser } from "../utils/promptUser";
 import { TwitterData } from "../types";
 import { isValidTwitterItem } from "../utils/isValidTwitterItem";
+import { wait } from "../utils/wait";
 const dataImporter = new DataImporter();
 
 dotEnv.config();
 
 const path = process.argv[2];
-console.log(`Fixing data fro path: ${path}. Continue?`);
 const dataToFix: TwitterData[] = dataImporter.readFile(path);
 
 const twitterClient = new TwitterClient({
@@ -21,60 +21,75 @@ const twitterClient = new TwitterClient({
 });
 
 async function run() {
-  const shouldContinue = await promptUser("Continue?");
+  const errorsBadMatch = [];
+  const errors404 = [];
+  try {
+    console.log(
+      `Fixing data for path: ${path}. Items in file: ${dataToFix.length}. Continue?`
+    );
+    const shouldContinue = await promptUser("Continue?");
 
-  if (shouldContinue !== "y") {
-    console.log("exiting...");
-    process.exit(0);
-  }
+    if (shouldContinue !== "y") {
+      console.log("exiting...");
+      process.exit(0);
+    }
 
-  const maxValue = 2147483647;
-  let numberOfErrors = 0;
-  for (let index = 0; index < dataToFix.length; index++) {
-    if (index % 100 === 0) {
-      console.log(`${(index / dataToFix.length) * 100}%`);
-    }
-    const row = dataToFix[index];
-    // unprocessable item
-    if (!row.twitter_id_str && !row.twitter_id && !row.twitter_screen_name) {
-      throw new Error(`unprocessable row: ${JSON.stringify(row)}`);
-    }
-    if (row.twitter_id_str && row.twitter_screen_name) {
-    }
-    let userIdStr = `${row.twitter_id}`;
-    let twitter_screen_name: string = row.twitter_screen_name;
-    if (!row.twitter_id || row.twitter_id >= maxValue) {
-      numberOfErrors++;
-      //todo some of these data points don't have twitter_screen_name
-      if (row.twitter_screen_name) {
-        const user = await twitterClient.accountsAndUsers.usersLookup({
+    for (let index = 0; index < dataToFix.length; index++) {
+      await wait(3000);
+      if (index % 100 === 0) {
+        console.log(`${(index / dataToFix.length) * 100}%`);
+      }
+      const row = dataToFix[index];
+      if (!row.twitter_id_str || !row.twitter_screen_name) {
+        throw new Error(`unprocessable row: ${JSON.stringify(row)}`);
+      }
+      console.log(
+        `Searching Screen name: ${row.twitter_screen_name}, ID: ${row.twitter_id_str}, companyName: ${row.companyName}.`
+      );
+      let user = null;
+      try {
+        user = await twitterClient.accountsAndUsers.usersLookup({
           screen_name: row.twitter_screen_name,
         });
-        console.log(
-          `Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`
-        );
-        userIdStr = user[0].id_str;
-        twitter_screen_name = user[0].screen_name;
-      } else if (row.twitter_id_str || row.twitter_id) {
-        const user = await twitterClient.accountsAndUsers.usersLookup({
-          user_id: row.twitter_id_str || `${row.twitter_id}`,
+      } catch (error) {
+        if ((error as any).statusCode === 404) {
+          try {
+            user = await twitterClient.accountsAndUsers.usersLookup({
+              user_id: row.twitter_id_str,
+            });
+          } catch (error) {
+            if ((error as any).statusCode === 404) {
+              errors404.push({
+                row,
+              });
+              continue;
+            }
+            throw error;
+          }
+        } else {
+          throw error;
+        }
+      }
+      if (
+        row.twitter_id_str !== user[0].id_str ||
+        row.twitter_screen_name.toLocaleLowerCase() !==
+          user[0].screen_name.toLocaleLowerCase()
+      ) {
+        console.log(JSON.stringify({ row, user }));
+        errorsBadMatch.push({
+          row,
+          correctUserName: user[0].screen_name,
+          correctTwitterId: user[0].id_str,
         });
-        console.log(
-          `Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`
-        );
-        userIdStr = user[0].id_str;
-        twitter_screen_name = user[0].screen_name;
       }
     }
-    row.twitter_id_str = userIdStr;
-    row.twitter_screen_name = twitter_screen_name;
-    if (!isValidTwitterItem(row)) {
-      throw new Error(`invalid item ${JSON.stringify(row)}`);
-    }
+  } catch (error) {
+    console.error(error);
   }
-
-  console.log(numberOfErrors);
-  console.log(`Number of errors:${numberOfErrors}.`);
+  console.log({
+    errorsBadMatch: JSON.stringify(errorsBadMatch),
+    errors404: JSON.stringify(errors404),
+  });
   console.log("exiting...");
   process.exit(0);
 }

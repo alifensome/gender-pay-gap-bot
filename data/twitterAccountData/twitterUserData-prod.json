@@ -252,10 +252,10 @@
     "companyNumber": "04325234"
   },
   {
-    "twitter_id_str": "852534752515117057",
-    "twitter_id": 852534752515117000,
+    "twitter_id_str": "21086579",
+    "twitter_id": 21086579,
     "twitter_name": "Capital City College Group",
-    "twitter_screen_name": "capitalcitycg",
+    "twitter_screen_name": "CapitalCityCGrp",
     "companyName": "Capital City College Group",
     "companyNumber": null
   },
@@ -300,10 +300,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "2327070487",
-    "twitter_id": 2327070487,
+    "twitter_id_str": "1480830598793109505",
+    "twitter_id": 1480830598793109505,
     "twitter_name": "Clydesdale Bank",
-    "twitter_screen_name": "clydesdalebank",
+    "twitter_screen_name": "ClydesdaleBank",
     "companyName": "CLYDESDALE BANK PLC",
     "companyNumber": "SC001111"
   },
@@ -351,7 +351,7 @@
     "twitter_id_str": "14431752",
     "twitter_id": 14431752,
     "twitter_name": "Department for International Trade",
-    "twitter_screen_name": "tradegovuk",
+    "twitter_screen_name": "biztradegovuk",
     "companyName": "Department for International Trade",
     "companyNumber": null
   },
@@ -934,7 +934,7 @@
     "twitter_id_str": "73082628",
     "twitter_id": 73082628,
     "twitter_name": "NewVIc",
-    "twitter_screen_name": "talknewvic",
+    "twitter_screen_name": "newhamsixthform",
     "companyName": "Newvic College",
     "companyNumber": null
   },
@@ -1009,10 +1009,10 @@
     ]
   },
   {
-    "twitter_id_str": "1722006002",
-    "twitter_id": 1722006002,
+    "twitter_id_str": "22614266",
+    "twitter_id": 22614266,
     "twitter_name": "Ordnance Survey",
-    "twitter_screen_name": "OSB2B",
+    "twitter_screen_name": "OrdnanceSurvey",
     "companyName": "ORDNANCE SURVEY LIMITED",
     "companyNumber": "09121572"
   },
@@ -1345,7 +1345,7 @@
     "twitter_id_str": "1068066535468609536",
     "twitter_id": 1068066535468609500,
     "twitter_name": "The Two Counties Trust",
-    "twitter_screen_name": "TwoCountiesT",
+    "twitter_screen_name": "TTCTrust",
     "companyName": "THE TWO COUNTIES TRUST",
     "companyNumber": "07972029"
   },
@@ -1473,7 +1473,7 @@
     "twitter_id_str": "59144533",
     "twitter_id": 59144533,
     "twitter_name": "Whitbread PLC",
-    "twitter_screen_name": "WhitbreadPLC",
+    "twitter_screen_name": "WhitbreadCareer",
     "companyName": "WHITBREAD GROUP PLC",
     "companyNumber": "00029423"
   },
@@ -1719,7 +1719,7 @@
     "twitter_id_str": "944183719",
     "twitter_id": 944183719,
     "twitter_name": "allpay Limited",
-    "twitter_screen_name": "allpayGroup",
+    "twitter_screen_name": "allpayLimited",
     "companyName": "ALLPAY LIMITED",
     "companyNumber": "02933191"
   },
@@ -2294,7 +2294,7 @@
     "twitter_id_str": "74825877",
     "twitter_id": 74825877,
     "twitter_name": "Boston College",
-    "twitter_screen_name": "BostonCollegeuk",
+    "twitter_screen_name": "bostoncollegeuk",
     "companyName": "BOSTON COLLEGE",
     "companyNumber": null
   },
@@ -2396,7 +2396,7 @@
     "twitter_id_str": "331509925",
     "twitter_id": 331509925,
     "twitter_name": "Bridgewater NHS",
-    "twitter_screen_name": "Bridgewater_NHS",
+    "twitter_screen_name": "WeAreBCHFT",
     "companyName": "Bridgewater Community Healthcare NHS Foundation Trust",
     "companyNumber": null
   },
@@ -2481,14 +2481,6 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "155519704",
-    "twitter_id": 155519704,
-    "twitter_name": "Brooksby Melton College",
-    "twitter_screen_name": "BrooksbyMelton",
-    "companyName": "Brooksby Melton College",
-    "companyNumber": null
-  },
-  {
     "twitter_id_str": "38459128",
     "twitter_id": 38459128,
     "twitter_name": "Browne Jacobson LLP",
@@ -2532,7 +2524,7 @@
     "twitter_id_str": "148707924",
     "twitter_id": 148707924,
     "twitter_name": "Buckinghamshire New University",
-    "twitter_screen_name": "BucksNewUni",
+    "twitter_screen_name": "_BNUni",
     "companyName": "Buckinghamshire New University",
     "companyNumber": null
   },
@@ -2668,7 +2660,7 @@
     "twitter_id_str": "1949092412",
     "twitter_id": 1949092412,
     "twitter_name": "Canterbury Cathedral",
-    "twitter_screen_name": "No1Cathedral",
+    "twitter_screen_name": "CburyCathedral",
     "companyName": "Canterbury Cathedral",
     "companyNumber": null
   },
@@ -2783,14 +2775,6 @@
     "twitter_screen_name": "CCMFacilities",
     "companyName": "CCM FACILITIES LTD",
     "companyNumber": "02498745"
-  },
-  {
-    "twitter_id_str": "465550784",
-    "twitter_id": 465550784,
-    "twitter_name": "Cdc Group Plc",
-    "twitter_screen_name": "CdcGroupPlc",
-    "companyName": "CDC GROUP PLC",
-    "companyNumber": "03877777"
   },
   {
     "twitter_id_str": "123599938",
@@ -3037,14 +3021,6 @@
     "twitter_screen_name": "Clayesmore",
     "companyName": "Clayesmore School",
     "companyNumber": "00359779"
-  },
-  {
-    "twitter_id_str": "3121816097",
-    "twitter_id": 3121816097,
-    "twitter_name": "Clevedon Learning Trust",
-    "twitter_screen_name": "ClevedonLTrust",
-    "companyName": "CLEVEDON LEARNING TRUST",
-    "companyNumber": "07872799"
   },
   {
     "twitter_id_str": "1487268643",
@@ -3457,14 +3433,6 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "746777246",
-    "twitter_id": 746777246,
-    "twitter_name": "Dynniq",
-    "twitter_screen_name": "Dynniq",
-    "companyName": "DYNNIQ UK LTD",
-    "companyNumber": "01490333"
-  },
-  {
     "twitter_id_str": "1410302630",
     "twitter_id": 1410302630,
     "twitter_name": "Dyson",
@@ -3727,8 +3695,8 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "84070596",
-    "twitter_id": 84070596,
+    "twitter_id_str": "1603307104651153409",
+    "twitter_id": 1603307104651153409,
     "twitter_name": "Everest Limited",
     "twitter_screen_name": "everestHome",
     "companyName": "EVEREST LIMITED",
@@ -3767,16 +3735,8 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "1266635640",
-    "twitter_id": 1115549341324730400,
-    "twitter_name": "EXPERT LOGISTICS",
-    "twitter_screen_name": "expertlogistau",
-    "companyName": "EXPERT LOGISTICS LTD.",
-    "companyNumber": "03442571"
-  },
-  {
-    "twitter_id_str": "2425151",
-    "twitter_id": 2425151,
+    "twitter_id_str": "1174426031010152448",
+    "twitter_id": 1174426031010152448,
     "twitter_name": "Facebook",
     "twitter_screen_name": "Facebook",
     "companyName": "FACEBOOK UK LTD",
@@ -3962,7 +3922,7 @@
     "twitter_id_str": "1137119984",
     "twitter_id": 1137119984,
     "twitter_name": "QE Gateshead NHS",
-    "twitter_screen_name": "QEGateshead",
+    "twitter_screen_name": "Gateshead_NHS",
     "companyName": "Gateshead Health NHS Foundation Trust",
     "companyNumber": null
   },
@@ -4151,8 +4111,8 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "214079026",
-    "twitter_id": 214079026,
+    "twitter_id_str": "1624951965670346752",
+    "twitter_id": 1624951965670346752,
     "twitter_name": "Hafal",
     "twitter_screen_name": "Hafal_",
     "companyName": "HAFAL",
@@ -4194,7 +4154,7 @@
     "twitter_id_str": "24161565",
     "twitter_id": 24161565,
     "twitter_name": "Hampshire Fire and Rescue Service",
-    "twitter_screen_name": "Hants_fire",
+    "twitter_screen_name": "HantsIOW_fire",
     "companyName": "Hampshire Fire & Rescue Service",
     "companyNumber": null
   },
@@ -4593,7 +4553,7 @@
     "twitter_id_str": "394591934",
     "twitter_id": 394591934,
     "twitter_name": "Inverness College UHI",
-    "twitter_screen_name": "ic_uhi",
+    "twitter_screen_name": "UHI_Inverness",
     "companyName": "Inverness College UHI",
     "companyNumber": null
   },
@@ -4779,7 +4739,7 @@
     "twitter_id_str": "1167739376316616704",
     "twitter_id": 1167739376316616700,
     "twitter_name": "Kernow Learning Multi Academy Trust",
-    "twitter_screen_name": "KLacademytrust",
+    "twitter_screen_name": "Kernow_Learning",
     "companyName": "KERNOW LEARNING MULTI ACADEMY TRUST",
     "companyNumber": "07394649"
   },
@@ -4894,14 +4854,6 @@
     "twitter_screen_name": "LanesForDrains",
     "companyName": "LANES GROUP PLC",
     "companyNumber": "03784486"
-  },
-  {
-    "twitter_id_str": "102159661",
-    "twitter_id": 102159661,
-    "twitter_name": "Launceston College",
-    "twitter_screen_name": "lansoncollege",
-    "companyName": "LAUNCESTON COLLEGE",
-    "companyNumber": "08150106"
   },
   {
     "twitter_id_str": "117060803",
@@ -5094,14 +5046,6 @@
     "twitter_screen_name": "LionAcTrust",
     "companyName": "LION ACADEMY TRUST",
     "companyNumber": "08171341"
-  },
-  {
-    "twitter_id_str": "4275193535",
-    "twitter_id": 4275193535,
-    "twitter_name": "Lionheart Trust",
-    "twitter_screen_name": "Lionheart_Trust",
-    "companyName": "LIONHEART ACADEMIES TRUST",
-    "companyNumber": "08473899"
   },
   {
     "twitter_id_str": "924966615820783618",
@@ -5456,14 +5400,6 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "16327021",
-    "twitter_id": 16327021,
-    "twitter_name": "Micro Focus",
-    "twitter_screen_name": "MicroFocusNews",
-    "companyName": "MICRO FOCUS SOFTWARE UK LTD",
-    "companyNumber": "10355616"
-  },
-  {
     "twitter_id_str": "2328546882",
     "twitter_id": 2328546882,
     "twitter_name": "Mid Cheshire Hospitals",
@@ -5604,7 +5540,7 @@
     "twitter_id_str": "539028499",
     "twitter_id": 539028499,
     "twitter_name": "Morgan Sindall Construction & Infrastructure",
-    "twitter_screen_name": "morgansindallci",
+    "twitter_screen_name": "morgansindallc",
     "companyName": "MORGAN SINDALL CONSTRUCTION & INFRASTRUCTURE LTD",
     "companyNumber": "04273754"
   },
@@ -5847,10 +5783,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "867729602",
-    "twitter_id": 867729602,
+    "twitter_id_str": "19654054",
+    "twitter_id": 19654054,
     "twitter_name": "North Wales PCC",
-    "twitter_screen_name": "NorthWalesPCC",
+    "twitter_screen_name": "NWPolice",
     "companyName": "North Wales Police",
     "companyNumber": null
   },
@@ -5858,7 +5794,7 @@
     "twitter_id_str": "21298953",
     "twitter_id": 21298953,
     "twitter_name": "North Yorkshire CC",
-    "twitter_screen_name": "northyorkscc",
+    "twitter_screen_name": "northyorksc",
     "companyName": "North Yorkshire County Council",
     "companyNumber": null
   },
@@ -5868,14 +5804,6 @@
     "twitter_name": "North Yorkshire Police",
     "twitter_screen_name": "NYorksPolice",
     "companyName": "North Yorkshire Police",
-    "companyNumber": null
-  },
-  {
-    "twitter_id_str": "130771640",
-    "twitter_id": 130771640,
-    "twitter_name": "Northampton Borough",
-    "twitter_screen_name": "NorthamptonBC",
-    "companyName": "Northampton Borough Council",
     "companyNumber": null
   },
   {
@@ -5996,7 +5924,7 @@
     "twitter_id_str": "2445537228",
     "twitter_id": 2445537228,
     "twitter_name": "Numis Securities",
-    "twitter_screen_name": "NumisSecurities",
+    "twitter_screen_name": "Numis",
     "companyName": "NUMIS SECURITIES LIMITED",
     "companyNumber": "02285918"
   },
@@ -6226,14 +6154,6 @@
     "companyNumber": "01822577"
   },
   {
-    "twitter_id_str": "1303205664",
-    "twitter_id": 1303205664,
-    "twitter_name": "Phoenix House",
-    "twitter_screen_name": "PhoenixHouseRC",
-    "companyName": "PHOENIX HOUSE",
-    "companyNumber": "01626869"
-  },
-  {
     "twitter_id_str": "21739135",
     "twitter_id": 21739135,
     "twitter_name": "Pilgrims Hospices",
@@ -6277,7 +6197,7 @@
     "twitter_id_str": "22651270",
     "twitter_id": 22651270,
     "twitter_name": "Plymouth College of Art",
-    "twitter_screen_name": "plymouthart",
+    "twitter_screen_name": "artsuniplym",
     "companyName": "Plymouth College of Art",
     "companyNumber": null
   },
@@ -6333,7 +6253,7 @@
     "twitter_id_str": "305023368",
     "twitter_id": 305023368,
     "twitter_name": "Premier Oil plc",
-    "twitter_screen_name": "PremierOilplc",
+    "twitter_screen_name": "Harbourenergy",
     "companyName": "PREMIER OIL PLC",
     "companyNumber": "SC234781"
   },
@@ -6442,10 +6362,10 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "314080375",
-    "twitter_id": 314080375,
+    "twitter_id_str": "931827672",
+    "twitter_id": 931827672,
     "twitter_name": "Redde",
-    "twitter_screen_name": "one_tough_mommy",
+    "twitter_screen_name": "Auxillis",
     "companyName": "REDDE LTD",
     "companyNumber": "03120010"
   },
@@ -6750,10 +6670,10 @@
     "companyNumber": "02520413"
   },
   {
-    "twitter_id_str": "840217152862969858",
-    "twitter_id": 840217152862969900,
+    "twitter_id_str": "951843622789566464",
+    "twitter_id": 951843622789566464,
     "twitter_name": "Royal Wootton Bassett Academy Trust",
-    "twitter_screen_name": "RWBATrust",
+    "twitter_screen_name": "RWBAT_TSA",
     "companyName": "Royal Wootton Bassett Academy Trust",
     "companyNumber": null
   },
@@ -6801,7 +6721,7 @@
     "twitter_id_str": "335995559",
     "twitter_id": 335995559,
     "twitter_name": "Salford Royal NHS",
-    "twitter_screen_name": "SalfordRoyalNHS",
+    "twitter_screen_name": "SalfordCO_NHS",
     "companyName": "Salford Royal Foundation Trust",
     "companyNumber": null
   },
@@ -6951,7 +6871,7 @@
     "twitter_id_str": "3290992191",
     "twitter_id": 3290992191,
     "twitter_name": "Shrewsbury School",
-    "twitter_screen_name": "ShrewsSchool",
+    "twitter_screen_name": "ShrewsburySch",
     "companyName": "Shrewsbury School",
     "companyNumber": null
   },
@@ -7416,10 +7336,10 @@
     "companyNumber": "07612865"
   },
   {
-    "twitter_id_str": "22946895",
-    "twitter_id": 22946895,
+    "twitter_id_str": "155519704",
+    "twitter_id": 155519704,
     "twitter_name": "Stephenson College",
-    "twitter_screen_name": "stephensoncoll",
+    "twitter_screen_name": "SMBCollegeGroup",
     "companyName": "Stephenson College",
     "companyNumber": null
   },
@@ -16785,8 +16705,8 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "21086579",
-    "twitter_id": 21086579,
+    "twitter_id_str": "1600538649531236354",
+    "twitter_id": 1600538649531236354,
     "twitter_name": "Westminster Kingsway College",
     "twitter_screen_name": "Westking",
     "companyName": "Westminster Kingsway College",

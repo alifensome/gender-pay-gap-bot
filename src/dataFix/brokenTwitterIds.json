@@ -1,0 +1,508 @@
+{
+  "errorsBadMatch": [
+    {
+      "row": {
+        "twitter_id_str": "1480830598793109505",
+        "twitter_id": 1480830598793109500,
+        "twitter_name": "Clydesdale Bank",
+        "twitter_screen_name": "clydesdalebank",
+        "companyName": "CLYDESDALE BANK PLC",
+        "companyNumber": "SC001111"
+      },
+      "correctUserName": "ClydesdaleBank",
+      "correctTwitterId": "1480830598793109505"
+    },
+    {
+      "row": {
+        "twitter_id_str": "22637681",
+        "twitter_id": 22637681,
+        "twitter_name": "Bolton School",
+        "twitter_screen_name": "BoltonSchool",
+        "companyName": "BOLTON SCHOOL",
+        "companyNumber": "05458883"
+      },
+      "correctUserName": "BoltonSchool",
+      "correctTwitterId": "1468515613601853443"
+    },
+    {
+      "row": {
+        "twitter_id_str": "74825877",
+        "twitter_id": 74825877,
+        "twitter_name": "Boston College",
+        "twitter_screen_name": "BostonCollegeuk",
+        "companyName": "BOSTON COLLEGE",
+        "companyNumber": null
+      },
+      "correctUserName": "bostoncollegeuk",
+      "correctTwitterId": "74825877"
+    },
+    {
+      "row": {
+        "twitter_id_str": "3318514089",
+        "twitter_id": 3318514089,
+        "twitter_name": "bp",
+        "twitter_screen_name": "bp_uk",
+        "companyName": "BP OIL UK LIMITED",
+        "companyNumber": "00446915"
+      },
+      "correctUserName": "bp_UK",
+      "correctTwitterId": "3318514089"
+    },
+    {
+      "row": {
+        "twitter_id_str": "1949092412",
+        "twitter_id": 1949092412,
+        "twitter_name": "Canterbury Cathedral",
+        "twitter_screen_name": "No1Cathedral",
+        "companyName": "Canterbury Cathedral",
+        "companyNumber": null
+      },
+      "correctUserName": "No1Cathedral",
+      "correctTwitterId": "1480571394094247941"
+    },
+    {
+      "row": {
+        "twitter_id_str": "3028517056",
+        "twitter_id": 3028517056,
+        "twitter_name": "DRIVE",
+        "twitter_screen_name": "drivewalesuk",
+        "companyName": "DRIVE",
+        "companyNumber": "02506147"
+      },
+      "correctUserName": "DriveWalesUK",
+      "correctTwitterId": "3028517056"
+    },
+    {
+      "row": {
+        "twitter_id_str": "84070596",
+        "twitter_id": 84070596,
+        "twitter_name": "Everest Limited",
+        "twitter_screen_name": "everestHome",
+        "companyName": "EVEREST LIMITED",
+        "companyNumber": "04566809"
+      },
+      "correctUserName": "EverestHome",
+      "correctTwitterId": "1603307104651153409"
+    },
+    {
+      "row": {
+        "twitter_id_str": "1266635640",
+        "twitter_id": 1115549341324730400,
+        "twitter_name": "EXPERT LOGISTICS",
+        "twitter_screen_name": "expertlogistau",
+        "companyName": "EXPERT LOGISTICS LTD.",
+        "companyNumber": "03442571"
+      },
+      "correctUserName": "expertlogistau",
+      "correctTwitterId": "1115549341324730368"
+    },
+    {
+      "row": {
+        "twitter_id_str": "2425151",
+        "twitter_id": 2425151,
+        "twitter_name": "Facebook",
+        "twitter_screen_name": "Facebook",
+        "companyName": "FACEBOOK UK LTD",
+        "companyNumber": "06331310"
+      },
+      "correctUserName": "facebook",
+      "correctTwitterId": "1174426031010152448"
+    },
+    {
+      "row": {
+        "twitter_id_str": "2673287366",
+        "twitter_id": 2673287366,
+        "twitter_name": "Academies",
+        "twitter_screen_name": "FutureAcademies",
+        "companyName": "FUTURE ACADEMIES",
+        "companyNumber": "06543442"
+      },
+      "correctUserName": "futureacademies",
+      "correctTwitterId": "2673287366"
+    },
+    {
+      "row": {
+        "twitter_id_str": "214079026",
+        "twitter_id": 214079026,
+        "twitter_name": "Hafal",
+        "twitter_screen_name": "Hafal_",
+        "companyName": "HAFAL",
+        "companyNumber": "04504443"
+      },
+      "correctUserName": "Hafal_",
+      "correctTwitterId": "1624951965670346752"
+    },
+    {
+      "row": {
+        "twitter_id_str": "950249762",
+        "twitter_id": 950249762,
+        "twitter_name": "House of Commons",
+        "twitter_screen_name": "houseofcommons",
+        "companyName": "House Of Commons",
+        "companyNumber": null
+      },
+      "correctUserName": "HouseofCommons",
+      "correctTwitterId": "950249762"
+    },
+    {
+      "row": {
+        "twitter_id_str": "64675777",
+        "twitter_id": 64675777,
+        "twitter_name": "Islamic Relief USA",
+        "twitter_screen_name": "islamicreliefuk",
+        "companyName": "ISLAMIC RELIEF WORLDWIDE",
+        "companyNumber": "02365572"
+      },
+      "correctUserName": "IslamicReliefUK",
+      "correctTwitterId": "64675777"
+    },
+    {
+      "row": {
+        "twitter_id_str": "539028499",
+        "twitter_id": 539028499,
+        "twitter_name": "Morgan Sindall Construction & Infrastructure",
+        "twitter_screen_name": "morgansindallci",
+        "companyName": "MORGAN SINDALL CONSTRUCTION & INFRASTRUCTURE LTD",
+        "companyNumber": "04273754"
+      },
+      "correctUserName": "morgansindallci",
+      "correctTwitterId": "1433433781126451201"
+    },
+    {
+      "row": {
+        "twitter_id_str": "22651270",
+        "twitter_id": 22651270,
+        "twitter_name": "Plymouth College of Art",
+        "twitter_screen_name": "plymouthart",
+        "companyName": "Plymouth College of Art",
+        "companyNumber": null
+      },
+      "correctUserName": "PlymouthArt",
+      "correctTwitterId": "1612960783767322631"
+    },
+    {
+      "row": {
+        "twitter_id_str": "92957551",
+        "twitter_id": 92957551,
+        "twitter_name": "Solent University",
+        "twitter_screen_name": "solentuni",
+        "companyName": "Solent University",
+        "companyNumber": null
+      },
+      "correctUserName": "SolentUni",
+      "correctTwitterId": "92957551"
+    }
+  ],
+  "errors404": [
+    {
+      "row": {
+        "twitter_id_str": "14431752",
+        "twitter_id": 14431752,
+        "twitter_name": "Department for International Trade",
+        "twitter_screen_name": "tradegovuk",
+        "companyName": "Department for International Trade",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1143781626138300417",
+        "twitter_id": 1143781626138300400,
+        "twitter_name": "Local Pensions Partnership",
+        "twitter_screen_name": "LPPInvestments",
+        "companyName": "LOCAL PENSIONS PARTNERSHIP LTD",
+        "companyNumber": "09830002"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "73082628",
+        "twitter_id": 73082628,
+        "twitter_name": "NewVIc",
+        "twitter_screen_name": "talknewvic",
+        "companyName": "Newvic College",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1722006002",
+        "twitter_id": 1722006002,
+        "twitter_name": "Ordnance Survey",
+        "twitter_screen_name": "OrdnanceSurvey",
+        "companyName": "ORDNANCE SURVEY LIMITED",
+        "companyNumber": "09121572"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1068066535468609536",
+        "twitter_id": 1068066535468609500,
+        "twitter_name": "The Two Counties Trust",
+        "twitter_screen_name": "TwoCountiesT",
+        "companyName": "THE TWO COUNTIES TRUST",
+        "companyNumber": "07972029"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "59144533",
+        "twitter_id": 59144533,
+        "twitter_name": "Whitbread PLC",
+        "twitter_screen_name": "WhitbreadPLC",
+        "companyName": "WHITBREAD GROUP PLC",
+        "companyNumber": "00029423"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "944183719",
+        "twitter_id": 944183719,
+        "twitter_name": "allpay Limited",
+        "twitter_screen_name": "allpayGroup",
+        "companyName": "ALLPAY LIMITED",
+        "companyNumber": "02933191"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "331509925",
+        "twitter_id": 331509925,
+        "twitter_name": "Bridgewater NHS",
+        "twitter_screen_name": "Bridgewater_NHS",
+        "companyName": "Bridgewater Community Healthcare NHS Foundation Trust",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "155519704",
+        "twitter_id": 155519704,
+        "twitter_name": "Brooksby Melton College",
+        "twitter_screen_name": "BrooksbyMelton",
+        "companyName": "Brooksby Melton College",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "148707924",
+        "twitter_id": 148707924,
+        "twitter_name": "Buckinghamshire New University",
+        "twitter_screen_name": "BucksNewUni",
+        "companyName": "Buckinghamshire New University",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "465550784",
+        "twitter_id": 465550784,
+        "twitter_name": "Cdc Group Plc",
+        "twitter_screen_name": "CdcGroupPlc",
+        "companyName": "CDC GROUP PLC",
+        "companyNumber": "03877777"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "3121816097",
+        "twitter_id": 3121816097,
+        "twitter_name": "Clevedon Learning Trust",
+        "twitter_screen_name": "ClevedonLTrust",
+        "companyName": "CLEVEDON LEARNING TRUST",
+        "companyNumber": "07872799"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "746777246",
+        "twitter_id": 746777246,
+        "twitter_name": "Dynniq",
+        "twitter_screen_name": "Dynniq",
+        "companyName": "DYNNIQ UK LTD",
+        "companyNumber": "01490333"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1137119984",
+        "twitter_id": 1137119984,
+        "twitter_name": "QE Gateshead NHS",
+        "twitter_screen_name": "QEGateshead",
+        "companyName": "Gateshead Health NHS Foundation Trust",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "24161565",
+        "twitter_id": 24161565,
+        "twitter_name": "Hampshire Fire and Rescue Service",
+        "twitter_screen_name": "Hants_fire",
+        "companyName": "Hampshire Fire & Rescue Service",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "394591934",
+        "twitter_id": 394591934,
+        "twitter_name": "Inverness College UHI",
+        "twitter_screen_name": "ic_uhi",
+        "companyName": "Inverness College UHI",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1167739376316616704",
+        "twitter_id": 1167739376316616700,
+        "twitter_name": "Kernow Learning Multi Academy Trust",
+        "twitter_screen_name": "KLacademytrust",
+        "companyName": "KERNOW LEARNING MULTI ACADEMY TRUST",
+        "companyNumber": "07394649"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "102159661",
+        "twitter_id": 102159661,
+        "twitter_name": "Launceston College",
+        "twitter_screen_name": "lansoncollege",
+        "companyName": "LAUNCESTON COLLEGE",
+        "companyNumber": "08150106"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "4275193535",
+        "twitter_id": 4275193535,
+        "twitter_name": "Lionheart Trust",
+        "twitter_screen_name": "Lionheart_Trust",
+        "companyName": "LIONHEART ACADEMIES TRUST",
+        "companyNumber": "08473899"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "16327021",
+        "twitter_id": 16327021,
+        "twitter_name": "Micro Focus",
+        "twitter_screen_name": "MicroFocusNews",
+        "companyName": "MICRO FOCUS SOFTWARE UK LTD",
+        "companyNumber": "10355616"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "867729602",
+        "twitter_id": 867729602,
+        "twitter_name": "North Wales PCC",
+        "twitter_screen_name": "NorthWalesPCC",
+        "companyName": "North Wales Police",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "21298953",
+        "twitter_id": 21298953,
+        "twitter_name": "North Yorkshire CC",
+        "twitter_screen_name": "northyorkscc",
+        "companyName": "North Yorkshire County Council",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "130771640",
+        "twitter_id": 130771640,
+        "twitter_name": "Northampton Borough",
+        "twitter_screen_name": "NorthamptonBC",
+        "companyName": "Northampton Borough Council",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "2445537228",
+        "twitter_id": 2445537228,
+        "twitter_name": "Numis Securities",
+        "twitter_screen_name": "Numis",
+        "companyName": "NUMIS SECURITIES LIMITED",
+        "companyNumber": "02285918"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "1303205664",
+        "twitter_id": 1303205664,
+        "twitter_name": "Phoenix House",
+        "twitter_screen_name": "PhoenixHouseRC",
+        "companyName": "PHOENIX HOUSE",
+        "companyNumber": "01626869"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "305023368",
+        "twitter_id": 305023368,
+        "twitter_name": "Premier Oil plc",
+        "twitter_screen_name": "PremierOilplc",
+        "companyName": "PREMIER OIL PLC",
+        "companyNumber": "SC234781"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "314080375",
+        "twitter_id": 314080375,
+        "twitter_name": "Redde",
+        "twitter_screen_name": "one_tough_mommy",
+        "companyName": "REDDE LTD",
+        "companyNumber": "03120010"
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "840217152862969858",
+        "twitter_id": 840217152862969900,
+        "twitter_name": "Royal Wootton Bassett Academy Trust",
+        "twitter_screen_name": "RWBATrust",
+        "companyName": "Royal Wootton Bassett Academy Trust",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "335995559",
+        "twitter_id": 335995559,
+        "twitter_name": "Salford Royal NHS",
+        "twitter_screen_name": "SalfordRoyalNHS",
+        "companyName": "Salford Royal Foundation Trust",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "3290992191",
+        "twitter_id": 3290992191,
+        "twitter_name": "Shrewsbury School",
+        "twitter_screen_name": "ShrewsSchool",
+        "companyName": "Shrewsbury School",
+        "companyNumber": null
+      }
+    },
+    {
+      "row": {
+        "twitter_id_str": "22946895",
+        "twitter_id": 22946895,
+        "twitter_name": "Stephenson College",
+        "twitter_screen_name": "stephensoncoll",
+        "companyName": "Stephenson College",
+        "companyNumber": null
+      }
+    }
+  ]
+}
