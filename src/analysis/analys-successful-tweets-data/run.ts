@@ -11,7 +11,7 @@ const notFound: any[] = [];
 async function run() {
   repo.checkSetData();
   const successfulTweetData = await dataImporter.readFile(
-    "data/analysis/2022-successful-tweets.json"
+    "data/analysis/2023-successful-tweets.json"
   );
   for (let index = 0; index < successfulTweetData.length; index++) {
     const successfulTweet = successfulTweetData[index];
@@ -22,7 +22,7 @@ async function run() {
     }
   }
   await writeJsonFile(
-    "data/analysis/2022-successful-tweets-with-company.json",
+    "data/analysis/2023-successful-tweets-with-company.json",
     successfulTweetData
   );
   console.log(`Found: ${successfulTweetData.length}.`);
