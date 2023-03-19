@@ -1,4 +1,4 @@
-import { TwitterClient } from "../twitter/Client";
+import { TweetSearchStreamDataItem, TwitterClient } from "../twitter/Client";
 import { Logger } from "tslog";
 import { SqsClient } from "../sqs/Client";
 import DataImporter from "../importData";
@@ -16,7 +16,6 @@ const PayGapAppUserName = "@PayGapApp";
 
 export class IncomingTweetListenerQueuer {
   twitterClient: TwitterClient;
-  sqsClient: SqsClient;
   logger: Logger;
   dataImporter: DataImporter;
   repository: Repository;
@@ -25,14 +24,12 @@ export class IncomingTweetListenerQueuer {
 
   constructor(
     twitterClient: TwitterClient,
-    sqsClient: SqsClient,
     sqsClientTweetAtGpga: SqsClient,
     dataImporter: DataImporter,
     repository: Repository,
     logger: Logger
   ) {
     this.twitterClient = twitterClient;
-    this.sqsClient = sqsClient;
     this.sqsClientTweetAtGpga = sqsClientTweetAtGpga;
     this.dataImporter = dataImporter;
     this.repository = repository;
@@ -40,15 +37,7 @@ export class IncomingTweetListenerQueuer {
   }
 
   listen(isTest?: boolean) {
-    const twitterData = this.dataImporter.twitterUserDataProd();
-    if (isTest) {
-      this.logger.info(JSON.stringify({ message: "running in debug mode!" }));
-      twitterData.push(this.dataImporter.twitterUserDataTest()[0]);
-    }
-    // Listen for our followers tweets and tweets at us.
-    const followers = this.getFollowsFromData(twitterData);
-    this.logger.info(`found ${followers.length} twitter ids to follow.`);
-    this.twitterClient.startStreamingTweets(followers, (input) =>
+    this.twitterClient.filterStreamV2((input) =>
       this.handleIncomingTweet(input)
     );
   }
@@ -70,7 +59,9 @@ export class IncomingTweetListenerQueuer {
     return deduplicateList(twitterIds, (x, y) => x === y);
   }
 
-  async handleIncomingTweet(input: HandleIncomingTweetInput): Promise<void> {
+  async handleIncomingTweet(
+    input: HandleIncomingTweetStreamInput
+  ): Promise<void> {
     this.numberOfMessages++;
     if (this.numberOfMessages % 100 === 0) {
       this.logger.info(
@@ -92,60 +83,10 @@ export class IncomingTweetListenerQueuer {
     if (input.text.includes(PayGapAppUserName)) {
       return await this.handleIncomingTweetAtTheGpga(input);
     }
-
-    const isReply = !!input?.fullTweetObject?.in_reply_to_status_id;
-
-    const userById = this.repository.getTwitterUserByTwitterId(
-      input.twitterUserId
-    );
-    if (userById && !isReply) {
-      return await this.handleIncomingTweetFromCompany(input);
-    }
     return;
   }
 
-  async handleIncomingTweetFromCompany(input: HandleIncomingTweetInput) {
-    if (input.isRetweet) {
-      debugPrint({
-        message: "Ignoring retweet",
-        eventType: "ignoringRetweet",
-      });
-      return;
-    }
-
-    // Check tweet contains words
-    const isRelevantTweet = this.checkTweetContainsWord(
-      input.fullTweetObject.text
-    );
-    if (!isRelevantTweet) {
-      debugPrint("irrelevant tweet");
-      return;
-    }
-
-    const data = this.repository.getGpgForTwitterId(input.twitterUserId);
-    if (!data || !data.companyData) {
-      this.logger.info(
-        JSON.stringify({
-          message: "could not find twitter user, ignoring.",
-          twitterUserId: input.twitterUserId,
-          screenName: input.screenName,
-          eventType: "couldNotGetUserIgnoring",
-        })
-      );
-      return;
-    }
-    // Queue the message
-    await this.sqsClient.queueMessage(input);
-    this.logger.info(
-      JSON.stringify({
-        message: `successfully queued tweet: ${input.tweetId}, userId: ${input.twitterUserId}`,
-        eventType: "successfulQueue",
-        screenName: input.screenName,
-      })
-    );
-  }
-
-  async handleIncomingTweetAtTheGpga(input: HandleIncomingTweetInput) {
+  async handleIncomingTweetAtTheGpga(input: HandleIncomingTweetStreamInput) {
     if (input.isRetweet) {
       debugPrint({
         message: "Ignoring retweet",
@@ -223,6 +164,16 @@ export interface HandleIncomingTweetInput {
   text: string;
   timeStamp: string;
   fullTweetObject: StatusesLookup;
+}
+
+export interface HandleIncomingTweetStreamInput {
+  twitterUserId: string;
+  tweetId: string;
+  screenName: string;
+  isRetweet: boolean;
+  text: string;
+  timeStamp: string;
+  fullTweetObject: TweetSearchStreamDataItem;
 }
 
 function uppercaseAndReplace(tweet: string) {

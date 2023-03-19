@@ -1,4 +1,4 @@
-import { TwitterClient } from "./Client";
+import { TweetSearchStreamDataItem, TwitterClient } from "./Client";
 
 process.env["TWITTER_API_KEY"] = "consumerKey";
 process.env["TWITTER_API_SECRET"] = "consumerSecret";
@@ -9,15 +9,18 @@ describe("Client", () => {
   jest.useFakeTimers().setSystemTime(new Date("2020-01-01"));
   describe("onTweetAtGpga", () => {
     const client = new TwitterClient();
-    const mockTweet = {
-      id_str: "id_str",
-      id: "should not be used as is wrong unless parsed with bigint!",
-      user: {
-        id_str: "userId",
-        screen_name: "UserScreenName",
+    const mockTweet: TweetSearchStreamDataItem = {
+      data: {
+        id: "id",
+        author_id: "authorId",
+        text: "Some tweet.",
+        edit_history_tweet_ids: [],
       },
-      text: "Some tweet.",
-    } as any;
+      includes: {
+        users: [{ id: "userId", name: "name", username: "UserScreenName" }],
+      },
+      matching_rules: [],
+    };
     it("should handle tweets", async () => {
       const mockHandle = jest.fn();
 
@@ -29,21 +32,17 @@ describe("Client", () => {
         screenName: "UserScreenName",
         text: "Some tweet.",
         timeStamp: "2020-01-01T00:00:00.000Z",
-        tweetId: "id_str",
-        twitterUserId: "userId",
-        user: {
-          id_str: "userId",
-          screen_name: "UserScreenName",
-        },
+        tweetId: "id",
+        twitterUserId: "authorId",
       });
     });
     it("should say if its a retweet", async () => {
       const mockHandle = jest.fn();
-      const mockRetweet = {
+      const mockRetweet: TweetSearchStreamDataItem = {
         ...mockTweet,
-        text: "RT Some tweet.",
-      } as any;
-      await client.handleTweetEvent(mockRetweet, mockHandle as any);
+      };
+      (mockRetweet.data.text = "RT Some tweet."),
+        await client.handleTweetEvent(mockRetweet, mockHandle as any);
       expect(mockHandle).toBeCalledTimes(1);
       expect(mockHandle).toBeCalledWith({
         fullTweetObject: mockRetweet,
@@ -51,12 +50,8 @@ describe("Client", () => {
         screenName: "UserScreenName",
         text: "RT Some tweet.",
         timeStamp: "2020-01-01T00:00:00.000Z",
-        tweetId: "id_str",
-        twitterUserId: "userId",
-        user: {
-          id_str: "userId",
-          screen_name: "UserScreenName",
-        },
+        tweetId: "id",
+        twitterUserId: "authorId",
       });
     });
   });

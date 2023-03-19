@@ -34,7 +34,6 @@ try {
 
   const handler = new IncomingTweetListenerQueuer(
     twitterClient,
-    sqsClient,
     sqsClientTweetAtGpga,
     dataImporter,
     repository,

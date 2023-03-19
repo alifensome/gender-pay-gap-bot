@@ -1,6 +1,6 @@
 import Twit from "twit";
 import { Logger } from "tslog";
-import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
+import { HandleIncomingTweetStreamInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { debugPrint } from "../utils/debug";
 import {
   StatusesLookup,
@@ -8,9 +8,13 @@ import {
 } from "twitter-api-client";
 import { TwitterCredentialGetter } from "./TwitterCredentialGetter";
 import { restartStream } from "./restartStream";
+import { getEnvVar } from "../utils/getEnvVar";
+import axios from "axios";
+import { replaceMultiple } from "../utils/replace";
+import { Stream } from "stream";
 
 type HandleIncomingStatusFunction = (
-  input: HandleIncomingTweetInput
+  input: HandleIncomingTweetStreamInput
 ) => Promise<void>;
 
 export class TwitterClient {
@@ -36,64 +40,24 @@ export class TwitterClient {
     this.logger = new Logger({ name: TwitterClient.name });
   }
 
-  // Can only have one of these calls per app.
-  async startStreamingTweets(
-    following: string[],
-    handleTweet: HandleIncomingStatusFunction
-  ): Promise<void> {
-    const stream = this.twitPackage.stream("statuses/filter", {
-      follow: following,
-      track: ["@PayGapApp"],
-    });
-    this.logger.info(
-      JSON.stringify({
-        message: "streaming started",
-        eventType: "streamingStarted",
-      })
-    );
-    stream.on("connected", function (response) {
-      console.log("connected");
-    });
-    stream.on("limit", function (limitMessage) {
-      console.log("limit", limitMessage);
-    });
-    stream.on("disconnect", async function (disconnectMessage) {
-      console.log("disconnect", disconnectMessage);
-      await restartStream(stream);
-    });
-    stream.on("warning", function (warning) {
-      console.log("twitter stream sent warning", warning);
-    });
-    stream.on("connect", function (request) {
-      console.log("connect");
-    });
-    stream.on("error", async function (message: any) {
-      console.log("twitter stream sent error:", message);
-      await restartStream(stream);
-    });
-
-    stream.on("tweet", async (tweet: StatusesLookup) => {
-      await this.handleTweetEvent(tweet, handleTweet);
-    });
-  }
-
   async handleTweetEvent(
-    tweet: StatusesLookup,
+    tweet: TweetSearchStreamDataItem,
     handleTweet: HandleIncomingStatusFunction
   ) {
     // TODO report some log to show its working.
     try {
-      const twitterUserId = tweet.user.id_str;
-      const user = tweet.user;
-      const screenName = tweet.user.screen_name;
-      const isRetweet = tweet.text.startsWith("RT");
-      const text = tweet.text;
+      const twitterUserId = tweet.data.author_id;
+      const screenName = tweet.includes.users[0].username;
+      const isRetweet = tweet.data.text.startsWith("RT");
+      const text = tweet.data.text;
       const timeStamp = new Date().toISOString();
+      const twitterId = tweet.data.id;
       // todo work out if its a reply.
       debugPrint({
         message: "tweet detected",
         eventType: "tweetReceived",
-        twitterName: tweet.user.name,
+        twitterId,
+        tweet,
         twitterUserId,
         screenName,
         isRetweet,
@@ -103,8 +67,7 @@ export class TwitterClient {
 
       await handleTweet({
         twitterUserId,
-        tweetId: tweet.id_str,
-        user,
+        tweetId: twitterId,
         screenName,
         isRetweet,
         text,
@@ -305,9 +268,124 @@ export class TwitterClient {
 
     await this.postStatusWithMedia(statusText, [mediaIdStr]);
   }
+
+  async getAuthToken(): Promise<string> {
+    const apiKey = getEnvVar("TWITTER_API_KEY");
+    const apiSecret = getEnvVar("TWITTER_API_SECRET");
+    const { data } = await axios.post(
+      "https://api.twitter.com/oauth2/token?grant_type=client_credentials",
+      {},
+      {
+        auth: {
+          username: apiKey,
+          password: apiSecret,
+        },
+        headers: {},
+      }
+    );
+    if (!data.access_token) {
+      throw new Error("no auth token returned.");
+    }
+    return data.access_token;
+  }
+
+  async filterStreamV2(handleTweet: HandleIncomingStatusFunction) {
+    const bt = await this.getAuthToken();
+    this.logger.info(
+      JSON.stringify({
+        message: "streaming started",
+        eventType: "streamingStarted",
+      })
+    );
+
+    const { data } = await axios.get(
+      "https://api.twitter.com/2/tweets/search/stream?tweet.fields=id,text&expansions=author_id&user.fields=id,name,username",
+      {
+        headers: {
+          Authorization: `Bearer ${bt}`,
+        },
+        responseType: "stream",
+      }
+    );
+
+    const stream = data as Stream;
+
+    stream.on("data", async (data: Buffer) => {
+      const dataString = data.toString("utf-8");
+      const dataNoNewLine = replaceMultiple(dataString, [
+        { find: "\n" },
+        { find: "\r" },
+      ]);
+      if (!dataNoNewLine) {
+        return;
+      }
+      const parsedTweet = JSON.parse(
+        dataNoNewLine
+      ) as TweetSearchStreamDataItem;
+      console.log({ data: dataString });
+      await this.handleTweetEvent(parsedTweet, handleTweet);
+
+      // data.
+      // if (data === null) throw new Error("No response returned from stream");
+      // let buf = "";
+      // for await (const chunk of data) {
+      //   buf += chunk.toString();
+      //   const lines = buf.split("\r\n");
+      //   for (const [i, line] of lines.entries()) {
+      //     if (i === lines.length - 1) {
+      //       buf = line;
+      //       console.log(JSON.parse(line));
+      //     }
+      //   }
+      // }
+    });
+
+    stream.on("error", (data: Buffer) => {
+      this.logger.error(
+        JSON.stringify({
+          message: "Error from stream",
+          eventType: "errorFromStream",
+          errMessage: data.toString("utf-8"),
+        })
+      );
+      // todo restart stream or something.
+    });
+
+    stream.on("end", () => {
+      console.log("stream done");
+    });
+  }
 }
 
 export interface ReplyToTweetInput {
   tweet: string;
   replyTweetId: string;
+}
+
+export interface TweetSearchStreamDataItem {
+  data: Data;
+  includes: Includes;
+  matching_rules: MatchingRule[];
+}
+
+export interface Data {
+  author_id: string;
+  edit_history_tweet_ids: string[];
+  id: string;
+  text: string;
+}
+
+export interface Includes {
+  users: User[];
+}
+
+export interface User {
+  id: string;
+  name: string;
+  username: string;
+}
+
+export interface MatchingRule {
+  id: string;
+  tag: string;
 }
