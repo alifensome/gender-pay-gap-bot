@@ -83,31 +83,3 @@ async function run() {
 }
 
 run();
-
-export interface TweetSearchStreamDataItem {
-  data: Data;
-  includes: Includes;
-  matching_rules: MatchingRule[];
-}
-
-export interface Data {
-  author_id: string;
-  edit_history_tweet_ids: string[];
-  id: string;
-  text: string;
-}
-
-export interface Includes {
-  users: User[];
-}
-
-export interface User {
-  id: string;
-  name: string;
-  username: string;
-}
-
-export interface MatchingRule {
-  id: string;
-  tag: string;
-}

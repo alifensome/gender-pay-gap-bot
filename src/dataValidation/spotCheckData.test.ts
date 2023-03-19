@@ -143,7 +143,15 @@ const doncasterMetropolitanBoroughCouncil: CompanyDataMultiYearItem = {
   companyName: "Doncaster Metropolitan Borough Council",
   companyNumber: null,
   sicCodes: "1,84110",
-  data2022To2023: null,
+  data2022To2023: {
+    diffMedianBonusPercent: null,
+    femaleLowerMiddleQuartile: 65,
+    femaleLowerQuartile: 85,
+    femaleTopQuartile: 57,
+    femaleUpperMiddleQuartile: 66,
+    meanGpg: 12.54,
+    medianGpg: 12.56,
+  },
   data2021To2022: {
     meanGpg: 12.9,
     medianGpg: 13.9,
@@ -189,7 +197,7 @@ const doncasterMetropolitanBoroughCouncil: CompanyDataMultiYearItem = {
     femaleTopQuartile: 54,
     femaleUpperMiddleQuartile: 67,
   },
-  size: CompanySize.From5000To19999,
+  size: CompanySize.From1000To4999,
 };
 
 describe("spot check data", () => {
