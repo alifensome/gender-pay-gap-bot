@@ -63,15 +63,13 @@ export class IncomingTweetListenerQueuer {
     input: HandleIncomingTweetStreamInput
   ): Promise<void> {
     this.numberOfMessages++;
-    if (this.numberOfMessages % 100 === 0) {
-      this.logger.info(
-        JSON.stringify({
-          message: `Received ${this.numberOfMessages} messaged since started listening.`,
-          numberOfMessages: this.numberOfMessages,
-          eventType: "received100Messages",
-        })
-      );
-    }
+    this.logger.info(
+      JSON.stringify({
+        message: `Received ${this.numberOfMessages} messaged since started listening.`,
+        numberOfMessages: this.numberOfMessages,
+        eventType: "receivedTweetAtGPGA",
+      })
+    );
     if (input.isRetweet) {
       debugPrint({
         message: "Ignoring retweet",
