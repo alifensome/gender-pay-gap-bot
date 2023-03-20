@@ -324,20 +324,6 @@ export class TwitterClient {
       ) as TweetSearchStreamDataItem;
       console.log({ data: dataString });
       await this.handleTweetEvent(parsedTweet, handleTweet);
-
-      // data.
-      // if (data === null) throw new Error("No response returned from stream");
-      // let buf = "";
-      // for await (const chunk of data) {
-      //   buf += chunk.toString();
-      //   const lines = buf.split("\r\n");
-      //   for (const [i, line] of lines.entries()) {
-      //     if (i === lines.length - 1) {
-      //       buf = line;
-      //       console.log(JSON.parse(line));
-      //     }
-      //   }
-      // }
     });
 
     stream.on("error", (data: Buffer) => {
@@ -348,11 +334,17 @@ export class TwitterClient {
           errMessage: data.toString("utf-8"),
         })
       );
-      // todo restart stream or something.
     });
 
     stream.on("end", () => {
-      console.log("stream done");
+      this.logger.error(
+        JSON.stringify({
+          message:
+            "Stream is finished. Exiting process for systemd to restart.",
+          eventType: "streamDone",
+        })
+      );
+      process.exit(1);
     });
   }
 }
