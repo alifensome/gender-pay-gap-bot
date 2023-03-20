@@ -3,29 +3,24 @@ import { SqsClient } from "../sqs/Client";
 import { Logger } from "tslog";
 import { TwitterClient } from "../twitter/Client";
 import { IncomingTweetListenerQueuer } from "./IncomingTweetListenerQueuer";
-import { relevantWords } from "./relevantWords";
 import DataImporter from "../importData";
 import { Repository } from "../importData/Repository";
 import { isDebugMode } from "../utils/debug";
 import { getEnvVar } from "../utils/getEnvVar";
 
+const logger = new Logger();
 try {
-  const logger = new Logger();
-
   logger.info("Started listening at time: " + new Date().toISOString());
 
   logger.info(
     JSON.stringify({
-      message: `starting listener. Listening for words: ${JSON.stringify(
-        relevantWords
-      )}`,
+      message: `starting listener.`,
       eventType: "startingListener",
     })
   );
   dotEnv.config();
 
   const twitterClient = new TwitterClient();
-  const sqsClient = new SqsClient();
   const sqsClientTweetAtGpga = new SqsClient(
     getEnvVar("TWEET_AT_GPGA_SQS_QUEUE_URL")
   );
@@ -44,7 +39,12 @@ try {
 
   handler.listen(isTest);
 } catch (err) {
-  console.log("threw while starting!");
-  console.error(err);
+  logger.info(
+    JSON.stringify({
+      message: "threw while starting!",
+      eventType: "errorStartingListener",
+      error: err,
+    })
+  );
   process.exit(1);
 }
