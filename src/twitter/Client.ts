@@ -314,6 +314,7 @@ export class TwitterClient {
     const stream = data as Stream;
 
     stream.on("data", async (data: Buffer) => {
+      handleData();
       const dataString = data.toString("utf-8");
       const dataNoNewLine = replaceMultiple(dataString, [
         { find: "\n" },
