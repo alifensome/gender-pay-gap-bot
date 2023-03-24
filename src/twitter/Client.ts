@@ -289,7 +289,10 @@ export class TwitterClient {
     return data.access_token;
   }
 
-  async filterStreamV2(handleTweet: HandleIncomingStatusFunction) {
+  async filterStreamV2(
+    handleTweet: HandleIncomingStatusFunction,
+    handleData: () => void
+  ) {
     const bt = await this.getAuthToken();
     this.logger.info(
       JSON.stringify({

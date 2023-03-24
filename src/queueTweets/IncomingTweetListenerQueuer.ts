@@ -36,9 +36,18 @@ export class IncomingTweetListenerQueuer {
     this.logger = logger;
   }
 
+  handleData = () => {
+    this.logger.info(
+      JSON.stringify({
+        eventType: "receivedEvent",
+      })
+    );
+  };
+
   listen(isTest?: boolean) {
-    this.twitterClient.filterStreamV2((input) =>
-      this.handleIncomingTweet(input)
+    this.twitterClient.filterStreamV2(
+      (input) => this.handleIncomingTweet(input),
+      this.handleData
     );
   }
 
