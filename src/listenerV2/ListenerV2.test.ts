@@ -17,19 +17,27 @@ class MockDate extends Date {
 }
 // @ts-ignore
 global.Date = MockDate;
+
 const mockSearchRecentTweetsData: searchRecentTweetsData = {
   author_id: "twitterUserId",
   id: "tweetId",
   text: "yay International women's day",
   edit_history_tweet_ids: [],
 };
+const mockSearchRecentTweetsData2: searchRecentTweetsData = {
+  author_id: "twitterUserId2",
+  id: "tweetId2",
+  text: "yay International women's day",
+  edit_history_tweet_ids: [],
+};
 const users: User[] = [
   { id: "twitterUserId", username: "screenName", name: "name" },
+  { id: "twitterUserId2", username: "screenName2", name: "name2" },
 ];
 
 describe("ListenerV2", () => {
   const mockTwitterData: searchRecentTweetsResponse = {
-    data: [mockSearchRecentTweetsData, mockSearchRecentTweetsData],
+    data: [mockSearchRecentTweetsData, mockSearchRecentTweetsData2],
     includes: { users },
     meta: { newest_id: "", oldest_id: "", result_count: 10, next_token: "" },
   };
@@ -65,6 +73,14 @@ describe("ListenerV2", () => {
     tweetId: "tweetId",
     twitterUserId: "twitterUserId",
   };
+  const expectedSqsMessage2 = {
+    isRetweet: false,
+    screenName: "screenName2",
+    text: "yay International women's day",
+    timeStamp: "2023-04-01T14:06:01.357Z",
+    tweetId: "tweetId2",
+    twitterUserId: "twitterUserId2",
+  };
   beforeEach(() => {
     mockTwitterClient.searchRecentTweets.mockClear();
   });
@@ -77,6 +93,7 @@ describe("ListenerV2", () => {
 
       expect(mockSqsClient.queueMessage).toBeCalledTimes(4);
       expect(mockSqsClient.queueMessage).toBeCalledWith(expectedSqsMessage, 0);
+      expect(mockSqsClient.queueMessage).toBeCalledWith(expectedSqsMessage2, 0);
     });
   });
   describe("getFollowsFromData", () => {
