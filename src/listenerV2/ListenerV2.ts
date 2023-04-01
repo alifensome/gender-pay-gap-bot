@@ -1,6 +1,5 @@
 import { TwitterClient } from "../twitter/Client";
 import { SqsClient } from "../sqs/Client";
-import DataImporter from "../importData";
 import { Repository } from "../importData/Repository";
 import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
@@ -14,6 +13,7 @@ import {
   searchRecentTweetsResponse,
   User,
 } from "../twitter/types";
+import DynamoDbClient from "../dynamodb/Client";
 
 export class ListenerV2 {
   twitterClient: TwitterClient;
@@ -21,19 +21,22 @@ export class ListenerV2 {
   repository: Repository;
   sqsClient: SqsClient;
   searchQueryFormer: SearchQueryFormer;
+  dynamoDbClient: DynamoDbClient;
 
   constructor(
     twitterClient: TwitterClient,
     sqsClientTweetAtGpga: SqsClient,
     repository: Repository,
     logger: LambdaLogger,
-    searchQueryFormer: SearchQueryFormer
+    searchQueryFormer: SearchQueryFormer,
+    dynamoDbClient: DynamoDbClient
   ) {
     this.twitterClient = twitterClient;
     this.sqsClient = sqsClientTweetAtGpga;
     this.repository = repository;
     this.logger = logger;
     this.searchQueryFormer = searchQueryFormer;
+    this.dynamoDbClient = dynamoDbClient;
   }
 
   async run(): Promise<void> {
@@ -100,6 +103,13 @@ export class ListenerV2 {
   }
 
   async handleRelevantTweet(tweet: searchRecentTweetsData, user: User) {
+    const existingTweet = await this.dynamoDbClient.getItem({
+      pk: "successfulTweet",
+      id: tweet.id,
+    });
+    if (existingTweet) {
+      return;
+    }
     const input: HandleIncomingTweetInput = {
       twitterUserId: tweet.author_id,
       tweetId: tweet.id,

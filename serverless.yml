@@ -447,6 +447,14 @@ resources:
                     - sqs:SendMessage
                   Resource:
                     - Fn::GetAtt: [TweetQueue, Arn]
+                # DynamoDB
+                - Effect: Allow
+                  Action:
+                    - dynamodb:DescribeTable
+                    - dynamodb:Query
+                    - dynamodb:GetItem
+                  Resource:
+                    - "Fn::GetAtt": [GpgData, Arn]
 
     TweetAllGpgTaskRole:
       Type: AWS::IAM::Role

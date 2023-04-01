@@ -8,6 +8,7 @@ import { SqsClient } from "../sqs/Client";
 import { LambdaLogger } from "../lambdaLogger";
 import { SearchQueryFormer } from "./searchQueryFormer";
 import { config } from "dotenv";
+import DynamoDbClient from "../dynamodb/Client";
 
 config();
 
@@ -27,7 +28,8 @@ export async function handler(): Promise<void> {
     sqsClientTweetAtGpga,
     repo,
     new LambdaLogger("listenerV2"),
-    new SearchQueryFormer()
+    new SearchQueryFormer(),
+    new DynamoDbClient("GpgData")
   );
   await listenerV2.run();
 }

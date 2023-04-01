@@ -58,12 +58,16 @@ describe("ListenerV2", () => {
   const mockSearchQueryFormer = {
     toQuery: jest.fn().mockReturnValue(["q1", "q2"]),
   };
+  const mockDynamoDBClient = {
+    getItem: jest.fn(),
+  };
   const handler = new ListenerV2(
     mockTwitterClient as any,
     mockSqsClient as any,
     mockRepository as any,
     new LambdaLogger("test"),
-    mockSearchQueryFormer as any
+    mockSearchQueryFormer as any,
+    mockDynamoDBClient as any
   );
   const expectedSqsMessage = {
     isRetweet: false,
@@ -169,6 +173,14 @@ describe("ListenerV2", () => {
         text: "hi Ali.",
       };
       await handler.handleTweet(irrelevantTweet, users);
+
+      expect(mockSqsClient.queueMessage).toBeCalledTimes(0);
+    });
+  });
+  describe("handleRelevantTweet", () => {
+    it("should skip queuing a message if theres already an item in dynamoDB", async () => {
+      mockDynamoDBClient.getItem.mockResolvedValue({});
+      await handler.handleRelevantTweet(mockSearchRecentTweetsData, users[0]);
 
       expect(mockSqsClient.queueMessage).toBeCalledTimes(0);
     });
