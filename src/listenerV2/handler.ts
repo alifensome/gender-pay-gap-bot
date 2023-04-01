@@ -7,6 +7,9 @@ import { getEnvVar } from "../utils/getEnvVar";
 import { SqsClient } from "../sqs/Client";
 import { LambdaLogger } from "../lambdaLogger";
 import { SearchQueryFormer } from "./searchQueryFormer";
+import { config } from "dotenv";
+
+config();
 
 const dataImporter = new DataImporter();
 const twitterClient = new TwitterClient();

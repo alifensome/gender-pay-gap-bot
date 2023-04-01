@@ -1,5 +1,14 @@
+import { getEnvVar, getEnvVarNumber } from "../utils/getEnvVar";
+
 export class SearchQueryFormer {
-  characterLimit = 1024;
+  defaultCharacterLimit = 1024;
+  characterLimit: number;
+  constructor() {
+    this.characterLimit = getEnvVarNumber(
+      "SEARCH_QUERY_CHARACTER_LIMIT",
+      this.defaultCharacterLimit
+    );
+  }
   toQuery(fromTwitterIds: string[]): string[] {
     const results: string[] = [];
     let currentResult = `from:${fromTwitterIds[0]}`;
