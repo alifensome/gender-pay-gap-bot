@@ -175,6 +175,7 @@ functions:
   listenerV2:
     handler: dist/listenerV2/handler.handler
     role: ListenerV2Role
+    timeout: 300
     environment:
       SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
       IS_TEST: false
@@ -190,10 +191,10 @@ functions:
       TWITTER_READ_ACCOUNT_ACCESS_TOKEN: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN}
       TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET}
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
-    # events:
-    #   - schedule:
-    #       rate: cron(00 09,13 * * ? *)
-    #       enabled: true
+    events:
+      - schedule:
+          rate: rate(15 minutes)
+          enabled: true
     package:
       include:
         - ./dist/**
