@@ -172,6 +172,36 @@ functions:
         - data/twitterAccountData/twitterUserData-test.json
         - data/companies_GPG_Data.json
 
+  listenerV2:
+    handler: dist/listenerV2/handler.handler
+    role: ListenerV2Role
+    environment:
+      SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
+      IS_TEST: false
+      # Prod account
+      TWITTER_API_KEY: ${env:TWITTER_API_KEY}
+      TWITTER_API_SECRET: ${env:TWITTER_API_SECRET}
+      TWITTER_ACCESS_TOKEN: ${env:TWITTER_ACCESS_TOKEN}
+      TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
+      TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
+      # Test account
+      TWITTER_READ_ACCOUNT_API_KEY: ${env:TWITTER_READ_ACCOUNT_API_KEY}
+      TWITTER_READ_ACCOUNT_API_SECRET: ${env:TWITTER_READ_ACCOUNT_API_SECRET}
+      TWITTER_READ_ACCOUNT_ACCESS_TOKEN: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN}
+      TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET: ${env:TWITTER_READ_ACCOUNT_ACCESS_TOKEN_SECRET}
+      TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
+    # events:
+    #   - schedule:
+    #       rate: cron(00 09,13 * * ? *)
+    #       enabled: true
+    package:
+      include:
+        - ./dist/**
+        - data/twitterAccountData/twitterUserData-prod.json
+        - data/twitterAccountData/twitterUserData-test.json
+        - data/companies_GPG_Data.json
+        - node_modules/**
+
 resources:
   Resources:
     # SQS for queuing tweets.
@@ -275,7 +305,6 @@ resources:
                   Action:
                     - sqs:SendMessage
                   Resource:
-                    - Fn::GetAtt: [TweetQueue, Arn]
                     - Fn::GetAtt: [TweetAtGpgaQueue, Arn]
 
                 - Effect: Allow
@@ -380,6 +409,42 @@ resources:
 
                   Resource:
                     - Fn::GetAtt: [TweetAtGpgaQueue, Arn]
+
+    ListenerV2Role:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: ListenerV2Role
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: ListenerV2RolePolicyName
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                # Cloudwatch
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - "Fn::Join":
+                        - ":"
+                        - - "arn:aws:logs"
+                          - Ref: "AWS::Region"
+                          - Ref: "AWS::AccountId"
+                          - "log-group:/aws/lambda/*:*:*"
+                - Effect: Allow
+                  Action:
+                    - sqs:SendMessage
+                  Resource:
+                    - Fn::GetAtt: [TweetQueue, Arn]
 
     TweetAllGpgTaskRole:
       Type: AWS::IAM::Role
