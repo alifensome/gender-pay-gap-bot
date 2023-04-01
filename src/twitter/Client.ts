@@ -42,7 +42,7 @@ export class TwitterClient {
   }
 
   async searchRecentTweets(query: string): Promise<searchRecentTweetsResponse> {
-    const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username`;
+    const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username&max_results=100`;
     const bt = await this.getAuthToken();
     const { data } = await axios.get(url, {
       headers: {
