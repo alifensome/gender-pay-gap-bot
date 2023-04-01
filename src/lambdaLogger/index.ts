@@ -11,6 +11,7 @@ export interface LogEventBase {
   closeMatchNumber?: number;
   companyName?: string;
   companyNumber?: CompanyNumber;
+  tweet?: string;
 }
 
 export class LambdaLogger {

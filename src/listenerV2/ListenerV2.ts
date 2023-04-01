@@ -47,8 +47,17 @@ export class ListenerV2 {
     for (let index = 0; index < queries.length; index++) {
       const query = queries[index];
       const result = await this.twitterClient.searchRecentTweets(query);
+      this.logger.logEvent({
+        eventType: "foundRecentTweets",
+        message: `Found ${result.data.length} recent tweets.`,
+      });
       await this.handleSearchResponse(result);
     }
+
+    this.logger.logEvent({
+      eventType: "finishedListenerV2",
+      message: `Done.`,
+    });
   }
 
   getFollowsFromData(twitterData: TwitterData[]) {
@@ -105,6 +114,9 @@ export class ListenerV2 {
       message: `successfully queued: ${tweet.id}, userId: ${tweet.author_id}`,
       eventType: "successfulQueueTweet",
       screenName: user.username,
+      twitterUserId: tweet.author_id,
+      tweetId: tweet.id,
+      tweet: tweet.text,
     });
   }
 
