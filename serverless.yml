@@ -179,7 +179,7 @@ functions:
     environment:
       SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
       IS_TEST: false
-      SEARCH_QUERY_CHARACTER_LIMIT: 1000
+      SEARCH_QUERY_CHARACTER_LIMIT: 500
       # Prod account
       TWITTER_API_KEY: ${env:TWITTER_API_KEY}
       TWITTER_API_SECRET: ${env:TWITTER_API_SECRET}
