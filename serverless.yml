@@ -78,6 +78,7 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
       TWITTER_BEARER_TOKEN: ${env:TWITTER_BEARER_TOKEN}
       TWITTER_USER_ID: ${env:TWITTER_USER_ID}
+      TABLE_NAME: ${self:custom.gpgDataTableName}
       # MIN_GPG: "10"
     events:
       - sqs:
@@ -330,6 +331,17 @@ resources:
 
                   Resource:
                     - Fn::GetAtt: [TweetQueue, Arn]
+                # DynamoDB
+                - Effect: Allow
+                  Action:
+                    - dynamodb:DescribeTable
+                    - dynamodb:Query
+                    - dynamodb:GetItem
+                    - dynamodb:PutItem
+                    - dynamodb:UpdateItem
+                    - dynamodb:DeleteItem
+                  Resource:
+                    - "Fn::GetAtt": [GpgData, Arn]
 
     HandleTweetAtGpgaRole:
       Type: AWS::IAM::Role

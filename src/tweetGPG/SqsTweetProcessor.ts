@@ -3,6 +3,7 @@ import { Repository } from "../importData/Repository";
 import { TwitterClient } from "../twitter/Client";
 import { getMostRecentMedianGPGOrThrow } from "../utils/getMostRecentGPG";
 import { CopyWriter } from "../copyWriter/CopyWriter";
+import DynamoDbClient from "../dynamodb/Client";
 
 interface ProcessInput {
   twitterUserId: string;
@@ -16,17 +17,20 @@ export class SqsTweetProcessor {
   repository: Repository;
   minGPG: number | null;
   copyWriter: CopyWriter;
+  dynamoDbClient: DynamoDbClient;
 
   constructor(
     twitterClient: TwitterClient,
     repo: Repository,
-    minGPG: number | null
+    minGPG: number | null,
+    dynamoDbClient: DynamoDbClient
   ) {
     this.twitterClient = twitterClient;
     this.logger = new Logger({ name: "SqsTweetProcessor" });
     this.repository = repo;
     this.minGPG = minGPG;
     this.copyWriter = new CopyWriter();
+    this.dynamoDbClient = dynamoDbClient;
   }
 
   async process({ twitterUserId, tweetId, screenName }: ProcessInput) {
@@ -40,6 +44,22 @@ export class SqsTweetProcessor {
           screenName,
         })
       );
+      const existingTweet = await this.dynamoDbClient.getItem({
+        pk: "successfulTweet",
+        id: tweetId,
+      });
+      if (existingTweet) {
+        this.logger.info(
+          JSON.stringify({
+            message: "already tweeted this tweet.",
+            eventType: "alreadyTweeted",
+            twitterUserId,
+            tweetId,
+            screenName,
+          })
+        );
+        return;
+      }
       const data = this.repository.getGpgForTwitterId(twitterUserId);
       if (!data || !data.companyData) {
         this.logger.error(
@@ -70,7 +90,7 @@ export class SqsTweetProcessor {
             tempSkip: 1,
           })
         );
-        throw new Error("SKIP for now.");
+        throw new Error("Skip for now.");
       }
 
       const copy =
@@ -93,6 +113,16 @@ export class SqsTweetProcessor {
           successfullySentTweet: 1,
         })
       );
+      await this.dynamoDbClient.putItem({
+        pk: "successfulTweet",
+        id: tweetId,
+        data: {
+          tweetId,
+          twitterUserId,
+          screenName,
+          companyName: data.companyData.companyName,
+        },
+      });
     } catch (error) {
       this.logger.error(
         JSON.stringify({
