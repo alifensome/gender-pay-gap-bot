@@ -18,13 +18,16 @@ const logger = new Logger();
 const twitterUserId = argv[2];
 const tweetId = argv[3];
 const screenName = argv[4];
-const input: Partial<HandleIncomingTweetInput> = {
-  twitterUserId,
-  tweetId,
-  screenName,
-};
-console.log(input);
 if (!twitterUserId || !tweetId || !screenName) {
   throw new Error("Bad input.");
 }
+const input: HandleIncomingTweetInput = {
+  twitterUserId,
+  tweetId,
+  screenName,
+  isRetweet: false,
+  text: "",
+  timeStamp: "",
+};
+console.log(input);
 sqsClient.queueMessage(input);

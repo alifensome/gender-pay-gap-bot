@@ -4,12 +4,7 @@ import { SqsClient } from "../sqs/Client";
 import DataImporter from "../importData";
 import { debugPrint } from "../utils/debug";
 import { Repository } from "../importData/Repository";
-import { replaceMultiple } from "../utils/replace";
 import { TwitterData } from "../types";
-import { relevantWords } from "./relevantWords";
-import StatusesLookup, {
-  User,
-} from "twitter-api-client/dist/interfaces/types/StatusesLookupTypes";
 import { deduplicateList } from "../utils/deduplicateList";
 
 const PayGapAppUserName = "@PayGapApp";
@@ -114,63 +109,15 @@ export class IncomingTweetListenerQueuer {
       })
     );
   }
-
-  checkTweetContainsWord(tweet: string): boolean {
-    const upperCaseTweet = uppercaseAndReplace(tweet);
-    const tweetedWords = upperCaseTweet.split(/[ ,]+/);
-    for (let index = 0; index < relevantWords.length; index++) {
-      const relevantWord = relevantWords[index];
-      if (relevantWord.requiresExact) {
-        const result = this.checkContainsExactWord(
-          tweetedWords,
-          relevantWord.phrase
-        );
-        if (result) {
-          return true;
-        }
-      } else {
-        const result = this.checkContainsPhrase(
-          upperCaseTweet,
-          relevantWord.phrase
-        );
-        if (result) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  checkContainsPhrase(upperCaseTweet: string, relevantPhrase: string): boolean {
-    if (upperCaseTweet.includes(relevantPhrase)) {
-      return true;
-    }
-    return false;
-  }
-
-  checkContainsExactWord(
-    tweetedWords: string[],
-    relevantPhrase: string
-  ): boolean {
-    for (let index = 0; index < tweetedWords.length; index++) {
-      const tweetedWord = tweetedWords[index];
-      if (tweetedWord === relevantPhrase) {
-        return true;
-      }
-    }
-    return false;
-  }
 }
 
 export interface HandleIncomingTweetInput {
   twitterUserId: string;
   tweetId: string;
-  user: User;
   screenName: string;
   isRetweet: boolean;
   text: string;
   timeStamp: string;
-  fullTweetObject: StatusesLookup;
 }
 
 export interface HandleIncomingTweetStreamInput {
@@ -181,14 +128,4 @@ export interface HandleIncomingTweetStreamInput {
   text: string;
   timeStamp: string;
   fullTweetObject: TweetSearchStreamDataItem;
-}
-
-function uppercaseAndReplace(tweet: string) {
-  const replacements = [
-    { find: "'", replace: "" },
-    { find: "’", replace: "" },
-    { find: "#", replace: "" },
-  ];
-  const upperCaseTweet = replaceMultiple(tweet.toUpperCase(), replacements);
-  return upperCaseTweet;
 }

@@ -4,6 +4,7 @@ import {
   SendMessageCommandOutput,
 } from "@aws-sdk/client-sqs";
 import { Logger } from "tslog";
+import { HandleIncomingTweetInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { isDebugMode } from "../utils/debug";
 
 export class SqsClient {
@@ -22,7 +23,7 @@ export class SqsClient {
     }
   }
   async queueMessage(
-    messageBody: any,
+    messageBody: HandleIncomingTweetInput,
     delay = 600
   ): Promise<SendMessageCommandOutput> {
     const params = {

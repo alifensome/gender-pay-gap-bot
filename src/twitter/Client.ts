@@ -12,6 +12,7 @@ import { getEnvVar } from "../utils/getEnvVar";
 import axios from "axios";
 import { replaceMultiple } from "../utils/replace";
 import { Stream } from "stream";
+import { searchRecentTweetsResponse } from "./types";
 
 type HandleIncomingStatusFunction = (
   input: HandleIncomingTweetStreamInput
@@ -38,6 +39,17 @@ export class TwitterClient {
     });
 
     this.logger = new Logger({ name: TwitterClient.name });
+  }
+
+  async searchRecentTweets(query: string): Promise<searchRecentTweetsResponse> {
+    const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username`;
+    const bt = await this.getAuthToken();
+    const { data } = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${bt}`,
+      },
+    });
+    return data;
   }
 
   async handleTweetEvent(
@@ -358,13 +370,19 @@ export interface ReplyToTweetInput {
   replyTweetId: string;
 }
 
-export interface TweetSearchStreamDataItem {
-  data: Data;
+export interface SearchRecentTweetsDataResponse {
+  data: SearchRecentTweetsDataResponseData[];
   includes: Includes;
   matching_rules: MatchingRule[];
 }
 
-export interface Data {
+export interface TweetSearchStreamDataItem {
+  data: SearchRecentTweetsDataResponseData;
+  includes: Includes;
+  matching_rules: MatchingRule[];
+}
+
+export interface SearchRecentTweetsDataResponseData {
   author_id: string;
   edit_history_tweet_ids: string[];
   id: string;

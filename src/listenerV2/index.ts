@@ -6,3 +6,12 @@
 // 5. Look for relivent content
 // 6. Queue messages
 // 7. Run on chronjob
+
+// # https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
+// # start_time
+// #  TODO build query
+// #  Call multiple times
+// #  handle pagination
+// #  Prevent duplicate tweets.
+
+export async function handle(): Promise<void> {}
