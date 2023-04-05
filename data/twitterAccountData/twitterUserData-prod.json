@@ -5040,14 +5040,6 @@
     "companyNumber": null
   },
   {
-    "twitter_id_str": "2585312161",
-    "twitter_id": 2585312161,
-    "twitter_name": "Lion Academy Trust",
-    "twitter_screen_name": "LionAcTrust",
-    "companyName": "LION ACADEMY TRUST",
-    "companyNumber": "08171341"
-  },
-  {
     "twitter_id_str": "924966615820783618",
     "twitter_id": 924966615820783600,
     "twitter_name": "Liverpool Diocesan Schools Trust",
@@ -5635,7 +5627,7 @@
     "twitter_name": "Natixis",
     "twitter_screen_name": "natixis",
     "companyName": "NATIXIS",
-    "companyNumber": "FC022657"
+    "companyNumber": "BR005650"
   },
   {
     "twitter_id_str": "78586254",
@@ -12365,15 +12357,7 @@
     "twitter_id": 2585312161,
     "twitter_name": "Lion Academy Trust",
     "twitter_screen_name": "LionAcTrust",
-    "companyName": "Lion Academy Trust",
-    "companyNumber": "08171341"
-  },
-  {
-    "twitter_id_str": "4275193535",
-    "twitter_id": 4275193535,
-    "twitter_name": "Lionheart Trust",
-    "twitter_screen_name": "Lionheart_Trust",
-    "companyName": "Lionheart Academies Trust",
+    "companyName": "LIONHEART EDUCATIONAL TRUST",
     "companyNumber": "08473899"
   },
   {
@@ -12791,14 +12775,6 @@
     "twitter_screen_name": "NASUWT",
     "companyName": "NASUWT",
     "companyNumber": null
-  },
-  {
-    "twitter_id_str": "601109181",
-    "twitter_id": 601109181,
-    "twitter_name": "Natixis",
-    "twitter_screen_name": "natixis",
-    "companyName": "Natixis",
-    "companyNumber": "FC022657"
   },
   {
     "twitter_id_str": "35749264",
@@ -16112,7 +16088,7 @@
     "twitter_name": "Chesterfield College",
     "twitter_screen_name": "ChesterfieldAC",
     "companyName": "Chesterfield College",
-    "companyNumber": "02893159"
+    "companyNumber": null
   },
   {
     "twitter_id_str": "22897232",

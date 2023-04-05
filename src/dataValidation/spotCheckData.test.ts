@@ -9,7 +9,15 @@ const ryanAir: CompanyDataMultiYearItem = {
   companyName: "Ryanair ltd",
   companyNumber: null,
   sicCodes: "51101",
-  data2022To2023: null,
+  data2022To2023: {
+    diffMedianBonusPercent: 4.77,
+    femaleLowerMiddleQuartile: 61.77,
+    femaleLowerQuartile: 56.77,
+    femaleTopQuartile: 2.42,
+    femaleUpperMiddleQuartile: 30.65,
+    meanGpg: 62.88,
+    medianGpg: 62.69,
+  },
   data2021To2022: {
     meanGpg: 45.1,
     medianGpg: 42.8,
@@ -50,10 +58,18 @@ const ryanAir: CompanyDataMultiYearItem = {
   size: CompanySize.From1000To4999,
 };
 const jamesFisherNuclearLimited: CompanyDataMultiYearItem = {
-  companyName: "JAMES FISHER NUCLEAR LIMITED",
+  companyName: "JFN LIMITED",
   companyNumber: "SC204768",
   sicCodes: "62090",
-  data2022To2023: null,
+  data2022To2023: {
+    diffMedianBonusPercent: 100,
+    femaleLowerMiddleQuartile: 21,
+    femaleLowerQuartile: 42,
+    femaleTopQuartile: 9,
+    femaleUpperMiddleQuartile: 11,
+    meanGpg: 32.3,
+    medianGpg: 29,
+  },
   data2021To2022: {
     meanGpg: 34.3,
     medianGpg: 29.7,

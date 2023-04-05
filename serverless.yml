@@ -178,7 +178,6 @@ functions:
     timeout: 300
     environment:
       SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
-      IS_TEST: false
       SEARCH_QUERY_CHARACTER_LIMIT: 500
       # Prod account
       TWITTER_API_KEY: ${env:TWITTER_API_KEY}
@@ -194,7 +193,7 @@ functions:
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
     events:
       - schedule:
-          rate: rate(15 minutes)
+          rate: rate(30 minutes)
           enabled: true
     package:
       include:
