@@ -42,14 +42,21 @@ export class TwitterClient {
   }
 
   async searchRecentTweets(query: string): Promise<searchRecentTweetsResponse> {
-    const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username&max_results=100`;
-    const bt = await this.getAuthToken();
-    const { data } = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${bt}`,
-      },
-    });
-    return data;
+    try {
+      const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username&max_results=100`;
+      const bt = await this.getAuthToken();
+      const { data } = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${bt}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw new Error(
+        `Error while searching for tweet: ${JSON.stringify(error)}.`
+      );
+    }
   }
 
   async handleTweetEvent(
