@@ -1,7 +1,5 @@
 import { ListenerV2 } from "./ListenerV2";
-import { relevantWords } from "./relevantWords";
 import { LambdaLogger } from "../lambdaLogger";
-import { HandleIncomingTweetStreamInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import {
   User,
   searchRecentTweetsData,
@@ -10,6 +8,7 @@ import {
 
 const twitterData = [{ twitter_id_str: "1" }, { twitter_id_str: "2" }];
 
+const expectedDate = new Date("2023-04-01T12:06:01.357Z");
 class MockDate extends Date {
   constructor() {
     super("2023-04-01T14:06:01.357Z");
@@ -92,8 +91,14 @@ describe("ListenerV2", () => {
     it("should listen to twitter with a handler for company tweets and a handler for tweets at the GPGA", async () => {
       await handler.run();
       expect(mockTwitterClient.searchRecentTweets).toBeCalledTimes(2);
-      expect(mockTwitterClient.searchRecentTweets).toBeCalledWith("q1");
-      expect(mockTwitterClient.searchRecentTweets).toBeCalledWith("q2");
+      expect(mockTwitterClient.searchRecentTweets).toBeCalledWith(
+        "q1",
+        expectedDate
+      );
+      expect(mockTwitterClient.searchRecentTweets).toBeCalledWith(
+        "q2",
+        expectedDate
+      );
 
       expect(mockSqsClient.queueMessage).toBeCalledTimes(4);
       expect(mockSqsClient.queueMessage).toBeCalledWith(expectedSqsMessage, 0);

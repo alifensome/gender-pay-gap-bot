@@ -2,12 +2,8 @@ import Twit from "twit";
 import { Logger } from "tslog";
 import { HandleIncomingTweetStreamInput } from "../queueTweets/IncomingTweetListenerQueuer";
 import { debugPrint } from "../utils/debug";
-import {
-  StatusesLookup,
-  TwitterClient as TwitterApiClient,
-} from "twitter-api-client";
-import { TwitterCredentialGetter } from "./TwitterCredentialGetter";
-import { restartStream } from "./restartStream";
+import { TwitterClient as TwitterApiClient } from "twitter-api-client";
+import { Creds, TwitterCredentialGetter } from "./TwitterCredentialGetter";
 import { getEnvVar } from "../utils/getEnvVar";
 import axios from "axios";
 import { replaceMultiple } from "../utils/replace";
@@ -22,6 +18,7 @@ export class TwitterClient {
   twitPackage: Twit;
   logger: Logger;
   twitterApiClient: TwitterApiClient;
+  credentials: Creds;
 
   constructor(isTest = false) {
     const credentials = new TwitterCredentialGetter().getCredentials(isTest);
@@ -39,11 +36,17 @@ export class TwitterClient {
     });
 
     this.logger = new Logger({ name: TwitterClient.name });
+    this.credentials = credentials;
   }
 
-  async searchRecentTweets(query: string): Promise<searchRecentTweetsResponse> {
+  async searchRecentTweets(
+    query: string,
+    startTime: Date
+  ): Promise<searchRecentTweetsResponse> {
     try {
-      const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username&max_results=100`;
+      const starttimeIsoString = startTime.toISOString();
+      console.log(`Searching for time:${starttimeIsoString}`);
+      const url = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=id,text&expansions=author_id&user.fields=id,name,username&max_results=100&start_time=${starttimeIsoString}`;
       const bt = await this.getAuthToken();
       const { data } = await axios.get(url, {
         headers: {
@@ -53,7 +56,7 @@ export class TwitterClient {
       return data;
     } catch (error) {
       const errMessage = (error as Error)?.message;
-      console.error(errMessage);
+      console.error(error);
       throw new Error(
         `Error while searching for tweet: ${JSON.stringify(
           errMessage || error
@@ -292,8 +295,8 @@ export class TwitterClient {
   }
 
   async getAuthToken(): Promise<string> {
-    const apiKey = getEnvVar("TWITTER_API_KEY");
-    const apiSecret = getEnvVar("TWITTER_API_SECRET");
+    const apiKey = this.credentials.consumerKey;
+    const apiSecret = this.credentials.consumerSecret;
     const { data } = await axios.post(
       "https://api.twitter.com/oauth2/token?grant_type=client_credentials",
       {},

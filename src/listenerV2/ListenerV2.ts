@@ -48,9 +48,16 @@ export class ListenerV2 {
       eventType: "formedQueries",
       message: `formed ${queries.length} queries.`,
     });
+    const now = new Date();
+    now.setHours(now.getHours() - 2);
+
     for (let index = 0; index < queries.length; index++) {
       const query = queries[index];
-      const result = await this.twitterClient.searchRecentTweets(query);
+      const result = await this.twitterClient.searchRecentTweets(query, now);
+      if (!result?.data?.length) {
+        console.log(result);
+        continue;
+      }
       this.logger.logEvent({
         eventType: "foundRecentTweets",
         message: `Found ${result.data.length} recent tweets.`,
