@@ -114,7 +114,15 @@ const dorsetHealthcareNhsFoundationTrust: CompanyDataMultiYearItem = {
   companyName: "Dorset Healthcare Nhs Foundation Trust",
   companyNumber: null,
   sicCodes: "1,86210",
-  data2022To2023: null,
+  data2022To2023: {
+    diffMedianBonusPercent: 9.02,
+    femaleLowerMiddleQuartile: 82,
+    femaleLowerQuartile: 85.9,
+    femaleTopQuartile: 77.8,
+    femaleUpperMiddleQuartile: 85.6,
+    meanGpg: 13.79,
+    medianGpg: 6.28,
+  },
   data2021To2022: {
     meanGpg: 14.8,
     medianGpg: 8.7,
