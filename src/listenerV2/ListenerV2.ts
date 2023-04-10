@@ -14,6 +14,7 @@ import {
   User,
 } from "../twitter/types";
 import DynamoDbClient from "../dynamodb/Client";
+import { wait, waitOneSecond } from "../utils/wait";
 
 export class ListenerV2 {
   twitterClient: TwitterClient;
@@ -55,6 +56,7 @@ export class ListenerV2 {
         message: `Found ${result.data.length} recent tweets.`,
       });
       await this.handleSearchResponse(result);
+      await waitOneSecond();
     }
 
     this.logger.logEvent({

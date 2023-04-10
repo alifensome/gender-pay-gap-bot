@@ -175,7 +175,7 @@ functions:
   listenerV2:
     handler: dist/listenerV2/handler.handler
     role: ListenerV2Role
-    timeout: 300
+    timeout: 900
     environment:
       SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
       SEARCH_QUERY_CHARACTER_LIMIT: 500
@@ -193,7 +193,7 @@ functions:
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
     events:
       - schedule:
-          rate: rate(60 minutes)
+          rate: rate(120 minutes)
           enabled: true
     package:
       include:

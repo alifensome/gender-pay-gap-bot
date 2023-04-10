@@ -52,9 +52,12 @@ export class TwitterClient {
       });
       return data;
     } catch (error) {
-      console.error(error);
+      const errMessage = (error as Error)?.message;
+      console.error(errMessage);
       throw new Error(
-        `Error while searching for tweet: ${JSON.stringify(error)}.`
+        `Error while searching for tweet: ${JSON.stringify(
+          errMessage || error
+        )}.`
       );
     }
   }
