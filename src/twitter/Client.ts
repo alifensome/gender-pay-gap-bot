@@ -16,7 +16,7 @@ type HandleIncomingStatusFunction = (
 
 export class TwitterClient {
   twitPackage: Twit;
-  logger: Logger;
+  logger: Logger<any>;
   twitterApiClient: TwitterApiClient;
   credentials: Creds;
 

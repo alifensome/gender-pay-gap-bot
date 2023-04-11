@@ -11,7 +11,7 @@ import { isNumber } from "../utils/numberUtils";
 
 export class TweetAllGpgTask {
   twitterClient: TwitterClient;
-  logger: Logger;
+  logger: Logger<any>;
   repository: Repository;
   dynamoDbClient: DynamoDbClient;
   isTest: boolean;

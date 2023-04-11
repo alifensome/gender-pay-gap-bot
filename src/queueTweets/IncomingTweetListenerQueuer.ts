@@ -11,7 +11,7 @@ const PayGapAppUserName = "@PayGapApp";
 
 export class IncomingTweetListenerQueuer {
   twitterClient: TwitterClient;
-  logger: Logger;
+  logger: Logger<any>;
   dataImporter: DataImporter;
   repository: Repository;
   sqsClientTweetAtGpga: SqsClient;
@@ -22,7 +22,7 @@ export class IncomingTweetListenerQueuer {
     sqsClientTweetAtGpga: SqsClient,
     dataImporter: DataImporter,
     repository: Repository,
-    logger: Logger
+    logger: Logger<any>
   ) {
     this.twitterClient = twitterClient;
     this.sqsClientTweetAtGpga = sqsClientTweetAtGpga;

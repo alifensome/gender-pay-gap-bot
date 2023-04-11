@@ -13,7 +13,7 @@ interface ProcessInput {
 
 export class SqsTweetProcessor {
   twitterClient: TwitterClient;
-  logger: Logger;
+  logger: Logger<any>;
   repository: Repository;
   minGPG: number | null;
   copyWriter: CopyWriter;

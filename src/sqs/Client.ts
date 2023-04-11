@@ -11,7 +11,7 @@ export class SqsClient {
   awsSqsClient: AwsSqsClient;
   region = process.env.REGION;
   sqsUrl = process.env.SQS_QUEUE_URL;
-  logger: Logger;
+  logger: Logger<any>;
   isDebugMode: boolean;
 
   constructor(sqsUrl?: string) {
