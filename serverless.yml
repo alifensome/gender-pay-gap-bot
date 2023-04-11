@@ -193,7 +193,7 @@ functions:
       TWITTER_READ_ACCOUNT_BEARER_TOKEN: ${env:TWITTER_READ_ACCOUNT_BEARER_TOKEN}
     events:
       - schedule:
-          rate: rate(120 minutes)
+          rate: rate(60 minutes)
           enabled: true
     package:
       include:

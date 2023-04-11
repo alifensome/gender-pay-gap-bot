@@ -49,7 +49,7 @@ export class ListenerV2 {
       message: `formed ${queries.length} queries.`,
     });
     const now = new Date();
-    now.setHours(now.getHours() - 2);
+    now.setHours(now.getHours() - 1);
 
     for (let index = 0; index < queries.length; index++) {
       const query = queries[index];

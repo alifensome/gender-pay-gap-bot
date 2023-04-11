@@ -8,7 +8,7 @@ import {
 
 const twitterData = [{ twitter_id_str: "1" }, { twitter_id_str: "2" }];
 
-const expectedDate = new Date("2023-04-01T12:06:01.357Z");
+const expectedDate = new Date("2023-04-01T13:06:01.357Z");
 class MockDate extends Date {
   constructor() {
     super("2023-04-01T14:06:01.357Z");
