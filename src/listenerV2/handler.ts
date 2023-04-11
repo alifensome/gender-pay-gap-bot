@@ -17,11 +17,6 @@ const twitterClient = new TwitterClient(true);
 const repo = new Repository(dataImporter);
 const sqsClientTweetAtGpga = new SqsClient(getEnvVar("SQS_QUEUE_URL"));
 
-/**
- * TODO
- * 1. pagination?
- * 2. Check the recent time/start time thing.
- */
 export async function handler(): Promise<void> {
   const listenerV2 = new ListenerV2(
     twitterClient,
