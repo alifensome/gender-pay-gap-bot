@@ -1,0 +1,15 @@
+name: Run Tests
+run-name: ${{ github.actor }} Running tests 🚀
+on: [push]
+jobs:
+  ERun-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Run Tests
+        run: |
+          npm i -g yarn
+          yarn
+          yarn test
+      - run: echo "Status-${{ job.status }}."
