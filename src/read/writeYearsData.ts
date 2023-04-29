@@ -1,5 +1,8 @@
 import { spreadSheetToJson } from "./spreadSheetToJson";
 
+async function write2023_2024_data() {
+  await genericWriteData(2023);
+}
 async function write2022_2023_data() {
   await genericWriteData(2022);
 }
@@ -32,6 +35,7 @@ export async function genericWriteData(year: number) {
 }
 
 export async function writeAllData() {
+  await write2023_2024_data();
   await write2022_2023_data();
   await write2021_2022_data();
   await write2020_2021_data();
