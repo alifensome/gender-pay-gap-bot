@@ -4370,7 +4370,8 @@ write-file-atomic@^4.0.2:
 
 xml2js@0.4.19:
   version "0.4.19"
-  resolved "https://registry.npmjs.org/xml2js/-/xml2js-0.4.19.tgz"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
