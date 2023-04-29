@@ -1,4 +1,6 @@
 name: Refresh data - Create PR to update data
+run-name: Refreshing Data 📊
+
 on:
   push:
     branches:
