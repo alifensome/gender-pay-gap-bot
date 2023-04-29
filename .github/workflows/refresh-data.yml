@@ -1,5 +1,6 @@
 name: Refresh data - Create PR to update data
 on:
+  push
   schedule:
     - cron: "0 0 * * MON"
 jobs:
