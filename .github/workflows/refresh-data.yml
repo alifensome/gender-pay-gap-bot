@@ -1,0 +1,28 @@
+name: Cloud - Create PR to update available list
+on:
+  schedule:
+    - cron: "0 0 * * MON"
+jobs:
+  CloudList:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Run Tests
+        run: |
+          node --version
+          npm i -g yarn
+          yarn
+          yarn test
+      - name: Run data pipeline
+        run:  ./scripts/run-data-pipeline.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Update data
+          title: Update data
+          body: Update data
+          base: main
+          labels: automated-pr, Clouds & Regions
+          branch: cloud-update-advanced-params
+          delete-branch: true
