@@ -6,8 +6,8 @@
   "scripts": {
     "i": "yarn install",
     "build": "tsc",
-    "t": "jest",
-    "test": "jest",
+    "t": "TZ='UTC' jest",
+    "test": "TZ='UTC' jest",
     "test:coverage": "jest --coverage",
     "deploy": "npm run build && npm run test && serverless deploy",
     "start:listener": "npm run build && node dist/queueTweets/run.js"

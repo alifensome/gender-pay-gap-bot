@@ -28,9 +28,10 @@ export function daysSinceBeginningOfYear(now: Date): number {
     now.getDate(),
     0,
     0,
+    0,
     0
   );
-  const start = new Date(now.getFullYear(), 0, 0, 0, 0, 0);
+  const start = new Date(now.getFullYear(), 0, 0, 0, 0, 0, 0);
   const diff = nowRounded.valueOf() - start.valueOf();
   const oneDay = 1000 * 60 * 60 * 24;
   const day = Math.floor(diff / oneDay);
