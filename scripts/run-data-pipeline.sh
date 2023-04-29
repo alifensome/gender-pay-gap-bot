@@ -2,6 +2,10 @@
 
 echo "Running data extraction pipeline..."
 
+LOG_FILE=data/Log/Refresh-`date +%y-%m-%d.md`
+touch $LOG_FILE
+echo "Started." >> $LOG_FILE
+
 set -e
 
 echo "Building"
@@ -27,5 +31,7 @@ echo "combining twitter data and company data..."
 node --unhandled-rejections=strict dist/analysis/joinTweetsToCompanyData.js
 
 npm run test
+
+echo "Finished." >> $LOG_FILE
 
 echo "Finished."
