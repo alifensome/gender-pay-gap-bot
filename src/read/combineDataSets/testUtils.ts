@@ -3,6 +3,17 @@ import { SingleYearCompanyDataItem } from "./types";
 import { CompanySize } from "../../types";
 
 export const mockImportedData: ImportAllYearsDataResult = {
+  data_2023_2024: [
+    createTestSingleYearCompanyDataItem(7),
+    createTestSingleYearCompanyDataItem(7, {
+      companyName: "def",
+      companyNumber: "789",
+    }),
+    createTestSingleYearCompanyDataItem(7, {
+      companyName: "xyz",
+      companyNumber: "5678",
+    }),
+  ],
   data_2022_2023: [
     createTestSingleYearCompanyDataItem(1),
     createTestSingleYearCompanyDataItem(1, {

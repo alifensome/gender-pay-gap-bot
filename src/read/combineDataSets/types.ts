@@ -1,6 +1,7 @@
 import { CompanyNumber } from "../../types";
 
 export interface ImportAllYearsDataResult {
+  data_2023_2024: SingleYearCompanyDataItem[];
   data_2022_2023: SingleYearCompanyDataItem[];
   data_2021_2022: SingleYearCompanyDataItem[];
   data_2020_2021: SingleYearCompanyDataItem[];
@@ -9,6 +10,7 @@ export interface ImportAllYearsDataResult {
   data_2017_2018: SingleYearCompanyDataItem[];
 }
 export interface MultipleYearCompanyArg {
+  item_2024: SingleYearCompanyDataItem | null;
   item_2023: SingleYearCompanyDataItem | null;
   item_2022: SingleYearCompanyDataItem | null;
   item_2021: SingleYearCompanyDataItem | null;
