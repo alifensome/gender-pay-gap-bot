@@ -1,44 +1,9 @@
-import {
-  CompanyDataMultiYearItem,
-  CompanyDataSingleYearItem,
-  CompanySize,
-} from "../../types.js";
+import { CompanyDataSingleYearItem } from "../../types.js";
+import { Company } from "../../utils/Company";
 import { isNumber } from "../../utils/numberUtils";
-import { parseCompanyName } from "../../utils/parseCompanyName";
 import { MultipleYearCompanyArg, SingleYearCompanyDataItem } from "./types";
 
-// TODO make this more dynamic or update every year.
-export function toCompanyGpgDataItem(
-  multipleYearCompanyArg: MultipleYearCompanyArg
-): CompanyDataMultiYearItem {
-  const latestCompanyObject = getLatestCompanyEntry(multipleYearCompanyArg);
-  return {
-    companyName: parseCompanyName(latestCompanyObject.companyName),
-    companyNumber: latestCompanyObject.companyNumber,
-    size: latestCompanyObject.size as CompanySize, // TODO parse this better!
-    sicCodes: latestCompanyObject.sicCodes,
-    data2022To2023: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2023
-    ),
-    data2021To2022: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2022
-    ),
-    data2020To2021: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2021
-    ),
-    data2019To2020: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2020
-    ),
-    data2018To2019: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2019
-    ),
-    data2017To2018: toCompanyDataSingleYearItem(
-      multipleYearCompanyArg.item_2018
-    ),
-  };
-}
-
-function toCompanyDataSingleYearItem(
+export function toCompanyDataSingleYearItem(
   company: SingleYearCompanyDataItem | null
 ): CompanyDataSingleYearItem | null {
   if (
@@ -62,7 +27,7 @@ function toCompanyDataSingleYearItem(
 }
 
 // TODO make this work more dynamically or remember to update it every year.
-function getLatestCompanyEntry(
+export function getLatestCompanyEntry(
   multipleYearCompanyArg: MultipleYearCompanyArg
 ): SingleYearCompanyDataItem {
   const yearsOfCompany = multipleYearsToList(multipleYearCompanyArg);
@@ -79,15 +44,23 @@ function getLatestCompanyEntry(
 }
 
 // TODO unit test this.
-function multipleYearsToList(multipleYearCompanyArg: MultipleYearCompanyArg) {
-  return [
-    multipleYearCompanyArg.item_2023,
-    multipleYearCompanyArg.item_2022,
-    multipleYearCompanyArg.item_2021,
-    multipleYearCompanyArg.item_2020,
-    multipleYearCompanyArg.item_2019,
-    multipleYearCompanyArg.item_2018,
-  ];
+function multipleYearsToList(
+  multipleYearCompanyArg: MultipleYearCompanyArg
+): SingleYearCompanyDataItem[] {
+  const allYearsDataArray = [];
+  const c = new Company(null as any);
+  const expectedYears = c.getExpectedYearsOfData();
+  for (let index = 0; index < expectedYears.length; index++) {
+    const year = expectedYears[index];
+    const dataForYear =
+      multipleYearCompanyArg[
+        `item_${year + 1}` as keyof MultipleYearCompanyArg
+      ];
+    if (dataForYear) {
+      allYearsDataArray.push(dataForYear);
+    }
+  }
+  return allYearsDataArray;
 }
 
 function isValidCompany(

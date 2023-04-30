@@ -1,8 +1,18 @@
-import { BasicCompanyInfo, ImportAllYearsDataResult } from "./types";
-import { SingleYearCompanyDataItem } from "./types";
-import { CompanySize } from "../../types";
+import { ImportAllYearsDataResult } from "./types";
+import { createTestSingleYearCompanyDataItem } from "../../unitTestHelpers/createTestSingleYearCompanyDataItem";
 
 export const mockImportedData: ImportAllYearsDataResult = {
+  data_2023_2024: [
+    createTestSingleYearCompanyDataItem(7),
+    createTestSingleYearCompanyDataItem(7, {
+      companyName: "def",
+      companyNumber: "789",
+    }),
+    createTestSingleYearCompanyDataItem(7, {
+      companyName: "xyz",
+      companyNumber: "5678",
+    }),
+  ],
   data_2022_2023: [
     createTestSingleYearCompanyDataItem(1),
     createTestSingleYearCompanyDataItem(1, {
@@ -50,21 +60,3 @@ export const mockImportedData: ImportAllYearsDataResult = {
     }),
   ],
 };
-
-export function createTestSingleYearCompanyDataItem(
-  gap: number,
-  company: BasicCompanyInfo = { companyName: "abc", companyNumber: "123" }
-): SingleYearCompanyDataItem {
-  return {
-    ...company,
-    size: CompanySize.From250To499,
-    sicCodes: "456",
-    genderPayGap: gap,
-    medianGenderPayGap: gap + 1,
-    femaleUpperMiddleQuartile: 1,
-    diffMedianBonusPercent: 1,
-    femaleLowerMiddleQuartile: 2,
-    femaleLowerQuartile: 3,
-    femaleTopQuartile: 4,
-  };
-}

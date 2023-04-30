@@ -1,6 +1,6 @@
 import { findCompany } from "../../utils/findCompany";
 import { CompanyDataMultiYearItem } from "../../types.js";
-import { toCompanyGpgDataItem } from "./utils";
+import { toCompanyGpgDataItem } from "./toCompanyGpgDataItem";
 import { BasicCompanyInfo, MultipleYearCompanyArg } from "./types";
 import { ImportAllYearsDataResult } from "./types";
 
@@ -8,6 +8,12 @@ export function combineYearsData(
   importAllYearsDataResult: ImportAllYearsDataResult,
   company: BasicCompanyInfo
 ): CompanyDataMultiYearItem {
+  const item_2024 = findCompany(
+    company.companyName,
+    company.companyNumber,
+    importAllYearsDataResult.data_2023_2024
+  );
+
   const item_2023 = findCompany(
     company.companyName,
     company.companyNumber,
@@ -42,6 +48,7 @@ export function combineYearsData(
     importAllYearsDataResult.data_2017_2018
   );
   const multiYearData: MultipleYearCompanyArg = {
+    item_2024,
     item_2023,
     item_2022,
     item_2021,

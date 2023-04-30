@@ -43,6 +43,9 @@ class DataImporter {
   gpgByYear(year: number): CompanyDataCsvItem[] {
     return this.readFile(`./data/gpg_${year}_${year + 1}.json`);
   }
+  gpg_2023_2024(): CompanyDataCsvItem[] {
+    return this.gpgByYear(2023);
+  }
   gpg_2022_2023(): CompanyDataCsvItem[] {
     return this.gpgByYear(2022);
   }

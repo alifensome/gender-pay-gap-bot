@@ -5,6 +5,7 @@ export const mockCompanyDataItem: CompanyDataMultiYearItem = {
   companyNumber: "321",
   companyName: "Company Name Ltd 2",
   sicCodes: "123,456",
+  data2023To2024: null,
   data2022To2023: {
     medianGpg: 10.1,
     meanGpg: 9.5,

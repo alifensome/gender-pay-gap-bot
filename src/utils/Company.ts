@@ -43,18 +43,32 @@ export class Company {
     return null;
   }
 
-  companyDataMultiYearToList(): CompanyDataSingleYearItem[] {
-    const allYears: CompanyDataSingleYearItem[] = [];
+  /**
+   * Gets a list of years which there should be data for starting from 2017.
+   */
+  getExpectedYearsOfData(): number[] {
+    const allYears: number[] = [];
     const lowestYear = 17;
     let year = this.currentYear + 1;
     while (year >= lowestYear) {
+      allYears.push(year);
+      year--;
+    }
+
+    return allYears;
+  }
+
+  companyDataMultiYearToList(): CompanyDataSingleYearItem[] {
+    const allYears: CompanyDataSingleYearItem[] = [];
+    const expectedYears = this.getExpectedYearsOfData();
+    for (let index = 0; index < expectedYears.length; index++) {
+      const year = expectedYears[index];
       const yearData = this.companyData[
         `data${year - 1}To${year}` as keyof CompanyDataMultiYearItem
       ] as CompanyDataSingleYearItem;
       if (yearData) {
         allYears.push(yearData);
       }
-      year--;
     }
 
     return allYears;

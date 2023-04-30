@@ -194,6 +194,7 @@ describe("copyWriter", () => {
         companyName: "Company Name LTD",
         companyNumber: null,
         sicCodes: "123,456",
+        data2023To2024: null,
         data2022To2023: {
           meanGpg: 11,
           medianGpg: 12.1,
@@ -231,6 +232,7 @@ describe("copyWriter", () => {
         companyName: "Company Name LTD",
         companyNumber: null,
         sicCodes: "123,456",
+        data2023To2024: null,
         data2022To2023: null,
         data2021To2022: {
           meanGpg: 11,
@@ -268,6 +270,7 @@ describe("copyWriter", () => {
         companyName: "Company Name LTD",
         companyNumber: null,
         sicCodes: "123,456",
+        data2023To2024: null,
         data2022To2023: null,
         data2021To2022: {
           meanGpg: 11,
@@ -297,6 +300,7 @@ describe("copyWriter", () => {
         companyName: "Company Name LTD",
         companyNumber: null,
         sicCodes: "123,456",
+        data2023To2024: null,
         data2022To2023: null,
         data2021To2022: null,
         data2020To2021: null,
@@ -326,6 +330,7 @@ describe("copyWriter", () => {
         companyName: "Company Name LTD",
         companyNumber: null,
         sicCodes: "123,456",
+        data2023To2024: null,
         data2022To2023: null,
         data2021To2022: {
           meanGpg: 11,
@@ -364,6 +369,7 @@ describe("copyWriter", () => {
         companyNumber: null,
         size: "Less than 250" as any,
         sicCodes: "69102",
+        data2023To2024: null,
         data2022To2023: null,
         data2021To2022: null,
         data2020To2021: null,
