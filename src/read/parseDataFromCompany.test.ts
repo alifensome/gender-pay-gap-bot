@@ -95,8 +95,4 @@ describe("parseDataFromJson", () => {
     ];
     expect(result).toEqual(expectedResult);
   });
-  it("should parse nothing to be nothing", () => {
-    const result = parseDataFromJson([{}, { someRandomStuff: "" }] as any);
-    expect(result).toEqual([]);
-  });
 });

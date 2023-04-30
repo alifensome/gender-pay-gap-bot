@@ -9,10 +9,10 @@ echo "Started." >> $LOG_FILE
 set -e
 
 echo "Building"
-npm run build
+yarn build
 
-echo "Testing"
-# npm run test
+# echo "Testing"
+# yarn test
 
 ./scripts/download-GPG-data.sh
 
@@ -30,7 +30,7 @@ rm data/companies_GPG_Data_temp.json
 echo "combining twitter data and company data..."
 node --unhandled-rejections=strict dist/analysis/joinTweetsToCompanyData.js
 
-npm run test
+yarn test
 
 echo "Finished." >> $LOG_FILE
 

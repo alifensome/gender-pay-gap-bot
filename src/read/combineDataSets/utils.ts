@@ -4,6 +4,7 @@ import {
   CompanySize,
 } from "../../types.js";
 import { isNumber } from "../../utils/numberUtils";
+import { parseCompanyName } from "../../utils/parseCompanyName";
 import { MultipleYearCompanyArg, SingleYearCompanyDataItem } from "./types";
 
 // TODO make this more dynamic or update every year.
@@ -12,7 +13,7 @@ export function toCompanyGpgDataItem(
 ): CompanyDataMultiYearItem {
   const latestCompanyObject = getLatestCompanyEntry(multipleYearCompanyArg);
   return {
-    companyName: latestCompanyObject.companyName,
+    companyName: parseCompanyName(latestCompanyObject.companyName),
     companyNumber: latestCompanyObject.companyNumber,
     size: latestCompanyObject.size as CompanySize, // TODO parse this better!
     sicCodes: latestCompanyObject.sicCodes,

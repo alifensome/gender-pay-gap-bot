@@ -1,4 +1,3 @@
-// TODO reintroduce this.
 import DataImporter from "../importData";
 import { Repository } from "../importData/Repository";
 import { CompanyDataMultiYearItem, CompanySize } from "../types";
