@@ -3,6 +3,7 @@ import {
   CompanyDataSingleYearItem,
   CompanySize,
 } from "../../types.js";
+import { Company } from "../../utils/Company";
 import { isNumber } from "../../utils/numberUtils";
 import { parseCompanyName } from "../../utils/parseCompanyName";
 import { MultipleYearCompanyArg, SingleYearCompanyDataItem } from "./types";
@@ -79,15 +80,23 @@ function getLatestCompanyEntry(
 }
 
 // TODO unit test this.
-function multipleYearsToList(multipleYearCompanyArg: MultipleYearCompanyArg) {
-  return [
-    multipleYearCompanyArg.item_2023,
-    multipleYearCompanyArg.item_2022,
-    multipleYearCompanyArg.item_2021,
-    multipleYearCompanyArg.item_2020,
-    multipleYearCompanyArg.item_2019,
-    multipleYearCompanyArg.item_2018,
-  ];
+function multipleYearsToList(
+  multipleYearCompanyArg: MultipleYearCompanyArg
+): SingleYearCompanyDataItem[] {
+  const allYearsDataArray = [];
+  const c = new Company(null as any);
+  const expectedYears = c.getExpectedYearsOfData();
+  for (let index = 0; index < expectedYears.length; index++) {
+    const year = expectedYears[index];
+    const dataForYear =
+      multipleYearCompanyArg[
+        `item_${year + 1}` as keyof MultipleYearCompanyArg
+      ];
+    if (dataForYear) {
+      allYearsDataArray.push(dataForYear);
+    }
+  }
+  return allYearsDataArray;
 }
 
 function isValidCompany(
