@@ -8,6 +8,7 @@ const ryanAir: CompanyDataMultiYearItem = {
   companyName: "Ryanair ltd",
   companyNumber: null,
   sicCodes: "51101",
+  data2023To2024: null,
   data2022To2023: {
     diffMedianBonusPercent: 4.77,
     femaleLowerMiddleQuartile: 61.77,
@@ -60,6 +61,7 @@ const jamesFisherNuclearLimited: CompanyDataMultiYearItem = {
   companyName: "JFN LIMITED",
   companyNumber: "SC204768",
   sicCodes: "62090",
+  data2023To2024: null,
   data2022To2023: {
     diffMedianBonusPercent: 100,
     femaleLowerMiddleQuartile: 21,
@@ -113,6 +115,7 @@ const dorsetHealthcareNhsFoundationTrust: CompanyDataMultiYearItem = {
   companyName: "Dorset Healthcare Nhs Foundation Trust",
   companyNumber: null,
   sicCodes: "1,86210",
+  data2023To2024: null,
   data2022To2023: {
     diffMedianBonusPercent: 9.02,
     femaleLowerMiddleQuartile: 82,
@@ -166,6 +169,7 @@ const doncasterMetropolitanBoroughCouncil: CompanyDataMultiYearItem = {
   companyName: "Doncaster Metropolitan Borough Council",
   companyNumber: null,
   sicCodes: "1,84110",
+  data2023To2024: null,
   data2022To2023: {
     diffMedianBonusPercent: null,
     femaleLowerMiddleQuartile: 65,

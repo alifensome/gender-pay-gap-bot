@@ -7,6 +7,7 @@ export interface CompanyDataMultiYearItem {
   companyName: string;
   companyNumber: CompanyNumber;
   sicCodes: string;
+  data2023To2024: CompanyDataSingleYearItem | null;
   data2022To2023: CompanyDataSingleYearItem | null;
   data2021To2022: CompanyDataSingleYearItem | null;
   data2020To2021: CompanyDataSingleYearItem | null;

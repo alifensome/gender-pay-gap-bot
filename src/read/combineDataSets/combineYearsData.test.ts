@@ -13,6 +13,15 @@ describe("combineYearsData", () => {
       companyNumber: "123",
       sicCodes: "456",
       size: CompanySize.From250To499,
+      data2023To2024: {
+        diffMedianBonusPercent: 1,
+        femaleLowerMiddleQuartile: 2,
+        femaleLowerQuartile: 3,
+        femaleTopQuartile: 4,
+        femaleUpperMiddleQuartile: 1,
+        meanGpg: 7,
+        medianGpg: 8,
+      },
       data2017To2018: {
         meanGpg: 6,
         medianGpg: 7,

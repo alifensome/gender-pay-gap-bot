@@ -13,6 +13,7 @@ describe("Company", () => {
         companyName: "",
         companyNumber: null,
         sicCodes: "",
+        data2023To2024: null,
         data2022To2023: {
           meanGpg: 1,
           medianGpg: 2,
@@ -65,6 +66,7 @@ describe("Company", () => {
         companyName: "",
         companyNumber: null,
         sicCodes: "",
+        data2023To2024: null,
         data2021To2022: {
           meanGpg: 1,
           medianGpg: 2,
@@ -117,6 +119,7 @@ describe("Company", () => {
         companyName: "",
         companyNumber: null,
         sicCodes: "",
+        data2023To2024: null,
         data2022To2023: {
           meanGpg: 1,
           medianGpg: 2,
