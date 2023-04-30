@@ -4,7 +4,7 @@ import { importAllYearsData } from "./importAllYearsData";
 import { formDeduplicatedListOfCompanies } from "./formDeduplicatedListOfCompanies";
 import { combineYearsData } from "./combineYearsData";
 import { CompanyDataMultiYearItem } from "../../types";
-
+import { Presets, SingleBar } from "cli-progress";
 export async function combineDataWriteFile(debug: boolean) {
   const allYearsData = importAllYearsData();
 
@@ -16,15 +16,20 @@ export async function combineDataWriteFile(debug: boolean) {
   console.log(`Deduplicated down to ${totalNumber} items`);
 
   console.log("combining data...");
+  const combineDataProgressBar = new SingleBar({}, Presets.shades_classic);
+  combineDataProgressBar.start(totalNumber, 0);
+
   const combinedData: CompanyDataMultiYearItem[] = [];
   for (let index = 0; index < deduplicatedListOfCompanies.length; index++) {
     if (index % 100 === 0) {
-      printPercentageComplete(index, totalNumber);
+      combineDataProgressBar.update(index);
     }
     const company = deduplicatedListOfCompanies[index];
     const combinedCompanyData = combineYearsData(allYearsData, company);
     combinedData.push(combinedCompanyData);
   }
+  combineDataProgressBar.update(totalNumber);
+  combineDataProgressBar.stop();
 
   console.log(`Combined data to: ${combinedData.length} items.`);
 
