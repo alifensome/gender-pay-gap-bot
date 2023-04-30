@@ -9,6 +9,7 @@ import {
   SingleYearCompanyDataItem,
 } from "./combineDataSets/types";
 import { parseString } from "./parse";
+import { parseCompanyName } from "../utils/parseCompanyName";
 
 export function parseDataFromJson(
   jsonFile: CompanyDataCsvItem[]
@@ -19,7 +20,7 @@ export function parseDataFromJson(
     if (!row || !Object.keys(row).length) {
       continue;
     }
-    const companyName = row.EmployerName;
+    const companyName = parseCompanyName(row.EmployerName);
     const companyNumber = parseCompanyNumber(row.CompanyNumber);
     const genderPayGap = parseGpg(row.DiffMeanHourlyPercent);
     const medianGenderPayGap = parseGpg(row.DiffMedianHourlyPercent);
