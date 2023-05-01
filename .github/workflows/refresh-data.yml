@@ -3,7 +3,7 @@ run-name: Refreshing Data 📊
 
 on:
   schedule:
-    - cron: "0 0 * * MON"
+    - cron: "0 8 * * MON"
 jobs:
   RefreshData:
     runs-on: ubuntu-latest

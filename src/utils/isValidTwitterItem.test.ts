@@ -5,7 +5,6 @@ describe("isValidTwitterItem", () => {
     expect(
       isValidTwitterItem({
         twitter_id_str: "twitter_id_str",
-        twitter_id: 1,
         twitter_name: "twitter_name",
         twitter_screen_name: "twitter_screen_name",
         companyName: "companyName",
@@ -17,7 +16,6 @@ describe("isValidTwitterItem", () => {
     expect(
       isValidTwitterItem({
         twitter_id_str: "",
-        twitter_id: 1,
         twitter_name: "twitter_name",
         twitter_screen_name: "twitter_screen_name",
         companyName: "companyName",
@@ -29,7 +27,6 @@ describe("isValidTwitterItem", () => {
     expect(
       isValidTwitterItem({
         twitter_id_str: "twitter_id_str",
-        twitter_id: 1,
         twitter_name: "twitter_name",
         twitter_screen_name: "twitter_screen_name",
         companyName: "",
@@ -52,7 +49,6 @@ describe("isValidTwitterItem", () => {
     expect(
       isValidTwitterItem({
         twitter_id_str: "twitter_id_str",
-        twitter_id: 1,
         twitter_name: "twitter_name",
         twitter_screen_name: "",
         companyName: "companyName",

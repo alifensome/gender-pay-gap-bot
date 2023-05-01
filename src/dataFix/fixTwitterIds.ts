@@ -40,16 +40,20 @@ async function run() {
     }
     const row = dataToFix[index];
     // unprocessable item
-    if (!row.twitter_id_str && !row.twitter_id && !row.twitter_screen_name) {
+    if (
+      !row.twitter_id_str &&
+      !(row as any).twitter_id &&
+      !row.twitter_screen_name
+    ) {
       throw new Error(`unprocessable row: ${JSON.stringify(row)}`);
     }
     if (row.twitter_id_str && row.twitter_screen_name) {
       newCompanyData.push(row);
       continue;
     }
-    let userIdStr = `${row.twitter_id}`;
+    let userIdStr = `${(row as any).twitter_id}`;
     let twitter_screen_name: string = row.twitter_screen_name;
-    if (!row.twitter_id || row.twitter_id >= maxValue) {
+    if (!(row as any).twitter_id || (row as any).twitter_id >= maxValue) {
       numberOfErrors++;
       //todo some of these data points don't have twitter_screen_name
       if (row.twitter_screen_name) {
@@ -61,9 +65,9 @@ async function run() {
         );
         userIdStr = user[0].id_str;
         twitter_screen_name = user[0].screen_name;
-      } else if (row.twitter_id_str || row.twitter_id) {
+      } else if (row.twitter_id_str || (row as any).twitter_id) {
         const user = await twitterClient.accountsAndUsers.usersLookup({
-          user_id: row.twitter_id_str || `${row.twitter_id}`,
+          user_id: row.twitter_id_str || `${(row as any).twitter_id}`,
         });
         console.log(
           `Found ${row.companyName}, ${user[0].screen_name}, ID: ${user[0].id_str}.`

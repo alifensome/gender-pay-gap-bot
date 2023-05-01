@@ -116,6 +116,7 @@ export class Repository {
         isNumber(nextCompany.data2021To2022.medianGpg);
 
       // TODO year specific logic here.
+      // TODO can use company class here.
       if (nextCompany && (has2022Data || has2021Data)) {
         return nextCompany;
       }

@@ -39,7 +39,6 @@ export enum CompanySize {
 
 export interface TwitterData {
   twitter_id_str: string;
-  twitter_id: number; // TODO bin this
   twitter_name: string;
   twitter_screen_name: string;
   companyName: string;

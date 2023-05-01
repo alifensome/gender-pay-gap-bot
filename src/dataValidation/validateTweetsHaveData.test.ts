@@ -13,11 +13,9 @@ test("All twitter data should be valid", () => {
   const duplicateTwitterItems: any[] = [];
   for (let index = 0; index < repo.twitterUserData.length; index++) {
     const twitterUser = repo.twitterUserData[index];
-    // todo this should test data.twitterData.twitter_screen_name
     if (!isValidTwitterItem(twitterUser)) {
       brokenTwitterItems.push(twitterUser);
     }
-    //TODO check twitter data for duplicates.
     const foundByIdUser = repo.getTwitterUserByTwitterId(
       twitterUser.twitter_id_str
     );
