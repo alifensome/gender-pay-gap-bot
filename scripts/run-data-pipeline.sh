@@ -27,9 +27,6 @@ jq . data/companies_GPG_Data.json > data/companies_GPG_Data_temp.json
 cp data/companies_GPG_Data_temp.json data/companies_GPG_Data.json
 rm data/companies_GPG_Data_temp.json
 
-echo "combining twitter data and company data..."
-node --unhandled-rejections=strict dist/analysis/joinTweetsToCompanyData.js
-
 yarn test
 
 echo "Finished." >> $LOG_FILE

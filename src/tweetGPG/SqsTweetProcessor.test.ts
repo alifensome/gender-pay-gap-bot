@@ -5,7 +5,7 @@ describe("SqsTweetProcessor", () => {
     quoteTweet: jest.fn(),
   };
   const mockRepo = {
-    getGpgForTwitterId: jest.fn().mockReturnValue({
+    getCompanyTwitterDataForTwitterId: jest.fn().mockReturnValue({
       companyData: {
         data2021To2022: { medianGpg: 52.2 },
         data2020To2021: { medianGpg: 0 },
@@ -38,7 +38,9 @@ describe("SqsTweetProcessor", () => {
         screenName: "name",
       };
       await processor.process(input);
-      expect(mockRepo.getGpgForTwitterId).toBeCalledWith(input.twitterUserId);
+      expect(mockRepo.getCompanyTwitterDataForTwitterId).toBeCalledWith(
+        input.twitterUserId
+      );
       const expectedCopy =
         "In this organisation, women's median hourly pay is 52.2% lower than men's. The pay gap is 52.2 percentage points wider than the previous year.";
       expect(mockTwitterClient.quoteTweet).toBeCalledWith(
@@ -76,7 +78,9 @@ describe("SqsTweetProcessor", () => {
       expect(
         async () => await processorWithMinGpg.process(input)
       ).rejects.toThrowError("Skip for now.");
-      expect(mockRepo.getGpgForTwitterId).toBeCalledWith(input.twitterUserId);
+      expect(mockRepo.getCompanyTwitterDataForTwitterId).toBeCalledWith(
+        input.twitterUserId
+      );
       expect(mockTwitterClient.quoteTweet).toBeCalledTimes(0);
       expect(processorWithMinGpg.logger.info).toBeCalled();
     });

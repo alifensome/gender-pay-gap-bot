@@ -124,14 +124,14 @@ describe("Repository", () => {
   });
   describe("getGpgForTwitterId", () => {
     it("should get the full company for the twitterId", () => {
-      const result = repo.getGpgForTwitterId("123");
+      const result = repo.getCompanyTwitterDataForTwitterId("123");
       expect(result).toEqual({
         companyData: johnsonBuildingCompany,
         twitterData: twitterDataItem1,
       });
     });
     it("should get the full company for the twitterId even with no companyId", () => {
-      const result = repo.getGpgForTwitterId("789");
+      const result = repo.getCompanyTwitterDataForTwitterId("789");
       expect(result).toEqual({
         companyData: companyDataItemNoNumber,
         twitterData: twitterDataItem2,

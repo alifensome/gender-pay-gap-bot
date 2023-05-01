@@ -60,7 +60,8 @@ export class SqsTweetProcessor {
         );
         return;
       }
-      const data = this.repository.getGpgForTwitterId(twitterUserId);
+      const data =
+        this.repository.getCompanyTwitterDataForTwitterId(twitterUserId);
       if (!data || !data.companyData) {
         this.logger.error(
           JSON.stringify({

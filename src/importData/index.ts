@@ -1,10 +1,6 @@
 import fs from "fs";
 import { CompanyDataCsvItem } from "../read/combineDataSets/types";
-import {
-  TwitterData,
-  CompanyDataJoinedTweetsItem,
-  CompanyDataMultiYearItem,
-} from "../types";
+import { TwitterData, CompanyDataMultiYearItem } from "../types";
 
 class DataImporter {
   readFile(path: string) {
@@ -63,9 +59,6 @@ class DataImporter {
   }
   gpg_2017_2018(): CompanyDataCsvItem[] {
     return this.gpgByYear(2017);
-  }
-  companyDataJoinedTweets(): CompanyDataJoinedTweetsItem[] {
-    return this.readFile("./data/companyDataJoinedWithTweets.json");
   }
 }
 

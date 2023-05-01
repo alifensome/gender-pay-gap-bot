@@ -46,17 +46,7 @@ export interface TwitterData {
   duplicateCompanies?: BasicCompanyInfo[];
 }
 
-// TODO deprecate this and use union type.
-export interface CompanyDataJoinedTweetsItem {
-  companyName: string;
-  companyNumber?: string;
-  gpg_2022_2023?: number;
-  gpg_2021_2022?: number;
-  gpg_2020_2021?: number;
-  gpg_2019_2020?: number;
-  gpg_2018_2019?: number;
-  gpg_2017_2018?: number;
-  hasTwitterData: boolean;
-  twitterId?: string;
-  twitterScreenName?: string;
+export interface CompanyWithTwitterData {
+  companyData: CompanyDataMultiYearItem;
+  twitterData: TwitterData;
 }

@@ -1,6 +1,11 @@
 import DataImporter from ".";
 import { replaceSearchTerms } from "../twitter/replaceSearchTerms";
-import { TwitterData, CompanyDataMultiYearItem, CompanyNumber } from "../types";
+import {
+  TwitterData,
+  CompanyDataMultiYearItem,
+  CompanyNumber,
+  CompanyWithTwitterData,
+} from "../types";
 import { isDebugMode } from "../utils/debug";
 import { findCompany, findCompanyWithIndex } from "../utils/findCompany";
 import { isNumber } from "../utils/numberUtils";
@@ -44,11 +49,56 @@ export class Repository {
     return null;
   }
 
-  getGpgForTwitterId(twitterId: string): {
-    companyData: CompanyDataMultiYearItem;
-    twitterData: TwitterData;
-  } | null {
+  getTwitterUserByTwitterHandle(twitterHandle: string): TwitterData | null {
+    this.checkSetData();
+    for (let index = 0; index < this.twitterUserData.length; index++) {
+      const c = this.twitterUserData[index];
+      if (c.twitter_screen_name === twitterHandle) {
+        return c;
+      }
+    }
+    return null;
+  }
+
+  getCompanyTwitterDataForCompany(
+    companyName: string,
+    companyNumber: string
+  ): CompanyWithTwitterData | null {
+    const companyData = this.getCompany(companyName, companyNumber);
+    if (!companyData) {
+      return null;
+    }
+    const twitterData = this.getTwitterUserByCompanyData(
+      companyData.companyName,
+      companyData.companyNumber
+    );
+    if (!twitterData) {
+      return null;
+    }
+    return { companyData, twitterData };
+  }
+
+  getCompanyTwitterDataForTwitterId(
+    twitterId: string
+  ): CompanyWithTwitterData | null {
     const twitterData = this.getTwitterUserByTwitterId(twitterId);
+    if (!twitterData) {
+      return null;
+    }
+    const companyData = this.getCompany(
+      twitterData.companyName,
+      twitterData.companyNumber
+    );
+    if (!companyData) {
+      return null;
+    }
+    return { companyData, twitterData };
+  }
+
+  getCompanyTwitterDataForTwitterHandle(
+    twitterHandle: string
+  ): CompanyWithTwitterData | null {
+    const twitterData = this.getTwitterUserByTwitterHandle(twitterHandle);
     if (!twitterData) {
       return null;
     }
