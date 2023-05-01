@@ -1,4 +1,7 @@
-import { BasicCompanyInfo } from "./read/combineDataSets/types";
+export interface BasicCompanyInfo {
+  companyName: string;
+  companyNumber: CompanyNumber;
+}
 
 export type CompanyNumber = string | null; // Company Number can be null for some government bodies, health and education.
 
