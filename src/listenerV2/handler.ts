@@ -13,7 +13,7 @@ import DynamoDbClient from "../dynamodb/Client";
 config();
 
 const dataImporter = new DataImporter();
-const twitterClient = new TwitterClient(true);
+const twitterClient = new TwitterClient();
 const repo = new Repository(dataImporter);
 const sqsClientTweetAtGpga = new SqsClient(getEnvVar("SQS_QUEUE_URL"));
 
