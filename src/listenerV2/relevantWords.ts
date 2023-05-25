@@ -25,7 +25,7 @@ export const relevantWords = [
   { phrase: "PAY GAP", requiresExact: false },
   { phrase: "GIRL BOSS", requiresExact: false },
   { phrase: "GIRLBOSS", requiresExact: false },
-  { phrase: "EQUALITY", requiresExact: false },
+  { phrase: "EQUALITY", requiresExact: true },
   { phrase: "INTERNATIONALMENSDAY", requiresExact: false },
   { phrase: "IMD", requiresExact: true },
   { phrase: "MENSDAY", requiresExact: false },
