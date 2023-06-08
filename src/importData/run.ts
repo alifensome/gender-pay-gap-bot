@@ -4,8 +4,11 @@ import { Repository } from "./Repository";
 const importer = new DataImporter();
 const repo = new Repository(importer);
 
-repo.checkSetData();
+async function run() {
+  await repo.checkSetData();
 
-const results = repo.fuzzyFindCompanyByName(process.argv[2]);
-console.log(results);
-console.log("Close matches:" + results?.closeMatches?.length);
+  const results = await repo.fuzzyFindCompanyByName(process.argv[2]);
+  console.log(results);
+  console.log("Close matches:" + results?.closeMatches?.length);
+}
+run();

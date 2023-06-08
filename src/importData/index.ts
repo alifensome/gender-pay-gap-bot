@@ -1,13 +1,39 @@
 import fs from "fs";
 import { CompanyDataCsvItem } from "../read/combineDataSets/types";
 import { TwitterData, CompanyDataMultiYearItem } from "../types";
+import { S3 } from "../s3/s3Client";
 
 class DataImporter {
+  s3Client: S3;
+  constructor() {
+    this.s3Client = new S3();
+  }
   readFile(path: string) {
     return JSON.parse(fs.readFileSync(path, "utf8"));
   }
-  companiesGpgData(): CompanyDataMultiYearItem[] {
-    return this.readFile("./data/companies_GPG_Data.json");
+
+  async readfileLocallyOrGetFromS3<T>(
+    path: string,
+    fileName: string
+  ): Promise<T[]> {
+    if (fs.existsSync(path)) {
+      return this.readFile(path);
+    } else {
+      return await this.s3Client.getData(fileName);
+    }
+  }
+  companiesGpgDataLocal(): CompanyDataMultiYearItem[] {
+    const fileName = "companies_GPG_Data.json";
+    const path = "./data/" + fileName;
+    return this.readFile(path);
+  }
+  async companiesGpgData(): Promise<CompanyDataMultiYearItem[]> {
+    const fileName = "companies_GPG_Data.json";
+    const path = "./data/" + fileName;
+    return this.readfileLocallyOrGetFromS3<CompanyDataMultiYearItem>(
+      path,
+      fileName
+    );
   }
   companiesGpgDataTest(): CompanyDataMultiYearItem[] {
     return this.readFile("./data/companies_GPG_Data-test.json");
@@ -15,8 +41,15 @@ class DataImporter {
   successfulTweets() {
     return this.readFile("./data/tweets/successful-tweets.json");
   }
-  twitterUserDataProd(): TwitterData[] {
-    return this.readFile("./data/twitterAccountData/twitterUserData-prod.json");
+  twitterUserDataProdLocal(): TwitterData[] {
+    const fileName = "twitterUserData-prod.json";
+    const path = `./data/twitterAccountData/${fileName}`;
+    return this.readFile(path);
+  }
+  async twitterUserDataProd(): Promise<TwitterData[]> {
+    const fileName = "twitterUserData-prod.json";
+    const path = `./data/twitterAccountData/${fileName}`;
+    return this.readfileLocallyOrGetFromS3<TwitterData>(path, fileName);
   }
   twitterUserDataTest(): TwitterData[] {
     return this.readFile("./data/twitterAccountData/twitterUserData-test.json");

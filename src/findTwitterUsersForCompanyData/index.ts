@@ -9,7 +9,7 @@ import { isDebugMode } from "../utils/debug";
 
 const dataImporter = new DataImporter();
 const repository = new Repository(dataImporter);
-const companyData = dataImporter.companiesGpgData();
+const companyData = dataImporter.companiesGpgDataLocal();
 
 // TODO
 // Acronym from the parts of the name.
@@ -61,7 +61,7 @@ async function run() {
         );
       }
       const company = companyData[index];
-      const twitterData = repository.getTwitterUserByCompanyData(
+      const twitterData = await repository.getTwitterUserByCompanyData(
         company.companyName,
         company.companyNumber
       );

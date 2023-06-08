@@ -4,7 +4,7 @@ import { TwitterData } from "../types";
 import { writeJsonFile } from "../utils/write";
 
 const importer = new DataImporter();
-const twitterData = importer.twitterUserDataProd();
+const twitterData = importer.twitterUserDataProdLocal();
 
 const newData: TwitterData[] = [];
 for (let index = 0; index < twitterData.length; index++) {

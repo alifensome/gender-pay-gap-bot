@@ -29,17 +29,19 @@ export class Repository {
     this.dataImporter = dataImporter;
   }
 
-  setData() {
-    this.twitterUserData = this.dataImporter.twitterUserDataProd();
-    this.companiesGpgData = this.dataImporter.companiesGpgData();
+  async setData(): Promise<void> {
+    this.twitterUserData = await this.dataImporter.twitterUserDataProd();
+    this.companiesGpgData = await this.dataImporter.companiesGpgData();
     if (isDebugMode()) {
       this.twitterUserData.push(this.dataImporter.twitterUserDataTest()[0]);
       this.companiesGpgData.push(this.dataImporter.companiesGpgDataTest()[0]);
     }
   }
 
-  getTwitterUserByTwitterId(twitterId: string): TwitterData | null {
-    this.checkSetData();
+  async getTwitterUserByTwitterId(
+    twitterId: string
+  ): Promise<TwitterData | null> {
+    await this.checkSetData();
     for (let index = 0; index < this.twitterUserData.length; index++) {
       const c = this.twitterUserData[index];
       if (c.twitter_id_str === twitterId) {
@@ -49,8 +51,10 @@ export class Repository {
     return null;
   }
 
-  getTwitterUserByTwitterHandle(twitterHandle: string): TwitterData | null {
-    this.checkSetData();
+  async getTwitterUserByTwitterHandle(
+    twitterHandle: string
+  ): Promise<TwitterData | null> {
+    await this.checkSetData();
     for (let index = 0; index < this.twitterUserData.length; index++) {
       const c = this.twitterUserData[index];
       if (c.twitter_screen_name === twitterHandle) {
@@ -60,15 +64,15 @@ export class Repository {
     return null;
   }
 
-  getCompanyTwitterDataForCompany(
+  async getCompanyTwitterDataForCompany(
     companyName: string,
     companyNumber: string
-  ): CompanyWithTwitterData | null {
-    const companyData = this.getCompany(companyName, companyNumber);
+  ): Promise<CompanyWithTwitterData | null> {
+    const companyData = await this.getCompany(companyName, companyNumber);
     if (!companyData) {
       return null;
     }
-    const twitterData = this.getTwitterUserByCompanyData(
+    const twitterData = await this.getTwitterUserByCompanyData(
       companyData.companyName,
       companyData.companyNumber
     );
@@ -78,14 +82,14 @@ export class Repository {
     return { companyData, twitterData };
   }
 
-  getCompanyTwitterDataForTwitterId(
+  async getCompanyTwitterDataForTwitterId(
     twitterId: string
-  ): CompanyWithTwitterData | null {
-    const twitterData = this.getTwitterUserByTwitterId(twitterId);
+  ): Promise<CompanyWithTwitterData | null> {
+    const twitterData = await this.getTwitterUserByTwitterId(twitterId);
     if (!twitterData) {
       return null;
     }
-    const companyData = this.getCompany(
+    const companyData = await this.getCompany(
       twitterData.companyName,
       twitterData.companyNumber
     );
@@ -95,14 +99,14 @@ export class Repository {
     return { companyData, twitterData };
   }
 
-  getCompanyTwitterDataForTwitterHandle(
+  async getCompanyTwitterDataForTwitterHandle(
     twitterHandle: string
-  ): CompanyWithTwitterData | null {
-    const twitterData = this.getTwitterUserByTwitterHandle(twitterHandle);
+  ): Promise<CompanyWithTwitterData | null> {
+    const twitterData = await this.getTwitterUserByTwitterHandle(twitterHandle);
     if (!twitterData) {
       return null;
     }
-    const companyData = this.getCompany(
+    const companyData = await this.getCompany(
       twitterData.companyName,
       twitterData.companyNumber
     );
@@ -112,29 +116,29 @@ export class Repository {
     return { companyData, twitterData };
   }
 
-  getCompany(
+  async getCompany(
     name: string,
     companyNumber: CompanyNumber
-  ): CompanyDataMultiYearItem | null {
-    this.checkSetData();
+  ): Promise<CompanyDataMultiYearItem | null> {
+    await this.checkSetData();
     const upperCaseName = name?.toUpperCase();
     return findCompany(upperCaseName, companyNumber, this.companiesGpgData);
   }
 
-  getTwitterUserByCompanyData(
+  async getTwitterUserByCompanyData(
     name: string,
     companyNumber: CompanyNumber
-  ): TwitterData | null {
-    this.checkSetData();
+  ): Promise<TwitterData | null> {
+    await this.checkSetData();
     const upperCaseName = name?.toUpperCase();
     return findCompany(upperCaseName, companyNumber, this.twitterUserData);
   }
 
-  getNextCompanyWithData(
+  async getNextCompanyWithData(
     name: string,
     companyNumber: CompanyNumber
-  ): CompanyDataMultiYearItem | null {
-    this.checkSetData();
+  ): Promise<CompanyDataMultiYearItem | null> {
+    await this.checkSetData();
     const current = findCompanyWithIndex(
       name,
       companyNumber,
@@ -174,12 +178,12 @@ export class Repository {
     }
   }
 
-  getNextMatchingCompanyWithData(
+  async getNextMatchingCompanyWithData(
     name: string,
     companyNumber: CompanyNumber,
     matchingFunction: (CompanyDataItem: CompanyDataMultiYearItem) => boolean
-  ): CompanyDataMultiYearItem | null {
-    this.checkSetData();
+  ): Promise<CompanyDataMultiYearItem | null> {
+    await this.checkSetData();
     const current = findCompanyWithIndex(
       name,
       companyNumber,
@@ -209,8 +213,10 @@ export class Repository {
     }
   }
 
-  fuzzyFindCompanyByName(companyName: string): FuzzyFindCompanyByNameResult {
-    this.checkSetData();
+  async fuzzyFindCompanyByName(
+    companyName: string
+  ): Promise<FuzzyFindCompanyByNameResult> {
+    await this.checkSetData();
     const upperCaseName = companyName?.toUpperCase();
     const exactMatchOnName = findCompany(
       upperCaseName,
@@ -301,9 +307,9 @@ export class Repository {
     return potentialMatches.sort(sortByMatchDesc()).map((c) => c.company);
   }
 
-  checkSetData() {
+  async checkSetData(): Promise<void> {
     if (!this.twitterUserData || !this.companiesGpgData) {
-      this.setData();
+      await this.setData();
     }
   }
 }

@@ -84,8 +84,9 @@ export class SqsTweetProcessor {
       eventType: "tweetAtUsHandleRelevantTweet",
     });
     this.repository.checkSetData();
-    const fuzzyMatchResult =
-      this.repository.fuzzyFindCompanyByName(companyName);
+    const fuzzyMatchResult = await this.repository.fuzzyFindCompanyByName(
+      companyName
+    );
 
     if (fuzzyMatchResult.exactMatch) {
       this.logger.logEvent({

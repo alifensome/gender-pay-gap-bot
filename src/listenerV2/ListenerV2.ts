@@ -41,7 +41,8 @@ export class ListenerV2 {
   }
 
   async run(): Promise<void> {
-    const twitterUsers = this.repository.dataImporter.twitterUserDataProd();
+    const twitterUsers =
+      await this.repository.dataImporter.twitterUserDataProd();
     const follows = this.getFollowsFromData(twitterUsers);
     const queries = this.searchQueryFormer.toQuery(follows);
     this.logger.logEvent({

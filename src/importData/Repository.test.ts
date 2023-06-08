@@ -91,14 +91,14 @@ describe("Repository", () => {
   const mockDataImporter = {
     twitterUserDataProd: jest
       .fn()
-      .mockReturnValue([
+      .mockResolvedValue([
         twitterDataItem1,
         { twitter_id_str: "456" },
         twitterDataItem2,
       ]),
     companiesGpgData: jest
       .fn()
-      .mockReturnValue([
+      .mockResolvedValue([
         johnsonBuildingCompany,
         companyDataItemNoNumber,
         companyDataItemNoName,
@@ -113,25 +113,25 @@ describe("Repository", () => {
   };
   const repo = new Repository(mockDataImporter as any);
   describe("getTwitterUserByTwitterId", () => {
-    it("should get company by twitterId", () => {
-      const result = repo.getTwitterUserByTwitterId("123");
+    it("should get company by twitterId", async () => {
+      const result = await repo.getTwitterUserByTwitterId("123");
       expect(result).toEqual(twitterDataItem1);
     });
-    it("should return null if they don't exist", () => {
-      const result = repo.getTwitterUserByTwitterId("890");
+    it("should return null if they don't exist", async () => {
+      const result = await repo.getTwitterUserByTwitterId("890");
       expect(result).toEqual(null);
     });
   });
   describe("getGpgForTwitterId", () => {
-    it("should get the full company for the twitterId", () => {
-      const result = repo.getCompanyTwitterDataForTwitterId("123");
+    it("should get the full company for the twitterId", async () => {
+      const result = await repo.getCompanyTwitterDataForTwitterId("123");
       expect(result).toEqual({
         companyData: johnsonBuildingCompany,
         twitterData: twitterDataItem1,
       });
     });
-    it("should get the full company for the twitterId even with no companyId", () => {
-      const result = repo.getCompanyTwitterDataForTwitterId("789");
+    it("should get the full company for the twitterId even with no companyId", async () => {
+      const result = await repo.getCompanyTwitterDataForTwitterId("789");
       expect(result).toEqual({
         companyData: companyDataItemNoNumber,
         twitterData: twitterDataItem2,
@@ -140,20 +140,20 @@ describe("Repository", () => {
   });
 
   describe("getCompanyByNumber", () => {
-    it("should get the company by name", () => {
-      const result = repo.getCompany("name", "companyNumber");
+    it("should get the company by name", async () => {
+      const result = await repo.getCompany("name", "companyNumber");
       expect(result).toEqual(companyDataItemNoNumber);
     });
-    it("should get the company by companyNumber", () => {
-      const result = repo.getCompany("", "123");
+    it("should get the company by companyNumber", async () => {
+      const result = await repo.getCompany("", "123");
       expect(result).toEqual(companyDataItemNoName);
     });
-    it("should return null for nulls", () => {
-      const result = repo.getCompany(null as any, null);
+    it("should return null for nulls", async () => {
+      const result = await repo.getCompany(null as any, null);
       expect(result).toEqual(null);
     });
-    it("should return null nothing for empty string and null", () => {
-      const result = repo.getCompany("", null);
+    it("should return null nothing for empty string and null", async () => {
+      const result = await repo.getCompany("", null);
       expect(result).toEqual(null);
     });
   });
@@ -162,12 +162,12 @@ describe("Repository", () => {
     const getNextCompanyWithDataMockDataImporter = {
       twitterUserDataProd: jest
         .fn()
-        .mockReturnValue([
+        .mockResolvedValue([
           twitterDataItem1,
           { twitter_id_str: "456" },
           twitterDataItem2,
         ]),
-      companiesGpgData: jest.fn().mockReturnValue([
+      companiesGpgData: jest.fn().mockResolvedValue([
         {
           companyName: "A",
           companyNumber: "01",
@@ -197,8 +197,8 @@ describe("Repository", () => {
     const getNextCompanyWithDataRepo = new Repository(
       getNextCompanyWithDataMockDataImporter as any
     );
-    it("should Get next company with data", () => {
-      const result = getNextCompanyWithDataRepo.getNextCompanyWithData(
+    it("should Get next company with data", async () => {
+      const result = await getNextCompanyWithDataRepo.getNextCompanyWithData(
         "B",
         "02"
       );
@@ -214,12 +214,12 @@ describe("Repository", () => {
       const mockDataImporter = {
         twitterUserDataProd: jest
           .fn()
-          .mockReturnValue([
+          .mockResolvedValue([
             twitterDataItem1,
             { twitter_id_str: "456" },
             twitterDataItem2,
           ]),
-        companiesGpgData: jest.fn().mockReturnValue([
+        companiesGpgData: jest.fn().mockResolvedValue([
           {
             companyName: "A",
             companyNumber: "01",
@@ -254,12 +254,12 @@ describe("Repository", () => {
         mockDataImporter as any
       );
 
-      it("should match a company", () => {
+      it("should match a company", async () => {
         const matcher = (c: CompanyDataMultiYearItem) => {
           return companySizeCategoryToMinSize(c.size) >= 1000;
         };
         const result =
-          getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData(
+          await getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData(
             "B",
             "02",
             matcher
@@ -273,12 +273,12 @@ describe("Repository", () => {
         };
         expect(result).toEqual(expectedResult);
       });
-      it("should return null if theres no matches", () => {
+      it("should return null if theres no matches", async () => {
         const matcher = (c: CompanyDataMultiYearItem) => {
           return companySizeCategoryToMinSize(c.size) >= 100000;
         };
         const result =
-          getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData(
+          await getNextMatchingCompanyWithDataRepo.getNextMatchingCompanyWithData(
             "B",
             "02",
             matcher
@@ -289,8 +289,8 @@ describe("Repository", () => {
   });
 
   describe("fuzzyFindCompanyByName", () => {
-    it("should find by exact match", () => {
-      const result = repo.fuzzyFindCompanyByName(
+    it("should find by exact match", async () => {
+      const result = await repo.fuzzyFindCompanyByName(
         johnsonBuildingCompany.companyName
       );
       expect(result).toEqual({
@@ -298,8 +298,8 @@ describe("Repository", () => {
         closeMatches: [],
       });
     });
-    it("should find partial match", () => {
-      const result = repo.fuzzyFindCompanyByName(
+    it("should find partial match", async () => {
+      const result = await repo.fuzzyFindCompanyByName(
         "Ali CONTROLS BUILDING EFFICIENCY"
       );
       expect(result).toEqual({
@@ -307,8 +307,8 @@ describe("Repository", () => {
         closeMatches: [aliBuildingCompanyDataItem],
       });
     });
-    it("should find partial match with case insensitivity", () => {
-      const result = repo.fuzzyFindCompanyByName(
+    it("should find partial match with case insensitivity", async () => {
+      const result = await repo.fuzzyFindCompanyByName(
         "Ali CONTROLS BUILDing EFFICIENCY"
       );
       expect(result).toEqual({
@@ -316,50 +316,52 @@ describe("Repository", () => {
         closeMatches: [aliBuildingCompanyDataItem],
       });
     });
-    it("should find partial match with weird brackets", () => {
-      const result = repo.fuzzyFindCompanyByName("ACCENTURE (UK) LIMITED");
+    it("should find partial match with weird brackets", async () => {
+      const result = await repo.fuzzyFindCompanyByName(
+        "ACCENTURE (UK) LIMITED"
+      );
       expect(result).toEqual({
         exactMatch: accenture,
         closeMatches: [],
       });
     });
-    it("should handle single word requests", () => {
-      const result = repo.fuzzyFindCompanyByName("ACCENTURE");
+    it("should handle single word requests", async () => {
+      const result = await repo.fuzzyFindCompanyByName("ACCENTURE");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [accenture],
       });
     });
-    it("should find difference between similar names", () => {
-      const result = repo.fuzzyFindCompanyByName("HSBC");
+    it("should find difference between similar names", async () => {
+      const result = await repo.fuzzyFindCompanyByName("HSBC");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [hsbcPlc],
       });
     });
-    it.skip("should handle single word search better", () => {
-      const result = repo.fuzzyFindCompanyByName("HSBC");
+    it.skip("should handle single word search better", async () => {
+      const result = await repo.fuzzyFindCompanyByName("HSBC");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [hsbcPlc, hsbcBank, hsbcBankUk],
       });
     });
-    it("should order potential matches by how close that are", () => {
-      const result = repo.fuzzyFindCompanyByName("Ali CONTROLS BUILDING");
+    it("should order potential matches by how close that are", async () => {
+      const result = await repo.fuzzyFindCompanyByName("Ali CONTROLS BUILDING");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [aliBuildingCompanyDataItem],
       });
     });
-    it("should ignore some strings and brackets", () => {
-      const result = repo.fuzzyFindCompanyByName("Celtic PLC");
+    it("should ignore some strings and brackets", async () => {
+      const result = await repo.fuzzyFindCompanyByName("Celtic PLC");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [celticFc],
       });
     });
-    it("should find acronyms", () => {
-      const result = repo.fuzzyFindCompanyByName("bbc");
+    it("should find acronyms", async () => {
+      const result = await repo.fuzzyFindCompanyByName("bbc");
       expect(result).toEqual({
         exactMatch: null,
         closeMatches: [bbc],

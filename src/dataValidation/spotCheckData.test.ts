@@ -233,8 +233,8 @@ describe("spot check data", () => {
     [jamesFisherNuclearLimited],
     [dorsetHealthcareNhsFoundationTrust],
     [doncasterMetropolitanBoroughCouncil],
-  ])("should get and check the company from the data", (company) => {
-    const companyFromData = repo.getCompany(
+  ])("should get and check the company from the data", async (company) => {
+    const companyFromData = await repo.getCompany(
       company.companyName,
       company.companyNumber
     );

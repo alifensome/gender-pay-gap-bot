@@ -113,7 +113,7 @@ export class TweetAllGpgTask {
       lastCompanyTweet = await this.getDynamoDbLastItem();
       lastCompanyName = lastCompanyTweet?.data?.companyName ?? null;
       lastCompanyNumber = lastCompanyTweet?.data?.companyNumber ?? null;
-      nextCompany = this.findNextCompanyOrFirst(
+      nextCompany = await this.findNextCompanyOrFirst(
         lastCompanyName,
         lastCompanyNumber
       );
@@ -163,13 +163,13 @@ export class TweetAllGpgTask {
     }
   }
 
-  findNextCompanyOrFirst(
+  async findNextCompanyOrFirst(
     companyName: string | null,
     companyNumber: string | null
-  ): CompanyDataMultiYearItem {
+  ): Promise<CompanyDataMultiYearItem> {
     if (companyName) {
       const nextMatchingCompany =
-        this.repository.getNextMatchingCompanyWithData(
+        await this.repository.getNextMatchingCompanyWithData(
           companyName,
           companyNumber,
           this.matchLargeCompany

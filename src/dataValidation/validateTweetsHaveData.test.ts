@@ -6,8 +6,8 @@ import { isValidTwitterItem } from "../utils/isValidTwitterItem";
 const importer = new DataImporter();
 const repo = new Repository(importer);
 
-test("All twitter data should be valid", () => {
-  repo.setData();
+test("All twitter data should be valid", async () => {
+  await repo.setData();
   const brokenTwitterCompanyIds: CompanyDataMultiYearItem[] = [];
   const brokenTwitterItems: TwitterData[] = [];
   const duplicateTwitterItems: any[] = [];
@@ -16,7 +16,7 @@ test("All twitter data should be valid", () => {
     if (!isValidTwitterItem(twitterUser)) {
       brokenTwitterItems.push(twitterUser);
     }
-    const foundByIdUser = repo.getTwitterUserByTwitterId(
+    const foundByIdUser = await repo.getTwitterUserByTwitterId(
       twitterUser.twitter_id_str
     );
     if (!foundByIdUser) {
@@ -30,7 +30,7 @@ test("All twitter data should be valid", () => {
     ) {
       duplicateTwitterItems.push({ foundByIdUser, twitterUser });
     }
-    const companyData = repo.getCompany(
+    const companyData = await repo.getCompany(
       twitterUser.companyName,
       twitterUser.companyNumber
     );

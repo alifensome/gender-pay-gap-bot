@@ -12,9 +12,9 @@ describe("companySizeCategoryToMinSize", () => {
       "no company size for hi"
     );
   });
-  it("should be able to pass all the companies in the data set", () => {
+  it("should be able to pass all the companies in the data set", async () => {
     const dataImporter = new DataImporter();
-    const companies = dataImporter.companiesGpgData();
+    const companies = await dataImporter.companiesGpgData();
     for (let index = 0; index < companies.length; index++) {
       const c = companies[index];
       const result = companySizeCategoryToMinSize(c.size);
