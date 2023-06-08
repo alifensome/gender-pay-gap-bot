@@ -35,9 +35,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   getCompanyByTwitterId:
@@ -49,9 +46,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   getCompanyByTwitterHandle:
@@ -63,9 +57,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   tweetGpg:
@@ -91,9 +82,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   handleTweetAtGpga:
@@ -118,9 +106,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   tweetAllGpgTask:
@@ -148,9 +133,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
   plotGpg5YearGraph:
@@ -198,9 +180,6 @@ functions:
     package:
       include:
         - ./dist/**
-        - data/twitterAccountData/twitterUserData-prod.json
-        - data/twitterAccountData/twitterUserData-test.json
-        - data/companies_GPG_Data.json
         - node_modules/**
 
 resources:
@@ -316,12 +295,6 @@ resources:
                     - s3:ListBucket
                   Resource:
                     - arn:aws:s3:::alifensome-general-bucket/gpga/*
-
-                - Effect: Allow
-                  Action:
-                    - s3:ListObjectsV2
-                    - s3:ListBucket
-                  Resource:
                     - arn:aws:s3:::alifensome-general-bucket
 
     TweetSqsProcessorRole:
@@ -372,6 +345,15 @@ resources:
                     - dynamodb:DeleteItem
                   Resource:
                     - "Fn::GetAtt": [GpgData, Arn]
+                # S3
+                - Effect: Allow
+                  Action:
+                    - s3:Get*
+                    - s3:List*
+                    - s3:Describe*
+                  Resource:
+                    - arn:aws:s3:::alifensome-general-bucket/gpga/*
+                    - arn:aws:s3:::alifensome-general-bucket
 
     HandleTweetAtGpgaRole:
       Type: AWS::IAM::Role
@@ -407,9 +389,17 @@ resources:
                     - sqs:ReceiveMessage
                     - sqs:DeleteMessage
                     - sqs:GetQueueAttributes
-
                   Resource:
                     - Fn::GetAtt: [TweetAtGpgaQueue, Arn]
+                # S3
+                - Effect: Allow
+                  Action:
+                    - s3:Get*
+                    - s3:List*
+                    - s3:Describe*
+                  Resource:
+                    - arn:aws:s3:::alifensome-general-bucket/gpga/*
+                    - arn:aws:s3:::alifensome-general-bucket
 
     ListenerV2Role:
       Type: AWS::IAM::Role
@@ -454,6 +444,15 @@ resources:
                     - dynamodb:GetItem
                   Resource:
                     - "Fn::GetAtt": [GpgData, Arn]
+                # S3
+                - Effect: Allow
+                  Action:
+                    - s3:Get*
+                    - s3:List*
+                    - s3:Describe*
+                  Resource:
+                    - arn:aws:s3:::alifensome-general-bucket/gpga/*
+                    - arn:aws:s3:::alifensome-general-bucket
 
     TweetAllGpgTaskRole:
       Type: AWS::IAM::Role
@@ -504,6 +503,15 @@ resources:
                     - dynamodb:DeleteItem
                   Resource:
                     - "Fn::GetAtt": [GpgData, Arn]
+                # S3
+                - Effect: Allow
+                  Action:
+                    - s3:Get*
+                    - s3:List*
+                    - s3:Describe*
+                  Resource:
+                    - arn:aws:s3:::alifensome-general-bucket/gpga/*
+                    - arn:aws:s3:::alifensome-general-bucket
 
     GpgData:
       Type: AWS::DynamoDB::Table
